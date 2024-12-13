@@ -12,32 +12,32 @@ const KeyImpact = () => {
                     <p className="text-[4rem] md:text-[12rem] lg:text-[19rem] font-PerformanceMark whitespace-nowrap text-white">2030</p>
                 </div>
                 <div className='flex flex-col lg:flex-row items-center lg:items-start lg:justify-around px-6 md:px-12 lg:px-24'>
-                    <div className='flex flex-col items-center w-full md:w-10/12 lg:w-3/12 mb-10 lg:mb-0'>
+                    <div className='flex flex-col w-full md:w-10/12 lg:w-3/12 mb-10 lg:mb-0 gap-8'>
                         <Image 
-                            src="/Indicators/startups.svg"
+                            src="/Indicators/startup.png"
                             alt="Company Logo"
                             width={400}
                             height={400}
                         />
-                        <p className='text-2xl font-semibold'>Attract or promote tech-based companies in the region, with a focus on sectors aligned with regional specialization.</p>
+                        <p className='text-2xl font-semibold uppercase'>Attract or promote tech-based companies in the region, with a focus on sectors aligned with regional specialization.</p>
                     </div>
-                    <div className='flex flex-col items-center w-full md:w-10/12 lg:w-3/12 mb-10 lg:mb-0'>
+                    <div className='flex flex-col w-full md:w-10/12 lg:w-3/12 mb-10 lg:mb-0 gap-8'>
                         <Image 
-                            src="/Indicators/millions.svg"
+                            src="/Indicators/millions.png"
                             alt="Company Logo"
                             width={400}
                             height={400}
                         />
-                        <p className='text-2xl font-semibold'>Structure risk capital funds with an emphasis on angel investment, seeking to achieve this total investment.</p>
+                        <p className='text-2xl font-semibold uppercase'>Structure risk capital funds with an emphasis on angel investment, seeking to achieve this total investment.</p>
                     </div>
-                    <div className='flex flex-col items-center w-full md:w-10/12 lg:w-3/12 mb-10 lg:mb-0'>
+                    <div className='flex flex-col w-full md:w-10/12 lg:w-3/12 mb-10 lg:mb-0 gap-8'>
                         <Image 
-                            src="/Indicators/chihuahua.svg"
+                            src="/Indicators/chihuahua.png"
                             alt="Company Logo"
                             width={400}
                             height={400}
                         />
-                        <p className='text-2xl font-semibold'>Encourage regional startups and tech-based companies to contribute to this percentage of the region’s economic output.</p>
+                        <p className='text-2xl font-semibold uppercase'>Encourage regional startups and tech-based companies to contribute to this percentage of the region’s economic output.</p>
                     </div>
                 </div>
             </div>

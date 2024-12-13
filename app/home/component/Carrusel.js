@@ -58,9 +58,9 @@ const Carrusel = () => {
   }, [currentIndex, cards.length]);
 
   return (
-    <div className="h-screen relative w-full flex justify-center items-center">
+    <div className="relative w-full flex justify-center items-center py-[20rem]">
       {/* Contenedor de la tarjeta */}
-      <div className="relative w-full max-w-4xl bg-white rounded-3xl py-6 px-8 shadow-lg flex flex-col lg:flex-row items-center mx-8 lg:mx-0">
+      <div className="relative w-10/12 bg-white rounded-3xl py-6 px-8 shadow-lg flex flex-col lg:flex-row items-center mx-8 lg:mx-0">
         {/* Flecha izquierda */}
         <button
           className="absolute left-[-28px] top-1/2 transform -translate-y-1/2 z-10 bg-transparent border-4 border-ColorPrincipal text-ColorPrincipal p-1 rounded-full shadow-md hover:bg-ColorPrincipal hover:text-white"
@@ -72,10 +72,10 @@ const Carrusel = () => {
         {/* Card */}
         <div className="w-full flex flex-col lg:flex-row items-center justify-center">
           {/* Texto */}
-          <div className="lg:pr-8 w-full lg:w-1/2 text-center lg:text-left mb-5 lg:mb-0">
-            <h3 className="text-lg font-bold uppercase lg:text-2xl mb-2 lg:mb-6">{cards[currentIndex].title}</h3>
+          <div className="lg:pr-8 w-full lg:w-1/2 lg:text-left mb-5 lg:mb-0">
+            <h3 className="text-lg font-bold uppercase mac:text-[2rem] lg:text-[2.7rem] lg:leading-[3rem] mb-2 lg:mb-6">{cards[currentIndex].title}</h3>
             <hr className="my-2 lg:my-6 border-t-4 border-black" />
-            <p className="text-sm uppercase text-black mt-2 lg:mt-6">{cards[currentIndex].description}</p>
+            <p className="text-sm mac:text-[1.5rem] lg:text-[2rem] mac:leading-[2rem] lg:leading-[3rem] uppercase text-black mt-2 lg:mt-6">{cards[currentIndex].description}</p>
           </div>
 
           {/* Imagen */}
