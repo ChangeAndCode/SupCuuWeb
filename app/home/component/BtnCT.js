@@ -1,11 +1,25 @@
+import Image from "next/image";
 
+const BtnCT = ({ buttonText, customLines }) => {
+  // Usa customLines si está disponible, de lo contrario divide el texto automáticamente
+  const lines = customLines || buttonText.split(" ");
 
-const BtnCT = ({ buttonText }) => {
   return (
-    <>
-      <button className="bg-ColorPrincipal text-white py-3 w-full uppercase font-pragmatica rounded-full">{buttonText}</button>
-    </>
-  )
-}
+    <button className="relative bg-ColorPrincipal text-white h-[3.9rem] w-[18rem] uppercase font-pragmatica rounded-full flex flex-col justify-center items-center">
+      {lines.map((line, index) => (
+        <span key={index}>{line}</span>
+      ))}
 
-export default BtnCT
+      <Image 
+        src="/btn.png"
+        width={35}
+        height={35}
+        alt="Tabla"
+        className="absolute right-[1.3rem] bottom-[-.8rem]"
+      />
+
+    </button>
+  );
+};
+
+export default BtnCT;

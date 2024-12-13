@@ -8,10 +8,10 @@ const CardEntrepreneur = () => {
             <Image
                 src="/CT/primera.png"
                 alt="Company Logo"
-                width={470}
-                height={370}/>
+                width={490}
+                height={390}/>
         </div>
-        <div className="lg:transform  lg:translate-y-[.4rem] text-center space-y-4">
+        <div className="text-center lg:translate-y-[1.8rem] space-y-4">
             <BtnCT buttonText="ENTREPRENEUR" />
             <div>
               <p className="font-PerformanceMark text-ColorPrincipal text-2xl uppercase">Ready to</p>

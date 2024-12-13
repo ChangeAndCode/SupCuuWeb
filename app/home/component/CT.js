@@ -9,11 +9,14 @@ import AnImpact from "./AnImpact";
 import TimeLine from "./TimeLine";
 import KeyImpact from "./KeyImpact";
 import Transformative from "./Transformative";
+import Partners from "./Partners";
+import MeetTeam from "./MeetTeam";
+import Backbone from "./Backbone";
 
 
 const CT = () => {
   return (
-    <div className="py-24">
+    <div className="pt-24">
       <div className="relative flex flex-col justify-center items-center py-24 lg:py-36 overflow-hidden">
         {/* Logo */}
         <div className="relative z-10 top-5 w-11/12" >
@@ -41,32 +44,34 @@ const CT = () => {
 
       
 
-      <div className="relative flex flex-col items-center py-[20rem] lg:flex-row lg:justify-center bg-transparent space-y-6 lg:space-y-0">
-        <div className="relative lg:absolute lg:z-30 lg:transform lg:-translate-x-[27rem]">
+      <div className="relative flex flex-col items-center md:pt-[-10rem] lg:pt-[15rem] lg:flex-row lg:justify-center bg-transparent space-y-6 lg:space-y-0">
+        <div className="relative lg:absolute lg:z-30 lg:transform lg:-translate-x-[30rem] lg:translate-y-[-3rem]">
           <CardEntrepreneur />
         </div>
-        <div className="relative lg:absolute lg:z-20 lg:transform lg:-translate-x-[6rem] lg:translate-y-[3rem]">
+        <div className="relative lg:absolute lg:z-20 lg:transform lg:-translate-x-[6rem] lg:translate-y-[2rem]">
           <CardStartups />
         </div>
-        <div className="relative lg:absolute lg:z-30 lg:transform lg:translate-x-[7rem] lg:translate-y-[3rem]">
+        <div className="relative lg:absolute lg:z-30 lg:transform lg:translate-x-[10.5rem] lg:translate-y-[2rem]">
           <CardInvestors />
         </div>
-        <div className="relative lg:absolute lg:z-20 lg:transform lg:translate-x-[24rem] lg:translate-y-[4rem]">
+        <div className="relative lg:absolute lg:z-20 lg:transform lg:translate-x-[30rem] lg:translate-y-[1rem]">
           <CardCorporates />
         </div>
       </div>
 
 
       <div className="relative">
-        <div className="relative z-30 flex justify-center pt-[20rem] -mb-[11rem] lg:-mb-[14rem]">
-          <Image
-            src="/news.png"
-            alt="Company Logo"
-            width={470}
-            height={370}
-          />
+        <div className="relative z-30 flex justify-center pt-[5rem] lg:pt-[28rem] mb-[-61rem] md:mb-[-55rem] mac:mb-[-52rem] lg:mb-[-53rem]">
+          <div className="w-[900px] h-[900px]">
+            <Image
+              src="/news.png"
+              alt="Company Logo"
+              width={900}
+              height={900}
+            />
+          </div>
         </div>
-        <div className="relative flex justify-center items-center bg-[url('/bgNews.png')] bg-no-repeat bg-center bg-[length:100vw_100%] z-10 py-20">
+        <div className="relative flex justify-center items-center bg-[url('/Bg/bgNews.png')] bg-no-repeat bg-center bg-[length:100vw_100%] z-10">
             <Carrusel />
         </div>
         <div className="absolute bottom-[-50px] right-[.5rem] md:right-[4rem] lg:right-[15rem] translate-y-[1.5rem]">
@@ -98,8 +103,17 @@ const CT = () => {
         <div className="mb-[-8rem]">
           <KeyImpact />
         </div>
-        <div className="bg-white">
+        <div className="bg-white mb-[-13rem]">
           <Transformative />
+        </div>
+        <div className="relative bg-[url('/Bg/bgPartners.png')] bg-no-repeat bg-center bg-[length:120vw_100%] z-10 py-20">
+          <Partners />
+        </div>
+        <div>
+          <MeetTeam />
+        </div>
+        <div className="h-screen bg-[#c4cfd6] mt-[-10rem]">
+          <Backbone />
         </div>
     </div>
   );

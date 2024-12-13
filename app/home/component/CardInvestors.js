@@ -8,10 +8,10 @@ const CardInvestors = () => {
         <Image
             src="/CT/tercera.png"
             alt="Company Logo"
-            width={390}
-            height={290}/>
+            width={490}
+            height={390}/>
     </div>
-    <div className="lg:transform  lg:translate-y-[3.2rem] text-center space-y-4">
+    <div className="text-center space-y-4">
         <BtnCT buttonText="INVESTORS"/>
         <div>
           <p className="font-PerformanceMark text-ColorPrincipal text-2xl uppercase">want to grow</p>
