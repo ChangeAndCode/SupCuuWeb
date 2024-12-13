@@ -5,14 +5,14 @@ const TimeLine = () => {
     <div className="relative py-16">
       <div className="flex justify-center">
         <div className="transform rotate-90 lg:rotate-0 translate-x-[-9rem] md:translate-x-[-21rem] lg:translate-x-0 translate-y-[9rem] md:translate-y-[20rem] lg:translate-y-0">
-            <div className="h-auto sm:w-6/12 md:w-8/12 lg:w-10/12 xl:w-full">
-                <Image 
-                    src="/barra.svg"
-                    width={1600}
-                    height={1500}
-                    alt="Timeline bar"
-                />
-            </div>
+          <div className="h-auto sm:w-6/12 md:w-8/12 lg:w-10/12 xl:w-full">
+            <Image 
+              src="/barra.svg"
+              width={1600}
+              height={1500}
+              alt="Timeline bar"
+            />
+          </div>
         </div>
       </div>
 
@@ -25,7 +25,7 @@ const TimeLine = () => {
             alt="DESEC logo"
           />
           <p className="mt-4 text-center lg:text-left">
-            DESEC transforming Chihuahua's economy over the past 50 years.
+            DESEC transforming Chihuahua&rsquo;s economy over the past 50 years.
           </p>
         </div>
 
@@ -56,7 +56,7 @@ const TimeLine = () => {
               alt="Startup logo"
             />
           </div>
-          <p className="">
+          <p>
             Chihuahua joins the MIT REAP program. Local leaders gather data, define a strategic plan, and create a collective organization to transform the ecosystem called STARTUP CHIHUAHUA.
           </p>
         </div>
