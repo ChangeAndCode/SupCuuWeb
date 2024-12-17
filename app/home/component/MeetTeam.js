@@ -134,7 +134,7 @@ const MeetTeam = () => {
                 />
                 <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.6rem] font-pragmatica uppercase w-full leading-[2rem]">Member of business councils such as COPARMEX, ASOFOM, and DESEC</p>
               </div>
-              <div className="mac:absolute mac:translate-x-[24rem] mac:mt-[6rem] lg:absolute lg:translate-x-[24rem] lg:mt-[6rem]">
+              <div className="mac:absolute translate-x-[1rem] mac:translate-x-[24rem] mac:mt-[6rem] lg:absolute lg:translate-x-[24rem] lg:mt-[6rem]">
                 <Image 
                   src="/Team/presidente.png"
                   width={650}

@@ -12,6 +12,7 @@ import Transformative from "./Transformative";
 import Partners from "./Partners";
 import MeetTeam from "./MeetTeam";
 import Backbone from "./Backbone";
+import Form from "../../form/page";
 
 
 const CT = () => {
@@ -97,10 +98,10 @@ const CT = () => {
           />
         </div>
         <AnImpact />
-        <div className="py-[5rem]">
+        <div className="pb-[20rem] md:pb-[35rem] lg:pb-[5rem]">
           <TimeLine />
         </div>
-        <div className="mb-[-8rem]">
+        <div className="mb-[-4rem] md:mb-[-8rem]">
           <KeyImpact />
         </div>
         <div className="bg-white mb-[-13rem]">
@@ -111,9 +112,12 @@ const CT = () => {
         </div>
         <div>
           <MeetTeam />
-        </div>
-        <div className="h-screen bg-[#c4cfd6] mt-[-10rem]">
+          <div className="pb-[10rem] lg:pb-[2rem] bg-[#c4cfd6] mt-[-20rem] md:mt-[-33rem] lg:mt-[-30rem]">
           <Backbone />
+        </div>
+        </div>
+        <div className="mt-[-3.5rem] md:mt-[-5rem] lg:mt-[-50rem]">
+          <Form />
         </div>
     </div>
   );
