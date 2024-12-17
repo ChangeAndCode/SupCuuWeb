@@ -1,5 +1,6 @@
 import Home from './home/page';
 import CT from './home/component/CT';
+import Form from './form/page';
 
 export default function HomeRoot() {
   return (
