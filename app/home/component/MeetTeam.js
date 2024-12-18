@@ -12,7 +12,7 @@ const MeetTeam = () => {
                 alt="We are"
               />
         </div>
-        <div className="ml-[2rem] mt-[4rem] lg:ml-[16rem] relative">
+        <div className="ml-[2rem] mt-[4rem] lg:ml-[16rem] relative overflow-hidden">
           <h3 className="text-[2rem] md:text-[2rem] xl:text-[3.3rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10 lg:w-7/12">
             This team works every day to inspire and empower entrepreneurs.
           </h3>
@@ -38,7 +38,6 @@ const MeetTeam = () => {
                   width={500}
                   height={500}
                   alt="We are"
-                  className=""
                 />
                 <div className="absolute inset-[5rem] md:inset-[6rem]">
                   <p className="text-[1.7rem] md:text-[2.3rem] text-white font-PerformanceMark uppercase">advisory team</p>
@@ -60,63 +59,54 @@ const MeetTeam = () => {
                 width={260}
                 height={260}
                 alt="Team"
-                className=""
               />
               <Image
                 src="/Team/team3.png"
                 width={260}
                 height={260}
                 alt="Team"
-                className=""
               />
               <Image
                 src="/Team/team0.png"
                 width={260}
                 height={260}
                 alt="Team"
-                className=""
               />
               <Image
                 src="/Team/team5.png"
                 width={260}
                 height={260}
                 alt="Team"
-                className=""
               />
               <Image
                 src="/Team/team0.png"
                 width={260}
                 height={260}
                 alt="Team"
-                className=""
               />
               <Image
                 src="/Team/team7.png"
                 width={260}
                 height={260}
                 alt="Team"
-                className=""
               />
               <Image
                 src="/Team/team8.png"
                 width={260}
                 height={260}
                 alt="Team"
-                className=""
               />
               <Image
                 src="/Team/team9.png"
                 width={260}
                 height={260}
                 alt="Team"
-                className=""
               />
               <Image
                 src="/Team/team10.png"
                 width={260}
                 height={260}
                 alt="Team"
-                className=""
               />
               </div>
             </div>

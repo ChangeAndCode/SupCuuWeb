@@ -5,11 +5,11 @@ const KeyImpact = () => {
         <div>
             <div className='flex flex-col justify-center items-center overflow-hidden'>
                 <div className='flex items-center translate-x-[2.5rem] md:translate-x-[7rem] lg:translate-x-[11.2rem]'>
-                    <div>
+                    <div className='relative z-20'>
                         <h2 className='text-[2rem] md:text-[3rem] lg:text-[8rem] font-pragmatica uppercase whitespace-nowrap text-ColorPrincipal leading-[2rem] md:leading-[4rem] lg:leading-[9rem]'>Key Impact</h2>
                         <h2 className='text-[2rem] md:text-[3rem] lg:text-[7.9rem] font-pragmatica uppercase whitespace-nowrap text-ColorPrincipal leading-[2rem] md:leading-[4rem] lg:leading-[6rem]'>Indicators</h2>
                     </div>
-                    <p className='text-[4rem] md:text-[12rem] lg:text-[19rem] font-PerformanceMark whitespace-nowrap text-white'>2030</p>
+                    <p className='text-[4rem] md:text-[12rem] lg:text-[19rem] font-PerformanceMark translate-x-[-2rem] whitespace-nowrap text-white relative z-10'>2030</p>
                 </div>
                 <div className='flex flex-col lg:flex-row items-center lg:items-start lg:justify-around px-6 md:px-12 lg:px-24'>
                     <div className='flex flex-col w-full md:w-10/12 lg:w-3/12 mb-10 lg:mb-0 gap-8'>

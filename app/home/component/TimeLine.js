@@ -43,7 +43,7 @@ const TimeLine = () => {
             alt='DESEC logo'
           />
 
-          <p className='mt-4 uppercase w-[12rem] text-left'>
+          <p className='text-[1.3rem] md:text-[1.5rem] mt-4 uppercase w-[18rem] text-left'>
             <span className='font-bold'>DESEC</span> transforming Chihuahua&rsquo;s economy over the past 50 years.
           </p>
 
@@ -56,12 +56,12 @@ const TimeLine = () => {
             height={100}
             alt='Futura logo'
           />
-          <p className='mt-4 uppercase w-[11rem] text-left'>
+          <p className='text-[1.3rem] md:text-[1.5rem] mt-4 uppercase w-[15rem] md:w-[13rem] text-left'>
             <span className='font-bold'>DESEC</span> launches <span className='font-bold'>Chihuahua Futura</span> to drive innovation and technology.
           </p>
         </div>
 
-        <div className='flex flex-col w-full lg:w-4/12 mt-6 lg:mt-0 translate-y-[6rem] md:translate-y-[16rem] lg:translate-y-0 mac:translate-x-[1.5rem]'>
+        <div className='flex flex-col w-full lg:w-4/12 mt-6 lg:mt-0 translate-y-[4rem] md:translate-y-[16rem] lg:translate-y-0 mac:translate-x-[1.5rem]'>
           <div className='flex flex-wrap justify-start'>
             <Image
               src='/Logos/mit.png'
@@ -76,7 +76,7 @@ const TimeLine = () => {
               alt='Startup logo'
             />
           </div>
-          <p className='uppercase mt-4 w-full md:w-[22rem] text-left'>
+          <p className='text-[1.3rem] md:text-[1.5rem] uppercase mt-4 w-full md:w-[32rem] text-left'>
             Chihuahua joins the <span className='font-bold'>MIT REAP</span> program. Local leaders gather data, define a strategic plan, and create a collective organization to transform the ecosystem called <span className='font-bold'>STARTUP CHIHUAHUA</span>.
           </p>
         </div>
