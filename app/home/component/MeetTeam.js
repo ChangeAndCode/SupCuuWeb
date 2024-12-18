@@ -13,11 +13,11 @@ const MeetTeam = () => {
                 quality={80}
               />
         </div>
-        <div className="ml-[2rem] mt-[4rem] lg:ml-[16rem] relative overflow-hidden">
-          <h3 className="text-[2rem] md:text-[2rem] xl:text-[3.3rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10 lg:w-7/12">
+        <div className="ml-[1.2rem] mt-[4rem] lg:ml-[16rem] relative overflow-hidden">
+          <h3 className="text-[1.5rem] md:text-[2rem] xl:text-[3.3rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10 lg:w-7/12">
             This team works every day to inspire and empower entrepreneurs.
           </h3>
-          <h4 className="text-[2.3rem] md:text-[4.5rem] xl:text-[7rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[6rem] relative z-10">
+          <h4 className="text-[2rem] md:text-[4.5rem] xl:text-[7rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[6rem] relative z-10">
             Meet the team
           </h4>
           <h5 className="text-[2rem] md:text-[2rem] xl:text-[3rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10">
