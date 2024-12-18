@@ -86,6 +86,7 @@ const Carrusel = () => {
               className='w-auto h-auto rounded-md'
               width={600}
               height={400}
+              quality={80}
             />
           </div>
         </div>

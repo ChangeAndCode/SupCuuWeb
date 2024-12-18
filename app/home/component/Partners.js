@@ -9,8 +9,8 @@ const Partners = () => {
             src='/Bg/bgTitulo.png'
             width={1300}
             height={900}
-            alt='We are'
-            className=''
+            alt='Bg Titulo'
+            quality={80}
           />
           <div className='absolute inset-[3.5rem] md:inset-[6.3rem] lg:inset-[11.5rem] lg:pl-[3rem]'>
             <p className='text-[.8rem] md:text-[1.6rem] lg:text-[2.4rem] text-white font-pragmatica uppercase'>Our community’s growing daily</p>
@@ -23,7 +23,7 @@ const Partners = () => {
           width={1400}
           height={1400}
           alt='Tabla'
-          className=''
+          quality={80}
         />
       </div>
       <div>

@@ -10,28 +10,28 @@ const Transformative = () => {
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mac:px-[8rem] lg:px-[10rem] xl:px-[15rem] gap-6'>
         <div className='flex flex-col items-center space-y-6'>
             <h3 className='text-[2rem] font-PerformanceMark text-ColorPrincipal'>Investment</h3>
-            <Image src='/Transformative/Investment1.png' alt='Company Logo' width={300} height={200} />
-            <Image src='/Transformative/Investment2.png' alt='Company Logo' width={300} height={200} />
-            <Image src='/Transformative/Investment3.png' alt='Company Logo' width={300} height={200} />
+            <Image src='/Transformative/Investment1.png' alt='Investment 1' width={300} height={200} quality={80}/>
+            <Image src='/Transformative/Investment2.png' alt='Investment 2' width={300} height={200} quality={80}/>
+            <Image src='/Transformative/Investment3.png' alt='Investment 3' width={300} height={200} quality={80}/>
         </div>
         <div className='flex flex-col items-center space-y-6'>
             <h3 className='text-[2rem] font-PerformanceMark text-ColorPrincipal'>Sensitized</h3>
-            <Image src='/Transformative/Sensitized1.png' alt='Company Logo' width={300} height={200} />
-            <Image src='/Transformative/Sensitized2.png' alt='Company Logo' width={300} height={200} />
-            <Image src='/Transformative/Sensitized3.png' alt='Company Logo' width={300} height={200} />
-            <Image src='/Transformative/Sensitized4.png' alt='Company Logo' width={300} height={200} />
+            <Image src='/Transformative/Sensitized1.png' alt='Sensitized 1' width={300} height={200} quality={80}/>
+            <Image src='/Transformative/Sensitized2.png' alt='Sensitized 2' width={300} height={200} quality={80}/>
+            <Image src='/Transformative/Sensitized3.png' alt='Sensitized 3' width={300} height={200} quality={80}/>
+            <Image src='/Transformative/Sensitized4.png' alt='Sensitized 4' width={300} height={200} quality={80}/>
         </div>
         <div className='flex flex-col items-center space-y-6'>
             <h3 className='text-[2rem] font-PerformanceMark text-ColorPrincipal'>Innovation</h3>
-            <Image src='/Transformative/Innovation1.png' alt='Company Logo' width={300} height={200} />
-            <Image src='/Transformative/Innovation2.png' alt='Company Logo' width={300} height={200} />
-            <Image src='/Transformative/Innovation3.png' alt='Company Logo' width={300} height={200} />
+            <Image src='/Transformative/Innovation1.png' alt='Innovation 1' width={300} height={200} quality={80}/>
+            <Image src='/Transformative/Innovation2.png' alt='Innovation 2' width={300} height={200} quality={80}/>
+            <Image src='/Transformative/Innovation3.png' alt='Innovation 3' width={300} height={200} quality={80}/>
         </div>
         <div className='flex flex-col items-center space-y-6'>
             <h3 className='text-[2rem] font-PerformanceMark text-ColorPrincipal'>Entrepreneurship</h3>
-            <Image src='/Transformative/Entrepreneurship1.png' alt='Company Logo' width={300} height={200} />
-            <Image src='/Transformative/Entrepreneurship2.png' alt='Company Logo' width={300} height={200} />
-            <Image src='/Transformative/Entrepreneurship3.png' alt='Company Logo' width={300} height={200} />
+            <Image src='/Transformative/Entrepreneurship1.png' alt='Entrepreneurship 1' width={300} height={200} quality={80}/>
+            <Image src='/Transformative/Entrepreneurship2.png' alt='Entrepreneurship 2' width={300} height={200} quality={80}/>
+            <Image src='/Transformative/Entrepreneurship3.png' alt='Entrepreneurship 3' width={300} height={200} quality={80}/>
         </div>
     </div>
         <div className='flex justify-end relative z-10'>

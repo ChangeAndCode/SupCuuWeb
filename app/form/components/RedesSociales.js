@@ -10,18 +10,21 @@ const RedesSociales = () => {
                 alt='facebook'
                 width={75}
                 height={75}
+                quality={80}
             />
             <Image
                 src='/redesSociales/link.png'
                 alt='facebook'
                 width={75}
                 height={75}
+                quality={80}
             />
             <Image
                 src='/redesSociales/facebook.png'
                 alt='facebook'
                 width={75}
                 height={75}
+                quality={80}
             />
         </div>
     </div>

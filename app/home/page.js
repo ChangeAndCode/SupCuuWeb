@@ -13,7 +13,8 @@ const Home = () => {
             width={200}
             height={200}
             alt='We are'
-            className='absolute hidden md:block md:top-[30rem] md:right-[6rem] mac:top-[28rem] mac:right-[32rem] xl:top-[29rem] xl:right-[41rem]'  
+            className='absolute hidden md:block md:top-[30rem] md:right-[6rem] mac:top-[28rem] mac:right-[32rem] xl:top-[29rem] xl:right-[41rem]'
+            quality={80}
           />
         </div>
     </>

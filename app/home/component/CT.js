@@ -66,9 +66,10 @@ const CT = () => {
           <div className="w-[900px] h-[900px]">
             <Image
               src="/news.png"
-              alt="Company Logo"
+              alt="News"
               width={900}
               height={900}
+              quality={80}
             />
           </div>
         </div>
@@ -81,6 +82,7 @@ const CT = () => {
             alt="Company Logo"
             width={370}
             height={270}
+            quality={80}
           />
         </div>
       </div>

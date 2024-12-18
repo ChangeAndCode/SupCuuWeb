@@ -11,6 +11,7 @@ const ContacUs = () => {
             width={35}
             height={35}
              className="object-contain"
+             quality={80}
             />
         <p className='text-[1em] font-pragmatica uppercase text-white'>614 226 78 40</p>
       </div>
@@ -21,6 +22,7 @@ const ContacUs = () => {
             width={35}
             height={35}
              className="object-contain"
+             quality={80}
           />
         <p className='text-[1em] font-pragmatica uppercase text-white w-9/12'>Parque Tecnológico PIT 3 Av. H. Colegio Militar 31300 Chihuahua, Chih.</p>
       </div>

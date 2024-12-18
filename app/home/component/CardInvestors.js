@@ -7,9 +7,11 @@ const CardInvestors = () => {
     <div>
         <Image
             src='/CT/tercera.png'
-            alt='Company Logo'
+            alt='Investors'
             width={490}
-            height={390}/>
+            height={390}
+            quality={80}
+            />
     </div>
     <div className='text-center space-y-4'>
         <BtnCT buttonText='INVESTORS'/>

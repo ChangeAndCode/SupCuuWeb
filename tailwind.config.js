@@ -31,7 +31,8 @@ module.exports = {
         "16xl": "15rem",
       },
       screens: {
-        "mac": { min: '1440px', max: '1799px' }
+        "mac": { min: '1440px', max: '1799px' },
+        "ipad": { min: '820px', max: '1180px' }
       }
     },
   },

@@ -9,7 +9,8 @@ const MeetTeam = () => {
                 src="/logo2.png"
                 width={80}
                 height={80}
-                alt="We are"
+                alt="logo"
+                quality={80}
               />
         </div>
         <div className="ml-[2rem] mt-[4rem] lg:ml-[16rem] relative overflow-hidden">
@@ -37,7 +38,8 @@ const MeetTeam = () => {
                   src="/advisory.png"
                   width={500}
                   height={500}
-                  alt="We are"
+                  alt="advisory"
+                  quality={80}
                 />
                 <div className="absolute inset-[5rem] md:inset-[6rem]">
                   <p className="text-[1.7rem] md:text-[2.3rem] text-white font-PerformanceMark uppercase">advisory team</p>
@@ -51,62 +53,71 @@ const MeetTeam = () => {
                 src="/Team/team1.png"
                 width={260}
                 height={260}
-                alt="Team"
-                className=""
+                alt="Team 1"
+                quality={80}
               />
               <Image
                 src="/Team/team0.png"
                 width={260}
                 height={260}
-                alt="Team"
+                alt="Team 2"
+                quality={80}
               />
               <Image
                 src="/Team/team3.png"
                 width={260}
                 height={260}
-                alt="Team"
+                alt="Team 3"
+                quality={80}
               />
               <Image
                 src="/Team/team0.png"
                 width={260}
                 height={260}
-                alt="Team"
+                alt="Team 4"
+                quality={80}
               />
               <Image
                 src="/Team/team5.png"
                 width={260}
                 height={260}
-                alt="Team"
+                alt="Team 5"
+                quality={80}
               />
               <Image
                 src="/Team/team0.png"
                 width={260}
                 height={260}
-                alt="Team"
+                alt="Team 6"
+                quality={80}
               />
               <Image
                 src="/Team/team7.png"
                 width={260}
                 height={260}
-                alt="Team"
+                alt="Team 7"
+                quality={80}
               />
               <Image
                 src="/Team/team8.png"
                 width={260}
                 height={260}
-                alt="Team"
+                alt="Team 8"
+                quality={80}
               />
               <Image
                 src="/Team/team9.png"
                 width={260}
                 height={260}
-                alt="Team"
+                alt="Team 9"
+                quality={80}
               />
               <Image
                 src="/Team/team10.png"
                 width={260}
                 height={260}
-                alt="Team"
+                alt="Team 10"
+                quality={80}
               />
               </div>
             </div>
@@ -119,8 +130,9 @@ const MeetTeam = () => {
                   src="/Logos/equity.png"
                   width={400}
                   height={400}
-                  alt="Team"
+                  alt="Equity"
                   className="mb-[2rem]"
+                  quality={80}
                 />
                 <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.6rem] font-pragmatica uppercase w-full leading-[2rem]">Member of business councils such as COPARMEX, ASOFOM, and DESEC</p>
               </div>
@@ -129,8 +141,8 @@ const MeetTeam = () => {
                   src="/Team/presidente.png"
                   width={650}
                   height={650}
-                  alt="Team"
-                  className=""
+                  alt="Presidente"
+                  quality={80}
                 />
               </div>
             </div>

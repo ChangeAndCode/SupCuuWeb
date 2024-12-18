@@ -16,6 +16,7 @@ const BtnCT = ({ buttonText, customLines }) => {
         height={35}
         alt='Tabla'
         className='absolute right-[1.3rem] bottom-[-.8rem]'
+        quality={80}
       />
 
     </button>

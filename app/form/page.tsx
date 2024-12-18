@@ -34,6 +34,7 @@ export default function Form() {
           width={150}
           height={150}
           className="object-contain"
+          quality={80}
         />
       </div>
       <div className='mac:px-[22.7rem] xl:px-[30rem] mb-[1rem]'>

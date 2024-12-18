@@ -7,9 +7,10 @@ const CardStartups = () => {
       <div>
         <Image
           src='/CT/segunda.png'
-          alt='Company Logo'
+          alt='STARTUP & SCALEUPS'
           width={560}
           height={460}
+          quality={80}
         />
       </div>
       <div className='lg:-translate-x-[4rem] lg:translate-y-[.5rem] text-center space-y-4'>

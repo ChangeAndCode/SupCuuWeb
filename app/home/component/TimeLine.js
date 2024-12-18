@@ -17,6 +17,7 @@ const TimeLine = () => {
               width={1600}
               height={1500}
               className='hidden lg:block'
+              quality={80}
             />
             </div>
           </div>
@@ -28,6 +29,7 @@ const TimeLine = () => {
               width={25}
               height={25}
               className='block lg:hidden'
+              quality={80}
             />
             </div>
           </div>
@@ -41,6 +43,7 @@ const TimeLine = () => {
             width={200}
             height={100}
             alt='DESEC logo'
+            quality={80}
           />
 
           <p className='text-[1.3rem] md:text-[1.5rem] mt-4 uppercase w-[18rem] text-left'>
@@ -49,31 +52,34 @@ const TimeLine = () => {
 
         </div>
 
-        <div className='flex flex-col w-full lg:w-2/12 mt-6 lg:mt-0 translate-y-[3.7rem] md:translate-y-[8rem] lg:translate-y-0 mac:translate-x-[1rem] lg:translate-x-[1.7rem]'>
+        <div className='flex flex-col w-full lg:w-2/12 mt-6 lg:mt-0 translate-y-[3.7rem] md:translate-y-[5rem] lg:translate-y-0 mac:translate-x-[1rem] lg:translate-x-[1.7rem]'>
           <Image
             src='/Logos/futura.png'
             width={200}
             height={100}
             alt='Futura logo'
+            quality={80}
           />
           <p className='text-[1.3rem] md:text-[1.5rem] mt-4 uppercase w-[15rem] md:w-[13rem] text-left'>
             <span className='font-bold'>DESEC</span> launches <span className='font-bold'>Chihuahua Futura</span> to drive innovation and technology.
           </p>
         </div>
 
-        <div className='flex flex-col w-full lg:w-4/12 mt-6 lg:mt-0 translate-y-[4rem] md:translate-y-[16rem] lg:translate-y-0 mac:translate-x-[1.5rem]'>
+        <div className='flex flex-col w-full lg:w-4/12 mt-6 lg:mt-0 translate-y-[4rem] md:translate-y-[8rem] lg:translate-y-0 mac:translate-x-[1.5rem]'>
           <div className='flex flex-wrap justify-start'>
             <Image
               src='/Logos/mit.png'
               width={200}
               height={100}
               alt='MIT logo'
+              quality={80}
             />
             <Image
               src='/Logos/startup.png'
               width={200}
               height={100}
               alt='Startup logo'
+              quality={80}
             />
           </div>
           <p className='text-[1.3rem] md:text-[1.5rem] uppercase mt-4 w-full md:w-[32rem] text-left'>

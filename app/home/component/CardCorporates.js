@@ -7,9 +7,11 @@ const CardCorporates = () => {
     <div>
         <Image
             src='/CT/cuarta.png'
-            alt='Company Logo'
+            alt='Corporates Partners'
             width={490}
-            height={390}/>
+            height={390}
+            quality={80}
+            />
     </div>
     <div className='lg:transform lg:translate-x-[2rem] lg:translate-y-[2.4rem] text-center space-y-4'>
         <BtnCT buttonText='CORPORATES PARTNERS'/>

@@ -7,9 +7,11 @@ const CardEntrepreneur = () => {
         <div>
             <Image
                 src='/CT/primera.png'
-                alt='Company Logo'
+                alt='Entrepreneur'
                 width={490}
-                height={390}/>
+                height={390}
+                quality={80}
+                />
         </div>
         <div className='text-center lg:translate-y-[1.8rem] space-y-4'>
             <BtnCT buttonText='ENTREPRENEUR' />

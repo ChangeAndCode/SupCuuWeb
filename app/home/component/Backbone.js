@@ -10,6 +10,7 @@ const Backbone = () => {
                 alt='Team Backbone'
                 width={1430}
                 height={1430}
+                quality={80}
             />
         </div>
         <div className='relative z-30 mt-[12rem] md:mt-[23rem] lg:mt-[43rem] px-[1rem]'>
@@ -19,6 +20,7 @@ const Backbone = () => {
                   alt='Team Backbone'
                   width={1350}
                   height={1350}
+                  quality={80}
               />
             </div>
             <div className='absolute inset-4 md:inset-[2.8rem] lg:inset-[6rem] py-[.5rem] md:py-0 px-[1rem] md:px-0'>
