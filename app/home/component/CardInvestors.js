@@ -6,11 +6,12 @@ const CardInvestors = () => {
     <div className='flex flex-col justify-center items-center'>
     <div>
         <Image
-            src='/CT/tercera.png'
+            src='/CT/tercera.webp'
             alt='Investors'
             width={490}
             height={390}
             quality={80}
+            priority
             />
     </div>
     <div className='text-center space-y-4'>

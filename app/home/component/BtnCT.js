@@ -11,12 +11,13 @@ const BtnCT = ({ buttonText, customLines }) => {
       ))}
 
       <Image 
-        src='/btn.png'
+        src='/btn.webp'
         width={35}
         height={35}
         alt='Tabla'
         className='absolute right-[1.3rem] bottom-[-.8rem]'
         quality={80}
+        priority
       />
 
     </button>

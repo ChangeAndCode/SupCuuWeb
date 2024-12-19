@@ -6,11 +6,12 @@ const CardEntrepreneur = () => {
     <div className='flex flex-col justify-center items-center'>
         <div>
             <Image
-                src='/CT/primera.png'
+                src='/CT/primera.webp'
                 alt='Entrepreneur'
                 width={490}
                 height={390}
                 quality={80}
+                priority
                 />
         </div>
         <div className='text-center xl:translate-y-[1.8rem] space-y-4'>

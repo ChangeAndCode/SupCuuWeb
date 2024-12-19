@@ -6,7 +6,7 @@ const MeetTeam = () => {
       <div className="flex justify-center items-center space-x-8">
         <hr className="md:w-[76%] lg:w-[75%] xl:w-[73%] 2xl:w-[67%] border-t-[4px] border-ColorPrincipal" />
         <Image
-          src="/logo2.png"
+          src="/logo2.webp"
           width={80}
           height={80}
           alt="logo"
@@ -35,7 +35,7 @@ const MeetTeam = () => {
       <div className="flex justify-end xl:mr-[7rem] 2xl:mr-[13rem]">
         <div className="relative w-[500px] h-[500px]">
           <Image
-            src="/advisory.png"
+            src="/advisory.webp"
             width={500}
             height={500}
             alt="advisory"
@@ -52,70 +52,70 @@ const MeetTeam = () => {
       <div className="flex justify-center mt-[-17rem] px-0 md:px-[3rem] lg:px-[4rem] xl:px-[8rem] 2xl:px-[5rem] mb-[-40rem] md:mb-[-38rem] lg:mb-[-30rem] xl:mb-[-24rem] 2xl:mb-[-27rem] relative z-20">
         <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           <Image
-            src="/Team/team1.png"
+            src="/Team/team1.webp"
             width={260}
             height={260}
             alt="Team 1"
             quality={80}
           />
           <Image
-            src="/Team/team0.png"
+            src="/Team/team0.webp"
             width={260}
             height={260}
             alt="Team 2"
             quality={80}
           />
           <Image
-            src="/Team/team3.png"
+            src="/Team/team3.webp"
             width={260}
             height={260}
             alt="Team 3"
             quality={80}
           />
           <Image
-            src="/Team/team0.png"
+            src="/Team/team0.webp"
             width={260}
             height={260}
             alt="Team 4"
             quality={80}
           />
           <Image
-            src="/Team/team5.png"
+            src="/Team/team5.webp"
             width={260}
             height={260}
             alt="Team 5"
             quality={80}
           />
           <Image
-            src="/Team/team0.png"
+            src="/Team/team0.webp"
             width={260}
             height={260}
             alt="Team 6"
             quality={80}
           />
           <Image
-            src="/Team/team7.png"
+            src="/Team/team7.webp"
             width={260}
             height={260}
             alt="Team 7"
             quality={80}
           />
           <Image
-            src="/Team/team8.png"
+            src="/Team/team8.webp"
             width={260}
             height={260}
             alt="Team 8"
             quality={80}
           />
           <Image
-            src="/Team/team9.png"
+            src="/Team/team9.webp"
             width={260}
             height={260}
             alt="Team 9"
             quality={80}
           />
           <Image
-            src="/Team/team10.png"
+            src="/Team/team10.webp"
             width={260}
             height={260}
             alt="Team 10"
@@ -133,7 +133,7 @@ const MeetTeam = () => {
             ceo & founder of
           </p>
           <Image
-            src="/Logos/equity.png"
+            src="/Logos/equity.webp"
             width={400}
             height={400}
             alt="Equity"
@@ -146,7 +146,7 @@ const MeetTeam = () => {
         </div>
         <div className="relative xl:absolute xl:translate-x-[24rem] mb-[-4rem] md:mb-[-6rem] lg:mb-[-7rem] xl:mb-0 xl:mt-[6rem]">
           <Image
-            src="/Team/presidente.png"
+            src="/Team/presidente.webp"
             width={650}
             height={650}
             alt="Presidente"

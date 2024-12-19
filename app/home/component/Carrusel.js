@@ -12,28 +12,28 @@ const Carrusel = () => {
       title: 'The Global Entrepreneurship Monitor highlights Mexico as one of the leading entrepreneurial ecosystems for women 1',
       description:
         'Mexico ranks 11th out of 49 economies with the highest number of women entrepreneurs, with 16.1% of its female population involved in entrepreneurship, surpassing the United States, which holds the 15th position.',
-      image: '/prueba.png',
+      image: '/prueba.webp',
     },
     {
       id: 2,
       title: 'The Global Entrepreneurship Monitor highlights Mexico as one of the leading entrepreneurial ecosystems for women 2',
       description:
         'Mexico ranks 11th out of 49 economies with the highest number of women entrepreneurs, with 16.1% of its female population involved in entrepreneurship, surpassing the United States, which holds the 15th position.',
-      image: '/prueba.png',
+      image: '/prueba.webp',
     },
     {
       id: 3,
       title: 'The Global Entrepreneurship Monitor highlights Mexico as one of the leading entrepreneurial ecosystems for women 3',
       description:
         'Mexico ranks 11th out of 49 economies with the highest number of women entrepreneurs, with 16.1% of its female population involved in entrepreneurship, surpassing the United States, which holds the 15th position.',
-      image: '/prueba.png',
+      image: '/prueba.webp',
     },
     {
       id: 4,
       title: 'The Global Entrepreneurship Monitor highlights Mexico as one of the leading entrepreneurial ecosystems for women 4',
       description:
         'Mexico ranks 11th out of 49 economies with the highest number of women entrepreneurs, with 16.1% of its female population involved in entrepreneurship, surpassing the United States, which holds the 15th position.',
-      image: '/prueba.png',
+      image: '/prueba.webp',
     },
   ];
 
@@ -59,7 +59,6 @@ const Carrusel = () => {
 
   return (
     <div className="relative w-full flex justify-center items-center py-[22rem]">
-      {/* Contenedor de la tarjeta */}
       <div className="relative w-10/12 bg-white rounded-3xl py-6 px-8 shadow-lg flex flex-col xl:flex-row items-center mx-8 xl:mx-0">
         {/* Flecha izquierda */}
         <button

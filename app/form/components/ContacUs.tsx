@@ -6,7 +6,7 @@ const ContacUs: React.FC = () => {
       <p className='text-[1.5rem] md:text-[2rem] font-pragmatica uppercase text-white mb-[1.5rem]'>Contact-us</p>
       <div className="flex items-center gap-x-4 mb-[1.5rem]">
         <Image
-          src='/redesSociales/redesTel.png'
+          src='/redesSociales/redesTel.webp'
           alt='Teléfono'
           width={35}
           height={35}
@@ -17,7 +17,7 @@ const ContacUs: React.FC = () => {
       </div>
       <div className="flex items-center gap-x-4 mb-[1.5rem]">
         <Image
-          src='/redesSociales/pin.png'
+          src='/redesSociales/pin.webp'
           alt='Ubicación'
           width={35}
           height={35}

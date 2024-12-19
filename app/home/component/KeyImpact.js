@@ -17,7 +17,7 @@ const KeyImpact = () => {
         <div className="flex flex-col xl:flex-row items-center xl:items-start xl:justify-around px-10 md:px-12 lg:px-28 gap-8">
           <div className="flex flex-col w-full md:w-7/12 lg:w-6/12 xl:w-3/12 mb-10 lg:mb-0 gap-8">
             <Image
-              src="/Indicators/startup.png"
+              src="/Indicators/startup.webp"
               alt="Indicators startup"
               width={400}
               height={400}
@@ -29,7 +29,7 @@ const KeyImpact = () => {
           </div>
           <div className="flex flex-col w-full md:w-7/12 lg:w-6/12 xl:w-3/12 mb-10 lg:mb-0 gap-8">
             <Image
-              src="/Indicators/millions.png"
+              src="/Indicators/millions.webp"
               alt="Indicators millions"
               width={400}
               height={400}
@@ -41,7 +41,7 @@ const KeyImpact = () => {
           </div>
           <div className="flex flex-col w-full md:w-7/12 lg:w-6/12 xl:w-3/12 mb-10 lg:mb-0 gap-8">
             <Image
-              src="/Indicators/chihuahua.png"
+              src="/Indicators/chihuahua.webp"
               alt="indicators chihuahua"
               width={400}
               height={400}

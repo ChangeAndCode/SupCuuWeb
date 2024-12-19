@@ -6,11 +6,12 @@ const CardStartups = () => {
     <div className='flex flex-col justify-center items-center'>
       <div>
         <Image
-          src='/CT/segunda.png'
+          src='/CT/segunda.webp'
           alt='STARTUP & SCALEUPS'
           width={560}
           height={460}
           quality={80}
+          priority
         />
       </div>
       <div className='xl:-translate-x-[4rem] xl:translate-y-[.5rem] text-center space-y-4'>

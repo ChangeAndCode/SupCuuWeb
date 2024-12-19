@@ -6,21 +6,21 @@ const RedesSociales: React.FC = () => {
       <p className='text-[1.5rem] md:text-[2rem] font-pragmatica uppercase text-white mb-[1.5rem]'>@startupchihuahua</p>
       <div className='flex lg:justify-end'>
         <Image
-          src='/redesSociales/insta.png'
+          src='/redesSociales/insta.webp'
           alt='Instagram'
           width={75}
           height={75}
           quality={80}
         />
         <Image
-          src='/redesSociales/link.png'
+          src='/redesSociales/link.webp'
           alt='LinkedIn'
           width={75}
           height={75}
           quality={80}
         />
         <Image
-          src='/redesSociales/facebook.png'
+          src='/redesSociales/facebook.webp'
           alt='Facebook'
           width={75}
           height={75}

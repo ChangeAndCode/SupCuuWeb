@@ -6,11 +6,12 @@ const CardCorporates = () => {
     <div className='flex flex-col justify-center items-center'>
     <div>
         <Image
-            src='/CT/cuarta.png'
+            src='/CT/cuarta.webp'
             alt='Corporates Partners'
             width={490}
             height={390}
             quality={80}
+            priority
             />
     </div>
     <div className='xl:transform xl:translate-x-[2rem] xl:translate-y-[2.4rem] text-center space-y-4'>

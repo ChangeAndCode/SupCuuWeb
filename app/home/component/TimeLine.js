@@ -16,7 +16,7 @@ const TimeLine = () => {
             </div>
             <div className="xl:w-[1200px] xl:h-[1100px] 2xl:w-[1500px] 2xl:h-[1400px] absolute">
               <Image
-                src="/barra.png"
+                src="/barra.webp"
                 alt="Timeline bar"
                 width={1500}
                 height={1400}
@@ -28,7 +28,7 @@ const TimeLine = () => {
           <div>
             <div className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] translate-x-[-9.5rem] md:translate-x-[-18rem] lg:translate-x-[-25rem]">
               <Image
-                src="/barraV.png"
+                src="/barraV.webp"
                 alt="Timeline bar"
                 width={25}
                 height={25}
@@ -43,7 +43,7 @@ const TimeLine = () => {
       <div className="flex flex-col xl:flex-row gap-[3rem] justify-center px-4 xl:px-0 xl:mt-[3rem] ml-[3rem] md:ml-[8rem] xl:ml-0">
         <div className="flex flex-col w-full xl:w-2/12 transform translate-y-[-1rem] md:translate-y-[-.4rem] xl:translate-y-0 xl:translate-x-[-2.8rem] 2xl:translate-x-[-1.3rem]">
           <Image
-            src="/Logos/desec.png"
+            src="/Logos/desec.webp"
             width={200}
             height={100}
             alt="DESEC logo"
@@ -56,7 +56,7 @@ const TimeLine = () => {
 
         <div className="flex flex-col w-full lg:w-2/12 mt-6 lg:mt-0 translate-y-[.5rem] md:translate-y-[2rem] lg:translate-y-[4rem] xl:translate-y-0 xl:translate-x-[.5rem] 2xl:translate-x-[3rem]">
           <Image
-            src="/Logos/futura.png"
+            src="/Logos/futura.webp"
             width={200}
             height={100}
             alt="Futura logo"
@@ -70,14 +70,14 @@ const TimeLine = () => {
         <div className="flex flex-col w-full lg:w-4/12 mt-6 lg:mt-0 translate-y-[-1.8rem] md:translate-y-[2rem] lg:translate-y-[4rem] xl:translate-y-0 xl:translate-x-[3.8rem] 2xl:translate-x-[6rem]">
           <div className="flex flex-wrap justify-start">
             <Image
-              src="/Logos/mit.png"
+              src="/Logos/mit.webp"
               width={200}
               height={100}
               alt="MIT logo"
               quality={80}
             />
             <Image
-              src="/Logos/startup.png"
+              src="/Logos/startup.webp"
               width={200}
               height={100}
               alt="Startup logo"

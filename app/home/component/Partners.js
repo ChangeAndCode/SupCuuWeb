@@ -6,7 +6,7 @@ const Partners = () => {
       <div className="flex justify-end">
         <div className="relative w-[1300px] h-[900px]">
           <Image
-            src="/Bg/bgTitulo.png"
+            src="/Bg/bgTitulo.webp"
             width={1300}
             height={900}
             alt="Bg Titulo"
@@ -21,7 +21,7 @@ const Partners = () => {
       </div>
       <div className="absolute inset-0 flex justify-center items-center mt-[-12rem] md:mt-[2rem] lg:mt-[5rem] xl:mt-[10rem] 2xl:mt-[10rem] z-10">
         <Image
-          src="/tabla.png"
+          src="/tabla.webp"
           width={1400}
           height={1400}
           alt="Tabla"

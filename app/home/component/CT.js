@@ -23,10 +23,12 @@ const CT = () => {
         <div className="relative z-10 top-5 w-11/12">
           <div className="flex justify-center">
             <Image
-              src="/startupB.png"
+              src="/startupB.webp"
               alt="Company Logo"
               width={470}
               height={370}
+              quality={80}
+              priority
             />
           </div>
         </div>
@@ -62,22 +64,23 @@ const CT = () => {
         <div className="relative z-30 flex justify-center pt-[5rem] xl:pt-[28rem] mb-[-61rem] md:mb-[-55rem] xl:mb-[-53rem] xl-sm:mb-[-55rem]">
           <div className="w-[900px] h-[900px]">
             <Image
-              src="/news.png"
+              src="/news.webp"
               alt="News"
               width={900}
               height={900}
               quality={80}
+              priority
             />
           </div>
         </div>
 
-        <div className="relative flex justify-center items-center bg-[url('/Bg/bgNews.png')] bg-no-repeat bg-center bg-[length:100vw_100%] z-10">
+        <div className="relative flex justify-center items-center bg-[url('/Bg/bgNews.webp')] bg-no-repeat bg-center bg-[length:100vw_100%] z-10">
           <Carrusel />
         </div>
 
         <div className="absolute bottom-[-50px] right-[.5rem] md:right-[4rem] lg:right-[15rem] xl-sm:right-[18rem] translate-y-[-2.5rem]">
           <Image
-            src="/logoV.png"
+            src="/logoV.webp"
             alt="Company Logo"
             width={370}
             height={270}
@@ -93,7 +96,7 @@ const CT = () => {
 
       <div className="relative hidden xl:block 2xl:-mb-[9rem]">
         <Image
-          src="/cohete.png"
+          src="/cohete.webp"
           width={600}
           height={500}
           alt="We are"
@@ -111,7 +114,7 @@ const CT = () => {
       <div className="bg-white mb-[-6rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">
         <Transformative />
       </div>
-      <div className="relative bg-[url('/Bg/bgPartners.png')] bg-no-repeat bg-center bg-[length:120vw_100%] z-10 py-20">
+      <div className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] z-10 py-20">
         <Partners />
       </div>
       <div>

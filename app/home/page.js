@@ -14,12 +14,13 @@ const Home = () => {
           in chihuahua
         </p>
         <Image
-          src="/etiqueta.png"
+          src="/etiqueta.webp"
           width={200}
           height={200}
           alt="We are"
-          className="absolute hidden md:block md:top-[21rem] lg:top-[25rem] xl:top-[29rem] xl-md:top-[27rem] 2xl-md:top-[30rem] xs:right-[2rem] sm:right-[4rem] md:right-[15rem] lg:right-[17rem] xl:right-[32rem] 2xl:right-[48rem]"
+          className="absolute hidden md:block md:top-[21rem] lg:top-[25rem] xl:top-[29rem] xl-md:top-[27rem] 2xl-md:top-[30rem] right-[4rem] md:right-[15rem] lg:right-[17rem] xl:right-[32rem] 2xl:right-[48rem]"
           quality={80}
+          priority
         />
       </div>
     </>
