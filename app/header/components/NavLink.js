@@ -1,4 +1,4 @@
-'use client'; 
+'use client';
 import { useState } from 'react';
 import Link from 'next/link';
 
@@ -18,7 +18,7 @@ const NavLinks = () => {
     <div>
       {/* Botón hamburguesa */}
       <button
-        className='block lg:hidden text-white'
+        className='block xl:hidden text-white'
         onClick={() => setIsOpen(!isOpen)}
       >
         <svg
@@ -41,9 +41,9 @@ const NavLinks = () => {
       <nav
         className={`${
           isOpen ? 'block' : 'hidden'
-        } lg:block absolute lg:static top-16 left-0 w-full lg:w-auto bg-ColorPrincipal lg:bg-transparent shadow-md lg:shadow-none`}
+        } xl:block absolute xl:static top-16 left-0 w-full xl:w-auto bg-ColorPrincipal xl:bg-transparent shadow-md xl:shadow-none`}
       >
-        <ul className='flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6 p-4 lg:p-0'>
+        <ul className='flex flex-col xl:flex-row space-y-4 xl:space-y-0 xl:space-x-6 p-4 xl:p-0'>
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link

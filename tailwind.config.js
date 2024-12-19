@@ -14,9 +14,21 @@ module.exports = {
         PerformanceMark: ["permanentMarker", "sans-serif"],
         pragmatica: [ "pragmatica", "sans-serif"]
       },
+      borderRadius: {
+        "4xl": "2rem",
+        "5xl": "3rem",
+        "6xl": "4rem",
+        "7xl": "5rem",
+        "8xl": "6rem",
+      },
       screens: {
-        "mac": { min: '1440px', max: '1799px' },
-        "ipad": { min: '820px', max: '1180px' }
+        'xs': '360px',
+        'sm': '480px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        'xl-md': '1440px',
+        '2xl': '1536px',
       }
     },
   },

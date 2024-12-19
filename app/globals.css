@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'permanentMarker';
-  src: url('/Font/PermanentMarker-Regular.ttf') format('truetype');
-  font-weight: 400;
+  font-family: 'PragmaticaExtendedBold';
+  src: url('/Font/PragmaticaExtendedBold.otf') format('opentype');
+  font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'pragmatica';
-  src: url('/Font/PragmaticaExtendedBold.otf') format('opentype');
-  font-weight: 700;
+  font-family: 'PermanentMarker';
+  src: url('/Font/PermanentMarker-Regular.ttf') format('truetype');
+  font-weight: normal;
   font-style: normal;
 }
 

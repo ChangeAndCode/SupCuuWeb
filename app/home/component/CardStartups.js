@@ -13,7 +13,7 @@ const CardStartups = () => {
           quality={80}
         />
       </div>
-      <div className='lg:-translate-x-[4rem] lg:translate-y-[.5rem] text-center space-y-4'>
+      <div className='xl:-translate-x-[4rem] xl:translate-y-[.5rem] text-center space-y-4'>
         <BtnCT customLines={['STARTUP &', 'SCALEUPS']} />
         <div>
           <p className='font-PerformanceMark text-ColorPrincipal text-2xl uppercase'>Need capital</p>

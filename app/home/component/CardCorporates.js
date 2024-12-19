@@ -13,7 +13,7 @@ const CardCorporates = () => {
             quality={80}
             />
     </div>
-    <div className='lg:transform lg:translate-x-[2rem] lg:translate-y-[2.4rem] text-center space-y-4'>
+    <div className='xl:transform xl:translate-x-[2rem] xl:translate-y-[2.4rem] text-center space-y-4'>
         <BtnCT buttonText='CORPORATES PARTNERS'/>
         <div>
           <p className='font-PerformanceMark text-ColorPrincipal text-2xl uppercase'>want to promote</p>

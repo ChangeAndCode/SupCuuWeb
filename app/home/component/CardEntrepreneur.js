@@ -13,7 +13,7 @@ const CardEntrepreneur = () => {
                 quality={80}
                 />
         </div>
-        <div className='text-center lg:translate-y-[1.8rem] space-y-4'>
+        <div className='text-center xl:translate-y-[1.8rem] space-y-4'>
             <BtnCT buttonText='ENTREPRENEUR' />
             <div>
               <p className='font-PerformanceMark text-ColorPrincipal text-2xl uppercase'>Ready to</p>

@@ -7,7 +7,7 @@ export default function HomeRoot() {
     <>
     <div className='bg-ColorPrincipal'>
       <Home />
-      <div className='bg-[#EDEFF0] rounded-t-7xl'>
+      <div className='bg-[#EDEFF0] rounded-t-[8rem]'>
         <CT />
       </div>
     </div>
