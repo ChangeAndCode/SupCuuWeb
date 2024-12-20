@@ -18,9 +18,9 @@ import Form from "../../form/page";
 const CT = () => {
   return (
     <div className="pt-24">
-      <div className="relative flex flex-col justify-center items-center py-24 lg:py-36 overflow-hidden">
+      <div className="relative flex flex-col justify-center items-center pt-[3rem] md:pt-[1rem] lg:pt-[4rem] xl:pt-[8rem] overflow-hidden">
         {/* Logo */}
-        <div className="relative z-10 top-5 w-11/12">
+        <div className="relative z-10 md:top-[7rem] lg:top-[5rem] xl:top-[5rem] w-[350px] md:w-[290px] lg:w-[400px] xl:w-[470px] h-[350px] md:h-[290px] lg:h-[300px] xl:h-[370px]">
           <div className="flex justify-center">
             <Image
               src="/startupB.webp"
@@ -35,17 +35,17 @@ const CT = () => {
         {/* Texto detrás */}
         <div className="absolute inset-0 flex justify-center items-center">
           <div className="text-center">
-            <p className="text-[9rem] xl-sm:text-[9rem] lg:text-[10rem] font-pragmatica uppercase text-outline leading-[9rem] lg:leading-[11rem] xl-sm:leading-[10rem] whitespace-nowrap">
+            <p className="hidden md:block text-[2rem] md:text-[4rem] lg:text-[6rem] xl:text-[8rem] 2xl:text-[11rem] font-pragmatica uppercase text-outline  md:leading-[5rem] lg:leading-[8rem] 2xl:leading-[8rem] whitespace-nowrap">
               We are
             </p>
-            <p className="text-[9rem] xl-sm:text-[9rem] lg:text-[10rem] font-pragmatica uppercase text-outline leading-[9rem] lg:leading-[11rem] xl-sm:leading-[10rem] whitespace-nowrap">
+            <p className="hidden md:block text-[2rem] md:text-[4rem] lg:text-[5rem] xl:text-[7rem] 2xl:text-[9.5rem] font-pragmatica uppercase text-outline md:leading-[5rem] lg:leading-[8rem] 2xl:leading-[8rem] whitespace-nowrap">
               startup chihuahua
             </p>
           </div>
         </div>
       </div>
 
-      <div className="relative flex flex-col items-center md:pt-[-10rem] xl:pt-[15rem] xl:flex-row xl:justify-center bg-transparent space-y-6 lg:space-y-0">
+      <div className="relative flex flex-col items-center md:pt-[-10rem] lg:pt-[-20rem] xl:pt-[11.2rem] 2xl:pt-[12rem] xl:flex-row xl:justify-center bg-transparent space-y-6 lg:space-y-0">
         <div className="relative xl:absolute xl:z-30 xl:transform xl:-translate-x-[30rem] xl:translate-y-[-3rem]">
           <CardEntrepreneur />
         </div>
@@ -100,7 +100,7 @@ const CT = () => {
           width={600}
           height={500}
           alt="We are"
-          className="absolute xl:right-[1rem] xl:bottom-[-25rem] 2xl:right-[6rem] 2xl:bottom-[-17rem]  z-10"
+          className="absolute xl:bottom-[-25rem] 2xl:bottom-[-17rem] xl:right-[-1rem] 2xl:right-[3rem]  z-10"
         />
       </div>
 
@@ -111,7 +111,7 @@ const CT = () => {
       <div className="mb-[-4rem] md:mb-[-8rem] xl:mb-[-7rem]">
         <KeyImpact />
       </div>
-      <div className="bg-white mb-[-6rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">
+      <div className="bg-white mb-[-5rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">
         <Transformative />
       </div>
       <div className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] z-10 py-20">

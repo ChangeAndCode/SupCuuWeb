@@ -23,7 +23,7 @@ const Backbone = () => {
                   quality={80}
               />
             </div>
-            <div className='absolute inset-4 md:inset-[3.5rem] xl:inset-[6rem] py-[.5rem] md:py-0 px-[1rem] md:px-0'>
+            <div className='absolute xs:inset-4 inset-2 md:inset-[3.5rem] xl:inset-[6rem] py-[.5rem] md:py-0 px-[1rem] md:px-0'>
                 <p className='text-[.5rem] md:text-[1rem] lg:text-[2.5rem] xl:text-[3rem] xl:leading-[3rem] text-ColorPrincipal font-pragmatica uppercase'>Hello, I&rsquo;m Andres.</p>
                 <p className='text-[.5rem] md:text-[1rem] lg:text-[1.3rem] xl:text-[1.5rem] xl:mb-[1.5rem] text-ColorPrincipal font-pragmatica uppercase'>Director of Startup Chihuahua.</p>
                 <p className='text-[.5rem] md:text-[1rem] lg:text-[1.3rem] xl:text-[1.5rem] text-ColorPrincipal font-pragmatica uppercase md:mb-[.7rem] xl:mb-[1.5rem]'>Do you have a strategic project or are you looking to financially support the ecosystem?</p>

@@ -12,10 +12,10 @@ const AnImpact = () => {
       {/* Texto detrás */}
       <div className="absolute inset-0 flex justify-center items-center">
         <div className="text-center">
-          <p className="text-[9rem] lg:text-[13.5rem] font-PerformanceMark text-white uppercase leading-[9rem] lg:leading-[9rem] whitespace-nowrap">
+          <p className="text-[2.5rem] sm:text-[3.2rem] md:text-[5.3rem] lg:text-[6.5rem] xl:text-[9.3rem] 2xl:text-[12.5rem] font-PerformanceMark text-white uppercase leading-[6rem] sm:leading-[6.5rem] md:leading-[11rem] xl:leading-[11rem] 2xl:leading-[12rem] whitespace-nowrap">
             An impact story
           </p>
-          <p className="text-[9rem] lg:text-[13.5rem] font-PerformanceMark text-white uppercase leading-[9rem] lg:leading-[9rem] whitespace-nowrap">
+          <p className="text-[2.5rem] sm:text-[3.2rem] md:text-[5.3rem] lg:text-[6.5rem] xl:text-[9.3rem] 2xl:text-[12.5rem] font-PerformanceMark text-white uppercase leading-[6rem] sm:leading-[6.5rem] md:leading-[11rem] xl:leading-[11rem] 2xl:leading-[12rem] whitespace-nowrap">
             An impact story
           </p>
         </div>

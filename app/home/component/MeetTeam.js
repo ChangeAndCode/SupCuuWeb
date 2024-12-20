@@ -4,7 +4,7 @@ const MeetTeam = () => {
   return (
     <div>
       <div className="flex justify-center items-center space-x-8">
-        <hr className="md:w-[76%] lg:w-[75%] xl:w-[73%] 2xl:w-[67%] border-t-[4px] border-ColorPrincipal" />
+        <hr className="w-[60%] md:w-[76%] lg:w-[75%] xl:w-[73%] 2xl:w-[67%] border-t-[4px] border-ColorPrincipal" />
         <Image
           src="/logo2.webp"
           width={80}
@@ -13,7 +13,7 @@ const MeetTeam = () => {
           quality={80}
         />
       </div>
-      <div className="ml-[2rem] mt-[4rem] lg:ml-[4rem] xl:ml-[9rem] 2xl:ml-[16rem] relative overflow-hidden">
+      <div className="ml-[1rem] md:ml-[3rem] mt-[4rem] lg:ml-[4rem] xl:ml-[9rem] 2xl:ml-[16rem] relative overflow-hidden">
         <h3 className="text-[1.5rem] md:text-[2.1rem] lg:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.3rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10 xl:w-8/12 2xl:w-7/12">
           This team works every day to inspire and empower entrepreneurs.
         </h3>
@@ -25,8 +25,8 @@ const MeetTeam = () => {
         </h5>
 
         {/* Texto detrás */}
-        <div className="absolute inset-0 md:top-[2%] 2 md:left-[45%] xl:top-[6%] 2 xl:left-[25%] 2xl:top-[6%] 2xl:left-[19%] flex justify-center items-center z-0">
-          <p className="text-[9rem] md:text-[5rem] xl:text-[8rem] 2xl:text-[10rem] font-PerformanceMark text-white uppercase leading-[9rem] lg:leading-[9rem] whitespace-nowrap">
+        <div className="absolute inset-0 md:left-[40%] xl:left-[25%] 2xl:left-[19%] md:top-[2%] xl:top-[6%] 2xl:top-[6%]  flex justify-center items-center z-0">
+          <p className="text-[3rem] hidden md:block md:text-[5rem] xl:text-[8rem] 2xl:text-[10rem] font-PerformanceMark text-white uppercase leading-[9rem] lg:leading-[9rem] whitespace-nowrap">
             the team
           </p>
         </div>
@@ -123,7 +123,7 @@ const MeetTeam = () => {
           />
         </div>
       </div>
-      <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.png')] bg-no-repeat bg-center bg-[length:110vw_100%] z-10 pb-[15rem] md:pb-[15rem] lg:pb-[30rem] pt-[40rem] md:pt-[28rem] xl:py-[32rem]">
+      <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.png')] bg-no-repeat bg-center bg-[length:120vw_100%] z-10 pb-[15rem] md:pb-[15rem] lg:pb-[30rem] pt-[40rem] md:pt-[28rem] xl:py-[32rem]">
       <div className="flex flex-col-reverse justify-center items-center xl:flex-row px-[2rem] xl:px-0">
         <div className="bg-white w-full xl:w-[60rem] px-[2rem] xl:px-[5rem] py-[3rem] xl:py-[3.5rem] rounded-[4rem] xl:translate-x-[-6rem]">
           <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.7rem] font-pragmatica uppercase leading-[2rem] md:leading-[5rem]">

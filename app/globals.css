@@ -15,9 +15,16 @@
   font-weight: normal;
   font-style: normal;
 }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 body {
   font-family: poppins;
+}
+
+.main-Tipography {
+  font-family: pragmatica !important;
 }
 
 @layer utilities {

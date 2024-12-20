@@ -6,11 +6,11 @@ const KeyImpact = () => {
       <div className="flex flex-col justify-center items-center overflow-hidden">
         <div className="flex items-center translate-x-[2.5rem] md:translate-x-[7rem] lg:translate-x-[11.2rem]">
           <div className="relative z-20">
-            <h2 className="text-[2rem] md:text-[4rem] xl:text-[6rem] 2xl:text-[8rem] font-pragmatica uppercase text-ColorPrincipal leading-[2rem] md:leading-[4rem] xl:leading-[6rem] 2xl:leading-[8rem]">
+            <h2 className="text-[2rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[6rem] 2xl:text-[8rem] font-pragmatica uppercase text-ColorPrincipal leading-[2rem] md:leading-[4rem] xl:leading-[6rem] 2xl:leading-[8rem]">
               Key Impact Indicators
             </h2>
           </div>
-          <p className="text-[4rem] md:text-[8rem] lg:text-[10.5rem] xl:text-[16rem] 2xl:text-[23rem] font-PerformanceMark md:translate-x-[-5rem] lg:translate-x-[-10rem] xl:translate-x-[-8rem] 2xl:translate-x-[-6rem] text-white relative z-10">
+          <p className="text-[3rem] sm:text-[5.3rem] md:text-[8rem] lg:text-[9.5rem] xl:text-[14rem] 2xl:text-[20rem] font-PerformanceMark translate-x-[-2.5rem] sm:translate-x-[-2.5rem] md:translate-x-[-7rem] lg:translate-x-[-11.5rem] xl:translate-x-[-11rem] 2xl:translate-x-[-12rem] text-white relative z-10">
             2030
           </p>
         </div>
