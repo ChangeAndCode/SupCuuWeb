@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const TimeLine = () => {
   return (
-    <div className="relative">
+    <div className="relative mt-[7rem] xl:mt-[5rem]">
       <div className="flex justify-center">
         <div className="transform lg:translate-x-0">
           <div className="flex justify-center">
@@ -63,7 +63,7 @@ const TimeLine = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col w-full lg:w-5/12 mt-6 lg:mt-0 translate-y-[-1.8rem] md:translate-y-[2rem] lg:translate-y-[4rem] xl:translate-y-0 xl:translate-x-[3.8rem] 2xl:translate-x-[4rem]">
+              <div className="flex flex-col w-full lg:w-5/12 mt-6 lg:mt-0 translate-y-[-1.8rem] sm:translate-y-[.5rem] md:translate-y-[2rem] lg:translate-y-[4rem] xl:translate-y-0 xl:translate-x-[2rem] 2xl:translate-x-[4rem]">
                 <div className="flex flex-wrap justify-start">
                   <Image
                     src="/Logos/mit.webp"

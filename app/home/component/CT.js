@@ -17,7 +17,7 @@ import Form from "../../form/page";
 
 const CT = () => {
   return (
-    <div className="pt-24">
+    <div className="pt-24 overflow-hidden">
       <div className="relative flex flex-col justify-center items-center pt-[3rem] md:pt-[1rem] lg:pt-[4rem] xl:pt-[8rem] overflow-hidden">
         {/* Logo */}
         <div className="relative z-10 md:top-[7rem] lg:top-[5rem] xl:top-[5rem] w-[350px] md:w-[290px] lg:w-[400px] xl:w-[470px] h-[350px] md:h-[290px] lg:h-[300px] xl:h-[370px]">
@@ -78,7 +78,7 @@ const CT = () => {
           <Carrusel />
         </div>
 
-        <div className="absolute bottom-[-50px] right-[.5rem] md:right-[4rem] lg:right-[15rem] xl-sm:right-[18rem] translate-y-[-2.5rem]">
+        <div className="absolute bottom-[-50px] right-[.5rem] md:right-[4rem] lg:right-[8rem] xl-sm:right-[18rem] translate-y-[-2.5rem]">
           <Image
             src="/logoV.webp"
             alt="Company Logo"
@@ -93,7 +93,6 @@ const CT = () => {
       <div className="py-16 overflow-hidden">
         <WeAre />
       </div>
-
       <div className="relative hidden xl:block 2xl:-mb-[9rem]">
         <Image
           src="/cohete.webp"
@@ -103,12 +102,11 @@ const CT = () => {
           className="absolute xl:bottom-[-25rem] 2xl:bottom-[-17rem] xl:right-[-1rem] 2xl:right-[3rem]  z-10"
         />
       </div>
-
       <AnImpact />
-      <div className="pb-[20rem] md:pb-[35rem] lg:pb-[20rem] xl:pb-[6rem]">
+      <div className="pb-[5rem] sm:pb-[10rem] md:pb-[20rem] lg:pb-[20rem] xl:pb-[6rem]">
         <TimeLine />
       </div>
-      <div className="mb-[-4rem] md:mb-[-8rem] xl:mb-[-7rem]">
+      <div className="mb-[-2rem] md:mb-[-4rem] lg:mb-[-6rem] xl:mb-[-7rem]">
         <KeyImpact />
       </div>
       <div className="bg-white mb-[-5rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">

@@ -10,7 +10,7 @@ const KeyImpact = () => {
               Key Impact Indicators
             </h2>
           </div>
-          <p className="text-[3rem] sm:text-[5.3rem] md:text-[8rem] lg:text-[9.5rem] xl:text-[14rem] 2xl:text-[20rem] font-PerformanceMark translate-x-[-2.5rem] sm:translate-x-[-2.5rem] md:translate-x-[-7rem] lg:translate-x-[-11.5rem] xl:translate-x-[-11rem] 2xl:translate-x-[-12rem] text-white relative z-10">
+          <p className="text-[3rem] sm:text-[5.3rem] md:text-[8rem] lg:text-[9rem] xl:text-[14rem] 2xl:text-[20rem] font-PerformanceMark translate-x-[-2.5rem] sm:translate-x-[-2.5rem] md:translate-x-[-7rem] lg:translate-x-[-13rem] xl:translate-x-[-11rem] 2xl:translate-x-[-12rem] text-white relative z-10">
             2030
           </p>
         </div>
@@ -53,8 +53,8 @@ const KeyImpact = () => {
           </div>
         </div>
       </div>
-      <div className="px-7">
-        <p className="text-[10rem] md:text-[19rem] font-PerformanceMark whitespace-nowrap text-white">
+      <div className="px-7 flex justify-end">
+        <p className="text-[5rem] md:text-[11rem] lg:text-[15rem] xl:text-[19rem] font-PerformanceMark whitespace-nowrap text-white">
           now
         </p>
       </div>

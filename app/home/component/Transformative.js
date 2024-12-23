@@ -3,8 +3,8 @@ import Image from 'next/image';
 const Transformative = () => {
   return (
     <>
-      <div className="flex justify-end pr-[2rem] md:pr-[4rem] lg:px-[3rem] translate-y-[-2rem] md:translate-y-[-3.8rem] lg:translate-y-[-5rem]">
-        <h2 className="text-[2rem] md:text-[4rem] lg:text-[5rem] xl:text-[7rem] font-semibold text-ColorPrincipal text-end w-8/12 md:leading-[4.5rem] lg:leading-[6rem]">
+      <div className="flex justify-start px-[3rem] sm:px-[6.5rem] md:px-[10.5rem] lg:px-[13rem] xl:px-[11rem] 2xl:px-[16rem] translate-y-[-2rem] md:translate-y-[-3.8rem] lg:translate-y-[-4.9rem] xl:translate-y-[-5.8rem] 2xl:translate-y-[-6.2rem]">
+        <h2 className="text-[2rem] md:text-[4rem] lg:text-[5rem] xl:text-[7rem] 2xl:text-[8rem] font-semibold text-ColorPrincipal w-8/12 leading-[2.5rem] md:leading-[4.5rem] lg:leading-[6rem] xl:leading-[7rem]">
           with transformative results
         </h2>
       </div>
@@ -35,7 +35,7 @@ const Transformative = () => {
           <Image src="/Transformative/Entrepreneurship3.webp" alt="Entrepreneurship 3" width={300} height={200} quality={80} />
         </div>
       </div>
-      <div className="flex justify-end relative z-10">
+      <div className="flex justify-end relative z-10 px-[1rem] md:px-[2rem] xl:px-[3rem]">
         <p className="text-[4rem] md:text-[9rem] lg:text-[12rem] xl:text-[16rem] 2xl:text-[20rem] text-[#EDEFF0] font-PerformanceMark z-20">
           partners
         </p>

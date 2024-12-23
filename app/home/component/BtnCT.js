@@ -5,7 +5,7 @@ const BtnCT = ({ buttonText, customLines }) => {
   const lines = customLines || buttonText.split(' ');
 
   return (
-    <button className='relative bg-ColorPrincipal text-white h-[3.9rem] w-[18rem] uppercase font-pragmatica rounded-full flex flex-col justify-center items-center'>
+    <button className='relative main-Tipography bg-ColorPrincipal text-white h-[3.9rem] w-[18rem] uppercase font-pragmatica rounded-full flex flex-col justify-center items-center'>
       {lines.map((line, index) => (
         <span key={index}>{line}</span>
       ))}

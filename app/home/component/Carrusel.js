@@ -72,7 +72,7 @@ const Carrusel = () => {
         <div className="w-full flex flex-col xl:flex-row items-center justify-center">
           {/* Texto */}
           <div className="xl:pr-8 w-full xl:w-1/2 lg:text-left mb-5 xl:mb-0">
-            <h3 className="text-lg main-Tipography uppercase xl:text-[2rem] lg:text-[2.7rem] xl:leading-[3rem] lg:leading-[3rem] mb-2 xl:mb-6">
+            <h3 className="text-lg main-Tipography font-pragmatica uppercase xl:text-[2rem] lg:text-[2.7rem] xl:leading-[3rem] lg:leading-[3rem] mb-2 xl:mb-6">
               {cards[currentIndex].title}
             </h3>
             <hr className="my-2 lg:my-6 border-t-4 border-black" />

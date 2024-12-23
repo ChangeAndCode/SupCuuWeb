@@ -32,7 +32,7 @@ const MeetTeam = () => {
         </div>
       </div>
 
-      <div className="flex justify-end xl:mr-[7rem] 2xl:mr-[13rem]">
+      <div className="flex justify-end lg:mr-[2rem] xl:mr-[7rem] 2xl:mr-[13rem]">
         <div className="relative w-[500px] h-[500px]">
           <Image
             src="/advisory.webp"
@@ -144,7 +144,7 @@ const MeetTeam = () => {
             Member of business councils such as COPARMEX, ASOFOM, and DESEC
           </p>
         </div>
-        <div className="relative xl:absolute xl:translate-x-[24rem] mb-[-4rem] md:mb-[-6rem] lg:mb-[-7rem] xl:mb-0 xl:mt-[6rem]">
+        <div className="relative xl:absolute xl:translate-x-[24rem] mb-[-4rem] md:mb-[-6rem] lg:mb-[-6.5rem] xl:mb-0 xl:mt-[6rem]">
           <Image
             src="/Team/presidente.webp"
             width={650}
