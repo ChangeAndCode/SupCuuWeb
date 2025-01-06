@@ -12,6 +12,9 @@ const CardInvestors = () => {
             height={390}
             quality={80}
             priority
+            loading="eager"
+            placeholder="blur"
+            blurDataURL='/CT/tercera.webp'
             />
     </div>
     <div className='text-center space-y-4'>

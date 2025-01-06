@@ -29,7 +29,7 @@ const Partners = () => {
         />
       </div>
       <div>
-        <p className="text-[1.8rem] md:text-[2.5rem] lg:text-[2.8rem] xl:text-[2.8rem] 2xl:text-[3.5rem] text-ColorPrincipal font-pragmatica w-full md:w-10/12 lg:w-9/12 xl:w-7/12 2xl:w-8/12 leading-[2rem] lg:leading-[2.5rem] xl:leading-[3rem] mt-[-37rem] sm:mt-[-37rem] md:mt-[-15rem] lg:mt-[-3rem] xl:mt-[10rem] 2xl:mt-[11rem] pl-[2rem] xl:pl-[7rem] 2xl:pl-[19rem]">
+        <p className="text-[1.8rem] md:text-[2.5rem] lg:text-[2.8rem] xl:text-[2.8rem] 2xl:text-[3.5rem] text-ColorPrincipal font-pragmatica w-full md:w-10/12 lg:w-9/12 xl:w-7/12 2xl:w-8/12 leading-[2rem] lg:leading-[2.5rem] xl:leading-[3rem] 2xl:leading-[3.5rem] mt-[-37rem] sm:mt-[-37rem] md:mt-[-15rem] lg:mt-[-3rem] xl:mt-[10rem] 2xl:mt-[11rem] pl-[2rem] xl:pl-[7rem] 2xl:pl-[19rem]">
           Thanks to the collaboration of our partner companies, all our work is possible.
         </p>
       </div>

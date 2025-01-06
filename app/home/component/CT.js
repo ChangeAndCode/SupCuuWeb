@@ -29,6 +29,9 @@ const CT = () => {
               height={370}
               quality={80}
               priority
+              loading="eager"
+              placeholder="blur"
+              blurDataURL="/startupB.webp"
             />
           </div>
         </div>
@@ -61,7 +64,7 @@ const CT = () => {
       </div>
 
       <div className="relative">
-        <div className="relative z-30 flex justify-center pt-[5rem] xl:pt-[28rem] mb-[-61rem] md:mb-[-55rem] xl:mb-[-53rem] xl-sm:mb-[-55rem]">
+        <div className="relative z-30 flex justify-center pt-[5rem] xl:pt-[28rem] mb-[-63rem] md:mb-[-57rem] lg:mb-[-62rem] xl:mb-[-53rem] xl-sm:mb-[-55rem]">
           <div className="w-[900px] h-[900px]">
             <Image
               src="/news.webp"
@@ -74,7 +77,7 @@ const CT = () => {
           </div>
         </div>
 
-        <div className="relative flex justify-center items-center bg-[url('/Bg/bgNews.webp')] bg-no-repeat bg-center bg-[length:100vw_100%] z-10">
+        <div className="relative flex justify-center items-center bg-[url('/Bg/bgNews.webp')] bg-no-repeat bg-center bg-[length:100vw_100%] z-10 py-0 lg:py-[7rem] xl:py-0">
           <Carrusel />
         </div>
 
@@ -99,7 +102,7 @@ const CT = () => {
           width={600}
           height={500}
           alt="We are"
-          className="absolute xl:bottom-[-25rem] 2xl:bottom-[-17rem] xl:right-[-1rem] 2xl:right-[3rem]  z-10"
+          className="absolute xl:bottom-[-25rem] 2xl:bottom-[-22rem] xl:right-[-1rem] 2xl:right-[3rem]  z-10"
         />
       </div>
       <AnImpact />

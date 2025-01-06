@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const navLinks = [
   { href: '/about', label: 'About Us' },
-  { href: '/events-opportunities', label: 'Events & Opportunities' },
+  { href: '/Opportunities', label: 'Events & Opportunities' },
   { href: '/startup', label: 'Startup' },
   { href: '/ecosystem', label: 'Ecosystem' },
   { href: '/explore-learn', label: 'Explore & Learn' },
@@ -48,7 +48,7 @@ const NavLinks = () => {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className='text-white hover:text-blue-200 main-Tipography uppercase transition-colors'
+                className='text-white hover:text-blue-200 font-semibold uppercase transition-colors'
               >
                 {link.label}
               </Link>

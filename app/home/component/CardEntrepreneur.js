@@ -12,6 +12,9 @@ const CardEntrepreneur = () => {
                 height={390}
                 quality={80}
                 priority
+                loading="eager"
+                placeholder="blur"
+                blurDataURL='/CT/primera.webp'
                 />
         </div>
         <div className='text-center xl:translate-y-[1.8rem] space-y-4'>
