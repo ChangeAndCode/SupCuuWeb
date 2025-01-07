@@ -12,6 +12,9 @@ const CardStartups = () => {
           height={460}
           quality={80}
           priority
+          loading="eager"
+          placeholder="blur"
+          blurDataURL='/CT/segunda.webp'
         />
       </div>
       <div className='xl:-translate-x-[4rem] xl:translate-y-[.5rem] text-center space-y-4'>

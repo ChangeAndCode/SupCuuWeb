@@ -69,20 +69,20 @@ const Carrusel = () => {
         </button>
 
         {/* Card */}
-        <div className="w-full flex flex-col xl:flex-row items-center justify-center">
+        <div className="w-full flex flex-col xl:flex-row items-center justify-between">
           {/* Texto */}
-          <div className="xl:pr-8 w-full xl:w-1/2 lg:text-left mb-5 xl:mb-0">
-            <h3 className="text-lg main-Tipography font-pragmatica uppercase xl:text-[2rem] lg:text-[2.7rem] xl:leading-[3rem] lg:leading-[3rem] mb-2 xl:mb-6">
+          <div className="xl:pr-8 w-full lg:text-left mb-5 xl:mb-0 2xl:px-[2rem]">
+            <h3 className="text-lg main-Tipography font-pragmatica uppercase lg:text-[2.2rem] 2xl:text-[2.9rem] xl:leading-[3rem] lg:leading-[3rem] mb-2 xl:mb-6">
               {cards[currentIndex].title}
             </h3>
             <hr className="my-2 lg:my-6 border-t-4 border-black" />
-            <p className="text-sm xl:text-[1.5rem] font-semibold lg:text-[2rem] xl:leading-[2rem] lg:leading-[3rem] uppercase text-black mt-2 lg:mt-6">
+            <p className="text-sm xl:text-[1.8rem] font-semibold lg:text-[2rem] xl:leading-[2rem] lg:leading-[3rem] uppercase text-black mt-2 lg:mt-6">
               {cards[currentIndex].description}
             </p>
           </div>
 
           {/* Imagen */}
-          <div className="w-4/5 lg:w-1/2 flex justify-center items-center">
+          <div className="w-4/5 flex justify-center items-center">
             <Image
               src={cards[currentIndex].image}
               alt={cards[currentIndex].title}

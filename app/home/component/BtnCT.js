@@ -18,6 +18,9 @@ const BtnCT = ({ buttonText, customLines }) => {
         className='absolute right-[1.3rem] bottom-[-.8rem]'
         quality={80}
         priority
+        loading="eager"
+        placeholder="blur"
+        blurDataURL='/btn.webp'
       />
 
     </button>

@@ -12,6 +12,9 @@ const CardCorporates = () => {
             height={390}
             quality={80}
             priority
+            loading="eager"
+            placeholder="blur"
+            blurDataURL="/CT/cuarta.webp"
             />
     </div>
     <div className='xl:transform xl:translate-x-[2rem] xl:translate-y-[2.4rem] text-center space-y-4'>
