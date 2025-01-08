@@ -3,7 +3,7 @@ import Image from 'next/image';
 const Transformative = () => {
   return (
     <>
-      <div className="flex justify-start px-[3rem] sm:px-[6.5rem] md:px-[10.5rem] lg:px-[13rem] xl:px-[11rem] 2xl:px-[16rem] translate-y-[-2rem] md:translate-y-[-3.8rem] lg:translate-y-[-4.9rem] xl:translate-y-[-5.8rem] 2xl:translate-y-[-6.2rem]">
+      <div className="flex justify-start px-[3rem] sm:px-[6.5rem] md:px-[10.5rem] lg:px-[13rem] xl:px-[11rem] 2xl:px-[16rem] translate-y-[-2rem] md:translate-y-[-3.8rem] lg:translate-y-[-4.9rem] xl:translate-y-[-5.8rem] 2xl:translate-y-[-6.8rem]">
         <h2 className="text-[2rem] md:text-[4rem] lg:text-[5rem] xl:text-[7rem] 2xl:text-[8rem] font-semibold text-ColorPrincipal w-8/12 leading-[2.5rem] md:leading-[4.5rem] lg:leading-[6rem] xl:leading-[7rem]">
           with transformative results
         </h2>

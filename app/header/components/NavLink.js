@@ -48,7 +48,7 @@ const NavLinks = () => {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className='text-white hover:text-blue-200 font-semibold uppercase transition-colors'
+                className='text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors'
               >
                 {link.label}
               </Link>

@@ -12,7 +12,8 @@ module.exports = {
       },
       fontFamily: {
         PerformanceMark: ["permanentMarker", "sans-serif"],
-        pragmatica: [ "pragmatica", "sans-serif"]
+        pragmatica: [ "pragmatica", "sans-serif"],
+        poppins: ['Poppins', 'sans-serif']
       },
       borderRadius: {
         "4xl": "2rem",

@@ -76,7 +76,7 @@ const Carrusel = () => {
               {cards[currentIndex].title}
             </h3>
             <hr className="my-2 lg:my-6 border-t-4 border-black" />
-            <p className="text-sm xl:text-[1.8rem] font-semibold lg:text-[2rem] xl:leading-[2rem] lg:leading-[3rem] uppercase text-black mt-2 lg:mt-6">
+            <p className="text-sm xl:text-[1.8rem] font-poppins font-semibold lg:text-[2rem] xl:leading-[2rem] lg:leading-[3rem] uppercase text-black mt-2 lg:mt-6">
               {cards[currentIndex].description}
             </p>
           </div>

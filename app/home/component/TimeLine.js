@@ -7,10 +7,10 @@ const TimeLine = () => {
         <div className="transform lg:translate-x-0">
           <div className="flex justify-center">
             <div className="flex flex-col xl:flex-row translate-x-[-10.8rem] sm:translate-x-[-13.9rem] md:translate-x-[-17rem] lg:translate-x-[-16.5rem] xl:translate-x-[1rem] xl:translate-y-[-2.2rem] 2xl:translate-y-[-2.5rem] absolute">
-              <p className="text-sm md:text-2xl translate-y-[19.5rem] md:translate-y-[23rem] lg:translate-y-[24rem] xl:translate-y-0 xl:translate-x-[-10.3rem] 2xl:translate-x-[-13.7rem]">
+              <p className="font-poppins text-sm md:text-2xl translate-y-[19.5rem] md:translate-y-[23rem] lg:translate-y-[24rem] xl:translate-y-0 xl:translate-x-[-10.3rem] 2xl:translate-x-[-13.7rem]">
                 2019
               </p>
-              <p className="text-sm md:text-2xl translate-y-[34rem] md:translate-y-[40.5rem] lg:translate-y-[42rem] xl:translate-y-0 xl:translate-x-[7.4rem] 2xl:translate-x-[8.5rem]">
+              <p className="font-poppins text-sm md:text-2xl translate-y-[34rem] md:translate-y-[40.5rem] lg:translate-y-[42rem] xl:translate-y-0 xl:translate-x-[7.4rem] 2xl:translate-x-[8.5rem]">
                 2022
               </p>
             </div>
@@ -45,7 +45,7 @@ const TimeLine = () => {
                   alt="DESEC logo"
                   quality={80}
                 />
-                <p className="text-[1.3rem] md:text-[1.5rem] mt-4 uppercase w-[18rem] text-left">
+                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 uppercase w-[18rem] text-left">
                   <span className="font-bold">DESEC</span> transforming Chihuahua&rsquo;s economy over the past 50 years.
                 </p>
               </div>
@@ -58,7 +58,7 @@ const TimeLine = () => {
                   alt="Futura logo"
                   quality={80}
                 />
-                <p className="text-[1.3rem] md:text-[1.5rem] mt-4 uppercase w-[15rem] md:w-[13rem] text-left">
+                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 uppercase w-[15rem] md:w-[13rem] text-left">
                   <span className="font-bold">DESEC</span> launches <span className="font-bold">Chihuahua Futura</span> to drive innovation and technology.
                 </p>
               </div>
@@ -80,7 +80,7 @@ const TimeLine = () => {
                     quality={80}
                   />
                 </div>
-                <p className="text-[1.3rem] md:text-[1.5rem] uppercase mt-4 w-10/12 md:w-[32rem] text-left">
+                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] uppercase mt-4 w-10/12 md:w-[32rem] text-left">
                   Chihuahua joins the <span className="font-bold">MIT REAP</span> program. Local leaders gather data, define a strategic plan, and create a collective organization to transform the ecosystem called <span className="font-bold">STARTUP CHIHUAHUA</span>.
                 </p>
               </div>
