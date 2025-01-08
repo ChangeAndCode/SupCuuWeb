@@ -20,11 +20,11 @@
 }
 
 body {
-  font-family: poppins, pragmatica, PermanentMarker;
+  font-family: poppins;
 }
 
 .main-Tipography {
-  font-family: pragmatica !important;
+  font-family: PragmaticaExtendedBold !important;
 }
 
 @layer utilities {
