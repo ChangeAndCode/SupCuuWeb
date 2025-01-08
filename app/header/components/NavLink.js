@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const navLinks = [
-  { href: '/about', label: 'About Us' },
+  { href: '/DreamBig', label: 'About Us' },
   { href: '/Opportunities', label: 'Events & Opportunities' },
   { href: '/startup', label: 'Startup' },
   { href: '/ecosystem', label: 'Ecosystem' },
