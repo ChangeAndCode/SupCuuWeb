@@ -1,5 +1,9 @@
 import './globals.css';
 import HeaderLayout from './header/layout';
+import WantToStayUpdated from './header/components/WantToStayUpdated';
+
+
+
 
 export const metadata = {
   title: 'StartUp Chihuahua',
@@ -19,6 +23,7 @@ export default function RootLayout({ children }) {
         <main>
           {children}
         </main>
+        <WantToStayUpdated />
       </body>
     </html>
   );
