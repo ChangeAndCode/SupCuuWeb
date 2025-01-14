@@ -38,10 +38,10 @@ const CT = () => {
         {/* Texto detrás */}
         <div className="absolute inset-0 flex justify-center items-center">
           <div className="text-center">
-            <p className="hidden md:block text-[2rem] md:text-[4rem] lg:text-[6rem] xl:text-[8rem] 2xl:text-[11rem] font-pragmatica uppercase text-outline  md:leading-[5rem] lg:leading-[8rem] 2xl:leading-[8rem] whitespace-nowrap">
+            <p className="main-Tipography hidden md:block text-[2rem] md:text-[4rem] lg:text-[6rem] xl:text-[8rem] 2xl:text-[11rem] font-pragmatica uppercase text-outline  md:leading-[5rem] lg:leading-[8rem] 2xl:leading-[8rem] whitespace-nowrap">
               We are
             </p>
-            <p className="hidden md:block text-[2rem] md:text-[4rem] lg:text-[5rem] xl:text-[7rem] 2xl:text-[9.5rem] font-pragmatica uppercase text-outline md:leading-[5rem] lg:leading-[8rem] 2xl:leading-[8rem] whitespace-nowrap">
+            <p className="main-Tipography hidden md:block text-[2rem] md:text-[4rem] lg:text-[5rem] xl:text-[7rem] 2xl:text-[9.5rem] font-pragmatica uppercase text-outline md:leading-[5rem] lg:leading-[8rem] 2xl:leading-[8rem] whitespace-nowrap">
               startup chihuahua
             </p>
           </div>

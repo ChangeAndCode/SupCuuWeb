@@ -1,15 +1,20 @@
+import path from 'path';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    webpack: (config, { dev, isServer }) => {
-      if (dev && !isServer) {
-        config.plugins = config.plugins.filter(
-          (plugin) => plugin.constructor.name !== "ReactRefreshWebpackPlugin"
-        );
-      }
-      return config;
-    },
-  };
-  
-  export default nextConfig;
-  
+  reactStrictMode: true,
+  webpack: (config, { dev, isServer }) => {
+    if (dev && !isServer) {
+      config.plugins = config.plugins.filter(
+        (plugin) => plugin.constructor.name !== "ReactRefreshWebpackPlugin"
+      );
+    }
+
+    // Configuración para alias
+    config.resolve.alias['@components'] = path.resolve(process.cwd(), 'components');
+
+    return config;
+  },
+};
+
+export default nextConfig;

@@ -26,7 +26,7 @@ const MeetTeam = () => {
 
         {/* Texto detrás */}
         <div className="absolute inset-0 md:left-[40%] xl:left-[25%] 2xl:left-[19%] md:top-[2%] xl:top-[6%] 2xl:top-[6%]  flex justify-center items-center z-0">
-          <p className="text-[3rem] hidden md:block md:text-[5rem] xl:text-[8rem] 2xl:text-[10rem] font-PerformanceMark text-white uppercase leading-[9rem] lg:leading-[9rem] whitespace-nowrap">
+          <p className="main-Tipography text-[3rem] hidden md:block md:text-[5rem] xl:text-[8rem] 2xl:text-[10rem] font-PerformanceMark text-white uppercase leading-[9rem] lg:leading-[9rem] whitespace-nowrap">
             the team
           </p>
         </div>
@@ -41,8 +41,8 @@ const MeetTeam = () => {
             alt="advisory"
             quality={80}
           />
-          <div className="absolute inset-[5rem] md:inset-[6rem]">
-            <p className="text-[1.7rem] md:text-[2.3rem] text-white font-PerformanceMark uppercase">
+          <div className="absolute inset-[5rem] sm:inset-[6.4rem] md:inset-[6rem]">
+            <p className="text-[1.7rem] xs:text-[1.6rem] md:text-[2.3rem] text-white font-PerformanceMark uppercase">
               advisory team
             </p>
           </div>

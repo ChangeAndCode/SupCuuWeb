@@ -16,8 +16,8 @@ const Home = () => {
                 width={180}
                 height={180}
                 alt="We are"
-                className="absolute hidden md:block top-[50%] transform -translate-x-[-380%] z-10"
-                style={{ width: "11vw", height: "auto" }}
+                className="absolute hidden md:block top-[60%] transform -translate-x-[-420%] z-10"
+                style={{ width: "10vw", height: "auto" }}
                 quality={80}
                 priority
               />

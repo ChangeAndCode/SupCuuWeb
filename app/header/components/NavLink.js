@@ -5,7 +5,7 @@ import Link from 'next/link';
 const navLinks = [
   { href: '/DreamBig', label: 'About Us' },
   { href: '/Opportunities', label: 'Events & Opportunities' },
-  { href: '/startup', label: 'Startup' },
+  { href: '/Engine', label: 'Startup' },
   { href: '/ecosystem', label: 'Ecosystem' },
   { href: '/explore-learn', label: 'Explore & Learn' },
   { href: '/contact', label: 'Contact' },
