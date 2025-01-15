@@ -19,7 +19,6 @@ const BtnCT = ({ buttonText, customLines }) => {
         quality={80}
         priority
         loading="eager"
-        placeholder="blur"
         blurDataURL='/btn.webp'
       />
 
