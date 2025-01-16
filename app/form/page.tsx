@@ -1,17 +1,27 @@
+// app/form/page.tsx
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
 import InputField from './components/InputField';
 import ContactUs from './components/ContacUs';
 import RedesSociales from './components/RedesSociales';
+import Notification from './components/Notification';
+import { sendEmail } from './lib/emailApi';
+import type { FormData } from './types/email';
 
 export default function Form() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     topicsOfInterest: '',
     email: '',
     phone: ''
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error';
+    message: string;
+  } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -20,9 +30,31 @@ export default function Form() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const result = await sendEmail(formData);
+
+    setIsSubmitting(false);
+    setSubmitStatus({
+      type: result.success ? 'success' : 'error',
+      message: result.message
+    });
+
+    if (result.success) {
+      setFormData({
+        name: '',
+        topicsOfInterest: '',
+        email: '',
+        phone: ''
+      });
+
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 3000);
+    }
   };
 
   return (
@@ -37,11 +69,13 @@ export default function Form() {
           quality={80}
         />
       </div>
+      
       <div className="px-[.3rem] md:px-[4rem] lg:px-[11rem] xl:px-[19rem] 2xl:px-[30rem] mb-[1rem]">
         <h2 className="font-pragmatica text-white md:text-[1.8rem] xl:text-[2.2rem] uppercase">
-          I’m ready to discover more
+          I'm ready to discover more
         </h2>
       </div>
+
       <div className="flex flex-col items-center">
         <form onSubmit={handleSubmit} className="space-y-8 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12">
           <InputField 
@@ -79,12 +113,21 @@ export default function Form() {
             />
           </div>
 
+          {submitStatus && (
+            <Notification
+              type={submitStatus.type}
+              message={submitStatus.message}
+            />
+          )}
+
           <button 
             type="submit"
-            className="relative z-50 w-full bg-white hover:bg-gray-100 text-ColorPrincipal font-pragmatica uppercase rounded-2xl py-4"
+            disabled={isSubmitting}
+            className="relative z-50 w-full bg-white hover:bg-gray-100 text-ColorPrincipal font-pragmatica uppercase rounded-2xl py-4 disabled:opacity-50"
           >
-            Enviar
+            {isSubmitting ? 'Enviando...' : 'Enviar'}
           </button>
+
           <div className="flex flex-col lg:flex-row justify-between">
             <ContactUs />
             <RedesSociales />
