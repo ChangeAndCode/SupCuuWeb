@@ -20,13 +20,14 @@ const CT = () => {
     <div className="pt-24 overflow-hidden">
       <div className="relative flex flex-col justify-center items-center pt-[3rem] md:pt-[1rem] lg:pt-[4rem] xl:pt-[8rem] overflow-hidden">
         {/* Logo */}
-        <div className="relative z-10 md:top-[7rem] lg:top-[5rem] xl:top-[5rem] w-[350px] md:w-[290px] lg:w-[400px] xl:w-[470px] h-[350px] md:h-[290px] lg:h-[300px] xl:h-[370px]">
+        <div className="relative z-10 md:top-[7rem] lg:top-[5rem] xl:top-[5rem] w-[350px] md:w-[290px] lg:w-[400px] xl:w-[470px] h-[350px] md:h-[290px] lg:h-[470px] xl:h-[370px]">
           <div className="flex justify-center">
             <Image
               src="/startupB.webp"
               alt="Company Logo"
               width={470}
               height={370}
+              style={{ height: 'auto' }}
               quality={80}
               priority
               loading="eager"
@@ -71,6 +72,7 @@ const CT = () => {
               alt="News"
               width={900}
               height={900}
+              style={{ height: 'auto' }}
               quality={80}
               priority
             />
@@ -87,6 +89,7 @@ const CT = () => {
             alt="Company Logo"
             width={370}
             height={270}
+            style={{ height: 'auto' }}
             quality={80}
           />
         </div>
@@ -101,8 +104,9 @@ const CT = () => {
           src="/cohete.webp"
           width={600}
           height={500}
+          style={{ height: 'auto' }}
           alt="We are"
-          className="absolute xl:bottom-[-25rem] 2xl:bottom-[-22rem] xl:right-[-1rem] 2xl:right-[3rem]  z-10"
+          className="absolute xl:bottom-[-25rem] 2xl:bottom-[-22rem] xl:right-[-1rem] 2xl:right-[3rem] z-10"
         />
       </div>
       <AnImpact />

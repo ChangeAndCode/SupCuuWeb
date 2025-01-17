@@ -5,12 +5,12 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const InnovationEngine = () => {
   const images = [
-    '/carrusel/chihuahua.png',
-    '/carrusel/innovacion.png',
-    '/carrusel/desec.png',
-    '/carrusel/futura.png',
-    '/carrusel/tech.png',
-    '/carrusel/startup.png',
+    '/carrusel/chihuahua.webp',
+    '/carrusel/innovacion.webp',
+    '/carrusel/desec.webp',
+    '/carrusel/futura.webp',
+    '/carrusel/tech.webp',
+    '/carrusel/startup.webp',
   ];
 
   const imagesLength = images.length;
@@ -73,7 +73,7 @@ const InnovationEngine = () => {
         <div className='flex items-center justify-center md:justify-start'>
             <div>
                 <Image
-                    src='/engine.png'
+                    src='/engine.webp'
                     alt='Company Logo'
                     width={220}
                     height={320}
@@ -81,7 +81,7 @@ const InnovationEngine = () => {
                     priority
                     loading='eager'
                     placeholder='blur'
-                    blurDataURL='/engine.png'
+                    blurDataURL='/engine.webp'
                     className='hidden md:block'
                     />
             </div>

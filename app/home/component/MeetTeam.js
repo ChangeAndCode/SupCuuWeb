@@ -123,7 +123,7 @@ const MeetTeam = () => {
           />
         </div>
       </div>
-      <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.png')] bg-no-repeat bg-center bg-[length:120vw_100%] z-10 pb-[15rem] md:pb-[15rem] lg:pb-[30rem] pt-[40rem] md:pt-[28rem] xl:py-[32rem]">
+      <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] z-10 pb-[15rem] md:pb-[15rem] lg:pb-[30rem] pt-[40rem] md:pt-[28rem] xl:py-[32rem]">
       <div className="flex flex-col-reverse justify-center items-center xl:flex-row px-[2rem] xl:px-0">
         <div className="bg-white w-full xl:w-[60rem] px-[2rem] xl:px-[5rem] py-[3rem] xl:py-[3.5rem] rounded-[4rem] xl:translate-x-[-6rem]">
           <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.7rem] font-pragmatica uppercase leading-[2rem] md:leading-[5rem]">
