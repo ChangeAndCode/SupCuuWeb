@@ -11,7 +11,7 @@ const NextBest = () => {
       </div>
       <div className='flex items-center justify-center mt-[5rem] lg:mt-[-11rem]'>
         <Image
-          src='/arrow.png'
+          src='/arrow.webp'
           alt='Company Logo'
           width={470}
           height={370}
@@ -19,7 +19,7 @@ const NextBest = () => {
           priority
           loading='eager'
           placeholder='blur'
-          blurDataURL='/arrow.png'
+          blurDataURL='/arrow.webp'
           className='hidden lg:block'
         />
         <BtnCT Text='inquire HERE' variant='secondary'/>

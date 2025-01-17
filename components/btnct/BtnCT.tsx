@@ -7,14 +7,14 @@ interface BtnCTProps {
 const BtnCT: React.FC<BtnCTProps> = ({ Text, variant = 'primary' }) => {
   // Estilos basados en la variante
   const variantClasses = {
-    primary: 'bg-ColorPrincipal text-white',
+    primary: 'bg-ColorPrincipal text-white py-[.7rem] px-[3rem]',
     secondary: 'bg-[#ff4544] text-white py-[1rem] px-[6rem]',
     outline: 'bg-white text-ColorPrincipal py-[1rem] px-[6rem]',
   };
 
   return (
     <button
-      className={`relative main-Tipography text-[.8rem] sm:text-[1.3rem] lg:text-[1.5rem] py-[.7rem] px-[3rem] uppercase font-pragmatica rounded-full flex justify-center items-center ${
+      className={`relative main-Tipography text-[.8rem] sm:text-[1.3rem] lg:text-[1.5rem] uppercase font-pragmatica rounded-full flex justify-center items-center ${
         variantClasses[variant]
       }`}
     >

@@ -1,9 +1,19 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import InputField from './components/InputField';
-import ContactUs from './components/ContacUs';
-import RedesSociales from './components/RedesSociales';
+
+// Importación dinámica de los componentes
+const ContactUs = dynamic(() => import('./components/ContacUs'), {
+  ssr: false,
+  loading: () => <div className="md:w-5/12 animate-pulse bg-gray-200/20 h-40 rounded-lg"></div>
+});
+
+const RedesSociales = dynamic(() => import('./components/RedesSociales'), {
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-gray-200/20 h-40 rounded-lg"></div>
+});
 
 export default function Form() {
   const [formData, setFormData] = useState({

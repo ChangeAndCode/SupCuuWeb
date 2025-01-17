@@ -10,6 +10,7 @@ const CardEntrepreneur = () => {
                 alt='Entrepreneur'
                 width={490}
                 height={390}
+                style={{ height: 'auto' }}
                 quality={80}
                 priority
                 loading="eager"

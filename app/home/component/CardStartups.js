@@ -10,6 +10,7 @@ const CardStartups = () => {
           alt='STARTUP & SCALEUPS'
           width={560}
           height={460}
+          style={{ height: 'auto' }}
           quality={80}
           priority
           loading="eager"
