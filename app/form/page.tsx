@@ -72,7 +72,7 @@ export default function Form() {
       
       <div className="px-[.3rem] md:px-[4rem] lg:px-[11rem] xl:px-[19rem] 2xl:px-[30rem] mb-[1rem]">
         <h2 className="font-pragmatica text-white md:text-[1.8rem] xl:text-[2.2rem] uppercase">
-          I'm ready to discover more
+          I&apos;m ready to discover more
         </h2>
       </div>
 

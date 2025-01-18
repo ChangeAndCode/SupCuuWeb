@@ -16,14 +16,14 @@ const WantToStayUpdated = () => {
         />
         <div className="absolute inset-0 flex items-center justify-start">
           <h2 className="font-PerformanceMark text-white text-xs sm:text-sm lg:text-[162%] md:text-lg inset-[7.4rem] text-left mt-4 max-w-[75%] h-[50%] ml-[8%]">
-            WANT TO STAY UPDATED ON WHAT'S HAPPENING IN <br />
+            WANT TO STAY UPDATED ON WHAT&apos;S HAPPENING IN <br />
             THE ECOSYSTEM DESIGNED JUST FOR YOU?
           </h2>
         </div>
       </div>
       <p className="font-PerformanceMark text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg text-left mt-4 ml-[8%]">
         LEAVE US YOUR INFORMATION, AND EVERY TWO WEEKS, <br />
-        YOU'LL RECEIVE INFORMATION TAILORED TO YOUR <br />
+        YOU&apos;LL RECEIVE INFORMATION TAILORED TO YOUR <br />
         INTERESTS RIGHT IN YOUR INBOX.
       </p>
     </div>
