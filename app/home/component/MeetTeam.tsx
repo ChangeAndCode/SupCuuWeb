@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const MeetTeam = () => {
+const MeetTeam: React.FC = () => {
   return (
     <div>
       <div className="flex justify-center items-center space-x-8">
@@ -124,38 +124,37 @@ const MeetTeam = () => {
         </div>
       </div>
       <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] z-10 pb-[15rem] md:pb-[15rem] lg:pb-[30rem] pt-[40rem] md:pt-[28rem] xl:py-[32rem]">
-      <div className="flex flex-col-reverse justify-center items-center xl:flex-row px-[2rem] xl:px-0">
-        <div className="bg-white w-full xl:w-[60rem] px-[2rem] xl:px-[5rem] py-[3rem] xl:py-[3.5rem] rounded-[4rem] xl:translate-x-[-6rem]">
-          <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.7rem] font-pragmatica uppercase leading-[2rem] md:leading-[5rem]">
-            nearshoring financing
-          </p>
-          <p className="text-[1.2rem] lg:text-[1.5rem] xl:text-[1.7rem] font-pragmatica uppercase leading-[3rem]">
-            ceo & founder of
-          </p>
-          <Image
-            src="/Logos/equity.webp"
-            width={400}
-            height={400}
-            alt="Equity"
-            className="mb-[2rem]"
-            quality={80}
-          />
-          <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.6rem] font-pragmatica uppercase w-full leading-[2rem]">
-            Member of business councils such as COPARMEX, ASOFOM, and DESEC
-          </p>
-        </div>
-        <div className="relative xl:absolute xl:translate-x-[24rem] mb-[-4rem] md:mb-[-6rem] lg:mb-[-6.5rem] xl:mb-0 xl:mt-[6rem]">
-          <Image
-            src="/Team/presidente.webp"
-            width={650}
-            height={650}
-            alt="Presidente"
-            quality={80}
-          />
+        <div className="flex flex-col-reverse justify-center items-center xl:flex-row px-[2rem] xl:px-0">
+          <div className="bg-white w-full xl:w-[60rem] px-[2rem] xl:px-[5rem] py-[3rem] xl:py-[3.5rem] rounded-[4rem] xl:translate-x-[-6rem]">
+            <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.7rem] font-pragmatica uppercase leading-[2rem] md:leading-[5rem]">
+              nearshoring financing
+            </p>
+            <p className="text-[1.2rem] lg:text-[1.5rem] xl:text-[1.7rem] font-pragmatica uppercase leading-[3rem]">
+              ceo & founder of
+            </p>
+            <Image
+              src="/Logos/equity.webp"
+              width={400}
+              height={400}
+              alt="Equity"
+              className="mb-[2rem]"
+              quality={80}
+            />
+            <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.6rem] font-pragmatica uppercase w-full leading-[2rem]">
+              Member of business councils such as COPARMEX, ASOFOM, and DESEC
+            </p>
+          </div>
+          <div className="relative xl:absolute xl:translate-x-[24rem] mb-[-4rem] md:mb-[-6rem] lg:mb-[-6.5rem] xl:mb-0 xl:mt-[6rem]">
+            <Image
+              src="/Team/presidente.webp"
+              width={650}
+              height={650}
+              alt="Presidente"
+              quality={80}
+            />
+          </div>
         </div>
       </div>
-</div>
-
     </div>
   );
 };

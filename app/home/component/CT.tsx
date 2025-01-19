@@ -15,7 +15,7 @@ import MeetTeam from "./MeetTeam";
 import Backbone from "./Backbone";
 import Form from "../../form/page";
 
-const CT = () => {
+const CT: React.FC = () => {
   return (
     <div className="pt-24 overflow-hidden">
       <div className="relative flex flex-col justify-center items-center pt-[3rem] md:pt-[1rem] lg:pt-[4rem] xl:pt-[8rem] overflow-hidden">

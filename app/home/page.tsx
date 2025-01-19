@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import React from 'react';
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div className="px-14 lg:px-24 xl:px-32 py-32 md:py-48">
       <div className="max-w-[1920px] mx-auto w-full">
@@ -11,16 +12,16 @@ const Home = () => {
           technology-based&nbsp;
           <span className="relative inline-block">
             <span className="pl-[10px]">entrepreneurial</span>
-              <Image
-                src="/etiqueta.webp"
-                width={180}
-                height={180}
-                alt="We are"
-                className="absolute hidden md:block top-[60%] transform -translate-x-[-470%] z-10"
-                style={{ width: "9vw", height: "auto" }}
-                quality={80}
-                priority
-              />
+            <Image
+              src="/etiqueta.webp"
+              width={180}
+              height={180}
+              alt="We are"
+              className="absolute hidden md:block top-[60%] transform -translate-x-[-470%] z-10"
+              style={{ width: '9vw', height: 'auto' }}
+              quality={80}
+              priority
+            />
           </span>
           ecosystem
         </p>

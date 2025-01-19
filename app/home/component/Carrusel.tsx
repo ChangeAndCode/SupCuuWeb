@@ -3,10 +3,17 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const Carrusel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+interface Card {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+}
 
-  const cards = [
+const Carrusel: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const cards: Card[] = [
     {
       id: 1,
       title: 'The Global Entrepreneurship Monitor highlights Mexico as one of the leading entrepreneurial ecosystems for women 1',

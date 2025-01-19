@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const TimeLine = () => {
+const TimeLine: React.FC = () => {
   return (
     <div className="relative mt-[7rem] xl:mt-[5rem]">
       <div className="flex justify-center">

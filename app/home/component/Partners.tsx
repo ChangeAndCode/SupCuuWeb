@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const Partners = () => {
+const Partners: React.FC = () => {
   return (
     <div className="relative pb-16">
       <div className="flex justify-end">

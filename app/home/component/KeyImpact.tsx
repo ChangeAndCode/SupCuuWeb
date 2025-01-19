@@ -1,6 +1,6 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
-const KeyImpact = () => {
+const KeyImpact: React.FC = () => {
   return (
     <div>
       <div className="flex flex-col justify-center items-center overflow-hidden">

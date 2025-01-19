@@ -2,7 +2,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-const navLinks = [
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+const navLinks: NavLink[] = [
   { href: '/DreamBig', label: 'About Us' },
   { href: '/Opportunities', label: 'Events & Opportunities' },
   { href: '/Engine', label: 'Startup' },
@@ -11,26 +16,26 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ];
 
-const NavLinks = () => {
+const NavLinks: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
       {/* Botón hamburguesa */}
       <button
-        className='block xl:hidden text-white'
+        className="block xl:hidden text-white"
         onClick={() => setIsOpen(!isOpen)}
       >
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          className='h-10 w-10'
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-10 w-10"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
           <path
-            strokeLinecap='round'
-            strokeLinejoin='round'
+            strokeLinecap="round"
+            strokeLinejoin="round"
             strokeWidth={2}
             d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
           />
@@ -43,12 +48,12 @@ const NavLinks = () => {
           isOpen ? 'block' : 'hidden'
         } xl:block absolute xl:static top-16 left-0 w-full xl:w-auto bg-ColorPrincipal xl:bg-transparent shadow-md xl:shadow-none`}
       >
-        <ul className='flex flex-col xl:flex-row space-y-4 xl:space-y-0 xl:space-x-6 p-4 xl:p-0'>
+        <ul className="flex flex-col xl:flex-row space-y-4 xl:space-y-0 xl:space-x-6 p-4 xl:p-0">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className='text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors'
+                className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
               >
                 {link.label}
               </Link>

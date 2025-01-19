@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import BtnCT from './BtnCT';
 
-const CardStartups = () => {
+const CardStartups: React.FC = () => {
   return (
     <div className='flex flex-col justify-center items-center'>
       <div>
@@ -19,7 +19,7 @@ const CardStartups = () => {
         />
       </div>
       <div className='xl:-translate-x-[4rem] xl:translate-y-[.5rem] text-center space-y-4'>
-        <BtnCT customLines={['STARTUP &', 'SCALEUPS']} />
+      <BtnCT buttonText={['STARTUP &', 'SCALEUPS']} />
         <div>
           <p className='font-PerformanceMark text-ColorPrincipal text-2xl uppercase'>Need capital</p>
           <p className='font-PerformanceMark text-ColorPrincipal text-2xl uppercase'>or want to</p>
