@@ -67,7 +67,7 @@ const CarruselDoors = () => {
             width={600}
             height={500}
             quality={80}
-            loading='eager'
+            loading='lazy'
             placeholder='blur'
             blurDataURL='/carruselDoors/tituloDoors.webp'
             className="w-auto h-auto"
@@ -97,7 +97,7 @@ const CarruselDoors = () => {
           </div>
           {/* Texto */}
           <div className="w-full text-center lg:text-center xl:text-left px-4 lg:px-8 xl:px-0">
-            <h3 className="text-3xl lg:text-[3rem] xl:text-[2.5rem] 2xl:text-[4rem] main-Tipography text-ColorPrincipal font-pragmatica uppercase leading-tight lg:leading-[3.5rem] xl:leading-[4rem] mb-2 xl:mb-6">
+            <h3 className="text-3xl lg:text-[3rem] xl:text-[2.5rem] 2xl:text-[4rem] main-Tipography text-ColorPrincipal main-Tipography font-pragmatica uppercase leading-tight lg:leading-[3.5rem] xl:leading-[4rem] mb-2 xl:mb-6">
               {cards[currentIndex].Nombre}
             </h3>
             <h3 className="text-2xl lg:text-[3rem] xl:text-[3rem] 2xl:text-[4rem] font-PerformanceMark text-ColorPrincipal uppercase leading-tight lg:leading-[3.5rem] xl:leading-[3rem] mb-2 xl:mb-6">

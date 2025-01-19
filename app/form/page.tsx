@@ -6,13 +6,11 @@ import InputField from './components/InputField';
 
 // Importación dinámica de los componentes
 const ContactUs = dynamic(() => import('./components/ContacUs'), {
-  ssr: false,
-  loading: () => <div className="md:w-5/12 animate-pulse bg-gray-200/20 h-40 rounded-lg"></div>
+  loading: () => <div className="md:w-5/12 h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />
 });
 
 const RedesSociales = dynamic(() => import('./components/RedesSociales'), {
-  ssr: false,
-  loading: () => <div className="animate-pulse bg-gray-200/20 h-40 rounded-lg"></div>
+  loading: () => <div className="h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />
 });
 
 export default function Form() {
@@ -24,10 +22,11 @@ export default function Form() {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -60,6 +59,7 @@ export default function Form() {
             value={formData.name} 
             onChange={handleChange} 
             required 
+            key="name-field"
           />
           
           <InputField 
@@ -67,6 +67,7 @@ export default function Form() {
             id="topicsOfInterest" 
             value={formData.topicsOfInterest} 
             onChange={handleChange} 
+            key="topics-field"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.5rem] md:gap-[3rem]">
@@ -77,6 +78,7 @@ export default function Form() {
               value={formData.email} 
               onChange={handleChange} 
               required 
+              key="email-field"
             />
 
             <InputField 
@@ -86,6 +88,7 @@ export default function Form() {
               value={formData.phone} 
               onChange={handleChange} 
               required 
+              key="phone-field"
             />
           </div>
 

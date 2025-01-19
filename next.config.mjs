@@ -5,6 +5,8 @@ const nextConfig = {
   reactStrictMode: true,
   devIndicators: {
     buildActivity: false,
+    buildActivityPosition: 'bottom-right',
+    staticRouteIndicator: false,
   },
   webpack: (config, { dev, isServer }) => {
     if (dev && !isServer) {

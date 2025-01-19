@@ -10,7 +10,7 @@ const Team = () => {
                 width={670}
                 height={570}
                 quality={80}
-                loading='eager'
+                loading='lazy'
                 placeholder='blur'
                 blurDataURL='/engineTeam/titulo.webp'
             />
@@ -23,7 +23,7 @@ const Team = () => {
                     width={300}
                     height={200}
                     quality={80}
-                    loading='eager'
+                    loading='lazy'
                     placeholder='blur'
                     blurDataURL='/engineTeam/1.webp'
                     className='w-auto h-[320px] object-cover'
@@ -40,7 +40,7 @@ const Team = () => {
                     width={300}
                     height={200}
                     quality={80}
-                    loading='eager'
+                    loading='lazy'
                     placeholder='blur'
                     blurDataURL='/engineTeam/2.webp'
                     className='w-auto h-[320px] object-cover'
@@ -57,7 +57,7 @@ const Team = () => {
                     width={300}
                     height={200}
                     quality={80}
-                    loading='eager'
+                    loading='lazy'
                     placeholder='blur'
                     blurDataURL='/engineTeam/3.webp'
                     className='w-auto h-[320px] object-cover'
@@ -74,7 +74,7 @@ const Team = () => {
                     width={300}
                     height={200}
                     quality={80}
-                    loading='eager'
+                    loading='lazy'
                     placeholder='blur'
                     blurDataURL='/engineTeam/4.webp'
                     className='w-auto h-[320px] object-cover'
@@ -91,7 +91,7 @@ const Team = () => {
                     width={300}
                     height={200}
                     quality={80}
-                    loading='eager'
+                    loading='lazy'
                     placeholder='blur'
                     blurDataURL='/engineTeam/5.webp'
                     className='w-auto h-[320px] object-cover'
@@ -108,7 +108,7 @@ const Team = () => {
                     width={300}
                     height={200}
                     quality={80}
-                    loading='eager'
+                    loading='lazy'
                     placeholder='blur'
                     blurDataURL='/engineTeam/6.webp'
                     className='w-auto h-[320px] object-cover'
@@ -126,7 +126,7 @@ const Team = () => {
                         width={300}
                         height={200}
                         quality={80}
-                        loading='eager'
+                        loading='lazy'
                         placeholder='blur'
                         blurDataURL='/engineTeam/7.webp'
                         className='w-auto h-[320px] object-cover'
@@ -145,7 +145,7 @@ const Team = () => {
               width={390}
               height={290}
               quality={80}
-              loading='eager'
+              loading='lazy'
               placeholder='blur'
               blurDataURL='/alwais/manzana.webp'
               className='hidden lg:block'
@@ -156,7 +156,7 @@ const Team = () => {
               width={670}
               height={270}
               quality={80}
-              loading='eager'
+              loading='lazy'
               placeholder='blur'
               blurDataURL='/alwais/cinta.webp'
             />

@@ -13,7 +13,7 @@ const Possible = () => {
               fill
               className='object-contain'
               quality={80}
-              loading='eager'
+              loading='lazy'
               placeholder='blur'
               blurDataURL='/carrusel/chihuahua.webp'
             />
@@ -27,7 +27,7 @@ const Possible = () => {
               fill
               className='object-contain'
               quality={80}
-              loading='eager'
+              loading='lazy'
               placeholder='blur'
               blurDataURL='/carrusel/gobierno.webp'
             />
@@ -41,7 +41,7 @@ const Possible = () => {
               fill
               className='object-contain'
               quality={80}
-              loading='eager'
+              loading='lazy'
               placeholder='blur'
               blurDataURL='/carrusel/madata.webp'
             />
@@ -55,7 +55,7 @@ const Possible = () => {
               fill
               className='object-contain'
               quality={80}
-              loading='eager'
+              loading='lazy'
               placeholder='blur'
               blurDataURL='/carrusel/ilum.webp'
             />
@@ -71,7 +71,7 @@ const Possible = () => {
               fill
               className='object-contain'
               quality={80}
-              loading='eager'
+              loading='lazy'
               placeholder='blur'
               blurDataURL='/carrusel/orion.webp'
             />
@@ -85,7 +85,7 @@ const Possible = () => {
               fill
               className='object-contain'
               quality={80}
-              loading='eager'
+              loading='lazy'
               placeholder='blur'
               blurDataURL='/carrusel/tec.webp'
             />
@@ -99,7 +99,7 @@ const Possible = () => {
               fill
               className='object-contain'
               quality={80}
-              loading='eager'
+              loading='lazy'
               placeholder='blur'
               blurDataURL='/carrusel/alfa.webp'
             />

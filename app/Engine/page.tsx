@@ -50,7 +50,7 @@ const page = () => {
             width={670}
             height={570}
             quality={80}
-            loading='eager'
+            loading='lazy'
             placeholder='blur'
             blurDataURL='/titelLogo.webp'
           />

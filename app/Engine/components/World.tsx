@@ -1,12 +1,10 @@
 import Image from "next/image"
-import { FaSolarPanel } from "react-icons/fa"
-
 
 const World = () => {
   return (
     <div className='relative flex items-center pb-[5rem] px-[2rem] md:px-[5rem] lg:px-[9rem] xl:px-[11rem] 2xl:px-[19rem]'>
         <div>
-            <h3 className='font-pragmatica text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] xl:text-[4rem] 2xl:text-[5rem] 
+            <h3 className='font-pragmatica main-Tipography text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] xl:text-[4rem] 2xl:text-[5rem] 
                 ml-0 md:ml-[-3rem] lg:ml-[-5rem] xl:ml-[-7rem] 2xl:ml-[-7rem] 
                 uppercase text-ColorPrincipal leading-tight md:leading-[4rem] lg:leading-[5rem] xl:leading-[6rem]'>
                 The world is<br/> open to those with<br/>
@@ -25,7 +23,7 @@ const World = () => {
                 fill
                 className='object-contain'
                 quality={80}
-                loading='eager'
+                loading='lazy'
                 placeholder='blur'
                 blurDataURL='/mundo.webp'
             />

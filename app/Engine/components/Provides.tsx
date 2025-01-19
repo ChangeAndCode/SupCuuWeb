@@ -14,7 +14,7 @@ const Provides = () => {
   return (
     <>
       <h2 className='font-PerformanceMark text-ColorPrincipal text-center text-[1.7rem] md:text-[3rem] lg:text-[3.7rem] xl:text-[5rem] 2xl:text-[6rem]'>What Startup Chihuahua Provides</h2>
-      <h3 className='font-pragmatica text-ColorPrincipal text-center text-[.9rem] md:text-[1.5rem] lg:text-[1.9rem] xl:text-[2.5rem] 2xl:text-[3rem]'>The Entrepreneurial Ecosystem of Chihuahua City</h3>
+      <h3 className='font-pragmatica main-Tipography text-ColorPrincipal text-center text-[.9rem] md:text-[1.5rem] lg:text-[1.9rem] xl:text-[2.5rem] 2xl:text-[3rem]'>The Entrepreneurial Ecosystem of Chihuahua City</h3>
       <div className='flex flex-col xl:flex-row justify-center items-center'>
             <div className='w-11/12 md:w-8/12 xl:w-4/12'>
                 <div className='flex items-center mb-6'>
@@ -24,7 +24,7 @@ const Provides = () => {
                         width={40}
                         height={40}
                         quality={80}
-                        loading='eager'
+                        loading='lazy'
                         placeholder='blur'
                         blurDataURL='/check.webp'
                     />
@@ -37,7 +37,7 @@ const Provides = () => {
                         width={40}
                         height={40}
                         quality={80}
-                        loading='eager'
+                        loading='lazy'
                         placeholder='blur'
                         blurDataURL='/check.webp'
                     />
@@ -50,7 +50,7 @@ const Provides = () => {
                         width={40}
                         height={40}
                         quality={80}
-                        loading='eager'
+                        loading='lazy'
                         placeholder='blur'
                         blurDataURL='/check.webp'
                     />
@@ -63,7 +63,7 @@ const Provides = () => {
                         width={40}
                         height={40}
                         quality={80}
-                        loading='eager'
+                        loading='lazy'
                         placeholder='blur'
                         blurDataURL='/check.webp'
                     />
@@ -76,7 +76,7 @@ const Provides = () => {
                         width={40}
                         height={40}
                         quality={80}
-                        loading='eager'
+                        loading='lazy'
                         placeholder='blur'
                         blurDataURL='/check.webp'
                     />
@@ -89,7 +89,7 @@ const Provides = () => {
                         width={40}
                         height={40}
                         quality={80}
-                        loading='eager'
+                        loading='lazy'
                         placeholder='blur'
                         blurDataURL='/check.webp'
                     />
@@ -102,7 +102,7 @@ const Provides = () => {
                 width={700}
                 height={600}
                 quality={80}
-                loading='eager'
+                loading='lazy'
                 placeholder='blur'
                 blurDataURL='/mano.webp'
             />

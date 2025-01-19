@@ -58,7 +58,7 @@ const Supports = () => {
                 width={1900}
                 height={570}
                 quality={80}
-                loading='eager'
+                loading='lazy'
                 placeholder='blur'
                 blurDataURL='/tabla2.webp'
           />

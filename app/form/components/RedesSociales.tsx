@@ -3,18 +3,18 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 const RedesSociales: React.FC = () => {
-  const [isClient, setIsClient] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setMounted(true);
   }, []);
 
-  if (!isClient) {
-    return null; // O un skeleton/loading state
+  if (!mounted) {
+    return <div className='h-[200px] animate-pulse bg-gray-200/20 rounded-lg' />;
   }
 
   return (
-    <div>
+    <div suppressHydrationWarning>
       <p className='text-[1.2rem] xs:text-[1.5rem] md:text-[2rem] font-pragmatica uppercase text-white mb-[1.5rem]'>
         @startupchihuahua
       </p>

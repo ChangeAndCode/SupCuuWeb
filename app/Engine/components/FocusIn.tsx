@@ -35,7 +35,7 @@ const FocusIn = () => {
                     </div>
                     <div className="bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl uppercase">
                     <div className="bg-ColorPrincipal px-[1rem] py-[1.5rem] text-center rounded-2xl">
-                        <h2 className="font-pragmatica text-white text-[2rem] leading-8">Advance manufacturing</h2>
+                        <h2 className="main-Tipography text-white text-[2rem] leading-8">Advance manufacturing</h2>
                     </div>
                     <div className="px-[3rem] py-[1rem]">
                         <ul className="list-disc text-[1.2rem]">
@@ -69,7 +69,7 @@ const FocusIn = () => {
                         </div>
                     <div className="bg-white border-[.4rem] border-ColorPrincipal rounded-3xl uppercase">
                     <div className="bg-ColorPrincipal px-[1.8rem] py-[1.5rem] text-center rounded-2xl">
-                        <h2 className="font-pragmatica text-white text-[2rem] leading-8">construction tecnology</h2>
+                        <h2 className="main-Tipography text-white text-[2rem] leading-8">construction tecnology</h2>
                     </div>
                     <div className="px-[3rem] py-[1rem]">
                         <ul className="list-disc text-[1.2rem]">
@@ -96,9 +96,9 @@ const FocusIn = () => {
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem]'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>3</p>
                     </div>
-                    <div className="bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl">
+                    <div className="bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl uppercase">
                     <div className="bg-ColorPrincipal px-[4rem] py-[1.5rem] text-center rounded-2xl">
-                        <h2 className="font-pragmatica text-white text-[2rem] leading-8">Mining and Metallurgy</h2>
+                        <h2 className="main-Tipography text-white text-[2rem] leading-8">Mining and Metallurgy</h2>
                     </div>
                     <div className="px-[3rem] py-[1rem]">
                         <ul className="list-disc text-[1.2rem]">
@@ -138,9 +138,9 @@ const FocusIn = () => {
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[6rem]'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>4</p>
                     </div>
-                    <div className="bg-white border-[.4rem] border-ColorPrincipal rounded-3xl">
+                    <div className="bg-white border-[.4rem] border-ColorPrincipal rounded-3xl uppercase">
                     <div className="bg-ColorPrincipal px-[3rem] py-[1.5rem] text-center rounded-2xl">
-                        <h2 className="font-pragmatica text-white text-[2rem] leading-8">agricultural and food technology</h2>
+                        <h2 className="main-Tipography text-white text-[2rem] leading-8">agricultural and food technology</h2>
                     </div>
                     <div className="px-[3rem] py-[1rem]">
                         <ul className="list-disc text-[1.2rem]">
@@ -168,9 +168,9 @@ const FocusIn = () => {
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem]'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>5</p>
                     </div>
-                    <div className="bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl">
+                    <div className="bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl uppercase">
                     <div className="bg-ColorPrincipal px-[5rem] py-[1.5rem] text-center rounded-2xl">
-                        <h2 className="font-pragmatica text-white text-[2rem] leading-8">climate technology</h2>
+                        <h2 className="main-Tipography text-white text-[2rem] leading-8">climate technology</h2>
                     </div>
                     <div className="px-[3rem] py-[1rem]">
                         <ul className="list-disc text-[1.2rem]">
@@ -213,9 +213,9 @@ const FocusIn = () => {
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem]'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>6</p>
                     </div>
-                    <div className=" bg-white border-[.4rem] border-ColorPrincipal rounded-3xl">
+                    <div className=" bg-white border-[.4rem] border-ColorPrincipal rounded-3xl uppercase">
                     <div className="bg-ColorPrincipal px-[.6rem] py-[1.5rem] text-center rounded-2xl">
-                        <h2 className="font-pragmatica text-white text-[2rem] leading-8">Social Empowerment Technology</h2>
+                        <h2 className="main-Tipography text-white text-[2rem] leading-8">Social Empowerment Technology</h2>
                     </div>
                     <div className="px-[3rem] py-[1rem]">
                         <ul className="list-disc text-[1.2rem]">

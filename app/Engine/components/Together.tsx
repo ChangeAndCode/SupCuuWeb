@@ -5,7 +5,7 @@ import Image from "next/image"
 const Together = () => {
   return (
     <div className='flex flex-col items-center justify-center px-[1rem] md:px-[4rem] xl:px-[8rem]'>
-      <h2 className='font-pragmatica text-ColorPrincipal uppercase text-[1.3rem] md:text-[1.8rem] lg:text-[2.4rem] xl:text-[3rem] 2xl:text-[4rem] text-center'>TOGETHER we will create a thriving and expanding entrepreneurial ecosystem, where we can live, grow and play.</h2>
+      <h2 className='font-pragmatica main-Tipography text-ColorPrincipal uppercase text-[1.3rem] md:text-[1.8rem] lg:text-[2.4rem] xl:text-[3rem] 2xl:text-[4rem] text-center'>TOGETHER we will create a thriving and expanding entrepreneurial ecosystem, where we can live, grow and play.</h2>
         <div className='relative flex flex-col justify-center xl:w-9/12 2xl:w-9/12 mt-[4rem] lg:mt-[10rem] bg-white p-[4rem] rounded-[3rem] shadow-2xl'>
             <div className='absolute hidden lg:block top-[-13rem] xl:top-[-11rem] right-[-6rem] xl:right-[-18rem]'>
                 <Image
@@ -14,7 +14,7 @@ const Together = () => {
                     width={670}
                     height={570}
                     quality={80}
-                    loading='eager'
+                    loading='lazy'
                     placeholder='blur'
                     blurDataURL='/tituloTogether.webp'
                 />

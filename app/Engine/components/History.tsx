@@ -12,7 +12,7 @@ const History = () => {
                     width={770}
                     height={570}
                     quality={80}
-                    loading='eager'
+                    loading='lazy'
                     placeholder='blur'
                     blurDataURL='/history/tituloHistory.webp'
                 />
@@ -32,7 +32,7 @@ const History = () => {
                     width={670}
                     height={570}
                     quality={80}
-                    loading='eager'
+                    loading='lazy'
                     placeholder='blur'
                     blurDataURL='/history/mapa.webp'
                     className='xl:absolute 2xl:top-[-2rem] xl:right-[40rem] 2xl:right-[55rem]'
