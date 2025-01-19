@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   description: 'Página de Engine para StartUp Chihuahua',
 };
 
-interface EngineLayoutProps {
+interface DreamBigLayoutProps {
   children: React.ReactNode;
 }
 
-const EngineLayout: React.FC<EngineLayoutProps> = ({ children }) => {
+const DreamBigLayout: React.FC<DreamBigLayoutProps> = ({ children }) => {
   return (
     <>
       <HeaderLayout />
@@ -22,4 +22,4 @@ const EngineLayout: React.FC<EngineLayoutProps> = ({ children }) => {
   );
 };
 
-export default EngineLayout;
+export default DreamBigLayout;

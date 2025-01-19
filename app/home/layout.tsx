@@ -1,19 +1,19 @@
 // app/Engine/layout.tsx
 import React from 'react';
 import { Metadata } from 'next';
-import HeaderLayout from '../header/layout';
+import HeaderLayout from '../header/layout'; // Barra de navegación común
 
 // Metadata específica para la página Engine
 export const metadata: Metadata = {
-  title: 'Form - StartUp Chihuahua',
+  title: 'Home - StartUp Chihuahua',
   description: 'Página de Engine para StartUp Chihuahua',
 };
 
-interface FormLayoutProps {
+interface HomeLayoutProps {
   children: React.ReactNode;
 }
 
-const FormLayout: React.FC<FormLayoutProps> = ({ children }) => {
+const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
   return (
     <>
       <HeaderLayout />
@@ -22,4 +22,4 @@ const FormLayout: React.FC<FormLayoutProps> = ({ children }) => {
   );
 };
 
-export default FormLayout;
+export default HomeLayout;
