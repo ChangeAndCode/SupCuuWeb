@@ -7,6 +7,7 @@ const nextConfig = {
     buildActivity: false,
     buildActivityPosition: 'bottom-right',
     staticRouteIndicator: false,
+    errorBoundary: false,
   },
   webpack: (config, { dev, isServer }) => {
     if (dev && !isServer) {
