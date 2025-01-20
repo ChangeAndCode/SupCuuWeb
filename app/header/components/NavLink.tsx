@@ -10,7 +10,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { href: '/DreamBig', label: 'About Us' },
   { href: '/Opportunities', label: 'Events & Opportunities' },
-  { href: '/Engine', label: 'Startup' },
+  { href: '/attraction', label: 'Startup' },
   { href: '/ecosystem', label: 'Ecosystem' },
   { href: '/explore-learn', label: 'Explore & Learn' },
   { href: '/contact', label: 'Contact' },

@@ -1,16 +1,18 @@
 'use client';
-import Image from 'next/image';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import InputField from './components/InputField';
 
-// Importación dinámica de los componentes
+// Importación dinámica
 const ContactUs = dynamic(() => import('./components/ContacUs'), {
-  loading: () => <div className="md:w-5/12 h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />
+  ssr: false,
+  loading: () => <div className="md:w-5/12 h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />,
 });
 
 const RedesSociales = dynamic(() => import('./components/RedesSociales'), {
-  loading: () => <div className="h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />
+  ssr: false,
+  loading: () => <div className="h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />,
 });
 
 export default function Form() {
@@ -18,14 +20,14 @@ export default function Form() {
     name: '',
     topicsOfInterest: '',
     email: '',
-    phone: ''
+    phone: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -35,7 +37,7 @@ export default function Form() {
   };
 
   return (
-    <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem]">
+    <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30">
       <div className="absolute top-[-4rem] left-[4rem] md:left-[10rem] xl:left-[15rem] 2xl:left-[23rem]">
         <Image
           src="/logoE.webp"
@@ -52,47 +54,50 @@ export default function Form() {
         </h2>
       </div>
       <div className="flex flex-col items-center">
-        <form onSubmit={handleSubmit} className="space-y-8 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12">
-          <InputField 
-            label="Name" 
-            id="name" 
-            value={formData.name} 
-            onChange={handleChange} 
-            required 
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-8 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12"
+        >
+          <InputField
+            label="Name"
+            id="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
             key="name-field"
           />
-          
-          <InputField 
-            label="Topics of Interest" 
-            id="topicsOfInterest" 
-            value={formData.topicsOfInterest} 
-            onChange={handleChange} 
+
+          <InputField
+            label="Topics of Interest"
+            id="topicsOfInterest"
+            value={formData.topicsOfInterest}
+            onChange={handleChange}
             key="topics-field"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.5rem] md:gap-[3rem]">
-            <InputField 
-              label="E-mail" 
-              id="email" 
-              type="email" 
-              value={formData.email} 
-              onChange={handleChange} 
-              required 
+            <InputField
+              label="E-mail"
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
               key="email-field"
             />
 
-            <InputField 
-              label="Phone" 
-              id="phone" 
-              type="tel" 
-              value={formData.phone} 
-              onChange={handleChange} 
-              required 
+            <InputField
+              label="Phone"
+              id="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+              required
               key="phone-field"
             />
           </div>
 
-          <button 
+          <button
             type="submit"
             className="relative z-50 w-full bg-white hover:bg-gray-100 text-ColorPrincipal font-pragmatica uppercase rounded-2xl py-4"
           >

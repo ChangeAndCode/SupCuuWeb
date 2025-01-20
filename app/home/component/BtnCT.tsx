@@ -1,12 +1,11 @@
 import Image from 'next/image';
 
 interface BtnCTProps {
-  buttonText: string | string[];  // Acepta tanto un string como un array de strings
+  buttonText: string | string[];
   customLines?: string[];
 }
 
 const BtnCT: React.FC<BtnCTProps> = ({ buttonText, customLines }) => {
-  // Usa customLines si está disponible, de lo contrario divide el texto automáticamente
   const lines = customLines || (typeof buttonText === 'string' ? buttonText.split(' ') : buttonText);
 
   return (
