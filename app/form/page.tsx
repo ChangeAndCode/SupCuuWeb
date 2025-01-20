@@ -1,13 +1,23 @@
-// app/form/page.tsx
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import InputField from './components/InputField';
-import ContactUs from './components/ContacUs';
-import RedesSociales from './components/RedesSociales';
-import Notification from './components/Notification';
 import { sendEmail } from './lib/emailApi';
 import type { FormData } from './types/email';
+
+// Dynamic imports with loading states
+const ContactUs = dynamic(() => import('./components/ContacUs'), {
+  loading: () => <div className="md:w-5/12 h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />
+});
+
+const RedesSociales = dynamic(() => import('./components/RedesSociales'), {
+  loading: () => <div className="h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />
+});
+
+const Notification = dynamic(() => import('./components/Notification'), {
+  loading: () => <div className="h-[48px] animate-pulse bg-gray-200/20 rounded-lg" />
+});
 
 export default function Form() {
   const [formData, setFormData] = useState<FormData>({
@@ -24,10 +34,11 @@ export default function Form() {
   } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -84,13 +95,15 @@ export default function Form() {
             value={formData.name} 
             onChange={handleChange} 
             required 
+            key="name-field"
           />
           
           <InputField 
             label="Topics of Interest" 
             id="topicsOfInterest" 
             value={formData.topicsOfInterest} 
-            onChange={handleChange} 
+            onChange={handleChange}
+            key="topics-field"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.5rem] md:gap-[3rem]">
@@ -101,6 +114,7 @@ export default function Form() {
               value={formData.email} 
               onChange={handleChange} 
               required 
+              key="email-field"
             />
 
             <InputField 
@@ -110,6 +124,7 @@ export default function Form() {
               value={formData.phone} 
               onChange={handleChange} 
               required 
+              key="phone-field"
             />
           </div>
 
