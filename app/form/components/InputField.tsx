@@ -7,13 +7,21 @@ interface InputFieldProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField = ({ label, id, type = 'text', required = false, value, onChange }: InputFieldProps) => {
+const InputField: React.FC<InputFieldProps> = ({
+  label,
+  id,
+  type = 'text',
+  required = false,
+  value,
+  onChange,
+}) => {
+  console.log(value);
+
   return (
-    <div>
-      <label 
-        htmlFor={id} 
-        className='block text-xl font-pragmatica uppercase text-white mb-[1rem]'
-        suppressHydrationWarning
+    <div className="mb-4">
+      <label
+        htmlFor={id}
+        className="block text-xl font-pragmatica uppercase text-white mb-2"
       >
         {label}
       </label>
@@ -21,11 +29,10 @@ const InputField = ({ label, id, type = 'text', required = false, value, onChang
         type={type}
         id={id}
         name={id}
-        value={value}
+        value={value || ''}
         onChange={onChange}
         required={required}
-        className={`relative z-50 mt-1 block w-full px-4 py-4 border border-gray-300 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500`}
-        suppressHydrationWarning
+        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     </div>
   );

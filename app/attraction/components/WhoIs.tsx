@@ -1,0 +1,21 @@
+import Image from 'next/image'
+
+const WhoIs = () => {
+  return (
+    <div className="flex flex-col items-center justify-center pt-[6rem] md:pt-[9rem] xl:pt-[11rem] pb-[7rem] sm:pb-[11rem] md:pb-[17rem]  px-[2rem] sm:px-[4rem] md:px-[4rem] lg:px-[6rem] 2xl:px-0">
+      <h2 className='font-pragmatica main-Tipography text-ColorPrincipal uppercase text-[1.5rem] sm:text-[2rem] md:text-[3rem]'>who is chihuahua?</h2>
+        <div className='border-[.4rem] border-ColorPrincipal mt-[3rem]'>
+            <Image
+                src='/pruebaVideo.jpg'
+                alt='Company Logo'
+                width={1370}
+                height={1270}
+                quality={80}
+                loading='lazy'
+            />
+        </div>
+    </div>
+  )
+}
+
+export default WhoIs

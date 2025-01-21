@@ -42,4 +42,9 @@
     -webkit-text-stroke: 1px #B2B9BF;
   }
 }
+/* Ocultar indicadores flotantes de desarrollo */
+#__next-build-watcher, #__next-build-error-overlay {
+  display: none !important;
+}
+
 

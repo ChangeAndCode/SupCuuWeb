@@ -14,13 +14,13 @@ const MeetTeam: React.FC = () => {
         />
       </div>
       <div className="ml-[1rem] md:ml-[3rem] mt-[4rem] lg:ml-[4rem] xl:ml-[9rem] 2xl:ml-[16rem] relative overflow-hidden">
-        <h3 className="text-[1.5rem] md:text-[2.1rem] lg:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.3rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10 xl:w-8/12 2xl:w-7/12">
+        <h3 className="main-Tipography text-[1.5rem] md:text-[2.1rem] lg:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.3rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10 xl:w-8/12 2xl:w-7/12">
           This team works every day to inspire and empower entrepreneurs.
         </h3>
-        <h4 className="text-[2rem] md:text-[4.5rem] lg:text-[5.3rem] xl:text-[6rem] 2xl:text-[7rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[6rem] relative z-10">
+        <h4 className="main-Tipography text-[2rem] md:text-[4.5rem] lg:text-[5.3rem] xl:text-[6rem] 2xl:text-[7rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[6rem] relative z-10">
           Meet the team
         </h4>
-        <h5 className="text-[2rem] md:text-[2.1rem] lg:text-[2.5rem] xl:text-[2.8rem] 2xl:text-[3.3rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10">
+        <h5 className="main-Tipography text-[2rem] md:text-[2.1rem] lg:text-[2.5rem] xl:text-[2.8rem] 2xl:text-[3.3rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10">
           that makes our vision possible.
         </h5>
 
