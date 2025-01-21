@@ -18,7 +18,7 @@ import Form from 'app/form/page'
 const page = () => {
   return (
     <div className='overflow-hidden'>
-      <div className='flex flex-col xl:flex-row items-center justify-center py-[8rem] md:py-[10rem] xl:py-[8rem] 2xl:py-[2rem] px-[3rem]'>
+      <div className='flex flex-col-reverse xl:flex-row items-center justify-center py-[8rem] md:py-[10rem] xl:py-[8rem] 2xl:py-[2rem] px-[3rem]'>
           <div className='w-full 2xl:w-6/12'>
               <h2 className='font-PerformanceMark text-ColorPrincipal uppercase text-[1.3rem] sm:text-[2.5rem] md:text-[4rem] xl:text-[4rem] 2xl:text-[5rem] md:leading-[5rem]'>ChihuahuA’s innovation engine</h2>
               <h3 className='font-pragmatica main-Tipography main-Tipography text-ColorPrincipal uppercase text-[1rem] sm:text-[1.4rem] md:text-[2.4rem] lg:text-[3rem] xl:text-[2.5rem] 2xl:text-[3rem] md:leading-[4rem] mt-[1rem]'>Igniting Connections and Fueling Sustainability for Chihuahua City’s Innovative Technologies.</h3>
@@ -41,7 +41,7 @@ const page = () => {
               />
           </div>
       </div>
-      <div className="relative bg-[url('/bg/bglandin.webp')] bg-no-repeat bg-center bg-[length:120vw_100%]">
+      <div className="relative bg-landing bg-no-repeat bg-center bg-[length:120vw_100%]">
         <WhoIs />
         <div className='flex justify-center absolute bottom-[-2rem] xl:bottom-0 right-0 left-0'>
           <Image
@@ -69,10 +69,10 @@ const page = () => {
       <div className='bg-ColorPrincipal mt-[-14rem] md:mt-[-9rem] lg:mt-[-8rem] xl:mt-[-12rem] relative z-[1]'>
         <Alwais />
       </div>
-      <div className="bg-history bg-no-repeat bg-center bg-cover pt-[44rem] sm:pt-[40rem] md:pt-[44rem] lg:pt-[41rem] xl:pt-[28rem] 2xl:pt-[26rem] pb-[55rem] sm:pb-[46rem] md:pb-[50rem] xl:pb-[35rem] mt-[-48rem] sm:mt-[-45rem] lg:mt-[-43rem] xl:mt-[-28rem] relative z-10">
+      <div className="bg-history bg-no-repeat bg-center bg-cover pt-[52rem] sm:pt-[43rem] md:pt-[48rem] lg:pt-[46rem] xl:pt-[28rem] 2xl:pt-[26rem] pb-[55rem] sm:pb-[46rem] md:pb-[50rem] xl:pb-[35rem] mt-[-48rem] sm:mt-[-45rem] lg:mt-[-43rem] xl:mt-[-28rem] relative z-10">
         <History />
       </div>
-      <div className='pb-[5rem]'>
+      <div className='pb-[5rem] mt-[-33rem] sm:mt-[-29rem] md:mt-[-25rem] xl:mt-[-8rem] 2xl:mt-[-6rem]'>
         <Supports />
       </div>
       <div className='pb-[5rem]'>
@@ -81,7 +81,7 @@ const page = () => {
       <div className='bg-[#E9EBED] pt-[8rem] pb-[20rem]'>
         <Together />
       </div>
-      <div className="bg-[url('/bg/bglandin.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] mt-[-12rem]">
+      <div className="bg-landing bg-no-repeat bg-center bg-[length:120vw_100%] mt-[-12rem]">
         <CarruselDoors />
       </div>
       <div className='pb-[5rem]'>

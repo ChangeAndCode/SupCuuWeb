@@ -13,27 +13,37 @@ const History = () => {
                     height={570}
                     quality={80}
                     loading='lazy'
+                    className='relative z-20'
                 />
             </div>
-            <div className='flex flex-col items-center justify-center'>
-                <p className='font-poppins text-[1.2rem] text-justify w-full md:w-8/12'>
+            <div className=' relative flex flex-col items-center justify-center z-10'>
+                <p className='font-poppins text-[1.2rem] text-justify w-full md:w-8/12 z-10'>
                 Once an emerging settlement near valuable mining in the region, Chihuahua, the city “between two waters,” first evolved into a trade post for cattle and agricultural products. Next she transformed into a manufacturing center. Most recently the city advanced to produce goods such as electronics, automobile parts, textiles and medical products. By the 1990’s Chihuahua had grown to be the third richest city per capita in Mexico.
                 </p>
-                <p className='font-poppins text-[1.2rem] text-justify w-full md:w-8/12'>
+                <p className='font-poppins text-[1.2rem] text-justify w-full md:w-8/12 z-10'>
                 In recent years, the city intentionally strengthened the industrial sector, boosted the economy, and initiated a multitude of diverse programs to invest in the city’s quality of life, education system, business infrastructure and supportive industries. Now attracting official gatherings, business expos, international meetings, and industrial networking opportunities, Chihuahua steadily advances. With its legacy of business families intact, the city, as an international ambassador, now naturally progresses deep into the realm of technology and innovative industries.
                 </p>
+                <Image
+                    src='/logoG.png'
+                    alt='Company Logo'
+                    width={540}
+                    height={540}
+                    quality={80}
+                    loading='lazy'
+                    className='absolute right-[-4rem] xl:right-0 z-0'
+                />
             </div>
             <div className='relative flex flex-col xl:flex-row items-center xl:justify-end mt-[5rem]'>
                 <Image
                     src='/history/mapa.webp'
-                    alt='Company Logo'
+                    alt='mapa'
                     width={670}
                     height={570}
                     quality={80}
                     loading='lazy'
-                    className='xl:absolute 2xl:top-[-2rem] xl:right-[40rem] 2xl:right-[55rem]'
+                    className='xl:absolute 2xl:top-[-2rem] xl:right-[40rem] 2xl:right-[55rem] z-20'
                 />
-                <div className='bg-white md:w-8/12 xl:w-1/2 rounded-3xl xl:rounded-none xl:rounded-l-3xl p-[1rem] md:p-[4rem] lg:p-[7rem]'>
+                <div className='bg-white md:w-8/12 xl:w-1/2 rounded-3xl xl:rounded-none xl:rounded-l-3xl p-[1rem] md:p-[4rem] lg:p-[7rem] z-10'>
                     <p className='font-poppins text-[1.2rem] text-justify xl:w-10/12 2xl:w-8/12'>
                     Chihuahua City is the entrepreneurial center for northern Mexico. The state is the largest exporting state in Mexico to the United States. Between 2014 and 2019, Chihuahua recorded a 61 percent increase in GDP. And the growth continues. In the second quarter of 2023 alone, the state’s exports surpassed $35 billion USD. The City of Chihuahua has also experienced this significant economic growth, with an estimated GDP of $13.9 Billion USD, last measured in 2022. Its projected growth rate continues steadily, between 4 and 6 percent.
                     </p>

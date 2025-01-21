@@ -7,7 +7,7 @@ interface BtnCTProps {
 const BtnCT: React.FC<BtnCTProps> = ({ Text, variant = 'primary' }) => {
   // Estilos basados en la variante
   const variantClasses = {
-    primary: 'bg-ColorPrincipal text-white py-[.7rem] px-[3rem]',
+    primary: 'bg-ColorPrincipal text-white w-full md:w-auto py-[.7rem] md:px-[3rem]',
     secondary: 'bg-[#ff4544] text-white py-[1rem] px-[6rem]',
     outline: 'bg-white text-ColorPrincipal py-[1rem] px-[6rem]',
   };
