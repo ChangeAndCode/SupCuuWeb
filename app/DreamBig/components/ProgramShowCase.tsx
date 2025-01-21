@@ -1,50 +1,88 @@
 import Image from "next/image";
 import React from "react";
-// import Image from "next/image";
+import ProgramShowCaseData from "../data/ProgramShowCaseData";
 // import Link from "next/link";
 // import { useState, useEffect, useRef } from "react";
 
 const ProgramShowCase = () => {
   return (
-    <div>
-      <div className="flex flex-col">
-        <div className="flex w-full border-b-4 border-black pb-5">
-          <div className="flex w-[60%] border-black border-r-4 pr-5">
-            <div className="flex justify-center w-[70%]">
-              <Image
-                src="/CT/primera.webp"
-                alt="Entrepreneur"
-                width={400}
-                height={400}
-              />
-            </div>
-
-            <div className="flex flex-col justify-between items-center w-[30%]">
-              <Image
-                src="/CT/segunda.webp"
-                alt="segunda"
-                width={150}
-                height={150}
-              />
-              <Image
-                src="/CT/tercera.webp"
-                alt="tercera"
-                width={150}
-                height={150}
-              />
-            </div>
-          </div>
-          <div className="flex w-[40%] pl-5 pr-5">
-            <h1>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              eget arcu nisl. Pellentesque aliquet fringilla mauris, at faucibus
-              magna tristique a. Nulla sit amet urna ut purus dignissim mollis
-              et ut lectus. In gravida, leo ac vestibulum commodo, quam diam
-              consectetur justo, eu tempus purus turpis eu nibh. Donec pulvinar
-              scelerisque diam, in pharetra felis accumsan non.
-            </h1>
-          </div>
+    <div className="relative">
+      <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none opacity-10">
+        <div className="absolute text-[180px] font-bold text-black font-PerformanceMark left-[-100px] top-[-100px]">
+          innovation labs
         </div>
+        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-400px] top-[30px]">
+          innovation labs
+        </div>
+        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-200px] top-[160px]">
+          innovation labs
+        </div>
+        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-500px] top-[290px]">
+          innovation labs
+        </div>
+        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-300px] top-[420px]">
+          innovation labs
+        </div>
+        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-700px] top-[550px]">
+          innovation labs
+        </div>
+        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-400px] top-[680px]">
+          innovation labs
+        </div>
+      </div>
+      <div className="relative z-10 flex flex-col">
+        {ProgramShowCaseData.map((program, index) => {
+          const {
+            imageSrc,
+            imageAlt,
+            button1Text,
+            button2Text,
+            color1Text,
+            color2Text,
+            description,
+            width,
+            height,
+          } = program;
+          return (
+            <div
+              key={index}
+              className="flex w-full border-b-2 border-black py-5 h-auto"
+            >
+              <div className="flex w-[60%] border-black border-r-2">
+                <div className="flex justify-center items-center w-[79%] h-40 bg-white">
+                  <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    width={width}
+                    height={height}
+                  />
+                </div>
+
+                <div className="flex flex-col justify-between items-center w-[21%] h-auto px-5">
+                  <button
+                    type="button"
+                    style={{ backgroundColor: color1Text }}
+                    className={`w-36 h-16 font-pragmatica text-white font-bold`}
+                  >
+                    <p className="uppercase text-2xl">{button1Text}</p>
+                  </button>
+                  <button
+                    type="button"
+                    style={{ backgroundColor: color2Text }}
+                    className={`w-36 h-16 font-pragmatica text-white font-bold`}
+                  >
+                    <p className="uppercase text-2xl">{button2Text}</p>
+                  </button>
+                </div>
+              </div>
+              <div className="flex w-[40%] pl-5 pr-5">
+                <h1 className="flex flex-col font-poppins text-2xl">
+                  <span>{description}</span>
+                </h1>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Banner = () => {
   return (
-    <div>
+    <>
       <div className="flex justify-baseline w-full">
         <Image
           src="/CT/primera.webp"
@@ -21,10 +21,10 @@ const Banner = () => {
         />
         <div className="">
           <div className="flex">
-            <h2 className="text-[10rem] text-ColorPrincipal font-PerformanceMark w-3/5 leading-[8rem]">
+            <h2 className="text-[13rem] text-ColorPrincipal font-PerformanceMark w-3/5 leading-[8rem]">
               Dream big,
             </h2>
-            <h2 className="text-[3rem] text-ColorPrincipal font-PerformanceMark w-3/5 leading-[8rem]">
+            <h2 className="absolute top-[280px] right-[-400px] text-[3rem] text-ColorPrincipal font-PerformanceMark w-3/5 leading-[8rem]">
               start small,
             </h2>
           </div>
@@ -38,7 +38,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

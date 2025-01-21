@@ -1,0 +1,67 @@
+const ProgramShowCaseData = [
+  {
+    imageSrc: "/dreamBig/antler.png",
+    imageAlt: "antler",
+    width: 261,
+    height: 63,
+    button1Text: "info",
+    button2Text: "apply",
+    color1Text: "#ED4746",
+    color2Text: "#ED4746",
+    description: [
+      "¿helps early-stage entrepreneurs turn",
+      "ideas into startups by providing",
+      "mentorship, team-building support, and",
+      "seed funding.",
+    ],
+  },
+  {
+    imageSrc: "/dreamBig/founder_institute.png",
+    imageAlt: "founder_institute",
+    width: 494,
+    height: 75,
+    button1Text: "info",
+    button2Text: "apply",
+    color1Text: "#326F36",
+    color2Text: "#87BF4E",
+    description: [
+      "supports pre-seed entrepreneurs with",
+      "programs focused on idea validation,",
+      "team building, and business planning.",
+    ],
+  },
+  {
+    imageSrc: "/dreamBig/ideagist.png",
+    imageAlt: "ideagist",
+    width: 245,
+    height: 123,
+    button1Text: "info",
+    button2Text: "apply",
+    color1Text: "#222220",
+    color2Text: "#ED4746",
+    description: [
+      "offers online incubation for",
+      "entrepreneurs in the ideation stage",
+      "providing guidance, tools, and",
+      "mentorship.",
+    ],
+  },
+  {
+    imageSrc: "/dreamBig/ptotm.png",
+    imageAlt: "parque_tecnologico_orion",
+    width: 452,
+    height: 87,
+    button1Text: "info",
+    button2Text: "apply",
+    color1Text: "#0E3C88",
+    color2Text: "#0E3C88",
+    description: [
+      "¿helps early-stage entrepreneurs turn",
+      "ideas into startups by providing",
+      "mentorship, team-building support, and",
+      "seed funding.",
+    ],
+  },
+];
+
+export default ProgramShowCaseData;

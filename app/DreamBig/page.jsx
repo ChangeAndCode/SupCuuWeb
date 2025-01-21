@@ -11,11 +11,13 @@ import Form from "../form/page";
 
 const pageEvents = () => {
   return (
-    <div className="py-[10rem] px-[7rem]">
-      <Banner />
-      <ProgramShowCase />
-      {/* <CarouselEvents />
-      <Form /> */}
+    <div className="py-[10rem] px-[7rem] bg-[#EDEFF0]">
+      <div className="max-w-[1500px] mx-auto">
+        <Banner />
+        <ProgramShowCase />
+        <CarouselEvents />
+        <Form />
+      </div>
     </div>
   );
 };
