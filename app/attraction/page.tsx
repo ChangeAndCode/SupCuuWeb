@@ -63,13 +63,13 @@ const page = () => {
       <div className='pt-[5rem] md:pt-0'>
         <InnovationEngine />
       </div>
-      <div className="bg-[url('/engineTeam/bghojaengine.webp')] bg-no-repeat bg-center bg-[length:100vw_100%] pt-[10rem] pb-[18rem] relative z-10">
+      <div className="bg-engine bg-no-repeat bg-center bg-cover pt-[10rem] pb-[16rem] mt-[-6rem] md:mt-[-3rem] xl:mt-0 relative z-10">
         <Team />
       </div>
       <div className='bg-ColorPrincipal mt-[-14rem] md:mt-[-9rem] lg:mt-[-8rem] xl:mt-[-12rem] relative z-[1]'>
         <Alwais />
       </div>
-      <div className="bg-[url('/history/bgHistory.webp')] bg-no-repeat bg-center bg-[length:100vw_100%] pt-[20rem] sm:pt-[18rem] md:pt-[16rem] lg:pt-[14rem] xl:pt-[8rem] pb-[25rem] md:pb-[22rem] xl:pb-[17rem] mt-[-19rem] md:mt-[-17rem] lg:mt-[-16rem] xl:mt-[-11rem] relative z-10">
+      <div className="bg-history bg-no-repeat bg-center bg-cover pt-[44rem] sm:pt-[40rem] md:pt-[44rem] lg:pt-[41rem] xl:pt-[28rem] 2xl:pt-[26rem] pb-[55rem] sm:pb-[46rem] md:pb-[50rem] xl:pb-[35rem] mt-[-48rem] sm:mt-[-45rem] lg:mt-[-43rem] xl:mt-[-28rem] relative z-10">
         <History />
       </div>
       <div className='pb-[5rem]'>

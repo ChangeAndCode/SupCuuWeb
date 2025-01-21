@@ -31,7 +31,12 @@ module.exports = {
         'xl': '1280px',
         'xl-md': '1440px',
         '2xl': '1536px',
-      }
+      },
+      backgroundImage: {
+        landing: "url('/Bg/bglandin.webp')",
+        engine: "url('/bg/bgHoja.webp')",
+        history: "url('/Bg/bgNews.webp')",
+      },
     },
   },
   plugins: [],
