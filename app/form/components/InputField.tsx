@@ -15,7 +15,6 @@ const InputField: React.FC<InputFieldProps> = ({
   value,
   onChange,
 }) => {
-  console.log(value);
 
   return (
     <div className="mb-4">
