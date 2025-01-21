@@ -12,10 +12,9 @@ const getApiUrl = () => {
 
 export const sendEmail = async (formData: FormData): Promise<ApiResponse> => {
     const API_URL = getApiUrl();
-
     const emailRequest: EmailRequest = {
         templateName: 'contact-form',
-        to: formData.email || 'default@example.com',
+        to: process.env.NEXT_PUBLIC_CONTACT_FORM_EMAIL || 'default@example.com',
         templateData: {
             name: formData.name,
             email: formData.email,
