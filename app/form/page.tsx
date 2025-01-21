@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import InputField from './components/InputField';
 import { sendEmail } from './lib/emailApi';
@@ -20,6 +20,11 @@ const Notification = dynamic(() => import('./components/Notification'), {
 });
 
 export default function Form() {
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     topicsOfInterest: '',
@@ -67,6 +72,8 @@ export default function Form() {
       }, 3000);
     }
   };
+
+  if (!hydrated) return null;
 
   return (
     <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30">
