@@ -10,13 +10,15 @@ const nextConfig = {
     errorBoundary: false,
   },
   webpack: (config, { dev, isServer }) => {
-    if (dev && !isServer) {
+    if (!dev && !isServer) {
       config.plugins = config.plugins.filter(
-        (plugin) => plugin.constructor.name !== "ReactRefreshWebpackPlugin"
+        (plugin) =>
+          plugin.constructor.name !== 'ReactRefreshWebpackPlugin' &&
+          plugin.constructor.name !== 'ReactDevOverlayPlugin'
       );
     }
     config.resolve.alias['@components'] = path.resolve(process.cwd(), 'components');
-
+  
     return config;
   },
 };
