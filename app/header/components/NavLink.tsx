@@ -1,6 +1,6 @@
-'use client';
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+"use client";
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 interface NavLink {
   href: string;
@@ -10,18 +10,23 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: '/DreamBig', label: 'About Us' },
+  { href: "/DreamBig", label: "About Us" },
   {
-    href: '/Opportunities',
-    label: 'Events & Opportunities',
+    href: "/Opportunities",
+    label: "Events & Opportunities",
     subLinks: [
-      { href: '/attraction', label: 'For Foreigners' },
+      { href: "/attraction", label: "For Foreigners" },
+      { href: "/DreamBig", label: "Dream Big" },
     ],
   },
-  { href: '/attraction', label: 'Startup' },
-  { href: 'https://kumu.io/gedi/chihuahua', label: 'Ecosystem', external: true },
-  { href: '/explore-learn', label: 'Explore & Learn' },
-  { href: '/contact', label: 'Contact' },
+  { href: "/attraction", label: "Startup" },
+  {
+    href: "https://kumu.io/gedi/chihuahua",
+    label: "Ecosystem",
+    external: true,
+  },
+  { href: "/explore-learn", label: "Explore & Learn" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const NavLinks: React.FC = () => {
@@ -43,11 +48,11 @@ const NavLinks: React.FC = () => {
     };
 
     // Agregar el event listener
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     // Limpiar el event listener cuando el componente se desmonte
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -55,8 +60,10 @@ const NavLinks: React.FC = () => {
     <div>
       {/* Botón hamburguesa */}
       <button
+        type="button"
         className="block xl:hidden text-white"
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +76,7 @@ const NavLinks: React.FC = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+            d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
           />
         </svg>
       </button>
@@ -77,10 +84,13 @@ const NavLinks: React.FC = () => {
       {/* Enlaces de navegación */}
       <nav
         className={`${
-          isOpen ? 'block' : 'hidden'
+          isOpen ? "block" : "hidden"
         } xl:block absolute xl:static top-16 left-0 w-full xl:w-auto bg-ColorPrincipal xl:bg-transparent shadow-md xl:shadow-none`}
       >
-        <ul ref={menuRef} className="flex flex-col xl:flex-row space-y-4 xl:space-y-0 xl:space-x-6 p-4 xl:p-0">
+        <ul
+          ref={menuRef}
+          className="flex flex-col xl:flex-row space-y-4 xl:space-y-0 xl:space-x-6 p-4 xl:p-0"
+        >
           {navLinks.map((link) => (
             <li key={link.href} className="relative">
               {/* Opción principal */}
@@ -98,7 +108,7 @@ const NavLinks: React.FC = () => {
                 <button
                   onClick={() => {
                     // Si clickean en "Events & Opportunities", alternar el submenú
-                    if (link.label === 'Events & Opportunities') {
+                    if (link.label === "Events & Opportunities") {
                       toggleSubMenu(link.label);
                     }
                   }}
