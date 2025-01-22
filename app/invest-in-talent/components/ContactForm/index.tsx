@@ -2,7 +2,6 @@
 'use client';
 
 import { useState } from 'react';
-import { TornPaper } from '../TornPaper';
 import type { FormData } from './types';
 
 const FormField = ({
@@ -137,7 +136,6 @@ export const ContactForm = () => {
 
   return (
     <section className="relative bg-blue-600 text-white py-16">
-      <TornPaper position="top" color="white" />
       
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row">

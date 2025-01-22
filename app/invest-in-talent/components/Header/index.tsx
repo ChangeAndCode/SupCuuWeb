@@ -1,4 +1,3 @@
-import { TornPaper } from '../TornPaper';
 
 interface HeaderProps {
   title: string;
