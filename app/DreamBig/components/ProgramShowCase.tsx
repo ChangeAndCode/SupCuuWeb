@@ -57,7 +57,7 @@ const ProgramShowCase = () => {
                     height={height}
                   />
                 </div>
-
+                
                 <div className="flex flex-col justify-between items-center w-[21%] h-auto px-5">
                   <button
                     type="button"
