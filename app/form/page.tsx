@@ -34,10 +34,14 @@ export default function Form() {
     message: string;
   } | null>(null);
 
-  const [isClient, setIsClient] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,6 +81,10 @@ export default function Form() {
 
   const formId = React.useId();
 
+  if (!isLoaded) {
+    return <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30" />;
+  }
+
   return (
     <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30">
       <div className="absolute top-[-4rem] left-[4rem] md:left-[10rem] xl:left-[15rem] 2xl:left-[23rem]">
@@ -99,6 +107,7 @@ export default function Form() {
       <div className="flex flex-col items-center">
         <form onSubmit={handleSubmit} className="space-y-8 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12">
           <InputField 
+            key="name-field"
             label="Name" 
             id="name" 
             value={formData.name} 

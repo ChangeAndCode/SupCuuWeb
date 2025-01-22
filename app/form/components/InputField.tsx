@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import { memo } from 'react';
 
 interface InputFieldProps {
   label: string;
@@ -11,7 +11,7 @@ interface InputFieldProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField: React.FC<InputFieldProps> = ({
+const InputField: React.FC<InputFieldProps> = memo(({
   label,
   id,
   type = 'text',
@@ -31,13 +31,16 @@ const InputField: React.FC<InputFieldProps> = ({
         type={type}
         id={id}
         name={id}
-        value={value || ''}
+        value={value}
         onChange={onChange}
         required={required}
         className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     </div>
   );
-};
+});
+
+// Asignar un displayName para mejorar la depuración
+InputField.displayName = 'InputField';
 
 export default InputField;
