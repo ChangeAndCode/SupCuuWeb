@@ -6,7 +6,7 @@ import { MOCK_PROFILES } from './data/profiles';
 
 const Page = () => {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white pt-16">
       <Header 
         title="INVEST IN TALENT"
         subtitle="GROW YOUR IMPACT"
