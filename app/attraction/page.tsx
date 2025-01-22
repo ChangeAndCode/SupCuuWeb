@@ -13,7 +13,7 @@ import Together from './components/Together'
 import CarruselDoors from './components/CarruselDoors'
 import Possible from './components/Possible'
 import World from './components/World'
-import Form from 'app/form/page'
+import Form from '../form/page'
 
 const page = () => {
   return (

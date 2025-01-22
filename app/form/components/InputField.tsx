@@ -40,7 +40,6 @@ const InputField: React.FC<InputFieldProps> = memo(({
   );
 });
 
-// Asignar un displayName para mejorar la depuración
 InputField.displayName = 'InputField';
 
 export default InputField;
