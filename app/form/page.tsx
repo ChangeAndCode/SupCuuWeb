@@ -1,10 +1,11 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import InputField from './components/InputField';
 import { sendEmail } from './lib/emailApi';
 import type { FormData } from './types/email';
+import React from 'react';
 
 // Dynamic imports with loading states
 const ContactUs = dynamic(() => import('./components/ContacUs'), {
@@ -32,6 +33,12 @@ export default function Form() {
     type: 'success' | 'error';
     message: string;
   } | null>(null);
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -68,6 +75,7 @@ export default function Form() {
     }
   };
 
+  const formId = React.useId();
 
   return (
     <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30">
@@ -92,40 +100,40 @@ export default function Form() {
         <form onSubmit={handleSubmit} className="space-y-8 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12">
           <InputField 
             label="Name" 
-            id="name" 
+            id={`${formId}-name`}
             value={formData.name} 
             onChange={handleChange} 
             required 
-            key="name-field"
+            defaultValue={formData.name}
           />
           
           <InputField 
             label="Topics of Interest" 
-            id="topicsOfInterest" 
+            id={`${formId}-topicsOfInterest`}
             value={formData.topicsOfInterest} 
             onChange={handleChange}
-            key="topics-field"
+            defaultValue=""
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.5rem] md:gap-[3rem]">
             <InputField 
               label="E-mail" 
-              id="email" 
+              id={`${formId}-email`}
               type="email" 
               value={formData.email} 
               onChange={handleChange} 
               required 
-              key="email-field"
+              defaultValue=""
             />
 
             <InputField 
               label="Phone" 
-              id="phone" 
+              id={`${formId}-phone`}
               type="tel" 
               value={formData.phone} 
               onChange={handleChange} 
               required 
-              key="phone-field"
+              defaultValue=""
             />
           </div>
 
