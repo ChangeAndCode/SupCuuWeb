@@ -100,40 +100,36 @@ export default function Form() {
         <form onSubmit={handleSubmit} className="space-y-8 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12">
           <InputField 
             label="Name" 
-            id={`${formId}-name`}
+            id="name" 
             value={formData.name} 
             onChange={handleChange} 
             required 
-            defaultValue={formData.name}
           />
           
           <InputField 
             label="Topics of Interest" 
-            id={`${formId}-topicsOfInterest`}
+            id="topicsOfInterest" 
             value={formData.topicsOfInterest} 
             onChange={handleChange}
-            defaultValue=""
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.5rem] md:gap-[3rem]">
             <InputField 
               label="E-mail" 
-              id={`${formId}-email`}
+              id="email" 
               type="email" 
               value={formData.email} 
               onChange={handleChange} 
               required 
-              defaultValue=""
             />
 
             <InputField 
               label="Phone" 
-              id={`${formId}-phone`}
+              id="phone" 
               type="tel" 
               value={formData.phone} 
               onChange={handleChange} 
               required 
-              defaultValue=""
             />
           </div>
 
