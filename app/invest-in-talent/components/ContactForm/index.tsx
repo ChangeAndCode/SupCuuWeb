@@ -91,7 +91,7 @@ export const ContactForm = () => {
           </h2>
           <p className="text-lg font-poppins text-white">
             LEAVE YOUR DETAILS,<br />
-            AND LET'S CONNECT YOU<br />
+            AND LET&#39;S CONNECT YOU<br />
             WITH A STARTUP THAT MATCHES<br />
             YOUR INTERESTS.
           </p>
@@ -107,7 +107,7 @@ export const ContactForm = () => {
               {isSuccess ? (
                 <div className="bg-green-100 text-green-800 p-6 rounded-lg mb-8">
                   <h3 className="text-lg font-medium mb-2">Thanks for your submission!</h3>
-                  <p>We'll review your information and get back to you soon.</p>
+                  <p>We&#39;ll review your information and get back to you soon.</p>
                   <button
                     onClick={() => setFormState(prev => ({ ...prev, isSuccess: false }))}
                     className="mt-4 bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors"
