@@ -19,7 +19,11 @@ const Together = () => {
             </div>
             <p className='text-[1.2rem] md:text-[2rem] font-poppins uppercase text-justify'>Let&rsquo;s continue the conversation. We have so much more to share with you. Click below and we&rsquo;ll start by sending you an inquiry form, and then a representative from our Startup Chihuahua team will contact you to answer your questions. We can learn more about each other and discover whether Chihuahua and your company together can create the <span className='font-bold'>innovative engine</span> you need to reach your business goals. </p>
             <div className='absolute bottom-[-2rem] left-1/2 transform -translate-x-1/2'>
-                <BtnCT Text='CLICK HERE' variant='secondary' />
+                <BtnCT 
+                  Text='CLICK HERE' 
+                  variant='secondary' 
+                  href="https://creatorapp.zohopublic.com/inndech/ecosistema/form-perma/Organizaciones/7MrY1KSdJG20Xkpd9Vs06hqwjUEUhdVW1bgmS7HERjVCM31UMYVGyQ8R8br7fb6seGWTwb2qF7A2kz6jNBW3BHXJv0P3yYEQj8gf"
+                  />
             </div>
         </div>
           <Image

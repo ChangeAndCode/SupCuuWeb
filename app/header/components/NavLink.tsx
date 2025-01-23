@@ -15,6 +15,7 @@ const navLinks: NavLink[] = [
     subLinks: [{ href: '/attraction', label: 'For Foreigners' }],
   },
   { href: 'https://kumu.io/gedi/chihuahua', label: 'Ecosystem', external: true },
+  { href: 'https://creatorapp.zohopublic.com/inndech/ecosistema/form-perma/Organizaciones/7MrY1KSdJG20Xkpd9Vs06hqwjUEUhdVW1bgmS7HERjVCM31UMYVGyQ8R8br7fb6seGWTwb2qF7A2kz6jNBW3BHXJv0P3yYEQj8gf', label: 'Contact', external: true },
 ];
 
 const NavLinks: React.FC = () => {
