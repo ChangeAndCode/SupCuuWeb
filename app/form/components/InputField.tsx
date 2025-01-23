@@ -20,7 +20,7 @@ const InputField: React.FC<InputFieldProps> = memo(({
   onChange,
 }) => {
   return (
-    <div className="mb-4">
+    <div className="mb-4" suppressHydrationWarning>
       <label
         htmlFor={id}
         className="block text-xl font-pragmatica uppercase text-white mb-2"

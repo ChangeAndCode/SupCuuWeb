@@ -22,7 +22,7 @@ const Together = () => {
                 <BtnCT 
                   Text='CLICK HERE' 
                   variant='secondary' 
-                  href="https://creatorapp.zohopublic.com/inndech/ecosistema/form-perma/Organizaciones/7MrY1KSdJG20Xkpd9Vs06hqwjUEUhdVW1bgmS7HERjVCM31UMYVGyQ8R8br7fb6seGWTwb2qF7A2kz6jNBW3BHXJv0P3yYEQj8gf"
+                  href="https://zcform.com/btnwb"
                   />
             </div>
         </div>

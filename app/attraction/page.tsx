@@ -25,7 +25,7 @@ const page = () => {
               <div className='flex flex-col md:flex-row items-center w-full justify-between md:pr-[2.5rem] mt-[4rem] gap-4'>
                   <BtnCT 
                     Text='INQUIRY' 
-                    href="https://creatorapp.zohopublic.com/inndech/ecosistema/form-perma/Organizaciones/7MrY1KSdJG20Xkpd9Vs06hqwjUEUhdVW1bgmS7HERjVCM31UMYVGyQ8R8br7fb6seGWTwb2qF7A2kz6jNBW3BHXJv0P3yYEQj8gf"
+                    href="https://zcform.com/btnwb"
                   />
                   <BtnCT Text='EXPLORE OPPORTUNITIES' />
               </div>
