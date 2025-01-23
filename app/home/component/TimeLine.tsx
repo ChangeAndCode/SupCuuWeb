@@ -6,14 +6,14 @@ const TimeLine: React.FC = () => {
       <div className="flex justify-center">
         <div className="transform lg:translate-x-0">
           <div className="flex justify-center">
-            <div className="flex flex-col xl:flex-row translate-x-[-10.8rem] sm:translate-x-[-13.9rem] md:translate-x-[-17rem] lg:translate-x-[-16.5rem] xl:translate-x-[1rem] xl:translate-y-[-2.2rem] 2xl:translate-y-[-2.5rem] absolute">
-              <p className="font-poppins text-sm md:text-2xl translate-y-[19.5rem] md:translate-y-[23rem] lg:translate-y-[24rem] xl:translate-y-0 xl:translate-x-[-10.3rem] 2xl:translate-x-[-13.7rem]">
-                2019
-              </p>
-              <p className="font-poppins text-sm md:text-2xl translate-y-[34rem] md:translate-y-[40.5rem] lg:translate-y-[42rem] xl:translate-y-0 xl:translate-x-[7.4rem] 2xl:translate-x-[8.5rem]">
-                2022
-              </p>
-            </div>
+          <div className="flex flex-col xl:flex-row translate-x-[-10.8rem] sm:translate-x-[-13.3rem] md:translate-x-[-17rem] lg:translate-x-[-16.5rem] xl:translate-x-[1rem] xl:translate-y-[-2.2rem] 2xl:translate-y-[-2.5rem] absolute sm-md:translate-y-0">
+            <p className="font-poppins text-sm md:text-2xl translate-y-[19.5rem] md:translate-y-[23rem] lg:translate-y-[24rem] xl:translate-y-0 xl:translate-x-[-10.3rem] 2xl:translate-x-[-13.7rem] sm-md:translate-y-[19.5rem] sm-md:translate-x-0">
+              2019
+            </p>
+            <p className="font-poppins text-sm md:text-2xl translate-y-[34rem] sm:translate-y-[35rem] md:translate-y-[40.5rem] lg:translate-y-[42rem] xl:translate-y-0 xl:translate-x-[7.4rem] 2xl:translate-x-[8.5rem] sm-md:translate-y-[35rem] sm-md:translate-x-0">
+              2022
+            </p>
+          </div>
             <div className="xl:w-[1200px] xl:h-[1100px] 2xl:w-[1500px] 2xl:h-[1400px] absolute">
               <Image
                 src="/barra.webp"
