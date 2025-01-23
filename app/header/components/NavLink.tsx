@@ -10,15 +10,11 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: '/DreamBig', label: 'About Us' },
   {
     label: 'Events & Opportunities',
     subLinks: [{ href: '/attraction', label: 'For Foreigners' }],
   },
-  { href: '/attraction', label: 'Startup' },
   { href: 'https://kumu.io/gedi/chihuahua', label: 'Ecosystem', external: true },
-  { href: '/explore-learn', label: 'Explore & Learn' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 const NavLinks: React.FC = () => {
