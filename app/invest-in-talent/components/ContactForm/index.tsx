@@ -1,235 +1,166 @@
-// app/invest-in-talent/components/ContactForm/index.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { FormField } from './FormField';
 import type { FormData } from './types';
-
-const FormField = ({
-  label,
-  name,
-  type = 'text',
-  value,
-  onChange,
-  required = false,
-  error,
-  disabled
-}: {
-  label: string;
-  name: string;
-  type?: 'text' | 'textarea';
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  required?: boolean;
-  error?: string;
-  disabled?: boolean;
-}) => {
-  const inputClasses = `w-full px-4 py-2 rounded transition-colors
-    ${error ? 'border-2 border-red-500' : 'border border-gray-300'}
-    ${disabled ? 'bg-gray-100' : 'bg-white'}
-    focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900`;
-
-  return (
-    <div className="space-y-2">
-      <label htmlFor={name} className="block font-medium">
-        {label} {required && <span className="text-red-500">*</span>}
-      </label>
-      {type === 'textarea' ? (
-        <textarea
-          id={name}
-          name={name}
-          value={value}
-          onChange={onChange}
-          className={inputClasses}
-          required={required}
-          disabled={disabled}
-          rows={4}
-        />
-      ) : (
-        <input
-          type="text"
-          id={name}
-          name={name}
-          value={value}
-          onChange={onChange}
-          className={inputClasses}
-          required={required}
-          disabled={disabled}
-        />
-      )}
-      {error && <p className="text-red-500 text-sm" role="alert">{error}</p>}
-    </div>
-  );
-};
+import Image from 'next/image';
+import { TornPaper } from '../TornPaper';
 
 export const ContactForm = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    specialization: '',
-    experience: '',
-    interests: ''
+  const [mounted, setMounted] = useState(false);
+  const [formState, setFormState] = useState({
+    data: {
+      name: '',
+      specialization: '',
+      experience: '',
+      interests: ''
+    },
+    errors: {} as Partial<FormData>,
+    isLoading: false,
+    isSuccess: false,
+    submitError: null as string | null
   });
-  const [errors, setErrors] = useState<Partial<FormData>>({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const validateForm = (): boolean => {
-    const newErrors: Partial<FormData> = {};
-    
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-    if (!formData.specialization.trim()) {
-      newErrors.specialization = 'Area of specialization is required';
-    }
-    if (!formData.experience.trim()) {
-      newErrors.experience = 'Experience details are required';
-    }
-    if (!formData.interests.trim()) {
-      newErrors.interests = 'Interests are required';
-    }
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  if (!mounted) return null;
+
+  const { data: formData, errors, isLoading, isSuccess, submitError } = formState;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!validateForm()) return;
-    
-    setIsLoading(true);
-    setSubmitError(null);
-    setIsSuccess(false);
+    const newErrors: Partial<FormData> = {};
+    Object.entries(formData).forEach(([key, value]) => {
+      if (!value.trim()) {
+        newErrors[key as keyof FormData] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
+      }
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setFormState(prev => ({ ...prev, errors: newErrors }));
+      return;
+    }
+
+    setFormState(prev => ({ 
+      ...prev, 
+      isLoading: true, 
+      submitError: null, 
+      isSuccess: false 
+    }));
     
     try {
-      // Here you would typically call your API endpoint
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API call
-      setIsSuccess(true);
-      setFormData({
-        name: '',
-        specialization: '',
-        experience: '',
-        interests: ''
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
+      
+      if (!response.ok) throw new Error('Submission failed');
+      setFormState(prev => ({
+        ...prev,
+        isSuccess: true,
+        data: { name: '', specialization: '', experience: '', interests: '' }
+      }));
     } catch (error) {
-      setSubmitError('An error occurred while submitting the form. Please try again.');
+      setFormState(prev => ({
+        ...prev,
+        submitError: 'An error occurred while submitting the form. Please try again.'
+      }));
     } finally {
-      setIsLoading(false);
+      setFormState(prev => ({ ...prev, isLoading: false }));
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormState(prev => ({
       ...prev,
-      [name]: value
+      data: { ...prev.data, [name]: value },
+      errors: { ...prev.errors, [name]: undefined }
     }));
-    // Clear error when user starts typing
-    if (errors[name as keyof FormData]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: undefined
-      }));
-    }
   };
 
   return (
-    <section className="relative bg-blue-600 text-white py-16">
-      
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row">
-          <div className="lg:w-2/3 lg:pr-16">
-            <h2 className="text-3xl font-bold mb-4 handwritten">
-              READY TO BE PART OF THE NEXT SUCCESS STORY?
-            </h2>
-            <p className="mb-8 text-lg">
-              LEAVE YOUR DETAILS,<br />
-              AND LET'S CONNECT YOU<br />
-              WITH A STARTUP THAT MATCHES<br />
-              YOUR INTERESTS.
-            </p>
-            
-            {isSuccess ? (
-              <div className="bg-green-100 text-green-800 p-6 rounded-lg mb-8">
-                <h3 className="text-lg font-medium mb-2">Thanks for your submission!</h3>
-                <p>We'll review your information and get back to you soon.</p>
-                <button
-                  onClick={() => setIsSuccess(false)}
-                  className="mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 transition-colors"
-                >
-                  Submit another response
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <FormField
-                  label="Name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  error={errors.name}
-                  disabled={isLoading}
-                />
+    <section className="relative bg-white -mt-8">
+      <div className="bg-[url('/Bg/bgWeAre.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] pt-16 pb-24 px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative z-20">
+        <div className="container mx-auto">
+          <h2 className="text-[clamp(2rem,5vw,4rem)] leading-tight font-PerformanceMark text-white mb-6">
+            READY TO BE PART OF THE<br />NEXT SUCCESS STORY?
+          </h2>
+          <p className="text-lg font-poppins text-white">
+            LEAVE YOUR DETAILS,<br />
+            AND LET'S CONNECT YOU<br />
+            WITH A STARTUP THAT MATCHES<br />
+            YOUR INTERESTS.
+          </p>
+        </div>
+      </div>
 
-                <FormField
-                  label="Area of Specialization"
-                  name="specialization"
-                  value={formData.specialization}
-                  onChange={handleChange}
-                  required
-                  error={errors.specialization}
-                  disabled={isLoading}
-                />
+      <TornPaper position="top" color="white" className="z-10" />
 
-                <FormField
-                  label="Experience Details"
-                  name="experience"
-                  type="textarea"
-                  value={formData.experience}
-                  onChange={handleChange}
-                  required
-                  error={errors.experience}
-                  disabled={isLoading}
-                />
-
-                <FormField
-                  label="Interests"
-                  name="interests"
-                  type="textarea"
-                  value={formData.interests}
-                  onChange={handleChange}
-                  required
-                  error={errors.interests}
-                  disabled={isLoading}
-                />
-
-                {submitError && (
-                  <div className="bg-red-100 text-red-600 p-4 rounded" role="alert">
-                    {submitError}
-                  </div>
-                )}
-
-                <div>
+      <div className="bg-white">
+        <div className="container mx-auto px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem]">
+          <div className="flex flex-col lg:flex-row">
+            <div className="lg:w-2/3">
+              {isSuccess ? (
+                <div className="bg-green-100 text-green-800 p-6 rounded-lg mb-8">
+                  <h3 className="text-lg font-medium mb-2">Thanks for your submission!</h3>
+                  <p>We'll review your information and get back to you soon.</p>
                   <button
-                    type="submit"
-                    className="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={isLoading}
+                    onClick={() => setFormState(prev => ({ ...prev, isSuccess: false }))}
+                    className="mt-4 bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors"
                   >
-                    {isLoading ? 'Submitting...' : 'Submit'}
+                    Submit another response
                   </button>
                 </div>
-              </form>
-            )}
-          </div>
-          
-          <div className="lg:w-1/3 relative mt-8 lg:mt-0">
-            <img 
-              src="/api/placeholder/300/400" 
-              alt="Decorative horse" 
-              className="lg:absolute lg:bottom-0 lg:right-0"
-            />
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {Object.entries(formData).map(([name, value]) => (
+                    <FormField
+                      key={name}
+                      label={name.charAt(0).toUpperCase() + name.slice(1)}
+                      name={name}
+                      type={name === 'experience' || name === 'interests' ? 'textarea' : 'text'}
+                      value={value}
+                      onChange={handleChange}
+                      required
+                      error={errors[name as keyof FormData]}
+                      disabled={isLoading}
+                    />
+                  ))}
+
+                  {submitError && (
+                    <div className="bg-red-100 text-red-600 p-4 rounded-lg" role="alert">
+                      {submitError}
+                    </div>
+                  )}
+
+                  <div>
+                    <button
+                      type="submit"
+                      className="bg-ColorPrincipal text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? 'Submitting...' : 'Submit'}
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+            
+            <div className="lg:w-1/3 relative">
+              <div className="relative w-full h-[400px]">
+                <Image 
+                  src="/horse.webp"
+                  alt="Decorative horse"
+                  fill
+                  className="object-contain lg:object-right-bottom"
+                  priority
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
