@@ -66,7 +66,7 @@ const page = () => {
       <div className='pt-[5rem] md:pt-0'>
         <InnovationEngine />
       </div>
-      <div className="bg-engine bg-no-repeat bg-center bg-cover pt-[10rem] pb-[16rem] mt-[-6rem] md:mt-[-3rem] xl:mt-0 relative z-10 pointer-events-none">
+      <div className="bg-[url('/Bg/bgHoja.webp')] bg-no-repeat bg-center bg-cover pt-[10rem] pb-[16rem] mt-[-6rem] md:mt-[-3rem] xl:mt-0 relative z-10 pointer-events-none">
         <Team />
       </div>
       <div className='bg-ColorPrincipal mt-[-14rem] md:mt-[-9rem] lg:mt-[-8rem] xl:mt-[-12rem] relative z-[1]'>
