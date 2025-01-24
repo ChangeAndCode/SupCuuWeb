@@ -49,7 +49,7 @@ const MeetTeam: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex justify-center mt-[-17rem] px-0 md:px-[3rem] lg:px-[4rem] xl:px-[8rem] 2xl:px-[5rem] mb-[-40rem] md:mb-[-38rem] lg:mb-[-30rem] xl:mb-[-24rem] 2xl:mb-[-27rem] relative z-20">
+      <div className="flex justify-center mt-[-17rem] px-0 md:px-[3rem] lg:px-[4rem] xl:px-[8rem] 2xl:px-[5rem] mb-[-40rem] md:mb-[-38rem] lg:mb-[-30rem] xl:mb-[-24rem] 2xl:mb-[-35rem] relative z-20">
         <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           <Image
             src="/Team/team1.webp"
@@ -123,7 +123,7 @@ const MeetTeam: React.FC = () => {
           />
         </div>
       </div>
-      <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.webp')] bg-no-repeat bg-center bg-cover z-10 pb-[15rem] md:pb-[15rem] lg:pb-[30rem] pt-[40rem] md:pt-[28rem] xl:py-[45rem]">
+      <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.webp')] bg-no-repeat bg-center bg-cover z-10 pb-[15rem] md:pb-[15rem] lg:pb-[30rem] pt-[40rem] md:pt-[28rem] xl:py-[50rem]">
         <div className="flex flex-col-reverse justify-center items-center xl:flex-row px-[2rem] xl:px-0">
           <div className="bg-white w-full xl:w-[60rem] px-[2rem] xl:px-[5rem] py-[3rem] xl:py-[3.5rem] rounded-[4rem] xl:translate-x-[-6rem]">
             <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.7rem] font-pragmatica uppercase leading-[2rem] md:leading-[5rem]">
