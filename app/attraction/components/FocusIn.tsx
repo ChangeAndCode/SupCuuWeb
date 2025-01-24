@@ -11,10 +11,10 @@ const FocusIn = () => {
                 height={670}
                 quality={80}
                 loading='lazy'
-                className="2xl:mt-[-7rem]"
+                className="xl:mb-[20rem] xl-md:mb-[10rem]"
             />
         </div>
-        <div className="px-[1rem] md:px-[3rem] xl:px-[5rem] 2xl:px-[20rem] mt-[9rem] md:mt-[9rem] lg:mt-[7rem] xl:mt-[-17rem]">
+        <div className="px-[1rem] md:px-[3rem] xl:px-[5rem] 2xl:px-[14rem] mt-[9rem] md:mt-[9rem] lg:mt-[7rem] xl:mt-[-17rem]">
             <div className='relative'>
                 <div className='flex items-center relative w-full md:w-[1500px]'>
                         <Image
@@ -24,7 +24,7 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[16.5rem] z-20'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[16.5rem] z-20'
                         />
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl md:h-[6rem] md:w-[5rem]'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>1</p>
@@ -65,7 +65,7 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[12rem] z-20'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[12rem] z-20'
                         />
                         <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl md:h-[6rem] md:w-[5rem] z-10'>
                             <p className='text-white font-pragmatica text-[3rem] hidden md:block'>2</p>
@@ -92,7 +92,7 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[16.5rem] z-20'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[16.5rem] z-20'
                         />
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem] z-10'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>3</p>
@@ -135,7 +135,7 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[12rem]'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[12rem]'
                         />
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[6rem]'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>4</p>
@@ -163,7 +163,7 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[16.5rem] z-20'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[16.5rem] z-20'
                         />
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem] z-10'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>5</p>
@@ -213,7 +213,7 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[12rem]'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[12rem]'
                         />
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem]'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>6</p>
