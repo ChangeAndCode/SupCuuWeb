@@ -1,79 +1,46 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type ChangeEvent } from 'react';
 import { FormField } from './FormField';
 import type { FormData } from './types';
 import Image from 'next/image';
 import { TornPaper } from '../TornPaper';
 
 export const ContactForm = () => {
-  const [mounted, setMounted] = useState(false);
-  const [formState, setFormState] = useState({
+  // Initialize all state as undefined for proper hydration
+  const [mounted, setMounted] = useState<boolean>(false);
+  const [formState, setFormState] = useState<{
+    data: FormData;
+    errors: Partial<FormData>;
+    isLoading: boolean;
+    isSuccess: boolean;
+    submitError: string | null;
+  }>(() => ({
     data: {
       name: '',
       specialization: '',
-      experience: '',
-      interests: ''
+      topics: '',
+      email: '',
+      phone: ''
     },
-    errors: {} as Partial<FormData>,
+    errors: {},
     isLoading: false,
     isSuccess: false,
-    submitError: null as string | null
-  });
+    submitError: null
+  }));
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  // Return null on server-side and first render
+  if (!mounted) {
+    return null;
+  }
 
   const { data: formData, errors, isLoading, isSuccess, submitError } = formState;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const newErrors: Partial<FormData> = {};
-    Object.entries(formData).forEach(([key, value]) => {
-      if (!value.trim()) {
-        newErrors[key as keyof FormData] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
-      }
-    });
-
-    if (Object.keys(newErrors).length > 0) {
-      setFormState(prev => ({ ...prev, errors: newErrors }));
-      return;
-    }
-
-    setFormState(prev => ({ 
-      ...prev, 
-      isLoading: true, 
-      submitError: null, 
-      isSuccess: false 
-    }));
-    
-    try {
-      const response = await fetch('/api/submit-form', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      
-      if (!response.ok) throw new Error('Submission failed');
-      setFormState(prev => ({
-        ...prev,
-        isSuccess: true,
-        data: { name: '', specialization: '', experience: '', interests: '' }
-      }));
-    } catch (error) {
-      setFormState(prev => ({
-        ...prev,
-        submitError: 'An error occurred while submitting the form. Please try again.'
-      }));
-    } finally {
-      setFormState(prev => ({ ...prev, isLoading: false }));
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormState(prev => ({
       ...prev,
@@ -91,7 +58,7 @@ export const ContactForm = () => {
           </h2>
           <p className="text-lg font-poppins text-white">
             LEAVE YOUR DETAILS,<br />
-            AND LET&#39;S CONNECT YOU<br />
+            AND LET&apos;S CONNECT YOU<br />
             WITH A STARTUP THAT MATCHES<br />
             YOUR INTERESTS.
           </p>
@@ -104,50 +71,78 @@ export const ContactForm = () => {
         <div className="container mx-auto px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem]">
           <div className="flex flex-col lg:flex-row">
             <div className="lg:w-2/3">
-              {isSuccess ? (
-                <div className="bg-green-100 text-green-800 p-6 rounded-lg mb-8">
-                  <h3 className="text-lg font-medium mb-2">Thanks for your submission!</h3>
-                  <p>We&#39;ll review your information and get back to you soon.</p>
-                  <button
-                    onClick={() => setFormState(prev => ({ ...prev, isSuccess: false }))}
-                    className="mt-4 bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors"
-                  >
-                    Submit another response
-                  </button>
+              <form className="space-y-8">
+                <FormField
+                  label="Name"
+                  name="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  error={errors.name}
+                  disabled={isLoading}
+                />
+
+                <FormField
+                  label="Areas of Specialization"
+                  name="specialization"
+                  type="select"
+                  value={formData.specialization}
+                  onChange={handleChange}
+                  required
+                  error={errors.specialization}
+                  disabled={isLoading}
+                />
+
+                <FormField
+                  label="Topics I want to stay updated on"
+                  name="topics"
+                  type="select"
+                  value={formData.topics}
+                  onChange={handleChange}
+                  required
+                  error={errors.topics}
+                  disabled={isLoading}
+                />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    label="E-mail"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    error={errors.email}
+                    disabled={isLoading}
+                  />
+
+                  <FormField
+                    label="Phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    error={errors.phone}
+                    disabled={isLoading}
+                  />
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {Object.entries(formData).map(([name, value]) => (
-                    <FormField
-                      key={name}
-                      label={name.charAt(0).toUpperCase() + name.slice(1)}
-                      name={name}
-                      type={name === 'experience' || name === 'interests' ? 'textarea' : 'text'}
-                      value={value}
-                      onChange={handleChange}
-                      required
-                      error={errors[name as keyof FormData]}
-                      disabled={isLoading}
-                    />
-                  ))}
 
-                  {submitError && (
-                    <div className="bg-red-100 text-red-600 p-4 rounded-lg" role="alert">
-                      {submitError}
-                    </div>
-                  )}
-
-                  <div>
-                    <button
-                      type="submit"
-                      className="bg-ColorPrincipal text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                      disabled={isLoading}
-                    >
-                      {isLoading ? 'Submitting...' : 'Submit'}
-                    </button>
+                {submitError && (
+                  <div className="bg-red-100 text-red-600 p-4 rounded-2xl font-pragmatica" role="alert">
+                    {submitError}
                   </div>
-                </form>
-              )}
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-ColorPrincipal text-white font-pragmatica uppercase rounded-2xl py-4 hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? 'Submitting...' : 'Submit'}
+                </button>
+              </form>
             </div>
             
             <div className="lg:w-1/3 relative">
