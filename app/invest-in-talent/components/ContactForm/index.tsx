@@ -67,7 +67,7 @@ export const ContactForm = () => {
 
       <TornPaper position="top" color="white" className="z-10" />
 
-      <div className="bg-white">
+      <div className="bg-white pb-16">
         <div className="container mx-auto px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem]">
           <div className="flex flex-col lg:flex-row">
             <div className="lg:w-2/3">
@@ -101,7 +101,6 @@ export const ContactForm = () => {
                   value={formData.topics}
                   onChange={handleChange}
                   required
-                  error={errors.topics}
                   disabled={isLoading}
                 />
 
@@ -145,7 +144,7 @@ export const ContactForm = () => {
               </form>
             </div>
             
-            <div className="lg:w-1/3 relative">
+            <div className="hidden lg:block lg:w-1/3 relative">
               <div className="relative w-full h-[400px]">
                 <Image 
                   src="/horse.webp"
