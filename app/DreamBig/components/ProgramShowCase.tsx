@@ -35,9 +35,9 @@ const ProgramShowCase = () => {
       relative 
       z-10 
       flex 
-      flex-col 
-      max-md:items-center 
-      max-lg:items-center"
+      flex-col
+      sm:items-center
+      "
       >
         {ProgramShowCaseData.map((program, index) => {
           const {
@@ -56,8 +56,10 @@ const ProgramShowCase = () => {
               key={index}
               className="
               flex
-              max-md:flex-col 
-              max-lg:flex-col lg:mx-5 
+              max-sm:flex-col
+              md:flex-col 
+              lg:flex-col lg:mx-5
+              xl:flex-row
               w-full 
               border-b-2 
               border-black 
@@ -70,11 +72,14 @@ const ProgramShowCase = () => {
               <div
                 className="
                 flex
-                max-md:flex-col max-md:border-r-0 max-md:w-full
-                max-lg:flex-col max-lg:border-r-0 max-lg:w-full
+                sm:border-r-0
+                max-md:flex-col md:border-r-0 max-md:w-full
+                max-lg:flex-col lg:border-r-0 max-lg:w-full
+                lg:flex-col lg:w-full lg:items-center
+                xl:flex-row
+                xl:border-r-2
                 xl:w-[60%]
               border-black 
-                border-r-2
               "
               >
                 <div
@@ -82,7 +87,7 @@ const ProgramShowCase = () => {
                 flex
                 sm: mb-5
                 max-md:w-full md:mb-0
-                max-lg:w-full lg:mb-0
+                max-lg:w-full lg:w-full lg:mb-0
                 justify-center 
                 items-center 
                 w-[79%] 
@@ -100,14 +105,14 @@ const ProgramShowCase = () => {
                 <div
                   className="
                   flex 
-                  flex-col
-                  max-md:flex-row max-md:w-full max-md:px-0
+                  max-md:flex-row max-md:w-full max-md:px-0 md:my-5
                   max-lg:flex-row max-lg:w-full max-lg:px-0
+                  lg:flex-row lg:w-full lg:px-0
+                  xl:flex-col xl:my-0 xl:w-[21%] xl:h-40
                   justify-between 
                   items-center 
-                  w-[21%] 
                   h-auto 
-                  px-5
+                  xl:px-5
                 "
                 >
                   <button
@@ -130,10 +135,12 @@ const ProgramShowCase = () => {
                 className="
                 flex
                 max-sm:px-0
-                max-md:w-full max-md:px-0
-                max-lg:w-full max-lg:px-0
-                w-[40%]
-                px-5
+                max-sm:w-full
+                sm:w-full
+                md:w-full max-md:px-0
+                lg:w-full max-lg:px-0 lg:px-0
+                xl:w-[40%]
+                xl:px-5
                 sm: mt-5
                 md:mt-0
                 "
@@ -143,9 +150,11 @@ const ProgramShowCase = () => {
                   flex 
                   flex-col 
                   font-poppins 
-                  text-2xl"
+                  text-2xl
+                  xl:h-40
+                  "
                 >
-                  <span>{description}</span>
+                  {description}
                 </h1>
               </div>
             </div>
