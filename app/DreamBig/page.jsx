@@ -14,15 +14,17 @@ const pageEvents = () => {
     <>
       <div
         className="
-        max-sm:py-20 max-md:py-24 max-lg:py-36 max-xl:py-20 max-2xl:py-24 
-        max-sm:px-10 max-md:px-20 max-lg:px-28 max-xl:px-16 max-2xl:px-20 
+        max-sm:py-20 max-md:py-24 max-lg:py-36
+        max-sm:px-10 max-md:px-20 max-lg:px-28 
         bg-[#EDEFF0]"
       >
-        <div className="max-w-[1500px] mx-auto">
+        <div className="max-w-[1500px] mx-auto lg:mb-52">
           <Banner />
-          <ProgramShowCase />
-          <CarouselEvents />
         </div>
+        <div className="max-w-[1500px] mx-auto">
+          <ProgramShowCase />
+        </div>
+        <div className="max-w-[1500px] mx-auto">{/* <CarouselEvents /> */}</div>
       </div>
       <Form />
     </>
