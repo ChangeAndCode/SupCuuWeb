@@ -19,12 +19,11 @@ const Page = () => {
         }}
       />
 
-<div className="relative">
-  <ProfileCarousel profiles={MOCK_PROFILES} />
-  <div className="top-0 z-10">
-  <ContactForm />
-  </div>
-</div>
+      <div className="relative">
+        <ProfileCarousel profiles={MOCK_PROFILES} />
+        <ContactForm />
+      </div>
+
       <footer className="relative bg-ColorPrincipal rounded-t-7xl px-8 py-16">
         <div className="absolute top-[-4rem] left-16 md:left-40">
           <Image

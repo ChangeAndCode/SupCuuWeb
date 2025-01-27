@@ -48,28 +48,34 @@ export const ContactForm = () => {
   };
 
   return (
-    <section className="relative bg-transparent -mt-20 -top-40">
-      {/* Wrapper to constrain width and hide overflow */}
+    <section className="relative bg-transparent -mt-40 -top-40">
       <div className="max-w-[100vw] w-full relative">
-        <div className="bg-[url('/Bg/bgWeAre.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] pt-24 pb-64 px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative">
-          <div className="container mx-auto my-20">
-            <h2 className="text-[clamp(2rem,5vw,4rem)] leading-tight font-PerformanceMark text-white mb-6 whitespace-pre-line">
-              {CONTACT_FORM_CONTENT.header.title}
-            </h2>
-            <p className="text-xl font-bold font-poppins text-white leading-relaxed whitespace-pre-line mb-20">
-              {CONTACT_FORM_CONTENT.header.subtitle}
-            </p>
+        <div className="bg-[url('/Bg/bgWeAre.webp')] bg-no-repeat bg-center bg-[length:120vw_85%] pt-24 pb-64 px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative">
+          <div className="container mx-auto my-20 pt-20">
+            {/* Title with more generous width */}
+            <div className="w-full md:w-[95%] lg:w-[85%] xl:w-[75%] 2xl:w-[70%]">
+              <h2 className="text-[clamp(3rem,7vw,5.5rem)] leading-tight font-PerformanceMark text-white mb-4 whitespace-pre-line">
+                {CONTACT_FORM_CONTENT.header.title}
+              </h2>
+            </div>
+            
+            {/* Subtitle with more constrained width */}
+            <div className="w-full md:w-[90%] lg:w-[70%] xl:w-[55%] 2xl:w-[45%]">
+              <p className="text-xl md:text-2xl font-bold font-poppins text-white/90 leading-relaxed whitespace-pre-line mb-20">
+                {CONTACT_FORM_CONTENT.header.subtitle}
+              </p>
+            </div>
           </div>
           
-          {/* Horse image with fixed width container */}
-          <div className="hidden lg:block absolute right-0 bottom-[-50%] w-[65%] max-w-[1080px] h-[140%] z-20 overflow-hidden">
-            <div className="relative w-full h-full -right-20">
+          {/* Horse image - adjusted position and responsive behavior */}
+          <div className="hidden md:block absolute right-0 bottom-[-60%] w-[65%] max-w-[1080px] h-[140%] z-20 overflow-hidden">
+            <div className="relative w-full h-full -right-40">
               <Image 
                 src="/invest-in-talent/JuanH.webp"
                 alt="Decorative horse"
                 fill
                 className="object-contain"
-                style={{ transform: 'scale(1.1)' }}
+                style={{ transform: 'scale(0.95)' }}
                 priority
               />
             </div>
@@ -79,7 +85,7 @@ export const ContactForm = () => {
         <div className="relative -mt-16 pb-16">
           <div className="container mx-auto px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative">
             <div className="relative z-0">
-              <div className="lg:w-2/3">
+              <div className="lg:w-3/4">
                 <form className="space-y-8">
                   <FormField
                     label={CONTACT_FORM_CONTENT.fields.name}
