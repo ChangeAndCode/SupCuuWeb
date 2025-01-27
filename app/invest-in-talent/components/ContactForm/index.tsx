@@ -50,9 +50,9 @@ export const ContactForm = () => {
   };
 
   return (
-    <section className="relative bg-white -mt-8">
-      <div className="bg-[url('/Bg/bgWeAre.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] pt-16 pb-24 px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative z-20">
-        <div className="container mx-auto">
+    <section className="relative bg-transparent -mt-20 -top-40">
+      <div className="bg-[url('/Bg/bgWeAre.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] pt-24 pb-24 px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative top-0">
+        <div className="container mx-auto my-20">
           <h2 className="text-[clamp(2rem,5vw,4rem)] leading-tight font-PerformanceMark text-white mb-6">
             READY TO BE PART OF THE<br />NEXT SUCCESS STORY?
           </h2>
@@ -64,8 +64,6 @@ export const ContactForm = () => {
           </p>
         </div>
       </div>
-
-      <TornPaper position="top" color="white" className="z-10" />
 
       <div className="bg-white pb-16">
         <div className="container mx-auto px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem]">

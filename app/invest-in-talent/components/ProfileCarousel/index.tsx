@@ -22,8 +22,8 @@ const ProfileDisplay = React.memo(({
       }`}
     >
       <div className="bg-white rounded-3xl shadow-lg p-8 mx-4 relative">
-        {/* Name Overlay */}
-        <div className="absolute top-4 left-8 right-8 z-10">
+        {/* Name and Role Section */}
+        <div className="absolute top-0 left-8 right-8 z-10">
           <h3 className="font-PerformanceMark text-blue-600 text-[10rem] leading-none">
             {profile.name.split(' ').map((part, index) => (
               <React.Fragment key={`${id}-name-${index}`}>
@@ -32,13 +32,20 @@ const ProfileDisplay = React.memo(({
               </React.Fragment>
             ))}
           </h3>
+          <div className="space-y-1">
+            <p className="text-sm font-pragmatica text-gray-600">
+              {profile.role}
+            </p>
+            <p className="font-pragmatica text-blue-600 text-sm">
+              OF {profile.company}
+            </p>
+          </div>
         </div>
 
         {/* Content Grid */}
         <div className="grid grid-cols-2 gap-8">
-          {/* Left Column - Photo and Role */}
-          <div className="flex flex-col items-start space-y-4 z-20 pt-32">
-            <div className="w-full aspect-square relative rounded-lg overflow-hidden">
+          {/* Left Column - Photo */}
+          <div className="w-full aspect-square relative rounded-lg overflow-hidden z-20 mt-32 ms-10">
               <Image
                 src={profile.image.src}
                 alt={profile.image.alt}
@@ -47,15 +54,6 @@ const ProfileDisplay = React.memo(({
                 priority
               />
             </div>
-            <div className="space-y-1">
-              <p className="text-sm font-pragmatica text-gray-600">
-                {profile.role}
-              </p>
-              <p className="font-pragmatica text-blue-600 text-sm">
-                OF {profile.company}
-              </p>
-            </div>
-          </div>
 
           {/* Right Column - Description */}
           <div className="relative h-full">
@@ -63,10 +61,10 @@ const ProfileDisplay = React.memo(({
               <p className="font-pragmatica text-right p-4 rounded">
                 {profile.description.paragraph1}
               </p>
-              <p className="font-pragmatica text-right p-4 rounded mt-36">
+              <p className="font-pragmatica text-right p-4 rounded mt-32">
                 {profile.description.paragraph2}
               </p>
-              <p className="font-pragmatica text-right p-4 rounded">
+              <p className="font-pragmatica text-right rounded">
                 {profile.description.paragraph3}
               </p>
             </div>
@@ -127,9 +125,9 @@ export const ProfileCarousel = ({ profiles }: { profiles: Profile[] }) => {
 
   return (
     <section className="relative py-16">
-      <div className="bg-[url('/bg/bglandin.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] absolute inset-0" />
-      <div className="container mx-auto px-4 relative">
-        <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm min-h-[500px] relative overflow-hidden">
+      <div className="bg-[url('/bg/bglandin.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] absolute inset-0 z-0" />
+      <div className="container mx-auto px-4 py-20 relative">
+        <div className="max-w-4xl mx-auto my-20 bg-white/95 backdrop-blur-sm min-h-[500px] relative overflow-hidden">
           <NavButton 
             direction="prev"
             onClick={() => handleTransition('prev')}
