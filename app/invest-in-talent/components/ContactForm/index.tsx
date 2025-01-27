@@ -4,6 +4,7 @@ import { useState, useEffect, type ChangeEvent } from 'react';
 import { FormField } from './FormField';
 import type { FormData } from './types';
 import Image from 'next/image';
+import { CONTACT_FORM_CONTENT } from './constants';
 
 export const ContactForm = () => {
   const [mounted, setMounted] = useState<boolean>(false);
@@ -48,25 +49,19 @@ export const ContactForm = () => {
 
   return (
     <section className="relative bg-transparent -mt-20 -top-40">
-      {/* Hero section with blue background */}
       <div className="bg-[url('/Bg/bgWeAre.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] pt-24 pb-24 px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative">
         <div className="container mx-auto my-20">
-          <h2 className="text-[clamp(2rem,5vw,4rem)] leading-tight font-PerformanceMark text-white mb-6">
-            READY TO BE PART OF THE<br />NEXT SUCCESS STORY?
+          <h2 className="text-[clamp(2rem,5vw,4rem)] leading-tight font-PerformanceMark text-white mb-6 whitespace-pre-line">
+            {CONTACT_FORM_CONTENT.header.title}
           </h2>
-          <p className="text-lg font-poppins text-white">
-            LEAVE YOUR DETAILS,<br />
-            AND LET&apos;S CONNECT YOU<br />
-            WITH A STARTUP THAT MATCHES<br />
-            YOUR INTERESTS.
+          <p className="text-2xl font-bold font-poppins text-white leading-relaxed whitespace-pre-line">
+            {CONTACT_FORM_CONTENT.header.subtitle}
           </p>
         </div>
       </div>
 
-      {/* Form section */}
       <div className="relative pb-16">
         <div className="container mx-auto px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative">
-          {/* Horse Image - Absolutely positioned with larger size */}
           <div className="hidden lg:block absolute right-[-10%] top-[-65%] w-[60%] h-[140%] z-10 pointer-events-none">
             <Image 
               src="/invest-in-talent/JuanH.webp"
@@ -78,12 +73,11 @@ export const ContactForm = () => {
             />
           </div>
 
-          {/* Form Content */}
           <div className="relative z-0">
             <div className="lg:w-2/3">
               <form className="space-y-8">
                 <FormField
-                  label="Name"
+                  label={CONTACT_FORM_CONTENT.fields.name}
                   name="name"
                   type="text"
                   value={formData.name}
@@ -94,7 +88,7 @@ export const ContactForm = () => {
                 />
 
                 <FormField
-                  label="Areas of Specialization"
+                  label={CONTACT_FORM_CONTENT.fields.specialization}
                   name="specialization"
                   type="select"
                   value={formData.specialization}
@@ -105,7 +99,7 @@ export const ContactForm = () => {
                 />
 
                 <FormField
-                  label="Topics I want to stay updated on"
+                  label={CONTACT_FORM_CONTENT.fields.topics}
                   name="topics"
                   type="select"
                   value={formData.topics}
@@ -116,7 +110,7 @@ export const ContactForm = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
-                    label="E-mail"
+                    label={CONTACT_FORM_CONTENT.fields.email}
                     name="email"
                     type="email"
                     value={formData.email}
@@ -127,7 +121,7 @@ export const ContactForm = () => {
                   />
 
                   <FormField
-                    label="Phone"
+                    label={CONTACT_FORM_CONTENT.fields.phone}
                     name="phone"
                     type="tel"
                     value={formData.phone}
@@ -149,7 +143,7 @@ export const ContactForm = () => {
                   disabled={isLoading}
                   className="w-full bg-ColorPrincipal text-white font-pragmatica uppercase rounded-2xl py-4 hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isLoading ? 'Submitting...' : 'Submit'}
+                  {isLoading ? CONTACT_FORM_CONTENT.submitting : CONTACT_FORM_CONTENT.submit}
                 </button>
               </form>
             </div>
