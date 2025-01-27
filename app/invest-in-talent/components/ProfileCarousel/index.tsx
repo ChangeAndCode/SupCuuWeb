@@ -127,7 +127,7 @@ export const ProfileCarousel = ({ profiles }: { profiles: Profile[] }) => {
     <section className="relative py-16">
       <div className="bg-[url('/bg/bglandin.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] absolute inset-0 z-0" />
       <div className="container mx-auto px-4 py-20 relative">
-        <div className="max-w-4xl mx-auto my-20 bg-white/95 backdrop-blur-sm min-h-[500px] relative overflow-hidden">
+        <div className="max-w-4xl mx-auto my-20  min-h-[500px] relative overflow-hidden">
           <NavButton 
             direction="prev"
             onClick={() => handleTransition('prev')}
