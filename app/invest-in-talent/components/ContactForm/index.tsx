@@ -4,10 +4,8 @@ import { useState, useEffect, type ChangeEvent } from 'react';
 import { FormField } from './FormField';
 import type { FormData } from './types';
 import Image from 'next/image';
-import { TornPaper } from '../TornPaper';
 
 export const ContactForm = () => {
-  // Initialize all state as undefined for proper hydration
   const [mounted, setMounted] = useState<boolean>(false);
   const [formState, setFormState] = useState<{
     data: FormData;
@@ -33,7 +31,6 @@ export const ContactForm = () => {
     setMounted(true);
   }, []);
 
-  // Return null on server-side and first render
   if (!mounted) {
     return null;
   }
@@ -51,7 +48,8 @@ export const ContactForm = () => {
 
   return (
     <section className="relative bg-transparent -mt-20 -top-40">
-      <div className="bg-[url('/Bg/bgWeAre.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] pt-24 pb-24 px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative top-0">
+      {/* Hero section with blue background */}
+      <div className="bg-[url('/Bg/bgWeAre.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] pt-24 pb-24 px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative">
         <div className="container mx-auto my-20">
           <h2 className="text-[clamp(2rem,5vw,4rem)] leading-tight font-PerformanceMark text-white mb-6">
             READY TO BE PART OF THE<br />NEXT SUCCESS STORY?
@@ -65,9 +63,23 @@ export const ContactForm = () => {
         </div>
       </div>
 
-      <div className="bg-white pb-16">
-        <div className="container mx-auto px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem]">
-          <div className="flex flex-col lg:flex-row">
+      {/* Form section */}
+      <div className="relative pb-16">
+        <div className="container mx-auto px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative">
+          {/* Horse Image - Absolutely positioned with larger size */}
+          <div className="hidden lg:block absolute right-[-10%] top-[-65%] w-[60%] h-[140%] z-10 pointer-events-none">
+            <Image 
+              src="/invest-in-talent/JuanH.webp"
+              alt="Decorative horse"
+              fill
+              className="object-contain"
+              style={{ transform: 'scale(1.5)' }}
+              priority
+            />
+          </div>
+
+          {/* Form Content */}
+          <div className="relative z-0">
             <div className="lg:w-2/3">
               <form className="space-y-8">
                 <FormField
@@ -140,18 +152,6 @@ export const ContactForm = () => {
                   {isLoading ? 'Submitting...' : 'Submit'}
                 </button>
               </form>
-            </div>
-            
-            <div className="hidden lg:block lg:w-1/3 relative">
-              <div className="relative w-full h-[400px]">
-                <Image 
-                  src="/horse.webp"
-                  alt="Decorative horse"
-                  fill
-                  className="object-contain lg:object-right-bottom"
-                  priority
-                />
-              </div>
             </div>
           </div>
         </div>
