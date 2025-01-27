@@ -118,14 +118,22 @@ const ProgramShowCase = () => {
                   <button
                     type="button"
                     style={{ backgroundColor: color1Text }}
-                    className={`w-36 h-16 font-pragmatica text-white font-bold`}
+                    className={`
+                    w-36 md:w-[48%] xl:w-36
+                    h-16 
+                    font-pragmatica 
+                    text-white font-bold`}
                   >
                     <p className="uppercase text-2xl">{button1Text}</p>
                   </button>
                   <button
                     type="button"
                     style={{ backgroundColor: color2Text }}
-                    className={`w-36 h-16 font-pragmatica text-white font-bold`}
+                    className={`
+                    w-36 md:w-[48%] xl:w-36
+                    h-16 
+                    font-pragmatica 
+                    text-white font-bold`}
                   >
                     <p className="uppercase text-2xl">{button2Text}</p>
                   </button>
