@@ -6,9 +6,9 @@ import Sensitized from "./Sensitized";
 const Transformative: React.FC = () => {
   return (
     <>
-      <div className="flex justify-start px-[3rem] sm:px-[6.5rem] md:px-[8rem] lg:px-[10rem] xl:px-[12rem] xl-md:px-[14rem] 2xl:px-[16rem] translate-y-[-2rem] md:translate-y-[-3.3rem] lg:translate-y-[-4.3rem] xl:translate-y-[-5rem] xl-md:translate-y-[-6rem] 2xl:translate-y-[-6.3rem]">
+      <div className="flex justify-start px-[3rem] sm:px-[6.5rem] md:px-[8rem] lg:px-[10rem] xl:px-[12rem] xl-md:px-[14rem] 2xl:px-[16rem] translate-y-[-2rem] md:translate-y-[-3.3rem] lg:translate-y-[-4.3rem] xl:translate-y-[-5rem] xl-md:translate-y-[-6rem] 2xl:translate-y-[-6rem]">
         <div>
-          <h2 className="main-Typography text-[2rem] md:text-[3.5rem] lg:text-[4.5rem] xl:text-[5.5rem] xl-md:text-[6rem] 2xl:text-[6.5rem] font-semibold text-ColorPrincipal w-3/5 leading-[2.5rem] md:leading-[4rem] lg:leading-[5rem] xl:leading-[6rem] xl-md:leading-[6.5rem] 2xl:leading-[7rem]">
+          <h2 className="main-Tipography font-pragmatica text-[2rem] md:text-[3.5rem] lg:text-[4.5rem] xl:text-[5.5rem] xl-md:text-[6rem] 2xl:text-[6.5rem] font-semibold text-ColorPrincipal w-3/5 leading-[2.5rem] md:leading-[4rem] lg:leading-[5rem] xl:leading-[6rem] xl-md:leading-[6.5rem] 2xl:leading-[7rem]">
             with transformative results
           </h2>
         </div>

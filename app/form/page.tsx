@@ -2,11 +2,15 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import InputField from './components/InputField';
 import { sendEmail } from './lib/emailApi';
 import type { FormData } from './types/email';
+import React from 'react';
 
-// Dynamic imports with loading states
+// Dynamic imports con sus estados de carga originales
+const DynamicInputField = dynamic(() => import('./components/InputField'), {
+  ssr: false
+});
+
 const ContactUs = dynamic(() => import('./components/ContacUs'), {
   loading: () => <div className="md:w-5/12 h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />
 });
@@ -20,11 +24,6 @@ const Notification = dynamic(() => import('./components/Notification'), {
 });
 
 export default function Form() {
-  const [hydrated, setHydrated] = useState(false);
-
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     topicsOfInterest: '',
@@ -37,6 +36,12 @@ export default function Form() {
     type: 'success' | 'error';
     message: string;
   } | null>(null);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -73,7 +78,16 @@ export default function Form() {
     }
   };
 
-  if (!hydrated) return null;
+  if (!mounted) {
+    return (
+      <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30">
+        <div className="animate-pulse">
+          {/* Mantener la estructura visual mientras carga */}
+          <div className="h-[150px] w-[150px] bg-gray-200/20 rounded-lg absolute top-[-4rem] left-[4rem] md:left-[10rem] xl:left-[15rem] 2xl:left-[23rem]" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30">
@@ -96,42 +110,39 @@ export default function Form() {
 
       <div className="flex flex-col items-center">
         <form onSubmit={handleSubmit} className="space-y-8 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12">
-          <InputField 
+          <DynamicInputField 
+            key="name-field"
             label="Name" 
             id="name" 
             value={formData.name} 
             onChange={handleChange} 
             required 
-            key="name-field"
           />
           
-          <InputField 
+          <DynamicInputField 
             label="Topics of Interest" 
             id="topicsOfInterest" 
             value={formData.topicsOfInterest} 
             onChange={handleChange}
-            key="topics-field"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.5rem] md:gap-[3rem]">
-            <InputField 
+            <DynamicInputField 
               label="E-mail" 
               id="email" 
               type="email" 
               value={formData.email} 
               onChange={handleChange} 
               required 
-              key="email-field"
             />
 
-            <InputField 
+            <DynamicInputField 
               label="Phone" 
               id="phone" 
               type="tel" 
               value={formData.phone} 
               onChange={handleChange} 
               required 
-              key="phone-field"
             />
           </div>
 

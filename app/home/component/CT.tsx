@@ -20,7 +20,7 @@ const CT: React.FC = () => {
     <div className="pt-24 overflow-hidden">
       <div className="relative flex flex-col justify-center items-center pt-[3rem] md:pt-[1rem] lg:pt-[4rem] xl:pt-[8rem] overflow-hidden">
         {/* Logo */}
-        <div className="relative z-10 md:top-[7rem] lg:top-[5rem] xl:top-[5rem] w-[350px] md:w-[290px] lg:w-[400px] xl:w-[470px] h-[350px] md:h-[290px] lg:h-[470px] xl:h-[370px]">
+        <div className="relative z-10 md:top-[7rem] lg:top-[10rem] xl:top-[5rem] w-[350px] md:w-[290px] lg:w-[400px] xl:w-[470px] h-[350px] md:h-[290px] lg:h-[470px] xl:h-[370px]">
           <div className="flex justify-center">
             <Image
               src="/startupB.webp"
@@ -79,7 +79,7 @@ const CT: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative flex justify-center items-center bg-[url('/Bg/bgNews.webp')] bg-no-repeat bg-center bg-[length:100vw_100%] z-10 py-0 lg:py-[7rem] xl:py-0">
+        <div className="relative flex justify-center items-center bg-[url('/Bg/bgNews.webp')] bg-no-repeat bg-center bg-cover z-10 py-0 lg:py-[7rem] xl:py-0">
           <Carrusel />
         </div>
 
@@ -119,12 +119,12 @@ const CT: React.FC = () => {
       <div className="bg-white mb-[-5rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">
         <Transformative />
       </div>
-      <div className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-[length:120vw_100%] z-10 py-20">
+      <div className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-cover z-10 py-[15rem]">
         <Partners />
       </div>
       <div>
         <MeetTeam />
-        <div className="pb-[10rem] lg:pb-[2rem] bg-[#c4cfd6] mt-[-20rem] md:mt-[-33rem] lg:mt-[-30rem] xl:mt-[-27rem]">
+        <div className="pb-[10rem] lg:pb-[2rem] bg-[#c4cfd6] mt-[-20rem] md:mt-[-33rem] lg:mt-[-30rem] xl:mt-[-35rem]">
           <Backbone />
         </div>
       </div>
