@@ -6,7 +6,7 @@ const TimeLine: React.FC = () => {
       <div className="flex justify-center">
         <div className="transform lg:translate-x-0">
           <div className="flex justify-center">
-            <div className="flex flex-col xl:flex-row translate-x-[-10.8rem] sm:translate-x-[-13.9rem] md:translate-x-[-17rem] lg:translate-x-[-16.5rem] xl:translate-x-[1rem] xl:translate-y-[-2.2rem] 2xl:translate-y-[-2.5rem] absolute">
+          <div className="flex flex-col xl:flex-row translate-x-[-10.8rem] sm:translate-x-[-13.9rem] md:translate-x-[-17rem] lg:translate-x-[-16.5rem] xl:translate-x-[1rem] xl:translate-y-[-2.2rem] 2xl:translate-y-[-2.5rem] absolute">
               <p className="font-poppins text-sm md:text-2xl translate-y-[19.5rem] md:translate-y-[23rem] lg:translate-y-[24rem] xl:translate-y-0 xl:translate-x-[-10.3rem] 2xl:translate-x-[-13.7rem]">
                 2019
               </p>
