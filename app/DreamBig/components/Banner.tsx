@@ -107,6 +107,7 @@ const Banner = () => {
               max-sm:mt-5
               sm:mt-8
               md:mt-12
+              xl:mt-24
             "
           >
             <h2

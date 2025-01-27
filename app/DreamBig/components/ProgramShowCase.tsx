@@ -57,6 +57,7 @@ const ProgramShowCase = () => {
               className="
               flex
               max-sm:flex-col
+              sm:flex-col
               md:flex-col 
               lg:flex-col lg:mx-5
               xl:flex-row
@@ -119,7 +120,7 @@ const ProgramShowCase = () => {
                     type="button"
                     style={{ backgroundColor: color1Text }}
                     className={`
-                    w-36 md:w-[48%] xl:w-36
+                    max-sm:w-36 sm:w-36 md:w-[48%] lg:w-[48%] xl:w-36
                     h-16 
                     font-pragmatica 
                     text-white font-bold`}
@@ -130,7 +131,7 @@ const ProgramShowCase = () => {
                     type="button"
                     style={{ backgroundColor: color2Text }}
                     className={`
-                    w-36 md:w-[48%] xl:w-36
+                    max-sm:w-36 sm:w-36 md:w-[48%] lg:w-[48%] xl:w-36
                     h-16 
                     font-pragmatica 
                     text-white font-bold`}
