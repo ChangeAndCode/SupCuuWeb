@@ -12,61 +12,65 @@ const ProfileDisplay = React.memo(({
   profile: Profile;
   isTransitioning: boolean;
 }) => {
-  const [firstName, ...lastNameParts] = profile.name.split(' ');
-  const lastName = lastNameParts.join(' ');
   const id = useId();
 
   return (
     <div 
       id={id}
-      className={`relative w-full h-full transition-opacity duration-300 ${
+      className={`relative w-full transition-opacity duration-300 ${
         isTransitioning ? 'opacity-0' : 'opacity-100'
       }`}
     >
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
-        <div className="relative w-16 h-16">
-          <Image
-            src={profile.image.src}
-            alt="Company Logo"
-            fill
-            sizes="64px"
-            className="object-contain"
-            priority
-          />
-        </div>
-      </div>
-      
-      <div className="relative h-full pt-24 pb-6 px-8">
-        <div className="absolute top-20 left-12 md:left-16">
-          <h3 className="font-PerformanceMark text-blue-600 text-3xl md:text-4xl -rotate-2">
-            {firstName}
-          </h3>
-          <h3 className="font-PerformanceMark text-blue-600 text-3xl md:text-4xl ml-8 rotate-1">
-            {lastName}
+      <div className="bg-white rounded-3xl shadow-lg p-8 mx-4 relative">
+        {/* Name Overlay */}
+        <div className="absolute top-4 left-8 right-8 z-10">
+          <h3 className="font-PerformanceMark text-blue-600 text-[10rem] leading-none">
+            {profile.name.split(' ').map((part, index) => (
+              <React.Fragment key={`${id}-name-${index}`}>
+                {part}
+                {index < profile.name.split(' ').length - 1 && <br />}
+              </React.Fragment>
+            ))}
           </h3>
         </div>
 
-        <div className="absolute top-40 right-12 md:right-16 text-right">
-          <p className="font-pragmatica text-base md:text-lg text-gray-700 -rotate-1">
-            {profile.role}
-          </p>
-          <p className="text-sm text-blue-600 rotate-1">
-            AT {profile.company}
-          </p>
-        </div>
+        {/* Content Grid */}
+        <div className="grid grid-cols-2 gap-8">
+          {/* Left Column - Photo and Role */}
+          <div className="flex flex-col items-start space-y-4 z-20 pt-32">
+            <div className="w-full aspect-square relative rounded-lg overflow-hidden">
+              <Image
+                src={profile.image.src}
+                alt={profile.image.alt}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm font-pragmatica text-gray-600">
+                {profile.role}
+              </p>
+              <p className="font-pragmatica text-blue-600 text-sm">
+                OF {profile.company}
+              </p>
+            </div>
+          </div>
 
-        <div className="relative mt-40 space-y-6 max-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent px-4 md:px-8">
-          {[profile.description.paragraph1, profile.description.paragraph2, profile.description.paragraph3].map((paragraph, index) => (
-            <p
-              key={`${id}-p${index}`}
-              className={`text-gray-700 font-pragmatica text-sm bg-white/80 p-4 rounded shadow-sm
-                ${index === 0 ? '-rotate-1 ml-4 md:ml-8' : 
-                  index === 1 ? 'rotate-1 mr-8 md:mr-12' : 
-                  '-rotate-0.5 ml-2 md:ml-4'}`}
-            >
-              {paragraph}
-            </p>
-          ))}
+          {/* Right Column - Description */}
+          <div className="relative h-full">
+            <div className="absolute top-0 right-0 text-sm text-gray-700 w-full">
+              <p className="font-pragmatica text-right p-4 rounded">
+                {profile.description.paragraph1}
+              </p>
+              <p className="font-pragmatica text-right p-4 rounded mt-36">
+                {profile.description.paragraph2}
+              </p>
+              <p className="font-pragmatica text-right p-4 rounded">
+                {profile.description.paragraph3}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

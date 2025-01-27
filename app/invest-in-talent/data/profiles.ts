@@ -8,7 +8,7 @@ export const MOCK_PROFILES: Profile[] = [
     role: 'CEO & CO. FOUNDER',
     company: 'OF BIOGRIP',
     image: {
-      src: '/logoE.webp',
+      src: '/invest-in-talent/alan.webp',
       alt: 'Alan Hernandez profile picture'
     },
     description: {
@@ -23,7 +23,7 @@ export const MOCK_PROFILES: Profile[] = [
     role: 'LEAD RESEARCHER',
     company: 'AT TECHSOLUTIONS',
     image: {
-      src: '/logoE.webp',
+      src: '/invest-in-talent/alan.webp',
       alt: 'María González profile picture'
     },
     description: {
