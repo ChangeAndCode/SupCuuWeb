@@ -47,7 +47,7 @@ const pageEvents = () => {
               <ProgramShowCase />
             </div>
             <div className="max-w-[1500px] mx-auto">
-              <CarouselEvents />
+              {/* <CarouselEvents /> */}
             </div>
           </>
         )}

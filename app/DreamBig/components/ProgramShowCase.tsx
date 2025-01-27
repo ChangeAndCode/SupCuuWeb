@@ -1,35 +1,13 @@
 import Image from "next/image";
 import React from "react";
 import ProgramShowCaseData from "../data/ProgramShowCaseData";
-// import Link from "next/link";
-// import { useState, useEffect, useRef } from "react";
+import BackGroundShowCase from "./BackGroundShowCase";
 
 const ProgramShowCase = () => {
   return (
     <div className="relative">
-      {/* <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none opacity-10">
-        <div className="absolute text-[180px] font-bold text-black font-PerformanceMark left-[-100px] top-[-100px]">
-          innovation labs
-        </div>
-        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-400px] top-[30px]">
-          innovation labs
-        </div>
-        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-200px] top-[160px]">
-          innovation labs
-        </div>
-        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-500px] top-[290px]">
-          innovation labs
-        </div>
-        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-300px] top-[420px]">
-          innovation labs
-        </div>
-        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-700px] top-[550px]">
-          innovation labs
-        </div>
-        <div className="absolute text-[186px] font-bold text-black font-PerformanceMark left-[-400px] top-[680px]">
-          innovation labs
-        </div>
-      </div> */}
+      <BackGroundShowCase/>
+      {/* showCase Content */}
       <div
         className="
       relative 
