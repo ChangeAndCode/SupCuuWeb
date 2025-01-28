@@ -1,4 +1,3 @@
-
 interface HeaderProps {
   title: string;
   subtitle: string;
@@ -28,10 +27,10 @@ export const Header = ({ title, subtitle, heroImage }: HeaderProps) => {
 
           {/* Text content - centered on mobile, normal on desktop */}
           <div className="w-full md:w-2/3 space-y-4 text-center md:text-left">
-            <h1 className="font-PerformanceMark text-9xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight text-blue-600">
+            <h1 className="font-PerformanceMark text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-blue-600">
               {title}
             </h1>
-            <h2 className="font-pragmatica text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-600/90">
+            <h2 className="font-pragmatica text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-600/90">
               {subtitle}
             </h2>
           </div>
