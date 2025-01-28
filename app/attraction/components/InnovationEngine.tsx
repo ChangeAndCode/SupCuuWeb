@@ -11,6 +11,7 @@ const InnovationEngine = () => {
     '/carrusel/futura.webp',
     '/carrusel/tech.webp',
     '/carrusel/startup.webp',
+    '/carrusel/city.webp'
   ];
 
   const imagesLength = images.length;

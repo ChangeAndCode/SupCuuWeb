@@ -1,3 +1,7 @@
+'use client'
+
+import { memo } from 'react';
+
 interface InputFieldProps {
   label: string;
   id: string;
@@ -7,7 +11,7 @@ interface InputFieldProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField: React.FC<InputFieldProps> = ({
+const InputField: React.FC<InputFieldProps> = memo(({
   label,
   id,
   type = 'text',
@@ -15,10 +19,8 @@ const InputField: React.FC<InputFieldProps> = ({
   value,
   onChange,
 }) => {
-  console.log(value);
-
   return (
-    <div className="mb-4">
+    <div className="mb-4" suppressHydrationWarning>
       <label
         htmlFor={id}
         className="block text-xl font-pragmatica uppercase text-white mb-2"
@@ -29,13 +31,15 @@ const InputField: React.FC<InputFieldProps> = ({
         type={type}
         id={id}
         name={id}
-        value={value || ''}
+        value={value}
         onChange={onChange}
         required={required}
-        className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     </div>
   );
-};
+});
+
+InputField.displayName = 'InputField';
 
 export default InputField;

@@ -11,11 +11,11 @@ const FocusIn = () => {
                 height={670}
                 quality={80}
                 loading='lazy'
-                className="2xl:mt-[-7rem]"
+                className="xl:mb-[20rem] xl-md:mb-[10rem]"
             />
         </div>
-        <div className="px-[1rem] md:px-[3rem] xl:px-[5rem] 2xl:px-[20rem] mt-[9rem] md:mt-[9rem] lg:mt-[7rem] xl:mt-[-17rem]">
-            <div>
+        <div className="px-[1rem] md:px-[3rem] xl:px-[5rem] 2xl:px-[14rem] mt-[9rem] md:mt-[9rem] lg:mt-[7rem] xl:mt-[-17rem]">
+            <div className='relative'>
                 <div className='flex items-center relative w-full md:w-[1500px]'>
                         <Image
                         src='/focusin/1.webp'
@@ -24,12 +24,12 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[16.5rem]'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[16.5rem] z-20'
                         />
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl md:h-[6rem] md:w-[5rem]'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>1</p>
                     </div>
-                    <div className="bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl uppercase">
+                    <div className="relative bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl uppercase z-10">
                     <div className="bg-ColorPrincipal px-[1rem] py-[1.5rem] text-center rounded-2xl">
                         <h2 className="main-Tipography text-white text-[2rem] leading-8">Advance manufacturing</h2>
                     </div>
@@ -46,6 +46,15 @@ const FocusIn = () => {
                     </div>
                     </div>
                 </div>
+                <Image
+                    src='/miniHoja.webp'
+                    alt='Company Logo'
+                    width={190}
+                    height={190}
+                    quality={80}
+                    loading='lazy'
+                    className='absolute bottom-[-5rem] left-[28rem] z-0'
+                />
             </div>
             <div className="flex justify-end mt-[9rem] md:mt-[10rem] lg:mt-[5rem] w-full">
                 <div className='flex items-center relative w-[470px]'>
@@ -56,12 +65,12 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[12rem]'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[12rem] z-20'
                         />
-                        <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl md:h-[6rem] md:w-[5rem]'>
+                        <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl md:h-[6rem] md:w-[5rem] z-10'>
                             <p className='text-white font-pragmatica text-[3rem] hidden md:block'>2</p>
                         </div>
-                    <div className="bg-white border-[.4rem] border-ColorPrincipal rounded-3xl uppercase">
+                    <div className="relative bg-white border-[.4rem] border-ColorPrincipal rounded-3xl uppercase z-10">
                     <div className="bg-ColorPrincipal px-[1.5rem] py-[1.5rem] text-center rounded-2xl">
                         <h2 className="main-Tipography text-white text-[2rem] leading-8">construction tecnology</h2>
                     </div>
@@ -74,7 +83,7 @@ const FocusIn = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div className='relative'>
                 <div className='flex items-center relative w-full md:w-[1500px] mt-[9rem] md:mt-[9rem] lg:mt-[5rem] xl:mt-0'>
                         <Image
                         src='/focusin/3.webp'
@@ -83,12 +92,12 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[16.5rem]'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[16.5rem] z-20'
                         />
-                    <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem]'>
+                    <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem] z-10'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>3</p>
                     </div>
-                    <div className="bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl uppercase">
+                    <div className="relative bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl uppercase z-10">
                     <div className="bg-ColorPrincipal px-[4rem] py-[1.5rem] text-center rounded-2xl">
                         <h2 className="main-Tipography text-white text-[2rem] leading-8">Mining and Metallurgy</h2>
                     </div>
@@ -106,10 +115,15 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute bottom-[-8rem] left-[24rem]'
+                        className='absolute bottom-[-8rem] left-[19rem]'
                         />
                     </div>
                     </div>
+                </div>
+                <div className='absolute text-white font-PerformanceMark text-[12rem] leading-[11rem] top-[-10rem] left-[-20rem] z-0'>
+                    <p>main focus in</p>
+                    <p>main focus in</p>
+                    <p>main focus in</p>
                 </div>
             </div>
             <div className="flex justify-end mt-[9rem] md:mt-[9rem] lg:mt-[5rem] w-full">
@@ -121,7 +135,7 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[12rem]'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[12rem]'
                         />
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[6rem]'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>4</p>
@@ -140,7 +154,7 @@ const FocusIn = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div className="relative">
                 <div className='flex items-center relative w-full md:w-[1500px] mt-[9rem] md:mt-[9rem] lg:mt-[5rem] xl:mt-0'>
                         <Image
                         src='/focusin/5.webp'
@@ -149,12 +163,12 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[16.5rem]'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[16.5rem] z-20'
                         />
-                    <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem]'>
+                    <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem] z-10'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>5</p>
                     </div>
-                    <div className="bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl uppercase">
+                    <div className="relative bg-white border-[.4rem] border-ColorPrincipal w-full md:w-4/12 rounded-3xl uppercase z-10">
                     <div className="bg-ColorPrincipal px-[3rem] py-[1.5rem] text-center rounded-2xl">
                         <h2 className="main-Tipography text-white text-[2rem] leading-8">climate technology</h2>
                     </div>
@@ -169,6 +183,15 @@ const FocusIn = () => {
                     </div>
                     </div>
                 </div>
+                <Image
+                    src='/miniHoja.webp'
+                    alt='Company Logo'
+                    width={190}
+                    height={190}
+                    quality={80}
+                    loading='lazy'
+                    className='absolute bottom-[-5rem] left-[3rem] z-0'
+                />
             </div>
             <div className="relative">
             <Image
@@ -178,7 +201,7 @@ const FocusIn = () => {
                 height={640}
                 quality={80}
                 loading='lazy'
-                className='absolute bottom-[-31rem] right-[20rem]'
+                className='absolute bottom-[-35rem] right-[18rem] z-10'
             />
             </div>
             <div className="flex justify-end mt-[9rem] md:mt-[9rem] lg:mt-[5rem] w-full">
@@ -190,7 +213,7 @@ const FocusIn = () => {
                         height={140}
                         quality={80}
                         loading='lazy'
-                        className='absolute top-[-7rem] left-[7rem] md:left-[12rem]'
+                        className='absolute top-[-7rem] left-[7rem] sm:left-[9.5rem] md:left-[12rem]'
                         />
                     <div className='flex items-center justify-center bg-ColorPrincipal rounded-l-3xl uppercase md:h-[6rem] md:w-[5rem]'>
                         <p className='text-white font-pragmatica text-[3rem] hidden md:block'>6</p>
