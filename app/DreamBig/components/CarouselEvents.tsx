@@ -1,11 +1,28 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import CarouselEventsData from "../data/CarouselEventsData";
 
 const CarouselEvents = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1024
+  );
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Ajustar el valor de translateX dinámicamente según el ancho de la pantalla
+  const getTranslateValue = () => {
+    if (windowWidth >= 1024) {
+      return `${currentIndex * 34.6}%`; // Valor para pantallas grandes
+    }
+    return `${currentIndex * 100}%`; // Valor para móviles y tablets
+  };
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
@@ -49,7 +66,7 @@ const CarouselEvents = () => {
         text-white
         xs:text-[14px] 
         sm:text-4xl 
-        md:text-5xl
+        md:text-2xl
         lg:text-4xl
         font-pragmatica 
         font-bold 
@@ -67,26 +84,53 @@ const CarouselEvents = () => {
         className="
       relative 
       w-full
-      max-w-full 
+      lg:w-[80%] 
       mt-6 
       md:mt-8 
       overflow-hidden
       xs:bottom-14
+      md:bottom-[88px]
+      lg:flex lg:justify-start
       z-0
       "
       >
         {/* Carousel Items */}
         <div
           className="flex transition-transform duration-500"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          style={{
+            transform: `translateX(-${getTranslateValue()})`,
+          }}
         >
           {CarouselEventsData.map((element, index) => {
             const { title, description, image, date, location } = element;
             return (
-              <div key={index} className="flex-shrink-0 w-full md:w-[50%] px-4">
-                <div className="bg-gray-300 rounded-md overflow-hidden shadow-md transform transition-transform hover:scale-[1.02]">
-                  <div className="p-4 md:p-6">
-                    <h2 className="text-sm md:text-base font-bold uppercase text-left mb-2">
+              <div
+                key={index}
+                className="flex-shrink-0 w-full px-4 lg:w-[80%] lg:max-w-[700px]"
+              >
+                <div
+                  className="
+                bg-gray-300 
+                rounded-md 
+                overflow-hidden 
+                shadow-md 
+                transform 
+                transition-transform 
+                hover:scale-[1.02] 
+                md:p-5 md:rounded-[25px]
+                "
+                >
+                  <div className="p-4 md:p-0">
+                    <h2
+                      className="
+                    font-pragmatica 
+                    font-semibold 
+                    md:text-2xl 
+                    text-sm 
+                    uppercase 
+                    text-left 
+                    mb-2"
+                    >
                       {title}
                     </h2>
                   </div>
@@ -96,19 +140,22 @@ const CarouselEvents = () => {
                   flex
                   xs:items-center
                   flex-col 
-                  md:flex-row 
+                  md:flex-row
                   items-start
+                  mx-auto
                   "
                   >
-                    <div
-                      className="
-                    w-40
-                    h-40
-                    bg-gray-500
-                    "
-                    ></div>
-                    <div className="flex flex-col p-4 md:p-6 flex-grow">
-                      <div className="mb-4">
+                    <div className="md:flex md:justify-center md:w-[45%] md:h-auto">
+                      <div
+                        className="
+                        w-52
+                        h-52
+                        bg-gray-500
+                        "
+                      ></div>
+                    </div>
+                    <div className="flex flex-col p-4 md:p-0 md:w-[55%] flex-grow">
+                      <div className="md:p-2 mb-4">
                         <p className="font-semibold text-xs sm:text-sm uppercase text-left mb-5">
                           {description}
                         </p>
@@ -128,7 +175,8 @@ const CarouselEvents = () => {
                         <button
                           className="
                         px-4 
-                        py-2 
+                        py-2
+                        md:w-56 md:text-2xl
                         bg-ColorPrincipal 
                         text-white 
                         rounded-full
