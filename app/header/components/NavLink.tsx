@@ -14,10 +14,7 @@ const navLinks: NavLink[] = [
   {
     href: "/Opportunities",
     label: "Events & Opportunities",
-    subLinks: [
-      { href: "/attraction", label: "For Foreigners" },
-      { href: "/DreamBig", label: "Dream Big" },
-    ],
+    subLinks: [{ href: "/attraction", label: "For Foreigners" }],
   },
   { href: "/attraction", label: "Startup" },
   {
@@ -25,9 +22,8 @@ const navLinks: NavLink[] = [
     label: "Ecosystem",
     external: true,
   },
-  { href: "/explore-learn", label: "Explore & Learn" },
-  { href: 'https://zcform.com/btnwb', label: "Contact" },
-
+  { href: "/invest-in-talent", label: "Explore & Learn" },
+  { href: "https://zcform.com/btnwb", label: "Contact" },
 ];
 
 const NavLinks: React.FC = () => {
@@ -60,11 +56,11 @@ const NavLinks: React.FC = () => {
       setIsMobile(window.innerWidth < 1024);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -94,7 +90,7 @@ const NavLinks: React.FC = () => {
 
       <nav
         className={`${
-          isOpen ? 'block' : 'hidden'
+          isOpen ? "block" : "hidden"
         } xl:block absolute xl:static top-16 left-0 w-full xl:w-auto bg-ColorPrincipal xl:bg-transparent shadow-md xl:shadow-none z-10`}
       >
         <ul
@@ -105,7 +101,7 @@ const NavLinks: React.FC = () => {
             <li
               key={link.label}
               className={`relative ${
-                isMobile && link.label === activeSubMenu ? 'mb-12' : ''
+                isMobile && link.label === activeSubMenu ? "mb-12" : ""
               }`}
             >
               {link.subLinks ? (

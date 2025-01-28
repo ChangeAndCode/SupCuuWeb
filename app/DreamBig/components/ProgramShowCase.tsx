@@ -1,8 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import ProgramShowCaseData from "../data/ProgramShowCaseData";
-// import Link from "next/link";
-// import { useState, useEffect, useRef } from "react";
 
 const ProgramShowCase = () => {
   return (

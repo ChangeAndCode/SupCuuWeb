@@ -1,7 +1,5 @@
 import React from "react";
 import Image from "next/image";
-// import Link from "next/link";
-// import { useState, useEffect, useRef } from "react";
 
 const Banner = () => {
   return (
@@ -33,23 +31,7 @@ const Banner = () => {
             >
               Dream
             </h2>
-            {/* <div className="flex text-ColorPrincipal">
-              <h2 className="text-[18rem]  font-PerformanceMark w-[50%] h-auto leading-[8rem] mb-5">
-                big,
-              </h2>
-              <h2 className="relative top-10 text-end text-5xl font-PerformanceMark w-[50%] h-auto">
-                start small,
-              </h2>
-            </div> */}
           </div>
-          {/* <div className="">
-            <h2 className="text-7xl text-ColorPrincipal font-pragmatica w-full">
-              and keep
-            </h2>
-            <h2 className="text-7xl text-ColorPrincipal font-pragmatica w-full font-bold">
-              moving forward
-            </h2>
-          </div> */}
         </div>
       </div>
     </>

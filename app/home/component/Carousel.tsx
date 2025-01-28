@@ -62,22 +62,20 @@ const Carrusel: React.FC = () => {
     );
   };
 
-  // Cambiar la imagen automáticamente cada 5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex === cards.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000); // 5000 ms = 5 segundos
+    }, 5000);
 
-    // Limpiar el intervalo cuando el componente se desmonte o el índice cambie
     return () => clearInterval(interval);
   }, [currentIndex, cards.length]);
 
   return (
     <div className="relative w-full flex justify-center items-center py-[22rem]">
       <div className="relative w-10/12 bg-white rounded-3xl py-6 px-8 shadow-lg flex flex-col xl:flex-row items-center mx-8 xl:mx-0">
-        {/* Flecha izquierda */}
+        {/* left arrow */}
         <button
           className="absolute left-[-28px] top-1/2 transform -translate-y-1/2 z-10  text-ColorPrincipal p-1 rounded-full shadow-md hover:bg-ColorPrincipal hover:text-white"
           onClick={showPrevious}
@@ -88,7 +86,7 @@ const Carrusel: React.FC = () => {
 
         {/* Card */}
         <div className="w-full flex flex-col xl:flex-row items-center justify-between">
-          {/* Texto */}
+          {/* Text */}
           <div className="xl:pr-8 w-full lg:text-left mb-5 xl:mb-0 2xl:px-[2rem]">
             <h3 className="text-lg main-Tipography font-pragmatica uppercase lg:text-[2.2rem] 2xl:text-[2.9rem] xl:leading-[3rem] lg:leading-[3rem] mb-2 xl:mb-6">
               {cards[currentIndex].title}
@@ -112,7 +110,7 @@ const Carrusel: React.FC = () => {
           </div>
         </div>
 
-        {/* Flecha derecha */}
+        {/* right arrow */}
         <button
           className="absolute right-[-28px] top-1/2 transform -translate-y-1/2 z-10 bg-transparent border-4 border-ColorPrincipal text-ColorPrincipal p-1 rounded-full shadow-md hover:bg-ColorPrincipal hover:text-white"
           onClick={showNext}
