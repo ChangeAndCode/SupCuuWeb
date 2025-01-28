@@ -34,11 +34,7 @@ const CarouselEvents = () => {
   const handleNext = () => {
     setCurrentIndex((prevIndex) => {
       const totalItems = CarouselEventsData.length;
-
-      // if we are in xl (1280px or more), do two steps
       const step = windowWidth >= 1280 ? 2 : 1;
-
-      // Si estamos en el último paso, volvemos al inicio
       return prevIndex + step >= totalItems ? 0 : prevIndex + step;
     });
   };
@@ -46,11 +42,7 @@ const CarouselEvents = () => {
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => {
       const totalItems = CarouselEventsData.length;
-
-      // Si estamos en xl (1280px en adelante), saltamos de 2 en 2
       const step = windowWidth >= 1280 ? 2 : 1;
-
-      // Si estamos en el primer paso, volvemos al final
       return prevIndex - step < 0 ? totalItems - step : prevIndex - step;
     });
   };
