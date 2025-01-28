@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface HeaderProps {
   title: string;
   subtitle: string;
@@ -11,16 +13,17 @@ export const Header = ({ title, subtitle, heroImage }: HeaderProps) => {
   return (
     <header className="relative w-full pt-16 pb-12">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center gap-8">
+        <div className="flex flex-col md:flex-row items-center gap-4">
           {/* Image - first in both mobile and desktop */}
           <div className="w-full md:w-1/3">
-            <div className="relative max-w-sm mx-auto">
-              <img 
+            <div className="relative w-full h-[300px] md:h-[400px]">
+              <Image 
                 src={heroImage.src} 
                 alt={heroImage.alt} 
-                className="w-full h-auto"
-                loading="eager"
-                fetchPriority="high"
+                fill
+                className="object-contain"
+                priority
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
           </div>
