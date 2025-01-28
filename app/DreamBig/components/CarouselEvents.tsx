@@ -9,6 +9,7 @@ const CarouselEvents = () => {
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1024
   );
+  //find the window width
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
 
@@ -16,22 +17,42 @@ const CarouselEvents = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Ajustar el valor de translateX dinámicamente según el ancho de la pantalla
+  //adjust translateX value to make width dynamic
   const getTranslateValue = () => {
-    if (windowWidth >= 1024) {
-      return `${currentIndex * 34.6}%`; // Valor para pantallas grandes
+    if (windowWidth >= 1536) {
+      return `${currentIndex * 30}%`; // xl value
     }
-    return `${currentIndex * 100}%`; // Valor para móviles y tablets
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? CarouselEventsData.length - 1 : prevIndex - 1
-    );
+    if (windowWidth >= 1280) {
+      return `${currentIndex * 25}%`; // xl value
+    }
+    if (windowWidth >= 1024) {
+      return `${currentIndex * 34.6}%`; // lg value
+    }
+    return `${currentIndex * 100}%`; // md, sm, xs value
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % CarouselEventsData.length);
+    setCurrentIndex((prevIndex) => {
+      const totalItems = CarouselEventsData.length;
+
+      // if we are in xl (1280px or more), do two steps
+      const step = windowWidth >= 1280 ? 2 : 1;
+
+      // Si estamos en el último paso, volvemos al inicio
+      return prevIndex + step >= totalItems ? 0 : prevIndex + step;
+    });
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => {
+      const totalItems = CarouselEventsData.length;
+
+      // Si estamos en xl (1280px en adelante), saltamos de 2 en 2
+      const step = windowWidth >= 1280 ? 2 : 1;
+
+      // Si estamos en el primer paso, volvemos al final
+      return prevIndex - step < 0 ? totalItems - step : prevIndex - step;
+    });
   };
 
   return (
@@ -106,7 +127,9 @@ const CarouselEvents = () => {
             return (
               <div
                 key={index}
-                className="flex-shrink-0 w-full px-4 lg:w-[80%] lg:max-w-[700px]"
+                className="flex-shrink-0 w-full px-4 lg:w-[80%] lg:max-w-[700px]
+                xl:max-w-[500px] 2xl:max-w-[600px]
+                "
               >
                 <div
                   className="
@@ -125,7 +148,8 @@ const CarouselEvents = () => {
                       className="
                     font-pragmatica 
                     font-semibold 
-                    md:text-2xl 
+                    md:text-2xl
+                    lg:text-xl
                     text-sm 
                     uppercase 
                     text-left 
@@ -156,7 +180,7 @@ const CarouselEvents = () => {
                     </div>
                     <div className="flex flex-col p-4 md:p-0 md:w-[55%] flex-grow">
                       <div className="md:p-2 mb-4">
-                        <p className="font-semibold text-xs sm:text-sm uppercase text-left mb-5">
+                        <p className="font-semibold text-xs sm:text-sm lg:text-xs uppercase text-left mb-5">
                           {description}
                         </p>
                         <p className="font-semibold text-xs sm:text-sm uppercase text-left">
@@ -204,6 +228,8 @@ const CarouselEvents = () => {
           absolute 
           top-1/2
           max-sm:left-[-14px] max-sm:border-0 max-sm:shadow-none
+          md:border-0 md:left-[-14px] md:shadow-none
+          xl:border-4 xl:left-0
           left-4 
           transform 
           -translate-y-1/2 
@@ -212,7 +238,6 @@ const CarouselEvents = () => {
           shadow-md 
           hover:scale-105 
           bg-transparent 
-          border-4 
           border-ColorPrincipal"
         >
           <FaChevronLeft className="text-ColorPrincipal" size={24} />
@@ -224,6 +249,8 @@ const CarouselEvents = () => {
           absolute 
           top-1/2
           max-sm:right-[-14px] max-sm:border-0 max-sm:shadow-none
+          md:border-0 md:right-[-14px] md:shadow-none
+          xl:border-4 xl:right-0
           right-[0%] 
           transform 
           -translate-y-1/2 
@@ -232,7 +259,6 @@ const CarouselEvents = () => {
           shadow-md 
           hover:scale-105 
           bg-transparent 
-          border-4 
           border-ColorPrincipal"
         >
           <FaChevronRight className="text-ColorPrincipal" size={24} />
