@@ -33,7 +33,6 @@ const Banner = () => {
             >
               Dream
             </h2>
-            <div className="w-[233px] h-[233px] bg-black"></div>
             {/* <div className="flex text-ColorPrincipal">
               <h2 className="text-[18rem]  font-PerformanceMark w-[50%] h-auto leading-[8rem] mb-5">
                 big,

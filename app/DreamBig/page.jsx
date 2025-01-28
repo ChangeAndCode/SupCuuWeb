@@ -1,7 +1,4 @@
 import React from "react";
-// import Image from "next/image";
-// import Link from "next/link";
-// import { useState, useEffect, useRef } from "react";
 
 import Banner from "./components/Banner";
 import ProgramShowCase from "./components/ProgramShowCase";
@@ -19,8 +16,8 @@ const pageEvents = () => {
         bg-[#EDEFF0]"
       >
         <div className="max-w-[1500px] mx-auto">
-          <Banner />
-          <ProgramShowCase />
+          {/* <Banner /> */}
+          {/* <ProgramShowCase /> */}
           <CarouselEvents />
         </div>
       </div>
