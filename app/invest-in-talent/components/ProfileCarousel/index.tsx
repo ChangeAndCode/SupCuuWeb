@@ -189,16 +189,15 @@ export const ProfileCarousel = ({ profiles }: { profiles: Profile[] }) => {
 
   return (
     <section className="relative py-8 md:py-16">
-      {/* Updated background div with proper sizing and positioning */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-x-hidden">
         <div 
-          className="w-[120vw] h-full bg-[url('/Bg/bglandin.webp')] bg-no-repeat bg-center bg-cover"
+          className="absolute inset-0 bg-[url('/Bg/bglandin.webp')] bg-no-repeat"
           style={{
-            position: 'absolute',
-            left: '-10vw',
-            right: '-10vw',
-            transform: 'scale(1.1)',
-            transformOrigin: 'center center'
+            backgroundSize: 'cover',
+            backgroundPosition: '50% 30%',
+            width: 'min(120vw, 8000px)',
+            left: '50%',
+            transform: 'translateX(-50%)',
           }}
         />
       </div>
