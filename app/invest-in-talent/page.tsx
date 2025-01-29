@@ -1,0 +1,50 @@
+import React from 'react';
+import { ProfileCarousel } from './components/ProfileCarousel/index';
+import { ContactForm } from './components/ContactForm';
+import { Header } from './components/Header';
+import { MOCK_PROFILES } from './data/profiles';
+import Image from 'next/image';
+import ContacUs from '../form/components/ContacUs';
+import RedesSociales from '../form/components/RedesSociales';
+
+const Page = () => {
+  return (
+    <main className="min-h-screen bg-white pt-16">
+      <Header 
+        title="INVEST IN TALENT"
+        subtitle="GROW YOUR IMPACT"
+        heroImage={{
+          src: "/CT/tercera.webp",
+          alt: "Handshake with medal symbolizing success"
+        }}
+      />
+
+      <div className="relative">
+        <ProfileCarousel profiles={MOCK_PROFILES} />
+        <ContactForm />
+      </div>
+
+      <footer className="relative bg-ColorPrincipal rounded-t-7xl px-8 py-16">
+        <div className="absolute top-[-4rem] left-16 md:left-40">
+          <Image
+            src="/logoE.webp"
+            alt="logo"
+            width={150}
+            height={150}
+            className="object-contain"
+            quality={80}
+          />
+        </div>
+
+        <div className="container mx-auto pt-6">
+          <div className="flex flex-col lg:flex-row justify-between">
+            <ContacUs />
+            <RedesSociales />
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
+}
+
+export default Page;

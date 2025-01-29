@@ -22,8 +22,8 @@ const navLinks: NavLink[] = [
     label: "Ecosystem",
     external: true,
   },
-  { href: "/explore-learn", label: "Explore & Learn" },
-  { href: "https://zcform.com/btnwb", label: "Contact", external: true },
+  { href: "/invest-in-talent", label: "Explore & Learn" },
+  { href: "https://zcform.com/btnwb", label: "Contact" },
 ];
 
 const NavLinks: React.FC = () => {
