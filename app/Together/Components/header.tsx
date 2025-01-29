@@ -1,11 +1,22 @@
+import React from 'react';
+import Image from 'next/image';
+
 const Header: React.FC = () => {
     return (
         <div className="mt-20 flex bg-gray-100 min-h-[100vh] pb-[15vh] items-center justify-center relative">
             <h1 className="font-PerformanceMark absolute w-full text-center text-white text-[20vw]" style={{ top: '35%' }}>Stronger</h1>
             <div className="flex w-full relative z-10 flex-wrap md:flex-nowrap">
                 <div className="w-1/2 flex justify-center items-center">
-                    <img src="CT/cuarta.webp" alt="Imagen" className="w-3/4 md:w-full h-auto object-cover" />
-                    {/* <img src="Bg/bgTitulo.webp" alt="Imagen" className="absolute w-[50%] h-auto bottom-[-33%] left-[10vh]"/> */}
+                    <div className="relative w-3/4 md:w-full aspect-[4/3]">
+                        <Image 
+                            src="/CT/cuarta.webp" 
+                            alt="Imagen" 
+                            fill
+                            className="object-cover"
+                            priority
+                            sizes="(max-width: 768px) 37.5vw, 50vw"
+                        />
+                    </div>
                 </div>
                 <div className="w-1/2 flex justify-center items-center text-center p-4">
                     <div>

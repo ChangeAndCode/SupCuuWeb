@@ -189,7 +189,7 @@ export const ProfileCarousel = ({ profiles }: { profiles: Profile[] }) => {
 
   return (
     <section className="relative py-8 md:py-16">
-      <div className="bg-[url('/bg/bglandin.webp')] bg-no-repeat bg-center bg-[length:120vw_160%] xs:bg-[length:120vw_150%] sm:bg-[length:120vw_120%] absolute inset-0 z-0" />
+      <div className="bg-[url('/Bg/bglandin.webp')] bg-no-repeat bg-center bg-[length:120vw_160%] xs:bg-[length:120vw_150%] sm:bg-[length:120vw_120%] absolute inset-0 z-0" />
       
       <div className="container mx-auto px-4 py-12 md:py-20 relative">
         <div className="max-w-4xl mx-auto my-8 md:my-20 h-[1050px] xs:h-[1000px] sm:h-[950px] md:h-[735px] relative overflow-hidden">
