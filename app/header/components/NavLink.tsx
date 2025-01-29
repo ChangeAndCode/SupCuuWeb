@@ -43,7 +43,6 @@ const NavLinks: React.FC = () => {
       }
     };
 
-    // Agregar el event listener
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
