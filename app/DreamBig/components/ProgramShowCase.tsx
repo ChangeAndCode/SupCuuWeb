@@ -6,7 +6,7 @@ import BackGroundShowCase from "./BackGroundShowCase";
 const ProgramShowCase = () => {
   return (
     <div className="relative">
-      {/* <BackGroundShowCase/> */}
+      <BackGroundShowCase />
       {/* showCase Content */}
       <div
         className="

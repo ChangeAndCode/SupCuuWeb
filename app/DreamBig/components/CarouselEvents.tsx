@@ -26,7 +26,7 @@ const CarouselEvents = () => {
       return `${currentIndex * 25}%`; // xl value
     }
     if (windowWidth >= 1024) {
-      return `${currentIndex * 34.6}%`; // lg value
+      return `${currentIndex * 33}%`; // lg value
     }
     return `${currentIndex * 100}%`; // md, sm, xs value
   };
@@ -119,8 +119,8 @@ const CarouselEvents = () => {
             return (
               <div
                 key={index}
-                className="flex-shrink-0 w-full px-4 lg:w-[80%] lg:max-w-[700px]
-                xl:max-w-[500px] 2xl:max-w-[600px]
+                className="flex-shrink-0 w-full px-4 lg:w-[70%] lg:max-w-[650px]
+                xl:max-w-[480px] 2xl:max-w-[600px]
                 "
               >
                 <div
