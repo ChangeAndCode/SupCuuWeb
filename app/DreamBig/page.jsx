@@ -1,12 +1,24 @@
-import React from 'react'
+import React from "react";
+import CarouselEvents from "./components/CarouselEvents";
+
+import Form from "../form/page";
 
 const pageEvents = () => {
   return (
-    <div className='py-[10rem] px-[7rem]'>
-      <h2 className='text-[10rem] text-ColorPrincipal font-PerformanceMark w-3/5 leading-[8rem]'>Dream
-      big,</h2>
-    </div>
-  )
-}
+    <>
+      <div
+        className="
+        max-sm:py-20 max-md:py-24 max-lg:py-36 max-xl:py-20 max-2xl:py-24 
+        max-sm:px-10 max-md:px-20 max-lg:px-28 max-xl:px-16 max-2xl:px-20 
+        bg-[#EDEFF0]"
+      >
+        <div className="max-w-[1500px] mx-auto">
+          <CarouselEvents />
+        </div>
+      </div>
+      <Form />
+    </>
+  );
+};
 
 export default pageEvents;

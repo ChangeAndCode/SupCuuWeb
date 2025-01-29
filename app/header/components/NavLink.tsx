@@ -1,6 +1,6 @@
-'use client';
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+"use client";
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 interface NavLink {
   href?: string;
@@ -10,12 +10,20 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
+  { href: "/DreamBig", label: "About Us" },
   {
-    label: 'Events & Opportunities',
-    subLinks: [{ href: '/attraction', label: 'For Foreigners' }],
+    href: "/Opportunities",
+    label: "Events & Opportunities",
+    subLinks: [{ href: "/attraction", label: "For Foreigners" }],
   },
-  { href: 'https://kumu.io/gedi/chihuahua', label: 'Ecosystem', external: true },
-  { href: 'https://zcform.com/btnwb', label: 'Contact', external: true },
+  { href: "/attraction", label: "Startup" },
+  {
+    href: "https://kumu.io/gedi/chihuahua",
+    label: "Ecosystem",
+    external: true,
+  },
+  { href: "/invest-in-talent", label: "Explore & Learn" },
+  { href: "https://zcform.com/btnwb", label: "Contact" },
 ];
 
 const NavLinks: React.FC = () => {
@@ -35,10 +43,11 @@ const NavLinks: React.FC = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    // Agregar el event listener
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -47,19 +56,21 @@ const NavLinks: React.FC = () => {
       setIsMobile(window.innerWidth < 1024);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <div>
       <button
+        type="button"
         className="block xl:hidden text-white"
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -72,22 +83,25 @@ const NavLinks: React.FC = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+            d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
           />
         </svg>
       </button>
 
       <nav
         className={`${
-          isOpen ? 'block' : 'hidden'
+          isOpen ? "block" : "hidden"
         } xl:block absolute xl:static top-16 left-0 w-full xl:w-auto bg-ColorPrincipal xl:bg-transparent shadow-md xl:shadow-none z-10`}
       >
-        <ul ref={menuRef} className="flex flex-col xl:flex-row space-y-4 xl:space-y-0 xl:space-x-6 p-4 xl:p-0">
+        <ul
+          ref={menuRef}
+          className="flex flex-col xl:flex-row space-y-4 xl:space-y-0 xl:space-x-6 p-4 xl:p-0"
+        >
           {navLinks.map((link) => (
             <li
               key={link.label}
               className={`relative ${
-                isMobile && link.label === activeSubMenu ? 'mb-12' : ''
+                isMobile && link.label === activeSubMenu ? "mb-12" : ""
               }`}
             >
               {link.subLinks ? (

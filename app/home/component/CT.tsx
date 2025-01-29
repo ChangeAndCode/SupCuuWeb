@@ -4,7 +4,7 @@ import CardEntrepreneur from "./CardEntrepreneur";
 import CardStartups from "./CardStartups";
 import CardInvestors from "./CardInvestors";
 import CardCorporates from "./CardCorporates";
-import Carrusel from "./Carrusel";
+import Carrusel from "./Carousel";
 import WeAre from "./WeAre";
 import AnImpact from "./AnImpact";
 import TimeLine from "./TimeLine";
