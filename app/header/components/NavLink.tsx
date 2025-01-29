@@ -14,7 +14,10 @@ const navLinks: NavLink[] = [
   {
     href: "/Opportunities",
     label: "Events & Opportunities",
-    subLinks: [{ href: "/attraction", label: "For Foreigners" }],
+    subLinks: [
+      { href: "/attraction", label: "For Foreigners" },
+      { href: "/Opportunities", label: "Opportunities" },
+    ],
   },
   { href: "/attraction", label: "Startup" },
   {
