@@ -12,12 +12,8 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { href: "/DreamBig", label: "About Us" },
   {
-    href: "/noUse",
+    href: "/Opportunities",
     label: "Events & Opportunities",
-    subLinks: [
-      { href: "/attraction", label: "For Foreigners" },
-      { href: "/Opportunities", label: "Opportunities" },
-    ],
   },
   { href: "/attraction", label: "Startup" },
   {
