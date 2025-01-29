@@ -1,7 +1,5 @@
 import React from "react";
 import Image from "next/image";
-// import Link from "next/link";
-// import { useState, useEffect, useRef } from "react";
 
 const Banner = () => {
   return (
@@ -123,10 +121,11 @@ const Banner = () => {
             </h2>
             <h2
               className="
-                max-sm:text-[2rem] max-sm:leading-[2rem] font-bold
+                max-sm:text-[2rem] max-sm:leading-[2rem] 
+                font-bold
                 sm:text-[2rem]
-                md:text-[3rem] max-md:leading-[3rem] font-bold
-                lg:text-[5rem] max-lg:leading-[4rem] font-bold
+                md:text-[3rem] max-md:leading-[3rem]
+                lg:text-[5rem] max-lg:leading-[4rem]
                 text-7xl text-ColorPrincipal font-pragmatica w-full
               "
             >

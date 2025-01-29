@@ -10,19 +10,20 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: "/", label: "About Us" },
+  { href: "/DreamBig", label: "About Us" },
   {
     href: "/Opportunities",
     label: "Events & Opportunities",
-    subLinks: [
-      { href: "/attraction", label: "For Foreigners" },
-      { href: "/DreamBig", label: "Dream Big" },
-    ],
+    subLinks: [{ href: "/attraction", label: "For Foreigners" }],
   },
   { href: "/attraction", label: "Startup" },
-  { href: 'https://kumu.io/gedi/chihuahua', label: 'Ecosystem', external: true },
+  {
+    href: "https://kumu.io/gedi/chihuahua",
+    label: "Ecosystem",
+    external: true,
+  },
   { href: "/explore-learn", label: "Explore & Learn" },
-  { href: 'https://zcform.com/btnwb', label: 'Contact', external: true },
+  { href: "https://zcform.com/btnwb", label: "Contact", external: true },
 ];
 
 const NavLinks: React.FC = () => {
@@ -42,7 +43,7 @@ const NavLinks: React.FC = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -54,11 +55,11 @@ const NavLinks: React.FC = () => {
       setIsMobile(window.innerWidth < 1024);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -88,7 +89,7 @@ const NavLinks: React.FC = () => {
 
       <nav
         className={`${
-          isOpen ? 'block' : 'hidden'
+          isOpen ? "block" : "hidden"
         } xl:block absolute xl:static top-16 left-0 w-full xl:w-auto bg-ColorPrincipal xl:bg-transparent shadow-md xl:shadow-none z-10`}
       >
         <ul
@@ -99,7 +100,7 @@ const NavLinks: React.FC = () => {
             <li
               key={link.label}
               className={`relative ${
-                isMobile && link.label === activeSubMenu ? 'mb-12' : ''
+                isMobile && link.label === activeSubMenu ? "mb-12" : ""
               }`}
             >
               {link.subLinks ? (

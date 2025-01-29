@@ -1,4 +1,4 @@
-const ErrorFallback = ({ error }) => {
+const ErrorFallback = ({ error }: { error?: any }) => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-red-100">
       <div className="text-center">
