@@ -4,7 +4,7 @@ import { type Profile } from '../components/ProfileCarousel/types';
 export const MOCK_PROFILES: Profile[] = [
   {
      id: "1",
-    name: "Alan Hernández",
+    name: "Alan HERNÁNDEZ",
     company: "BioGrip",
     role: "CEO & CO. FOUNDER",
     image: {

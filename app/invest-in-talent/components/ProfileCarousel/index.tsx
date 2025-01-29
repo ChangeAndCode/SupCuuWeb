@@ -43,7 +43,7 @@ const ProfileDisplay = React.memo(({
         isTransitioning ? 'opacity-0' : 'opacity-100'
       }`}
     >
-      <div className="bg-white rounded-3xl shadow-lg p-8 mx-4 relative overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-lg pt-8 px-8 mx-4 relative overflow-hidden lg:min-w-[950px]">
         {/* Name and Role Section */}
         <div className="lg:absolute lg:top-0 lg:left-8 lg:right-8 z-10 mb-6 md:mb-0">
           <h3 className="font-PerformanceMark text-blue-600 text-4xl sm:text-5xl md:text-6xl lg:text-[10rem] leading-none">
@@ -65,7 +65,7 @@ const ProfileDisplay = React.memo(({
         </div>
 
         {/* Mobile/Tablet Layout */}
-        <div className="block lg:hidden min-h-[750px] rounded-3xl">
+        <div className="block lg:hidden min-h-[700px] rounded-3xl">
           <div className="h-48 relative rounded-lg overflow-hidden mb-6">
             <Image
               src={profile.image.src}
@@ -80,13 +80,13 @@ const ProfileDisplay = React.memo(({
               ref={mobileContentRef}
               className="space-y-6 pr-2 max-h-[500px] overflow-y-auto"
             >
-              <p className="font-pragmatica text-gray-900 text-base">
+              <p className="font-pragmatica text-gray-900 font-bold text-base">
                 {profile.description.paragraph1}
               </p>
-              <p className="font-pragmatica text-gray-900 text-sm">
+              <p className="font-pragmatica text-gray-900 font-bold">
                 {profile.description.paragraph2}
               </p>
-              <p className="font-pragmatica text-gray-900 text-sm pb-12">
+              <p className="font-pragmatica text-gray-900 font-bold pb-12">
                 {profile.description.paragraph3}
               </p>
             </div>
@@ -112,9 +112,9 @@ const ProfileDisplay = React.memo(({
               ref={desktopContentRef}
               className="absolute top-0 right-0 text-sm text-gray-900 w-full overflow-y-auto pr-2"
             >
-              <div className="w-3/4 ml-auto overflow-hidden">
+              <div className="w-full ml-auto overflow-hidden">
                 <div className="relative">
-                  <p className="font-pragmatica text-right p-4 rounded h-48">
+                  <p className="font-pragmatica font-bold text-right p-4 rounded h-48">
                     {profile.description.paragraph1}
                   </p>
                   {hasDesktopOverflow && (
@@ -122,11 +122,11 @@ const ProfileDisplay = React.memo(({
                   )}
                 </div>
               </div>
-              <div className="mt-24 overflow-hidden pb-12">
-                <p className="font-pragmatica text-right p-4 rounded">
+              <div className="mt-24 overflow-hidden">
+                <p className="font-pragmatica font-bold text-right p-4 rounded">
                   {profile.description.paragraph2}
                 </p>
-                <p className="font-pragmatica text-right rounded mb-12">
+                <p className="font-pragmatica font-bold text-right rounded mb-24">
                   {profile.description.paragraph3}
                 </p>
               </div>
@@ -203,7 +203,7 @@ export const ProfileCarousel = ({ profiles }: { profiles: Profile[] }) => {
       </div>
       
       <div className="container mx-auto px-4 py-12 md:py-20 relative">
-        <div className="max-w-4xl mx-auto my-8 md:my-20 h-[1050px] xs:h-[1000px] sm:h-[950px] md:h-[735px] relative overflow-hidden">
+        <div className="max-w-5xl mx-auto my-8 md:my-20 h-[1050px] xs:h-[1000px] sm:h-[950px] md:h-[735px] relative overflow-hidden">
           <NavButton 
             direction="prev"
             onClick={() => handleTransition('prev')}
