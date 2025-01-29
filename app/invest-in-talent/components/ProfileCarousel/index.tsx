@@ -44,7 +44,7 @@ const ProfileDisplay = React.memo(({
       }`}
     >
       <div className="bg-white rounded-3xl shadow-lg p-8 mx-4 relative overflow-hidden">
-        {/* Name and Role Section - Updated font sizes for better responsiveness */}
+        {/* Name and Role Section */}
         <div className="lg:absolute lg:top-0 lg:left-8 lg:right-8 z-10 mb-6 md:mb-0">
           <h3 className="font-PerformanceMark text-blue-600 text-4xl sm:text-5xl md:text-6xl lg:text-[10rem] leading-none">
             {profile.name.split(' ').map((part, index) => (
@@ -189,7 +189,19 @@ export const ProfileCarousel = ({ profiles }: { profiles: Profile[] }) => {
 
   return (
     <section className="relative py-8 md:py-16">
-      <div className="bg-[url('/Bg/bglandin.webp')] bg-no-repeat bg-center bg-[length:120vw_160%] xs:bg-[length:120vw_150%] sm:bg-[length:120vw_120%] absolute inset-0 z-0" />
+      {/* Updated background div with proper sizing and positioning */}
+      <div className="absolute inset-0 z-0">
+        <div 
+          className="w-[120vw] h-full bg-[url('/Bg/bglandin.webp')] bg-no-repeat bg-center bg-cover"
+          style={{
+            position: 'absolute',
+            left: '-10vw',
+            right: '-10vw',
+            transform: 'scale(1.1)',
+            transformOrigin: 'center center'
+          }}
+        />
+      </div>
       
       <div className="container mx-auto px-4 py-12 md:py-20 relative">
         <div className="max-w-4xl mx-auto my-8 md:my-20 h-[1050px] xs:h-[1000px] sm:h-[950px] md:h-[735px] relative overflow-hidden">
