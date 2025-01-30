@@ -1,27 +1,61 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 const WantToStayUpdated: React.FC = () => {
   return (
-    <div className="relative w-full max-w-[900px] mx-auto py-8">
+    <div
+      className="
+    xs:py-0
+    relative 
+    w-full 
+    max-w-[900px] 
+    mx-auto 
+    py-8"
+    >
       <div className="relative w-full h-[180px] md:h-[250px] lg:h-[300px]">
         <Image
           src="/Bg/bgTitulo.webp"
           alt="Want to Stay Updated"
-          fill // Reemplaza `layout="fill"` con `fill` en Next.js moderno
-          style={{ objectFit: 'cover' }} // Reemplaza `objectFit` con `style`
+          fill
+          style={{ objectFit: "cover" }}
           quality={80}
           priority
           className="rounded-lg"
         />
         <div className="absolute inset-0 flex items-center justify-start">
-          <h2 className="font-PerformanceMark text-white text-xs sm:text-sm lg:text-[162%] md:text-lg inset-[7.4rem] text-left mt-4 max-w-[75%] h-[50%] ml-[8%]">
+          <h2
+            className="
+          font-PerformanceMark 
+          text-white 
+          xs:text-[9px] 
+          sm:text-[11px]
+          md:text-[17px]
+          lg:text-[22px] 
+          inset-[7.4rem] 
+          text-left 
+          mt-4 
+          max-w-[75%] 
+          h-[50%] 
+          ml-[8%]"
+          >
             WANT TO STAY UPDATED ON WHAT&rsquo;S HAPPENING IN <br />
             THE ECOSYSTEM DESIGNED JUST FOR YOU?
           </h2>
         </div>
       </div>
-      <p className="font-PerformanceMark text-gray-800 text-xs sm:text-sm md:text-base lg:text-lg text-left mt-4 ml-[8%]">
+      <p
+        className="
+        relative
+        font-PerformanceMark 
+      text-gray-800 
+        xs:text-[9px] xs:ml-5 xs:bottom-20
+        sm:text-[9px] 
+        md:text-[12px] md:ml-12 md:bottom-24
+        lg:text-[15px] lg:ml-16 lg:bottom-28
+        text-left 
+        mt-4
+        ml-[8%]"
+      >
         LEAVE US YOUR INFORMATION, AND EVERY TWO WEEKS, <br />
         YOU&rsquo;LL RECEIVE INFORMATION TAILORED TO YOUR <br />
         INTERESTS RIGHT IN YOUR INBOX.
