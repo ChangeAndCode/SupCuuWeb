@@ -1,0 +1,52 @@
+const CardsData = [
+  {
+    title: "START UP SESSION FOR DIGITAL",
+    description:
+      "SI TIENES UNA IDEA PARA UNA SOLUCION DIGITAL (APP, PLATAFORMA O SOFTWARE) ESTE BOOTCAMP DE 3 DIAS ES JUSTO LO QUE NECESITAS PARA CONVERTIRLA EN UN PROYECTO DE EXITO CON LA AYUDA DE EXPERTOS INCREIBLES",
+    image: "*",
+    date: "10, 11 y 12 de Octubre",
+    location: "Parque Tecnológico Orion",
+  },
+  {
+    title: "TECH INNOVATION EVENT",
+    description:
+      "UN EVENTO PARA LOS AMANTES DE LA TECNOLOGÍA Y LA INNOVACIÓN. EXPERTOS DE LA INDUSTRIA COMPARTIRÁN SUS CONOCIMIENTOS PARA AYUDARTE A LOGRAR TU PROYECTO EXITOSO.",
+    image: "*",
+    date: "15 y 16 de Noviembre",
+    location: "Centro de Convenciones Tech",
+  },
+  {
+    title: "DIGITAL PROTOTYPE WORKSHOP",
+    description:
+      "PARTICIPA EN UN TALLER PRÁCTICO PARA CREAR TU PRIMER PROTOTIPO DIGITAL. APRENDE DE MENTORES EXPERTOS Y TRABAJA EN EQUIPO PARA HACER TU IDEA REALIDAD.",
+    image: "*",
+    date: "20 de Diciembre",
+    location: "Laboratorio Innovate",
+  },
+  {
+    title: "DIGITAL NETWORKING EXPERIENCE",
+    description:
+      "CONOCE A LÍDERES Y EMPRENDEDORES DEL MUNDO DIGITAL. UNA EXPERIENCIA ÚNICA PARA HACER NETWORKING Y ENCONTRAR OPORTUNIDADES DE CRECIMIENTO PROFESIONAL.",
+    image: "*",
+    date: "5 de Enero",
+    location: "Auditorio Central",
+  },
+  {
+    title: "START UP SESSION FOR DIGITAL",
+    description:
+      "SI TIENES UNA IDEA PARA UNA SOLUCION DIGITAL (APP, PLATAFORMA O SOFTWARE) ESTE BOOTCAMP DE 3 DIAS ES JUSTO LO QUE NECESITAS PARA CONVERTIRLA EN UN PROYECTO DE EXITO CON LA AYUDA DE EXPERTOS INCREIBLES",
+    image: "*",
+    date: "10, 11 y 12 de Octubre",
+    location: "Parque Tecnológico Orion",
+  },
+  {
+    title: "TECH INNOVATION EVENT",
+    description:
+      "UN EVENTO PARA LOS AMANTES DE LA TECNOLOGÍA Y LA INNOVACIÓN. EXPERTOS DE LA INDUSTRIA COMPARTIRÁN SUS CONOCIMIENTOS PARA AYUDARTE A LOGRAR TU PROYECTO EXITOSO.",
+    image: "*",
+    date: "15 y 16 de Noviembre",
+    location: "Centro de Convenciones Tech",
+  },
+];
+
+export default CardsData;
