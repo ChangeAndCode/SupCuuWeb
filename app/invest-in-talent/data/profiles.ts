@@ -3,18 +3,18 @@ import { type Profile } from '../components/ProfileCarousel/types';
 
 export const MOCK_PROFILES: Profile[] = [
   {
-    id: '1',
-    name: 'Alan Hernández',
-    role: 'CEO & CO. FOUNDER',
-    company: 'OF BIOGRIP',
+     id: "1",
+    name: "Alan HERNÁNDEZ",
+    company: "BioGrip",
+    role: "CEO & CO. FOUNDER",
     image: {
-      src: '/invest-in-talent/alan.webp',
-      alt: 'Alan Hernandez profile picture'
+      src: "/invest-in-talent/alan.webp",
+      alt: "Alan Hernández - CEO & Co. Founder of BioGrip"
     },
     description: {
-      paragraph1: 'Driven by Chihuahua\'s entrepreneurial ecosystem, Alan Hernandez actively supports the growth of local startups and is deeply committed to social causes. His passion for using technology to restore independence to individuals with disabilities is truly inspiring.',
-      paragraph2: 'Alan\'s impactful work has received global recognition, including awards like Best Technology at the Entrepreneurship World Cup 2022, as well as appearances at Forbes Forum 2023 and Startup Battlefield 200 in 2024.',
-      paragraph3: 'With a mission to eliminate physical disability, BioGrip has developed an interface that connects muscle systems to the human body. Using artificial intelligence, it translates brain signals into complex movements, allowing people with disabilities to regain mobility.'
+      paragraph1: "Driven by Chihuahua\'s entrepreneurial ecosystem, Alan Hernández actively supports the growth of local startups and is deeply committed to social causes. His passion for using technology to restore independence to individuals with disabilities is truly inspiring.",
+      paragraph2: "Alan\'s impactful work has received global recognition, including awards like Best Technology at the Entrepreneurship World Cup 2022, as well as appearances at Forbes Forum 2023 and Startup Battlefield 200 in 2024.",
+      paragraph3: "With a mission to eliminate physical disability, BioGrip has developed an interface that connects robotics systems to the human body. Using artificial intelligence, it translates brain signals into complex movements, allowing people with disabilities to regain mobility. This breakthrough is not only revolutionizing healthcare but also transforming the manufacturing and remote surgery industries, bridging the gap between humans and machines."
     }
   },
   {
