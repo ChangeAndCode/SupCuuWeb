@@ -10,19 +10,19 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: "/DreamBig", label: "About Us" },
   {
     href: "/Opportunities",
     label: "Events & Opportunities",
-    subLinks: [{ href: "/attraction", label: "For Foreigners" }],
+    subLinks: [
+      { href: "/Opportunities", label: "For Locals" },
+      { href: "/attraction", label: "For Foreigners" },
+    ],
   },
-  { href: "/Opportunities", label: "Startup" },
   {
     href: "https://kumu.io/gedi/chihuahua",
     label: "Ecosystem",
     external: true,
   },
-  { href: "/invest-in-talent", label: "Explore & Learn" },
   { href: "https://zcform.com/btnwb", label: "Contact" },
 ];
 
