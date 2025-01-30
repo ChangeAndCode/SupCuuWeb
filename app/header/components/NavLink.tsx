@@ -14,8 +14,9 @@ const navLinks: NavLink[] = [
   {
     href: "/Opportunities",
     label: "Events & Opportunities",
+    subLinks: [{ href: "/attraction", label: "For Foreigners" }],
   },
-  { href: "/attraction", label: "Startup" },
+  { href: "/Opportunities", label: "Startup" },
   {
     href: "https://kumu.io/gedi/chihuahua",
     label: "Ecosystem",
