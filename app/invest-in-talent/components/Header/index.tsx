@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface HeaderProps {
   title: string;
   subtitle: string;
@@ -9,28 +11,29 @@ interface HeaderProps {
 
 export const Header = ({ title, subtitle, heroImage }: HeaderProps) => {
   return (
-    <header className="relative w-full pt-16 pb-12">
+    <header className="relative w-full pt-20 pb-16">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-8">
-          {/* Image - first in both mobile and desktop */}
-          <div className="w-full md:w-1/3">
-            <div className="relative max-w-sm mx-auto">
-              <img 
+          {/* Image - increased height and adjusted responsive sizes */}
+          <div className="w-full md:w-2/5">
+            <div className="relative w-full h-[350px] xs:h-[400px] sm:h-[450px] md:h-[500px] lg:h-[600px]">
+              <Image 
                 src={heroImage.src} 
                 alt={heroImage.alt} 
-                className="w-full h-auto"
-                loading="eager"
-                fetchPriority="high"
+                fill
+                className="object-contain"
+                priority
+                sizes="(max-width: 768px) 100vw, 40vw"
               />
             </div>
           </div>
 
-          {/* Text content - centered on mobile, normal on desktop */}
-          <div className="w-full md:w-2/3 space-y-4 text-center md:text-left">
-            <h1 className="font-PerformanceMark text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-blue-600">
+          {/* Text content - increased font sizes */}
+          <div className="w-full md:w-3/5 space-y-6 text-center md:text-left">
+            <h1 className="font-PerformanceMark text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight text-blue-600">
               {title}
             </h1>
-            <h2 className="font-pragmatica text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-600/90">
+            <h2 className="font-pragmatica text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-blue-600/90">
               {subtitle}
             </h2>
           </div>

@@ -1,4 +1,3 @@
-import InnovationEngine from "app/attraction/components/InnovationEngine"
 import Collabs from "./Components/collabs"
 import Header from "./Components/header"
 
