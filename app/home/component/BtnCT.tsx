@@ -1,15 +1,17 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface BtnCTProps {
   buttonText: string | string[];
   customLines?: string[];
+  link?: string;
 }
 
-const BtnCT: React.FC<BtnCTProps> = ({ buttonText, customLines }) => {
+const BtnCT: React.FC<BtnCTProps> = ({ buttonText, customLines, link }) => {
   const lines = customLines || (typeof buttonText === 'string' ? buttonText.split(' ') : buttonText);
 
   return (
-    <button className='relative main-Tipography bg-ColorPrincipal text-white h-[3.9rem] w-[18rem] uppercase font-pragmatica rounded-full flex flex-col justify-center items-center'>
+    <Link href={link || '#'} className='relative main-Tipography bg-ColorPrincipal text-white h-[3.9rem] w-[18rem] uppercase font-pragmatica rounded-full flex flex-col justify-center items-center z-[20] pointer-events-auto'>
       {lines.map((line, index) => (
         <span key={index}>{line}</span>
       ))}
@@ -25,8 +27,7 @@ const BtnCT: React.FC<BtnCTProps> = ({ buttonText, customLines }) => {
         loading="eager"
         blurDataURL='/btn.webp'
       />
-
-    </button>
+    </Link>
   );
 };
 

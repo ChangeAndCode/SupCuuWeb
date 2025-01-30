@@ -1,4 +1,3 @@
-'use client';
 import Image from "next/image";
 import CardEntrepreneur from "./CardEntrepreneur";
 import CardStartups from "./CardStartups";
@@ -18,7 +17,7 @@ import Form from "../../form/page";
 const CT: React.FC = () => {
   return (
     <div className="pt-24 overflow-hidden">
-      <div className="relative flex flex-col justify-center items-center pt-[3rem] md:pt-[1rem] lg:pt-[4rem] xl:pt-[8rem] overflow-hidden">
+      <div className="relative flex flex-col justify-center items-center pt-[3rem] md:pt-[1rem] lg:pt-[4rem] xl:pt-[8rem] overflow-hidden pointer-events-none">
         {/* Logo */}
         <div className="relative z-10 md:top-[7rem] lg:top-[10rem] xl:top-[5rem] w-[350px] md:w-[290px] lg:w-[400px] xl:w-[470px] h-[350px] md:h-[290px] lg:h-[470px] xl:h-[370px]">
           <div className="flex justify-center">
@@ -48,24 +47,22 @@ const CT: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <div className="relative flex flex-col items-center md:pt-[-10rem] lg:pt-[-20rem] xl:pt-[11.2rem] 2xl:pt-[12rem] xl:flex-row xl:justify-center bg-transparent space-y-6 lg:space-y-0">
-        <div className="relative xl:absolute xl:z-30 xl:transform xl:-translate-x-[30rem] xl:translate-y-[-3rem]">
+      <div className="relative flex flex-col items-center md:pt-[-10rem] lg:pt-[-20rem] xl:pt-[11.2rem] 2xl:pt-[12rem] xl:flex-row xl:justify-center bg-transparent space-y-6 lg:space-y-0 pointer-events-none">
+        <div className="relative xl:absolute xl:z-[10] xl:transform xl:-translate-x-[30rem] xl:translate-y-[-3rem]">
           <CardEntrepreneur />
         </div>
-        <div className="relative xl:absolute xl:z-20 xl:transform xl:-translate-x-[6rem] xl:translate-y-[2rem]">
+        <div className="relative xl:absolute xl:z-[5] xl:transform xl:-translate-x-[6rem] xl:translate-y-[2rem]">
           <CardStartups />
         </div>
-        <div className="relative xl:absolute xl:z-30 xl:transform xl:translate-x-[10.5rem] xl:translate-y-[2rem]">
+        <div className="relative xl:absolute xl:z-[10] xl:transform xl:translate-x-[10.5rem] xl:translate-y-[2rem]">
           <CardInvestors />
         </div>
-        <div className="relative xl:absolute xl:z-20 xl:transform xl:translate-x-[30rem] xl:translate-y-[1rem]">
+        <div className="relative xl:absolute xl:z-[5] xl:transform xl:translate-x-[30rem] xl:translate-y-[1rem]">
           <CardCorporates />
         </div>
       </div>
-
       <div className="relative">
-        <div className="relative z-30 flex justify-center pt-[5rem] xl:pt-[28rem] mb-[-63rem] md:mb-[-57rem] lg:mb-[-62rem] xl:mb-[-53rem] xl-sm:mb-[-55rem]">
+        <div className="relative z-30 flex justify-center pt-[5rem] xl:pt-[28rem] mb-[-63rem] md:mb-[-57rem] lg:mb-[-62rem] xl:mb-[-53rem] xl-sm:mb-[-55rem] pointer-events-none">
           <div className="w-[900px] h-[900px]">
             <Image
               src="/news.webp"
