@@ -22,7 +22,8 @@ const CardStartups: React.FC = () => {
       <div className='xl:-translate-x-[4rem] xl:translate-y-[.5rem] text-center space-y-4'>
         <div className='group-hover:scale-105 group-hover:grayscale-0'>
           <BtnCT 
-            buttonText={['STARTUP &', 'SCALEUPS']} 
+            buttonText={['STARTUP &', 'SCALEUPS']}
+            link='/NextJump'
           />
         </div>
         <div>
