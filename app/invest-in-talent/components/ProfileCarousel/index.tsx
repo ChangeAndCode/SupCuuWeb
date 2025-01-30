@@ -78,7 +78,7 @@ const ProfileDisplay = React.memo(({
           <div className="relative h-[calc(100%-12rem-1.5rem)]">
             <div 
               ref={mobileContentRef}
-              className="space-y-6 pr-2 max-h-[500px] overflow-y-auto"
+              className="space-y-6 pr-2 max-h-[500px] md:max-h-[320px] overflow-y-auto"
             >
               <p className="font-pragmatica text-gray-900 font-bold text-base">
                 {profile.description.paragraph1}
