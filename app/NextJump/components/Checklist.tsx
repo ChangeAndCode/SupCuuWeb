@@ -1,6 +1,6 @@
-import React from 'react';
-import Image from 'next/image';
-import BtnCT from "@components/btnct/BtnCT";
+import React from "react";
+import Image from "next/image";
+
 
 const ChecklistItem = ({ children }: { children: React.ReactNode }) => (
   <p className="font-poppins font-semibold text-base sm:text-lg md:text-xl lg:text-[1.3rem] pt-[-2]">
@@ -58,7 +58,20 @@ const Checklist = () => {
       </div>
 
       <div className="mt-4 flex justify-center lg:justify-end">
-        <BtnCT Text="CLICK HERE" variant="secondary" />
+        <button
+          className="bg-[#ff4544] text-white 
+    py-[0.75rem] sm:py-[0.875rem] md:py-[1rem] 
+    px-[2rem] sm:px-[3rem] md:px-[4rem] lg:px-[6rem] 
+    rounded-md 
+    main-Tipography 
+    text-[0.75rem] sm:text-[1rem] md:text-[1.3rem] lg:text-[1.5rem] 
+    uppercase 
+    font-pragmatica
+    hover:bg-[#e63e3d] transition-colors duration-200
+    w-auto min-w-[180px] sm:min-w-[220px] md:min-w-[260px]"
+        >
+          CLICK HERE
+        </button>
       </div>
     </div>
   );
