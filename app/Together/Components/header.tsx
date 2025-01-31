@@ -20,8 +20,8 @@ const Header: React.FC = () => {
                 </div>
                 <div className="w-1/2 flex justify-center items-center text-center p-4">
                     <div>
-                        <h2 className="text-[1.3rem] sm:text-[2.5rem] md:text-[4rem] xl:text-[4rem] 2xl:text-[5rem] text-right text-ColorPrincipal font-bold font-pragmatica font-bold leading-[1]">TOGETHER</h2>
-                        <h2 className="text-[1.3rem] sm:text-[2.5rem] md:text-[4rem] xl:text-[4rem] 2xl:text-[5rem] text-right text-ColorPrincipal font-bold font-pragmatica font-bold leading-[1]">WE ARE</h2>
+                        <h2 className="text-[1.3rem] sm:text-[2.5rem] md:text-[4rem] xl:text-[4rem] 2xl:text-[5rem] text-right text-ColorPrincipal font-bold font-pragmatica leading-[1]">TOGETHER</h2>
+                        <h2 className="text-[1.3rem] sm:text-[2.5rem] md:text-[4rem] xl:text-[4rem] 2xl:text-[5rem] text-right text-ColorPrincipal font-bold font-pragmatica leading-[1]">WE ARE</h2>
                         <h2 className="text-[1.3rem] sm:text-[2.5rem] md:text-[4rem] xl:text-[4rem] 2xl:text-[5rem] text-right text-ColorPrincipal font-bold font-PerformanceMark leading-[1]">STRONGER</h2>
                     </div>
                 </div>
