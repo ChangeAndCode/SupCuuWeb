@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import BtnCT from "@components/btnct/BtnCT";
+
 
 const ChecklistItem = ({ children }: { children: React.ReactNode }) => (
   <p className="font-poppins font-semibold text-base sm:text-lg md:text-xl lg:text-[1.3rem] pt-[-2]">
