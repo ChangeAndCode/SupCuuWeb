@@ -1,5 +1,86 @@
 import Image from "next/image";
 
+interface TeamMember {
+  id: number;
+  image: string;
+  name: string;
+  position: string;
+  description: string;
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    id: 1,
+    image: "/Team/team1.webp",
+    name: "Oliver Torrez",
+    position: "dta rockstar",
+    description: "director de tci network economista asesor de pics"
+  },
+  {
+    id: 2,
+    image: "/Team/team0.webp",
+    name: "Nombre 2",
+    position: "Cargo 2",
+    description: "Breve descripción del miembro del equipo"
+  },
+  {
+    id: 3,
+    image: "/Team/team3.webp",
+    name: "Nombre 3",
+    position: "Cargo 3",
+    description: "Breve descripción del miembro del equipo"
+  },
+  {
+    id: 4,
+    image: "/Team/team0.webp",
+    name: "Nombre 4",
+    position: "Cargo 4",
+    description: "Breve descripción del miembro del equipo"
+  },
+  {
+    id: 5,
+    image: "/Team/team5.webp",
+    name: "Nombre 5",
+    position: "Cargo 5",
+    description: "Breve descripción del miembro del equipo"
+  },
+  {
+    id: 6,
+    image: "/Team/team0.webp",
+    name: "Nombre 6",
+    position: "Cargo 6",
+    description: "Breve descripción del miembro del equipo"
+  },
+  {
+    id: 7,
+    image: "/Team/team7.webp",
+    name: "Nombre 7",
+    position: "Cargo 7",
+    description: "Breve descripción del miembro del equipo"
+  },
+  {
+    id: 8,
+    image: "/Team/team8.webp",
+    name: "Nombre 8",
+    position: "Cargo 8",
+    description: "Breve descripción del miembro del equipo"
+  },
+  {
+    id: 9,
+    image: "/Team/team9.webp",
+    name: "Nombre 9",
+    position: "Cargo 9",
+    description: "Breve descripción del miembro del equipo"
+  },
+  {
+    id: 10,
+    image: "/Team/team10.webp",
+    name: "Nombre 10",
+    position: "Cargo 10",
+    description: "Breve descripción del miembro del equipo"
+  }
+];
+
 const MeetTeam: React.FC = () => {
   return (
     <div>
@@ -51,79 +132,40 @@ const MeetTeam: React.FC = () => {
 
       <div className="flex justify-center mt-[-17rem] px-0 md:px-[3rem] lg:px-[4rem] xl:px-[8rem] 2xl:px-[5rem] mb-[-40rem] md:mb-[-38rem] lg:mb-[-30rem] xl:mb-[-24rem] 2xl:mb-[-35rem] relative z-20">
         <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          <Image
-            src="/Team/team1.webp"
-            width={260}
-            height={260}
-            alt="Team 1"
-            quality={80}
-          />
-          <Image
-            src="/Team/team0.webp"
-            width={260}
-            height={260}
-            alt="Team 2"
-            quality={80}
-          />
-          <Image
-            src="/Team/team3.webp"
-            width={260}
-            height={260}
-            alt="Team 3"
-            quality={80}
-          />
-          <Image
-            src="/Team/team0.webp"
-            width={260}
-            height={260}
-            alt="Team 4"
-            quality={80}
-          />
-          <Image
-            src="/Team/team5.webp"
-            width={260}
-            height={260}
-            alt="Team 5"
-            quality={80}
-          />
-          <Image
-            src="/Team/team0.webp"
-            width={260}
-            height={260}
-            alt="Team 6"
-            quality={80}
-          />
-          <Image
-            src="/Team/team7.webp"
-            width={260}
-            height={260}
-            alt="Team 7"
-            quality={80}
-          />
-          <Image
-            src="/Team/team8.webp"
-            width={260}
-            height={260}
-            alt="Team 8"
-            quality={80}
-          />
-          <Image
-            src="/Team/team9.webp"
-            width={260}
-            height={260}
-            alt="Team 9"
-            quality={80}
-          />
-          <Image
-            src="/Team/team10.webp"
-            width={260}
-            height={260}
-            alt="Team 10"
-            quality={80}
-          />
+          {teamMembers.map((member, index) => (
+            <div key={member.id} className="relative group">
+              {/* Overlay gris que se ajusta según el índice del siguiente elemento */}
+              <div className={`absolute top-0 ${
+                index + 1 < teamMembers.length && teamMembers[index + 1].id < member.id 
+                  ? '-left-[100%]' 
+                  : 'left-0'
+              } w-full h-full opacity-0 group-hover:opacity-100 group-hover:w-[200%] transition-all duration-300 origin-left z-20`}>
+                <div className="bg-[#EDEFF0] rounded-[5rem] w-full h-full flex flex-col justify-center items-end">
+                  <div className='w-1/2 text-left pl-[.5rem]'>
+                  <div className='bg-white flex justify-center items-center w-full rounded-full'>
+                      <h3 className="main-Tipography text-ColorPrincipal text-[1.5rem] uppercase mb-2">{member.name}</h3>
+                    </div>
+                    <p className="main-Tipography uppercase text-2xl mb-2">{member.position}</p>
+                    <p className="font-poppins text-[1.6rem] uppercase">{member.description}</p>
+                  </div>
+                </div>
+              </div>
+              <div className={`relative transition-all duration-300 ${
+                member.id === teamMembers[index].id ? 'group-hover:z-30' : 'z-10'
+              }`}>
+                <Image
+                  src={member.image}
+                  width={260}
+                  height={260}
+                  alt={`Team ${member.id}`}
+                  quality={80}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-      <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.webp')] bg-no-repeat bg-center bg-cover z-10 pb-[15rem] md:pb-[15rem] lg:pb-[30rem] pt-[40rem] md:pt-[28rem] xl:py-[50rem]">
+      <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.webp')] bg-no-repeat bg-center bg-cover z-10 pb-[15rem] md:pb-[15rem] lg:pb-[30rem] pt-[40rem] md:pt-[25rem] xl:py-[50rem]">
         <div className="flex flex-col-reverse justify-center items-center xl:flex-row px-[2rem] xl:px-0">
           <div className="bg-white w-full xl:w-[60rem] px-[2rem] xl:px-[5rem] py-[3rem] xl:py-[3.5rem] rounded-[4rem] xl:translate-x-[-6rem]">
             <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.7rem] font-pragmatica uppercase leading-[2rem] md:leading-[5rem]">
