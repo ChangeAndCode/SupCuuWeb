@@ -16,7 +16,6 @@ interface OpportunitiesLayoutProps {
 const OpportunitiesLayout: React.FC<OpportunitiesLayoutProps> = ({ children }) => {
   return (
     <>
-      <HeaderLayout />
       <main>{children}</main>
     </>
   );

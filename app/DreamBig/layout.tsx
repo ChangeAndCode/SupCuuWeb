@@ -15,7 +15,6 @@ interface DreamBigLayoutProps {
 const DreamBigLayout: React.FC<DreamBigLayoutProps> = ({ children }) => {
   return (
     <>
-      <HeaderLayout />
       <main>{children}</main>
     </>
   );
