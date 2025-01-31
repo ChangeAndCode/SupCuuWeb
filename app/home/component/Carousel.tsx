@@ -77,7 +77,7 @@ const Carrusel: React.FC = () => {
       <div className="relative w-10/12 bg-white rounded-3xl py-6 px-8 shadow-lg flex flex-col xl:flex-row items-center mx-8 xl:mx-0">
         {/* left arrow */}
         <button
-          className="absolute left-[-28px] top-1/2 transform -translate-y-1/2 z-10  text-ColorPrincipal p-1 rounded-full shadow-md hover:bg-ColorPrincipal hover:text-white"
+          className="absolute left-[-28px] top-1/2 transform -translate-y-1/2 z-10 bg-transparent border-4 border-ColorPrincipal text-ColorPrincipal p-1 rounded-full shadow-md hover:bg-ColorPrincipal hover:text-white"
           onClick={showPrevious}
           aria-label="Previous slide"
         >

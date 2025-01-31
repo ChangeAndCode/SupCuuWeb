@@ -11,8 +11,8 @@ export default function Together() {
                 <Collabs />
             </div>
             <div className="flex bg-gray-100 min-h-[50vh] pb-[15vh] items-center justify-center relative flex-col">
-                <h1 className="font-PerformanceMark w-full text-center text-ColorPrincipal text-[8vw] z-0 leading-[0.5] top-[40] relative -top-2">IF YOU&#39;RE LOOKING TO</h1>
-                <h1 className="font-PerformanceMark w-full text-center text-white text-[8vw] z-10 leading-[1] relative -top-2">IF YOU&#39;RE LOOKING TO</h1>
+                <h1 className="font-PerformanceMark w-full text-center text-ColorPrincipal text-[8vw] z-0 leading-[0.5] top-[40] relative">IF YOU&rsquo;RE LOOKING TO</h1>
+                <h1 className="font-PerformanceMark w-full text-center text-white text-[8vw] z-10 leading-[1] relative -top-2">IF YOU&rsquo;RE LOOKING TO</h1>
             </div>
         </>
     )

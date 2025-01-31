@@ -3,33 +3,33 @@ import { type Profile } from '../components/ProfileCarousel/types';
 
 export const MOCK_PROFILES: Profile[] = [
   {
-    id: '1',
-    name: 'Alan Hernández',
-    role: 'CEO & CO. FOUNDER',
-    company: 'OF BIOGRIP',
+    id: "1",
+    name: "Alan HERN\u00C1NDEZ",
+    company: "BioGrip",
+    role: "CEO & CO. FOUNDER",
     image: {
-      src: '/invest-in-talent/alan.webp',
-      alt: 'Alan Hernandez profile picture'
+      src: "/invest-in-talent/alan.webp",
+      alt: "Alan Hern\u00E1ndez - CEO & Co. Founder of BioGrip"
     },
     description: {
-      paragraph1: 'Driven by Chihuahua\'s entrepreneurial ecosystem, Alan Hernandez actively supports the growth of local startups and is deeply committed to social causes. His passion for using technology to restore independence to individuals with disabilities is truly inspiring.',
-      paragraph2: 'Alan\'s impactful work has received global recognition, including awards like Best Technology at the Entrepreneurship World Cup 2022, as well as appearances at Forbes Forum 2023 and Startup Battlefield 200 in 2024.',
-      paragraph3: 'With a mission to eliminate physical disability, BioGrip has developed an interface that connects muscle systems to the human body. Using artificial intelligence, it translates brain signals into complex movements, allowing people with disabilities to regain mobility.'
+      paragraph1: "Alan Hern\u00E1ndez, driven by Chihuahua\u2019s entrepreneurial ecosystem, supports local startups and social causes. His passion for technology helps restore independence to people with disabilities.",
+      paragraph2: "Alan\u2019s work has gained global recognition, with awards like Best Technology (EWC 2022) and appearances at Forbes Forum 2023 and Startup Battlefield 200 (2024).",
+      paragraph3: "Biogrip aims to eliminate disability by connecting robotic systems to the human body. Using AI, it translates brain signals into movements, restoring mobility and revolutionizing healthcare, manufacturing, and remote surgery."
     }
   },
   {
-    id: '2',
-    name: 'María González',
-    role: 'LEAD RESEARCHER',
-    company: 'AT TECHSOLUTIONS',
+    id: "2",
+    name: "Alan HERN\u00C1NDEZ",
+    company: "BioGrip",
+    role: "CEO & CO. FOUNDER",
     image: {
-      src: '/invest-in-talent/alan.webp',
-      alt: 'Mar\'ia Gonz\'alez profile picture'
+      src: "/invest-in-talent/alan.webp",
+      alt: "Alan Hern\u00E1ndez - CEO & Co. Founder of BioGrip"
     },
     description: {
-      paragraph1: 'With over a decade of experience in AI and machine learning, Maria has been instrumental in developing cutting-edge solutions for sustainable technology. Her work focuses on creating accessible technologies for communities in need.',
-      paragraph2: 'She has led numerous successful projects and mentored dozens of young professionals in the field. Her commitment to diversity in tech has opened doors for many underrepresented groups in the industry.',
-      paragraph3: 'Maria\'s work has contributed to breakthrough developments in renewable energy optimization and smart city planning, making technology work for everyone.'
+      paragraph1: "Alan Hern\u00E1ndez, driven by Chihuahua\u2019s entrepreneurial ecosystem, supports local startups and social causes. His passion for technology helps restore independence to people with disabilities. (2)",
+      paragraph2: "Alan\u2019s work has gained global recognition, with awards like Best Technology (EWC 2022) and appearances at Forbes Forum 2023 and Startup Battlefield 200 (2024).",
+      paragraph3: "Biogrip aims to eliminate disability by connecting robotic systems to the human body. Using AI, it translates brain signals into movements, restoring mobility and revolutionizing healthcare, manufacturing, and remote surgery."
     }
   }
 ];
