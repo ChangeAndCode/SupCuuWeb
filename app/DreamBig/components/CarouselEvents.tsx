@@ -201,7 +201,7 @@ const CarouselEvents = () => {
                         uppercase
                         "
                         >
-                          Registro
+                          Register
                         </button>
                       </div>
                     </div>
