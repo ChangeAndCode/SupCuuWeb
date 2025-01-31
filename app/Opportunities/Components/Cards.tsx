@@ -6,16 +6,13 @@ const Cards = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  // Calcular índices de paginación
   const totalPages = Math.ceil(CardsData.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentCards = CardsData.slice(startIndex, endIndex);
 
-  // Función para cambiar de página y hacer scroll arriba
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -58,9 +55,9 @@ const Cards = () => {
                 </div>
 
                 <div className="flex justify-center">
-                <button className="px-4 py-2 md:w-56 md:text-2xl bg-ColorPrincipal text-white rounded-full text-xs hover:bg-ColorPrincipaltransition font-pragmatica uppercase">
-                  Register
-                </button>
+                  <button className="px-4 py-2 md:w-56 md:text-2xl bg-ColorPrincipal text-white rounded-full text-xs hover:bg-ColorPrincipaltransition font-pragmatica uppercase">
+                    Register
+                  </button>
                 </div>
               </div>
             </div>
@@ -68,7 +65,7 @@ const Cards = () => {
         ))}
       </div>
 
-      {/* Controles de paginación */}
+      {/* pagination Controls */}
       {totalPages > 1 && (
         <div className="flex justify-center mt-6 space-x-2">
           <button
