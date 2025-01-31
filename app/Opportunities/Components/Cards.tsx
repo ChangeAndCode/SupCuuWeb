@@ -58,9 +58,9 @@ const Cards = () => {
                 </div>
 
                 <div className="flex justify-center">
-                  <button className="px-4 py-2 md:w-56 md:text-2xl bg-ColorPrincipal text-white rounded-full text-xs hover:bg-ColorPrincipaltransition font-pragmatica uppercase">
-                    Registro
-                  </button>
+                <button className="px-4 py-2 md:w-56 md:text-2xl bg-ColorPrincipal text-white rounded-full text-xs hover:bg-ColorPrincipaltransition font-pragmatica uppercase">
+                  Register
+                </button>
                 </div>
               </div>
             </div>
