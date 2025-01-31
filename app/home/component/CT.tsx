@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Startup from "./Startup";
 import CardEntrepreneur from "./CardEntrepreneur";
 import CardStartups from "./CardStartups";
 import CardInvestors from "./CardInvestors";
@@ -18,34 +19,7 @@ const CT: React.FC = () => {
   return (
     <div className="pt-24 overflow-hidden">
       <div className="relative flex flex-col justify-center items-center pt-[3rem] md:pt-[1rem] lg:pt-[4rem] xl:pt-[8rem] overflow-hidden pointer-events-none">
-        {/* Logo */}
-        <div className="relative z-10 md:top-[7rem] lg:top-[10rem] xl:top-[5rem] w-[350px] md:w-[290px] lg:w-[400px] xl:w-[470px] h-[350px] md:h-[290px] lg:h-[470px] xl:h-[370px]">
-          <div className="flex justify-center">
-            <Image
-              src="/startupB.webp"
-              alt="Company Logo"
-              width={470}
-              height={370}
-              style={{ height: 'auto' }}
-              quality={80}
-              priority
-              loading="eager"
-              placeholder="blur"
-              blurDataURL="/startupB.webp"
-            />
-          </div>
-        </div>
-        {/* Texto detrás */}
-        <div className="absolute inset-0 flex justify-center items-center">
-          <div className="text-center">
-            <p className="main-Tipography hidden md:block text-[2rem] md:text-[4rem] lg:text-[6rem] xl:text-[8rem] 2xl:text-[11rem] font-pragmatica uppercase text-outline  md:leading-[5rem] lg:leading-[8rem] 2xl:leading-[8rem] whitespace-nowrap">
-              We are
-            </p>
-            <p className="main-Tipography hidden md:block text-[2rem] md:text-[4rem] lg:text-[5rem] xl:text-[7rem] 2xl:text-[9.5rem] font-pragmatica uppercase text-outline md:leading-[5rem] lg:leading-[8rem] 2xl:leading-[8rem] whitespace-nowrap">
-              startup chihuahua
-            </p>
-          </div>
-        </div>
+        <Startup />
       </div>
       <div className="relative flex flex-col items-center md:pt-[-10rem] lg:pt-[-20rem] xl:pt-[11.2rem] 2xl:pt-[12rem] xl:flex-row xl:justify-center bg-transparent space-y-6 lg:space-y-0 pointer-events-none">
         <div className="relative xl:absolute xl:z-[10] xl:transform xl:-translate-x-[30rem] xl:translate-y-[-3rem]">
