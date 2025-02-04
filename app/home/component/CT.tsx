@@ -80,7 +80,9 @@ const CT: React.FC = () => {
           className="absolute xl:bottom-[-25rem] 2xl:bottom-[-22rem] xl:right-[-1rem] 2xl:right-[3rem] z-10"
         />
       </div>
-      <AnImpact />
+      <div id="anImpact">
+        <AnImpact />
+      </div>
       <div className="pb-[5rem] sm:pb-[10rem] md:pb-[20rem] lg:pb-[20rem] xl:pb-[6rem]">
         <TimeLine />
       </div>
@@ -90,10 +92,10 @@ const CT: React.FC = () => {
       <div className="bg-white mb-[-5rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">
         <Transformative />
       </div>
-      <div className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-cover z-10 py-[15rem]">
+      <div id="partners" className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-cover z-10 py-[15rem]">
         <Partners />
       </div>
-      <div>
+      <div id="team">
         <MeetTeam />
         <div className="pb-[10rem] lg:pb-[2rem] bg-[#c4cfd6] mt-[-20rem] md:mt-[-33rem] lg:mt-[-30rem] xl:mt-[-35rem]">
           <Backbone />

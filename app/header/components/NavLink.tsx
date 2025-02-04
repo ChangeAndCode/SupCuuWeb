@@ -13,7 +13,11 @@ const navLinks: NavLink[] = [
   {
     href: "#weAre",
     label: "About us",
-    external: false,
+    subLinks: [
+      { href: "#anImpact", label: "History and Impact" },
+      { href: "#partners", label: "Partners" },
+      { href: "#team", label: "The Team" },
+    ],
   },
   {
     href: "/Opportunities",
@@ -39,6 +43,13 @@ const NavLinks: React.FC = () => {
 
   const toggleSubMenu = (label: string) => {
     setActiveSubMenu(activeSubMenu === label ? null : label);
+  };
+
+  const handleSubLinkClick = () => {
+    setActiveSubMenu(null);
+    if (isMobile) {
+      setIsOpen(false);
+    }
   };
 
   const handleScrollTo = (elementId: string) => {
@@ -148,15 +159,30 @@ const NavLinks: React.FC = () => {
               )}
 
               {link.subLinks && activeSubMenu === link.label && (
-                <ul className="absolute left-0 mt-2 bg-white shadow-md text-black p-4 rounded-lg space-y-2 w-full z-20">
+                <ul className={`absolute left-0 mt-2 bg-white shadow-md text-black p-4 rounded-lg space-y-2 z-20 ${
+                  link.label === "About us" ? "w-64" : "w-full"
+                }`}>
                   {link.subLinks.map((subLink) => (
                     <li key={subLink.label}>
-                      <Link
-                        href={subLink.href as string}
-                        className="block text-black font-poppins hover:text-blue-500 font-semibold uppercase transition-colors"
-                      >
-                        {subLink.label}
-                      </Link>
+                      {subLink.href?.startsWith('#') ? (
+                        <button
+                          onClick={() => {
+                            handleScrollTo(subLink.href!.substring(1));
+                            handleSubLinkClick();
+                          }}
+                          className="block w-full text-left text-black font-poppins hover:text-blue-500 font-semibold uppercase transition-colors"
+                        >
+                          {subLink.label}
+                        </button>
+                      ) : (
+                        <Link
+                          href={subLink.href as string}
+                          className="block text-black font-poppins hover:text-blue-500 font-semibold uppercase transition-colors"
+                          onClick={handleSubLinkClick}
+                        >
+                          {subLink.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
