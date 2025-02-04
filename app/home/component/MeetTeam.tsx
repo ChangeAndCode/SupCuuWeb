@@ -1,85 +1,5 @@
 import Image from "next/image";
-
-interface TeamMember {
-  id: number;
-  image: string;
-  name: string;
-  position: string;
-  description: string;
-}
-
-const teamMembers: TeamMember[] = [
-  {
-    id: 1,
-    image: "/Team/team1.webp",
-    name: "Oliver Torrez",
-    position: "dta rockstar",
-    description: "director de tci network economista asesor de pics"
-  },
-  {
-    id: 2,
-    image: "/Team/team0.webp",
-    name: "Nombre 2",
-    position: "Cargo 2",
-    description: "Breve descripción del miembro del equipo"
-  },
-  {
-    id: 3,
-    image: "/Team/team3.webp",
-    name: "Nombre 3",
-    position: "Cargo 3",
-    description: "Breve descripción del miembro del equipo"
-  },
-  {
-    id: 4,
-    image: "/Team/team0.webp",
-    name: "Nombre 4",
-    position: "Cargo 4",
-    description: "Breve descripción del miembro del equipo"
-  },
-  {
-    id: 5,
-    image: "/Team/team5.webp",
-    name: "Nombre 5",
-    position: "Cargo 5",
-    description: "Breve descripción del miembro del equipo"
-  },
-  {
-    id: 6,
-    image: "/Team/team0.webp",
-    name: "Nombre 6",
-    position: "Cargo 6",
-    description: "Breve descripción del miembro del equipo"
-  },
-  {
-    id: 7,
-    image: "/Team/team7.webp",
-    name: "Nombre 7",
-    position: "Cargo 7",
-    description: "Breve descripción del miembro del equipo"
-  },
-  {
-    id: 8,
-    image: "/Team/team8.webp",
-    name: "Nombre 8",
-    position: "Cargo 8",
-    description: "Breve descripción del miembro del equipo"
-  },
-  {
-    id: 9,
-    image: "/Team/team9.webp",
-    name: "Nombre 9",
-    position: "Cargo 9",
-    description: "Breve descripción del miembro del equipo"
-  },
-  {
-    id: 10,
-    image: "/Team/team10.webp",
-    name: "Nombre 10",
-    position: "Cargo 10",
-    description: "Breve descripción del miembro del equipo"
-  }
-];
+import { teamMembers } from "../data/DataTeams";
 
 const MeetTeam: React.FC = () => {
   return (
@@ -134,19 +54,20 @@ const MeetTeam: React.FC = () => {
         <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {teamMembers.map((member, index) => (
             <div key={member.id} className="relative group">
-              {/* Overlay gris que se ajusta según el índice del siguiente elemento */}
               <div className={`absolute top-0 ${
                 index + 1 < teamMembers.length && teamMembers[index + 1].id < member.id 
-                  ? '-left-[100%]' 
+                  ? 'md:-left-[100%]' 
                   : 'left-0'
-              } w-full h-full opacity-0 group-hover:opacity-100 group-hover:w-[200%] transition-all duration-300 origin-left z-20`}>
-                <div className="bg-[#EDEFF0] rounded-[5rem] w-full h-full flex flex-col justify-center items-end">
-                  <div className='w-1/2 text-left pl-[.5rem]'>
-                  <div className='bg-white flex justify-center items-center w-full rounded-full'>
-                      <h3 className="main-Tipography text-ColorPrincipal text-[1.5rem] uppercase mb-2">{member.name}</h3>
+              } w-full h-full opacity-0 group-hover:opacity-100 ${
+                'md:group-hover:w-[200%] md:group-hover:h-full group-hover:h-[200%]'
+              } transition-all duration-300 origin-left z-20`}>
+                <div className="bg-[#EDEFF0] rounded-[5rem] w-full h-full flex flex-col justify-center items-end p-4">
+                  <div className='w-1/2 text-left pl-2 md:pl-3'>
+                    <div className='bg-white flex 2xl:justify-start 2xl:items-center w-full rounded-full px-3'>
+                      <h3 className="main-Tipography text-ColorPrincipal text-[0.8rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] 2xl:text-[1.3rem] uppercase mb-1 md:mb-2 line-clamp-1">{member.name}</h3>
                     </div>
-                    <p className="main-Tipography uppercase text-2xl mb-2">{member.position}</p>
-                    <p className="font-poppins text-[1.6rem] uppercase">{member.description}</p>
+                    <p className="main-Tipography uppercase text-[0.8rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] 2xl:text-[1.3rem] mb-1 md:mb-2 line-clamp-1">{member.position}</p>
+                    <p className="font-poppins text-[0.8rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] 2xl:text-[1.2rem] uppercase line-clamp-3">{member.description}</p>
                   </div>
                 </div>
               </div>
