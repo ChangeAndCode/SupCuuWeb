@@ -11,6 +11,11 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   {
+    href: "#weAre",
+    label: "About us",
+    external: false,
+  },
+  {
     href: "/Opportunities",
     label: "Events & Opportunities",
     subLinks: [
@@ -34,6 +39,13 @@ const NavLinks: React.FC = () => {
 
   const toggleSubMenu = (label: string) => {
     setActiveSubMenu(activeSubMenu === label ? null : label);
+  };
+
+  const handleScrollTo = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   useEffect(() => {
@@ -119,6 +131,13 @@ const NavLinks: React.FC = () => {
                 >
                   {link.label}
                 </a>
+              ) : link.href?.startsWith('#') ? (
+                <button
+                  onClick={() => handleScrollTo(link.href!.substring(1))}
+                  className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
+                >
+                  {link.label}
+                </button>
               ) : (
                 <Link
                   href={link.href as string}

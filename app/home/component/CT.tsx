@@ -67,7 +67,7 @@ const CT: React.FC = () => {
       </div>
 
 
-      <div className="py-16 overflow-hidden">
+      <div id="weAre" className="py-16 overflow-hidden">
         <WeAre />
       </div>
       <div className="relative hidden xl:block 2xl:-mb-[9rem]">
