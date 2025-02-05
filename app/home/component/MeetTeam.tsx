@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { teamMembers } from "../data/DataTeams";
+import Presidente from "./presidente";
 
 const MeetTeam: React.FC = () => {
   return (
@@ -50,8 +51,8 @@ const MeetTeam: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex justify-center mt-[-17rem] px-4 sm:px-8 md:px-[3rem] lg:px-[4rem] xl:px-[8rem] 2xl:px-[5rem] mb-[-20rem] sm:mb-[-25rem] md:mb-[-38rem] lg:mb-[-30rem] xl:mb-[-24rem] 2xl:mb-[-35rem] relative z-20">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+      <div className="flex justify-center mt-[-17rem] px-0 md:px-[3rem] lg:px-[4rem] xl:px-[8rem] 2xl:px-[5rem] mb-[-40rem] md:mb-[-38rem] lg:mb-[-30rem] xl:mb-[-24rem] 2xl:mb-[-35rem] relative z-20">
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {teamMembers.map((member, index) => (
             <div key={member.id} className="relative group">
               <div className={`absolute top-0 ${
@@ -87,36 +88,7 @@ const MeetTeam: React.FC = () => {
         </div>
       </div>
       <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.webp')] bg-no-repeat bg-center bg-cover z-10 pb-[15rem] md:pb-[15rem] lg:pb-[30rem] pt-[40rem] md:pt-[25rem] xl:py-[50rem]">
-        <div className="flex flex-col-reverse justify-center items-center xl:flex-row px-[2rem] xl:px-0">
-          <div className="bg-white w-full xl:w-[60rem] px-[2rem] xl:px-[5rem] py-[3rem] xl:py-[3.5rem] rounded-[4rem] xl:translate-x-[-6rem]">
-            <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.7rem] font-pragmatica uppercase leading-[2rem] md:leading-[5rem]">
-              nearshoring financing
-            </p>
-            <p className="text-[1.2rem] lg:text-[1.5rem] xl:text-[1.7rem] font-pragmatica uppercase leading-[3rem]">
-              ceo & founder of
-            </p>
-            <Image
-              src="/Logos/equity.webp"
-              width={400}
-              height={400}
-              alt="Equity"
-              className="mb-[2rem]"
-              quality={80}
-            />
-            <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.6rem] font-pragmatica uppercase w-full leading-[2rem]">
-              Member of business councils such as COPARMEX, ASOFOM, and DESEC
-            </p>
-          </div>
-          <div className="relative xl:absolute xl:translate-x-[24rem] mb-[-4rem] md:mb-[-6rem] lg:mb-[-6.5rem] xl:mb-0 xl:mt-[6rem]">
-            <Image
-              src="/Team/presidente.webp"
-              width={650}
-              height={650}
-              alt="Presidente"
-              quality={80}
-            />
-          </div>
-        </div>
+        <Presidente />
       </div>
     </div>
   );
