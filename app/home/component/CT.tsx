@@ -91,11 +91,11 @@ const CT: React.FC = () => {
       </div>
       <div id="team">
         <MeetTeam />
-        <div className="pb-[10rem] lg:pb-[2rem] bg-[#c4cfd6] mt-[-20rem] md:mt-[-33rem] lg:mt-[-30rem] xl:mt-[-35rem]">
+        <div className="pb-[14rem] sm:pb-[13rem] md:pb-[15rem] lg:pb-[9rem] xl:pb-[15rem] bg-[#c4cfd6] mt-[-20rem] md:mt-[-33rem] lg:mt-[-30rem] xl:mt-[-35rem]">
           <Backbone />
         </div>
       </div>
-      <div className="mt-[-4rem] lg:mt-[-6rem] xl:mt-[-55rem]">
+      <div className='mt-[-5rem]'>
         <Form />
       </div>
     </div>
