@@ -58,7 +58,7 @@ const Presidente = () => {
       </div>
       <div 
         ref={elementRef}
-        className={`relative xl:absolute xl:translate-x-[24rem] mb-[-4rem] md:mb-[-6rem] lg:mb-[-6.5rem] xl:mb-0 xl:mt-[6rem]`}
+        className="relative xl:absolute xl:translate-x-[24rem] mb-[-4rem] md:mb-[-6rem] lg:mb-[-6.5rem] xl:mb-0 xl:mt-[6rem]"
       >
         <Image
           src="/Team/presidente.webp"
@@ -66,7 +66,7 @@ const Presidente = () => {
           height={650}
           alt="Presidente"
           quality={80}
-          className={`${isVisible ? 'slide-in-right' : 'opacity-0'}`}
+          className={isVisible ? 'slide-in-right' : 'opacity-0'}
         />
       </div>
     </div>

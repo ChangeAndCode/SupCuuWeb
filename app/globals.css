@@ -90,4 +90,21 @@ html {
   opacity: 0;
 }
 
+@keyframes float-rocket {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float-animation {
+  animation: float-rocket 3s ease-in-out infinite;
+  opacity: 1;
+}
+
 

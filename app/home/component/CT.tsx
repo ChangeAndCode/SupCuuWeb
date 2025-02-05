@@ -6,6 +6,7 @@ import CardInvestors from "./CardInvestors";
 import CardCorporates from "./CardCorporates";
 import Carrusel from "./Carousel";
 import WeAre from "./WeAre";
+import Cohete from "./cohete";
 import AnImpact from "./AnImpact";
 import TimeLine from "./TimeLine";
 import KeyImpact from "./KeyImpact";
@@ -71,14 +72,7 @@ const CT: React.FC = () => {
         <WeAre />
       </div>
       <div className="relative hidden xl:block 2xl:-mb-[9rem]">
-        <Image
-          src="/cohete.webp"
-          width={600}
-          height={500}
-          style={{ height: 'auto' }}
-          alt="We are"
-          className="absolute xl:bottom-[-25rem] 2xl:bottom-[-22rem] xl:right-[-1rem] 2xl:right-[3rem] z-10"
-        />
+        <Cohete />
       </div>
       <div id="anImpact">
         <AnImpact />
