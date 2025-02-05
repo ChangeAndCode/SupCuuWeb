@@ -50,8 +50,8 @@ const MeetTeam: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex justify-center mt-[-17rem] px-0 md:px-[3rem] lg:px-[4rem] xl:px-[8rem] 2xl:px-[5rem] mb-[-40rem] md:mb-[-38rem] lg:mb-[-30rem] xl:mb-[-24rem] 2xl:mb-[-35rem] relative z-20">
-        <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <div className="flex justify-center mt-[-17rem] px-4 sm:px-8 md:px-[3rem] lg:px-[4rem] xl:px-[8rem] 2xl:px-[5rem] mb-[-20rem] sm:mb-[-25rem] md:mb-[-38rem] lg:mb-[-30rem] xl:mb-[-24rem] 2xl:mb-[-35rem] relative z-20">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
           {teamMembers.map((member, index) => (
             <div key={member.id} className="relative group">
               <div className={`absolute top-0 ${
@@ -59,11 +59,11 @@ const MeetTeam: React.FC = () => {
                   ? '2xl:-left-[100%] xl:left-0' 
                   : 'left-0'
               } w-full h-full opacity-0 group-hover:opacity-100 ${
-                '2xl:group-hover:w-[200%] 2xl:group-hover:h-full xl:group-hover:w-full xl:group-hover:h-[200%]'
+                'group-hover:h-[200%] sm:group-hover:h-[200%] md:group-hover:h-[200%] lg:group-hover:h-[200%] xl:group-hover:h-[200%] 2xl:group-hover:w-[200%] 2xl:group-hover:h-full'
               } transition-all duration-300 origin-top z-20`}>
-                <div className="bg-[#EDEFF0] rounded-[5rem] w-full h-full flex flex-col justify-end 2xl:justify-center items-center 2xl:items-end p-4">
+                <div className="bg-[#EDEFF0] rounded-[5rem] w-full h-full flex flex-col justify-end items-center 2xl:justify-center 2xl:items-end p-4">
                   <div className='w-full 2xl:w-1/2 text-left pl-2 md:pl-3'>
-                    <div className='bg-white flex justify-start items-center w-full rounded-full px-3'>
+                    <div className='bg-white flex justify-start items-center w-full rounded-full px-3 mb-4'>
                       <h3 className="main-Tipography text-ColorPrincipal text-[0.8rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] 2xl:text-[1.3rem] uppercase mb-1 md:mb-2 line-clamp-1">{member.name}</h3>
                     </div>
                     <p className="main-Tipography uppercase text-[0.8rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] 2xl:text-[1.3rem] mb-1 md:mb-2 line-clamp-1">{member.position}</p>
