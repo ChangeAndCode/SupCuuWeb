@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LPSC
+
+ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Environment Variables
 
@@ -6,6 +8,9 @@ The following environment variables are required:
 
 * `NEXT_PUBLIC_CONTACT_FORM_EMAIL`: the email address where contact form submissions will be sent (e.g. `your-contact-email@example.com`)
 * `NEXT_PUBLIC_API_URL`: the URL of the API (e.g. `https://your-api-url.com/`)
+* `NEXT_PUBLIC_BASE_URL`: the current url the app is running on
+* `UMBRACO_API_URL`: the URL of the Umbraco API (e.g. `http://localhost:3177/umbraco/delivery/api/v2`)
+* `UMBRACO_API_KEY`: the API key for the Umbraco API (e.g. `your-umbraco-api-key`)
 
 Add these variables to your `.env.local` file to configure the project.
 
@@ -21,8 +26,6 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
