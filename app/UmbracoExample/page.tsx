@@ -1,14 +1,27 @@
-// src/app/page.tsx
-import  EndpointContent  from '@/components/Umbraco/EndpointContent'
+
+// src/app/UmbracoExample/page.tsx
+import { Suspense } from 'react'
+import EndpointContent from '@/components/Umbraco/EndpointContent'
 import { UmbracoApi } from '@/lib/api'
 
-// Need to use Server Components for initial data fetching
-export default async function Page() {
-  try {
-    const content = await UmbracoApi.getContent('')
-    
-    return <EndpointContent content={content} />
-  } catch (error) {
-    return <div className="p-6 text-red-500">Error loading content</div>
-  }
+// Mark this route as dynamic
+export const dynamic = 'force-dynamic'
+
+// Async component for content fetching
+async function UmbracoContent() {
+  const content = await UmbracoApi.getContent('')  // Updated path
+  return <EndpointContent content={content} />
+}
+
+// Simple loading state
+function LoadingState() {
+  return <div className="p-6">Loading...</div>
+}
+
+export default function UmbracoExamplePage() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <UmbracoContent />
+    </Suspense>
+  )
 }
