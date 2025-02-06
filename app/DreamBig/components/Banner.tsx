@@ -11,7 +11,7 @@ const Banner = () => {
         xl:flex-row
         w-full 
         relative 
-        md:right-0 
+        md:right-0
         "
       >
         <div
@@ -39,12 +39,11 @@ const Banner = () => {
               className="
               w-full
               h-auto
-              object-contain"
+              object-contain
+              animate-slide-left"
               quality={80}
               priority
               loading="eager"
-              placeholder="blur"
-              blurDataURL="/CT/primera.webp"
             />
           </div>
         </div>
