@@ -1,8 +1,12 @@
+'use client'
 import Image from 'next/image'
 import Globo from './globo'
+import { useState } from 'react'
 
 
 const Backbone = () => {
+  const [selectedImage, setSelectedImage] = useState<number>(0); // Especificamos el tipo
+
   return (
     <div className='relative flex flex-col items-center lg:pb-[10rem] xl:pb-0 pt-[10rem]'>
         <div className='absolute z-20 mt-[4rem] sm:mt-[5rem] md:mt-[18rem] lg:mt-[5rem] xl:mt-0'>
@@ -18,30 +22,36 @@ const Backbone = () => {
               />
             </div>
             <div className='flex justify-center items-center -space-x-[4rem] sm:-space-x-[5rem] md:-space-x-[6rem] lg:-space-x-[7rem]'>
-              <Image 
-                src='/Team/backbone/guzman.png'
-                alt='Team Backbone'
-                width={300}
-                height={300}
-                quality={80}
-                className='object-contain w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px]'
-              />
-              <Image 
-                src='/Team/backbone/vic.png'
-                alt='Team Backbone'
-                width={300}
-                height={300}
-                quality={80}
-                className='object-contain w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px]'
-              />
-              <Image 
-                src='/Team/backbone/estefania.png'
-                alt='Team Backbone'
-                width={300}
-                height={300}
-                quality={80}
-                className='object-contain w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px]'
-              />
+              <div onClick={() => setSelectedImage(0)} className="cursor-pointer">
+                <Image 
+                  src='/Team/backbone/guzman.png'
+                  alt='Team Backbone'
+                  width={300}
+                  height={300}
+                  quality={80}
+                  className='object-contain w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px]'
+                />
+              </div>
+              <div onClick={() => setSelectedImage(1)} className="cursor-pointer">
+                <Image 
+                  src='/Team/backbone/vic.png'
+                  alt='Team Backbone'
+                  width={300}
+                  height={300}
+                  quality={80}
+                  className='object-contain w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px]'
+                />
+              </div>
+              <div onClick={() => setSelectedImage(2)} className="cursor-pointer">
+                <Image 
+                  src='/Team/backbone/estefania.png'
+                  alt='Team Backbone'
+                  width={300}
+                  height={300}
+                  quality={80}
+                  className='object-contain w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px]'
+                />
+              </div>
             </div>
           </div>
           <div className='absolute md:right-[-10rem] lg:right-[-13rem] xl:right-[-15rem] 2xl:right-[-19rem] md:top-[30rem] lg:top-[33rem] xl:top-[31rem] 2xl:top-[27rem]'>
@@ -56,7 +66,7 @@ const Backbone = () => {
           </div>
         </div>
         <div className='relative z-30 mt-[32rem] sm:mt-[38rem] md:mt-[58rem] lg:mt-[51rem] xl:mt-[46rem]'>
-          <Globo />
+          <Globo selectedImage={selectedImage} />
         </div>
     </div>
   )
