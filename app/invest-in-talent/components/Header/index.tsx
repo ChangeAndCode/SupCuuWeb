@@ -21,7 +21,7 @@ export const Header = ({ title, subtitle, heroImage }: HeaderProps) => {
                 src={heroImage.src} 
                 alt={heroImage.alt} 
                 fill
-                className="object-contain"
+                className="object-contain animate-slide-left"
                 priority
                 sizes="(max-width: 768px) 100vw, 40vw"
               />

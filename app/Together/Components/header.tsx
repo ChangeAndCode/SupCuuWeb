@@ -12,7 +12,7 @@ const Header: React.FC = () => {
                             src="/CT/cuarta.webp" 
                             alt="Imagen" 
                             fill
-                            className="object-cover"
+                            className="object-cover animate-slide-left"
                             priority
                             sizes="(max-width: 768px) 37.5vw, 50vw"
                         />
