@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 
 const Backbone = () => {
-  const [selectedImage, setSelectedImage] = useState<number>(0); // Especificamos el tipo
+  const [selectedImage, setSelectedImage] = useState<number>(0);
 
   return (
     <div className='relative flex flex-col items-center lg:pb-[10rem] xl:pb-0 pt-[10rem]'>
