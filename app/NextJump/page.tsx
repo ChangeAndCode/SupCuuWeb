@@ -20,7 +20,7 @@ const NextJump = () => {
                 loading="eager"
                 placeholder="blur"
                 blurDataURL="/CT/segunda.webp"
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full animate-slide-left"
               />
             </div>
 
