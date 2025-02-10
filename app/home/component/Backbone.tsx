@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import Globo from './globo'
+import Bubble from './Bubble'
 import { useState, useEffect } from 'react'
 import { teamBackboneData } from '../data/dataTeamBackbone'
 
@@ -32,7 +32,11 @@ const Backbone = () => {
             </div>
             <div className='flex justify-center items-center -space-x-[4rem] sm:-space-x-[5rem] md:-space-x-[6rem] lg:-space-x-[7rem]'>
               {teamBackboneData.map((member) => (
-                <div key={member.id} onClick={() => setSelectedImage(member.id)} className="cursor-pointer">
+                <div 
+                  key={member.id} 
+                  onMouseEnter={() => setSelectedImage(member.id)} 
+                  className="cursor-pointer"
+                >
                   <Image 
                     src={member.image}
                     alt={`Team Backbone - ${member.name}`}
@@ -57,7 +61,7 @@ const Backbone = () => {
           </div>
         </div>
         <div className='relative z-30 mt-[32rem] sm:mt-[38rem] md:mt-[58rem] lg:mt-[51rem] xl:mt-[46rem]'>
-          {selectedImage !== null && <Globo selectedImage={selectedImage} />}
+          {selectedImage !== null && <Bubble selectedImage={selectedImage} />}
         </div>
     </div>
   )

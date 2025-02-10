@@ -5,7 +5,7 @@ interface GloboProps {
   selectedImage: number;
 }
 
-const Globo = ({ selectedImage = 0 }: GloboProps) => {
+const Bubble = ({ selectedImage = 0 }: GloboProps) => {
   const getTrianglePosition = () => {
     switch(selectedImage) {
       case 0: return 'left-[37%]';
@@ -47,4 +47,4 @@ const Globo = ({ selectedImage = 0 }: GloboProps) => {
   );
 };
 
-export default Globo;
+export default Bubble;
