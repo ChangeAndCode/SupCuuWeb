@@ -1,7 +1,6 @@
-'use client';
+import { ChangeEvent } from "react";
 
-import { type ChangeEvent } from 'react';
-
+// FormField.tsx
 interface FormFieldProps {
   label: string;
   name: string;
@@ -11,6 +10,7 @@ interface FormFieldProps {
   required?: boolean;
   error?: string;
   disabled?: boolean;
+  options?: string[];
 }
 
 export const FormField = ({
@@ -21,7 +21,8 @@ export const FormField = ({
   onChange,
   required = false,
   error,
-  disabled
+  disabled,
+  options = []
 }: FormFieldProps) => {
   const baseClasses = `
     mt-1 block w-full px-4 py-2 
@@ -55,6 +56,9 @@ export const FormField = ({
             disabled={disabled}
           >
             <option value="">Select an option</option>
+            {options.map((option) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
             <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
