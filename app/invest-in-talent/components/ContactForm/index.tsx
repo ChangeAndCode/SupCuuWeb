@@ -1,11 +1,32 @@
 'use client';
-
 import { useState, useEffect } from 'react';
 import { FormField } from './FormField';
+import { FormStatus } from '@/components/FormStatus';
 import Image from 'next/image';
 import { CONTACT_FORM_CONTENT } from './constants';
 import { ContactFormService, useContactForm } from '@/lib/contact-form';
 import type { BaseFormData } from '@/lib/contact-form';
+
+interface FormConfig {
+  formTitle: string | null;
+  nameFieldTag: string;
+  emailFieldTag: string;
+  phoneFieldTag: string;
+  customContactFormFields: {
+    items: Array<{
+      content: {
+        properties: {
+          customFormFieldTitle: string;
+          customFormDropdownField: string[];
+        };
+      };
+    }>;
+  };
+  defaultSendButtonText: string;
+  sendingSendButtonText: string;
+  successSendButtonText: string;
+  errorSendButtonText: string;
+}
 
 interface InvestFormData extends BaseFormData {
   specialization: string;
@@ -45,6 +66,25 @@ const validateForm = (data: InvestFormData): FormErrors => {
 export const ContactForm = () => {
   const [mounted, setMounted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [formConfig, setFormConfig] = useState<FormConfig | null>(null);
+
+  useEffect(() => {
+    const fetchConfig = async () => {
+      try {
+        const response = await fetch('/api/content?path=/contact-form/2/', {
+          cache: 'no-store',
+          next: { revalidate: 0 }
+        });
+        const data = await response.json();
+        setFormConfig(data.properties);
+      } catch (error) {
+        console.error('Failed to fetch form config:', error);
+      }
+    };
+
+    fetchConfig();
+    setMounted(true);
+  }, []);
 
   const initialState: InvestFormData = {
     name: '',
@@ -61,10 +101,6 @@ export const ContactForm = () => {
     handleChange,
     handleSubmit: onSubmit
   } = useContactForm<InvestFormData>(contactService, initialState);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,6 +123,37 @@ export const ContactForm = () => {
     );
   }
 
+  const config = formConfig || {
+    formTitle: CONTACT_FORM_CONTENT.header.title,
+    nameFieldTag: CONTACT_FORM_CONTENT.fields.name,
+    emailFieldTag: CONTACT_FORM_CONTENT.fields.email,
+    phoneFieldTag: CONTACT_FORM_CONTENT.fields.phone,
+    customContactFormFields: {
+      items: [
+        {
+          content: {
+            properties: {
+              customFormFieldTitle: CONTACT_FORM_CONTENT.fields.specialization,
+              customFormDropdownField: ["AREA 1", "AREA 2", "AREA 3"]
+            }
+          }
+        },
+        {
+          content: {
+            properties: {
+              customFormFieldTitle: CONTACT_FORM_CONTENT.fields.topics,
+              customFormDropdownField: ["Topic 1", "Topic 2", "Topic 3"]
+            }
+          }
+        }
+      ]
+    },
+    defaultSendButtonText: CONTACT_FORM_CONTENT.submit,
+    sendingSendButtonText: CONTACT_FORM_CONTENT.submitting,
+    successSendButtonText: "Success",
+    errorSendButtonText: "Error"
+  };
+
   return (
     <section className="relative bg-transparent -mt-40 -top-40">
       <div className="max-w-[100vw] w-full relative">
@@ -94,7 +161,7 @@ export const ContactForm = () => {
           <div className="container mx-auto my-20 pt-20">
             <div className="w-full md:w-[95%] lg:w-[85%] xl:w-[75%] 2xl:w-[70%]">
               <h2 className="text-[clamp(3rem,7vw,5.5rem)] leading-tight font-PerformanceMark text-white mb-4 whitespace-pre-line">
-                {CONTACT_FORM_CONTENT.header.title}
+                {config.formTitle || CONTACT_FORM_CONTENT.header.title}
               </h2>
             </div>
             
@@ -104,8 +171,8 @@ export const ContactForm = () => {
               </p>
             </div>
           </div>
-          
-          <div className="hidden md:block absolute right-0 bottom-[-60%] w-[65%] max-w-[1080px] h-[140%] z-20 overflow-hidden">
+
+          <div className="hidden md:block absolute right-0 bottom-[-60%] w-[65%] max-w-[1080px] h-[140%] z-[2] pointer-events-none overflow-hidden">
             <div className="relative w-full h-full -right-40">
               <Image 
                 src="/invest-in-talent/JuanH.webp"
@@ -121,11 +188,11 @@ export const ContactForm = () => {
 
         <div className="relative -mt-16 pb-16">
           <div className="container mx-auto px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] relative">
-            <div className="relative z-0">
+            <div className="relative z-[1]">
               <div className="lg:w-3/4">
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <FormField
-                    label={CONTACT_FORM_CONTENT.fields.name}
+                    label={config.nameFieldTag}
                     name="name"
                     type="text"
                     value={formData.name}
@@ -135,33 +202,24 @@ export const ContactForm = () => {
                     disabled={isSubmitting}
                   />
 
-                  <FormField
-                    label={CONTACT_FORM_CONTENT.fields.specialization}
-                    name="specialization"
-                    type="select"
-                    value={formData.specialization}
-                    onChange={handleChange}
-                    required
-                    error={errors.specialization}
-                    disabled={isSubmitting}
-                    options={["AREA 1", "AREA 2", "AREA 3"]}
-                  />
-
-                  <FormField
-                    label={CONTACT_FORM_CONTENT.fields.topics}
-                    name="topics"
-                    type="select"
-                    value={formData.topics}
-                    onChange={handleChange}
-                    required
-                    error={errors.topics}
-                    disabled={isSubmitting}
-                    options={["Topic 1", "Topic 2", "Topic 3"]}
-                  />
+                  {config.customContactFormFields.items.map((field, index) => (
+                    <FormField
+                      key={index}
+                      label={field.content.properties.customFormFieldTitle}
+                      name={index === 0 ? "specialization" : "topics"}
+                      type="select"
+                      value={index === 0 ? formData.specialization : formData.topics}
+                      onChange={handleChange}
+                      required
+                      error={index === 0 ? errors.specialization : errors.topics}
+                      disabled={isSubmitting}
+                      options={field.content.properties.customFormDropdownField}
+                    />
+                  ))}
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField
-                      label={CONTACT_FORM_CONTENT.fields.email}
+                      label={config.emailFieldTag}
                       name="email"
                       type="email"
                       value={formData.email}
@@ -172,7 +230,7 @@ export const ContactForm = () => {
                     />
 
                     <FormField
-                      label={CONTACT_FORM_CONTENT.fields.phone}
+                      label={config.phoneFieldTag}
                       name="phone"
                       type="tel"
                       value={formData.phone}
@@ -183,19 +241,14 @@ export const ContactForm = () => {
                     />
                   </div>
 
-                  {status?.success === false && status.message && (
-                    <div className="bg-red-100 text-red-600 p-4 rounded-2xl font-pragmatica" role="alert">
-                      {status.message}
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-ColorPrincipal text-white font-pragmatica uppercase rounded-2xl py-4 hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? CONTACT_FORM_CONTENT.submitting : CONTACT_FORM_CONTENT.submit}
-                  </button>
+                  <FormStatus
+                    isSubmitting={isSubmitting}
+                    submitError={!status?.success ? config.errorSendButtonText : null}
+                    isSuccess={status?.success}
+                    defaultText={config.defaultSendButtonText}
+                    submittingText={config.sendingSendButtonText}
+                    successText={config.successSendButtonText}
+                  />
                 </form>
               </div>
             </div>
