@@ -8,30 +8,30 @@ const Investment: React.FC = () => {
         <div className="flex items-center justify-center w-[290px] h-[290px]">
           <div className="bg-white border-[.4rem] border-ColorPrincipal w-full h-full rounded-[3rem] uppercase">
             <div className="bg-ColorPrincipal px-[4rem] py-[2.8rem] text-center rounded-[2rem]">
-              <h2 className="font-pragmatica text-white text-[2rem] leading-8">3 New Funds</h2>
+              <h2 className="font-pragmatica main-Tipography text-white text-[2rem] leading-8">3 New Funds</h2>
             </div>
             <div className="font-pragmatica text-ColorPrincipal px-[2rem] py-[2.5rem] text-[1.2rem]">
-              <p className="text-center">Alfa Indigo, ECLO & No Border</p>
+              <p className="text-center main-Tipography">Alfa Indigo, ECLO & No Border</p>
             </div>
           </div>
         </div>
         <div className="flex items-center justify-center w-[290px] h-[290px]">
           <div className="bg-white border-[.4rem] border-ColorPrincipal w-full h-full rounded-[3rem] uppercase">
             <div className="bg-ColorPrincipal px-[4rem] py-[2.8rem] text-center rounded-[2rem]">
-              <h2 className="font-pragmatica text-white text-[2rem] leading-8">+2.5M USD</h2>
+              <h2 className="font-pragmatica main-Tipography text-white text-[2rem] leading-8">+2.5M USD</h2>
             </div>
             <div className="font-pragmatica text-ColorPrincipal px-[2rem] py-[2.1rem] text-[1.2rem]">
-              <p className="text-center">Raised by VC Funds</p>
+              <p className="text-center main-Tipography">Raised by VC Funds</p>
             </div>
           </div>
         </div>
         <div className="flex items-center justify-center w-[290px] h-[290px]">
           <div className="bg-white border-[.4rem] border-ColorPrincipal w-full h-full rounded-[3rem] uppercase">
             <div className="bg-ColorPrincipal px-[4rem] py-[2.8rem] text-center rounded-[2rem]">
-              <h2 className="font-pragmatica text-white text-[2rem] leading-8">+4M USD</h2>
+              <h2 className="font-pragmatica main-Tipography text-white text-[2rem] leading-8">+4M USD</h2>
             </div>
             <div className="font-pragmatica text-ColorPrincipal px-[2rem] py-[2.8rem] text-[1.2rem]">
-              <p className="text-center">Raised by Startups</p>
+              <p className="text-center main-Tipography">Raised by Startups</p>
             </div>
           </div>
         </div>
