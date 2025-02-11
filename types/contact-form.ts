@@ -17,6 +17,7 @@ export interface FormConfig {
         };
       }>;
     };
+    descriptiveTexts: string[];
     defaultSendButtonText: string;
     sendingSendButtonText: string;
     successSendButtonText: string;
@@ -28,12 +29,19 @@ export interface FormConfig {
     topics: string;
   }
   
+  export interface InnovationFormData extends BaseFormData {
+    specialization: string;
+    topics: string;
+    supportType: string;
+  }
+  
   export interface FormErrors {
     name?: string;
     email?: string;
     phone?: string;
     specialization?: string;
     topics?: string;
+    supportType?: string;
   }
   
   // Re-export BaseFormData type if needed by other components

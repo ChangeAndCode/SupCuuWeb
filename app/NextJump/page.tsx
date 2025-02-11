@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Checklist from "app/NextJump/components/Checklist";
 import Accelerators from "app/NextJump/components/Accelerators";
+import  InnovationForm  from "./components/ContactForm";
 
 const NextJump = () => {
   return (
@@ -96,6 +97,9 @@ const NextJump = () => {
         mt-[-8rem] sm:mt-[-12rem] md:mt-[-18rem]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32">
           <Accelerators />
+        </div>
+        <div>
+          <InnovationForm/>
         </div>
       </div>
     </div>

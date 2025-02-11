@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { FormField } from './FormField';
+import { FormField } from '@/components/FormField';
 import { FormStatus } from '@/components/FormStatus';
 import Image from 'next/image';
 import { CONTACT_FORM_CONTENT } from './constants';
