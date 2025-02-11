@@ -4,12 +4,9 @@ import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { ContactFormService, useContactForm } from '@/lib/contact-form';
 import type { FormConfig } from '@/types/contact-form';
+import InputField from './components/InputField';
 
-// Keep the original dynamic imports
-const DynamicInputField = dynamic(() => import('./components/InputField'), {
-  ssr: false
-});
-
+// Only keep dynamic imports for non-critical components
 const ContactUs = dynamic(() => import('./components/ContacUs'), {
   loading: () => <div className="md:w-5/12 h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />
 });
@@ -23,8 +20,12 @@ const Notification = dynamic(() => import('./components/Notification'), {
 });
 
 export default function Form() {
-  const [mounted, setMounted] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const [formConfig, setFormConfig] = useState<FormConfig | null>(null);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   useEffect(() => {
     const fetchConfig = async () => {
@@ -41,7 +42,6 @@ export default function Form() {
     };
 
     fetchConfig();
-    setMounted(true);
   }, []);
 
   const initialState = {
@@ -64,16 +64,6 @@ export default function Form() {
     handleChange,
     handleSubmit
   } = useContactForm(contactService, initialState);
-
-  if (!mounted) {
-    return (
-      <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30">
-        <div className="animate-pulse">
-          <div className="h-[150px] w-[150px] bg-gray-200/20 rounded-lg absolute top-[-4rem] left-[4rem] md:left-[10rem] xl:left-[15rem] 2xl:left-[23rem]" />
-        </div>
-      </div>
-    );
-  }
 
   const config = formConfig || {
     formTitle: "I'm ready to discover more",
@@ -100,6 +90,25 @@ export default function Form() {
 
   const topicsConfig = config.customContactFormFields.items[0]?.content.properties;
 
+  if (!hydrated) {
+    return (
+      <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30">
+        <div className="animate-pulse">
+          <div className="h-[150px] w-[150px] bg-gray-200/20 rounded-lg absolute top-[-4rem] left-[4rem] md:left-[10rem] xl:left-[15rem] 2xl:left-[23rem]" />
+          <div className="max-w-3xl mx-auto space-y-4">
+            <div className="h-8 bg-gray-200/20 rounded w-2/3"></div>
+            <div className="h-12 bg-gray-200/20 rounded-2xl"></div>
+            <div className="h-12 bg-gray-200/20 rounded-2xl"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="h-12 bg-gray-200/20 rounded-2xl"></div>
+              <div className="h-12 bg-gray-200/20 rounded-2xl"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30">
       <div className="absolute top-[-4rem] left-[4rem] md:left-[10rem] xl:left-[15rem] 2xl:left-[23rem]">
@@ -121,8 +130,7 @@ export default function Form() {
 
       <div className="flex flex-col items-center">
         <form onSubmit={handleSubmit} className="space-y-8 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12">
-          <DynamicInputField 
-            key="name-field"
+          <InputField 
             label={config.nameFieldTag}
             id="name" 
             value={formData.name} 
@@ -130,7 +138,7 @@ export default function Form() {
             required 
           />
           
-          <DynamicInputField 
+          <InputField 
             label={topicsConfig?.customFormFieldTitle || "Topics of Interest"}
             id="topicsOfInterest" 
             type="select"
@@ -140,7 +148,7 @@ export default function Form() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.5rem] md:gap-[3rem]">
-            <DynamicInputField 
+            <InputField 
               label={config.emailFieldTag}
               id="email" 
               type="email" 
@@ -149,7 +157,7 @@ export default function Form() {
               required 
             />
 
-            <DynamicInputField 
+            <InputField 
               label={config.phoneFieldTag}
               id="phone" 
               type="tel" 

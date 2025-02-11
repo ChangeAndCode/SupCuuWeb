@@ -1,6 +1,6 @@
 'use client'
 
-import { memo } from 'react';
+import { memo, useId } from 'react';
 
 interface InputFieldProps {
   label: string;
@@ -21,12 +21,16 @@ const InputField: React.FC<InputFieldProps> = memo(({
   onChange,
   options = []
 }) => {
+  // Generate a unique ID for this instance
+  const uniqueId = useId();
+  const fieldId = `${id}-${uniqueId}`;
+  
   const baseClasses = "mt-1 block w-full px-4 py-3 border border-gray-300 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
 
   return (
-    <div className="mb-4" suppressHydrationWarning>
+    <div className="mb-4">
       <label
-        htmlFor={id}
+        htmlFor={fieldId}
         className="block text-xl font-pragmatica uppercase text-white mb-2"
       >
         {label}
@@ -35,16 +39,16 @@ const InputField: React.FC<InputFieldProps> = memo(({
       {type === 'select' ? (
         <div className="relative">
           <select
-            id={id}
+            id={fieldId}
             name={id}
             value={value}
             onChange={onChange}
             required={required}
-            className={`${baseClasses} font-pragmatica appearance-none`}
+            className={`${baseClasses} appearance-none bg-white`}
           >
             <option value="">Select an option</option>
             {options.map((option) => (
-              <option key={option} value={option}>{option}</option>
+              <option key={`${option}-${uniqueId}`} value={option}>{option}</option>
             ))}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -56,18 +60,18 @@ const InputField: React.FC<InputFieldProps> = memo(({
       ) : (
         <input
           type={type}
-          id={id}
+          id={fieldId}
           name={id}
           value={value}
           onChange={onChange}
           required={required}
-          className={baseClasses}
+          className={`${baseClasses} bg-white`}
         />
       )}
     </div>
   );
 });
 
-InputField.displayName = 'InputField';
+InputField.displayName = 'InputField'; 
 
 export default InputField;
