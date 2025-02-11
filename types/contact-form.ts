@@ -6,6 +6,7 @@ export interface FormConfig {
     nameFieldTag: string;
     emailFieldTag: string;
     phoneFieldTag: string;
+    emailTemplate: string;
     customContactFormFields: {
       items: Array<{
         content: {

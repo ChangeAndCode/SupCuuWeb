@@ -7,12 +7,6 @@ import { CONTACT_FORM_CONTENT } from './constants';
 import { ContactFormService, useContactForm } from '@/lib/contact-form';
 import { FormConfig, FormErrors, InvestFormData } from '@/types/contact-form';
 
-const contactService = new ContactFormService({
-  templateName: 'contact-form',
-  recipientEmail: process.env.NEXT_PUBLIC_CONTACT_FORM_EMAIL || '',
-  apiUrl: process.env.NEXT_PUBLIC_API_URL || ''
-});
-
 const validateForm = (data: InvestFormData): FormErrors => {
   const errors: FormErrors = {};
   
@@ -60,6 +54,12 @@ export const ContactForm = () => {
     topics: ''
   };
 
+  const contactService = new ContactFormService({
+    templateName: formConfig?.emailTemplate || 'contact-form',
+    recipientEmail: process.env.NEXT_PUBLIC_CONTACT_FORM_EMAIL || '',
+    apiUrl: process.env.NEXT_PUBLIC_API_URL || ''
+  });
+
   const {
     formData,
     isSubmitting,
@@ -95,6 +95,7 @@ export const ContactForm = () => {
     nameFieldTag: CONTACT_FORM_CONTENT.fields.name,
     emailFieldTag: CONTACT_FORM_CONTENT.fields.email,
     phoneFieldTag: CONTACT_FORM_CONTENT.fields.phone,
+    emailTemplateName: 'contact-form',
     customContactFormFields: {
       items: [
         {
