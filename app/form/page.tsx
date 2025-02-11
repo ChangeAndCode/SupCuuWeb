@@ -83,8 +83,22 @@ export default function Form() {
     defaultSendButtonText: "Send",
     sendingSendButtonText: "Sending...",
     successSendButtonText: "Success",
-    errorSendButtonText: "Error"
+    errorSendButtonText: "Error",
+    customContactFormFields: {
+      items: [
+        {
+          content: {
+            properties: {
+              customFormFieldTitle: "TOPICS OF INTEREST",
+              customFormDropdownField: ["General Updates", "Events", "Opportunities"]
+            }
+          }
+        }
+      ]
+    }
   };
+
+  const topicsConfig = config.customContactFormFields.items[0]?.content.properties;
 
   return (
     <div className="relative bg-ColorPrincipal rounded-t-7xl px-[2rem] md:px-[3rem] lg:px-0 py-[10rem] z-30">
@@ -117,10 +131,12 @@ export default function Form() {
           />
           
           <DynamicInputField 
-            label="Topics of Interest" 
+            label={topicsConfig?.customFormFieldTitle || "Topics of Interest"}
             id="topicsOfInterest" 
+            type="select"
             value={formData.topicsOfInterest} 
             onChange={handleChange}
+            options={topicsConfig?.customFormDropdownField}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.5rem] md:gap-[3rem]">
