@@ -33,7 +33,7 @@ export const ContactForm = () => {
       try {
         const basePath = process.env.NEXT_PUBLIC_CONTACT_FORM_PATH_2 || '/contact-form/2';
         const response = await fetch(`/api/umbraco?path=${basePath}/`, {
-          next: { revalidate: 60 }
+          cache: 'no-cache'
         });
         const data = await response.json();
         setFormConfig(data.properties);
