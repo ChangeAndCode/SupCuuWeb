@@ -6,7 +6,7 @@ export class ContactFormService {
   private recipientEmail: string;
   
     constructor(config: ContactFormConfig) {
-      this.apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      this.apiUrl = config.apiUrl || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
       this.templateName = config.templateName;
       this.recipientEmail = config.recipientEmail;
     }

@@ -5,41 +5,7 @@ import { FormStatus } from '@/components/FormStatus';
 import Image from 'next/image';
 import { CONTACT_FORM_CONTENT } from './constants';
 import { ContactFormService, useContactForm } from '@/lib/contact-form';
-import type { BaseFormData } from '@/lib/contact-form';
-
-interface FormConfig {
-  formTitle: string | null;
-  nameFieldTag: string;
-  emailFieldTag: string;
-  phoneFieldTag: string;
-  customContactFormFields: {
-    items: Array<{
-      content: {
-        properties: {
-          customFormFieldTitle: string;
-          customFormDropdownField: string[];
-        };
-      };
-    }>;
-  };
-  defaultSendButtonText: string;
-  sendingSendButtonText: string;
-  successSendButtonText: string;
-  errorSendButtonText: string;
-}
-
-interface InvestFormData extends BaseFormData {
-  specialization: string;
-  topics: string;
-}
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  phone?: string;
-  specialization?: string;
-  topics?: string;
-}
+import { FormConfig, FormErrors, InvestFormData } from '@/types/contact-form';
 
 const contactService = new ContactFormService({
   templateName: 'contact-form',
@@ -71,9 +37,9 @@ export const ContactForm = () => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const response = await fetch('/api/content?path=/contact-form/2/', {
-          cache: 'no-store',
-          next: { revalidate: 0 }
+        const basePath = process.env.NEXT_PUBLIC_CONTACT_FORM_PATH_2 || '/contact-form/2';
+        const response = await fetch(`/api/umbraco?path=${basePath}/`, {
+          next: { revalidate: 60 }
         });
         const data = await response.json();
         setFormConfig(data.properties);
@@ -125,6 +91,7 @@ export const ContactForm = () => {
 
   const config = formConfig || {
     formTitle: CONTACT_FORM_CONTENT.header.title,
+    formSubtitle: CONTACT_FORM_CONTENT.header.subtitle,
     nameFieldTag: CONTACT_FORM_CONTENT.fields.name,
     emailFieldTag: CONTACT_FORM_CONTENT.fields.email,
     phoneFieldTag: CONTACT_FORM_CONTENT.fields.phone,
@@ -167,7 +134,7 @@ export const ContactForm = () => {
             
             <div className="w-full md:w-[90%] lg:w-[70%] xl:w-[55%] 2xl:w-[45%]">
               <p className="text-xl md:text-2xl font-bold font-poppins text-white/90 leading-relaxed whitespace-pre-line mb-20">
-                {CONTACT_FORM_CONTENT.header.subtitle}
+                {config.formSubtitle || CONTACT_FORM_CONTENT.header.subtitle}
               </p>
             </div>
           </div>
@@ -243,7 +210,7 @@ export const ContactForm = () => {
 
                   <FormStatus
                     isSubmitting={isSubmitting}
-                    submitError={!status?.success ? config.errorSendButtonText : null}
+                    submitError={status?.success === false ? config.errorSendButtonText : null}
                     isSuccess={status?.success}
                     defaultText={config.defaultSendButtonText}
                     submittingText={config.sendingSendButtonText}
