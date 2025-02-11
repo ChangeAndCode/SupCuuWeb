@@ -1,14 +1,5 @@
 import Image from 'next/image'
-
-const teamMembers = [
-  { name: 'Kevin Koym', title: 'CEO TECH RANCH', image: '/engineTeam/1.webp' },
-  { name: 'Angela Pack Zia', title: 'Economic Development Consultant, Tech Ranch.', image: '/engineTeam/2.webp' },
-  { name: 'Emma Reyes', title: 'Program Manager, Tech Ranch', image: '/engineTeam/3.webp' },
-  { name: 'Andrés Guzmán', title: 'CEO, Startup Chihuahua', image: '/engineTeam/4.webp' },
-  { name: 'Ana Victoria Gutiérrez', title: 'Ecosystem Intelligence, Startup Chihuahua', image: '/engineTeam/5.webp' },
-  { name: 'Estefanía Sansón', title: 'Experiences Manager, Startup Chihuahua', image: '/engineTeam/6.webp' },
-  { name: 'Ulises Fernández', title: 'Innovation and Economic Development Secretariat, Chihuahua State Government', image: '/engineTeam/7.webp' },
-]
+import { teamMembers } from '../data/dataTeamMembers'
 
 const Team = () => {
   return (
@@ -27,7 +18,13 @@ const Team = () => {
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center h-full ${index === 6 ? 'xl:col-span-1 xl:col-start-2' : ''}`}
+            className={`flex flex-col items-center h-full ${
+              teamMembers.length === 1 || (teamMembers.length % 3 === 1 && index === teamMembers.length - 1)
+                ? 'xl:col-start-2 xl:col-span-1 xl:translate-x-0'
+                : teamMembers.length === 2 || (teamMembers.length % 3 !== 0 && index >= teamMembers.length - (teamMembers.length % 3))
+                  ? 'xl:col-span-1 xl:translate-x-1/2'
+                  : ''
+            }`}
           >
             <Image
               src={member.image}

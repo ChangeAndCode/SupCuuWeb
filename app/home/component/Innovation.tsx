@@ -8,30 +8,30 @@ const Innovation: React.FC = () => {
         <div className="flex items-center justify-center w-[290px] h-[290px]">
           <div className="bg-white border-[.4rem] border-ColorPrincipal w-full h-full rounded-[3rem] uppercase">
             <div className="bg-ColorPrincipal px-[4rem] py-[3.8rem] text-center rounded-[2rem]">
-              <h2 className="font-pragmatica text-white text-[2rem] leading-8">+100</h2>
+              <h2 className="font-pragmatica main-Tipography text-white text-[2rem] leading-8">+100</h2>
             </div>
             <div className="font-pragmatica text-ColorPrincipal px-[2rem] py-[2.5rem] text-[1.2rem]">
-              <p className="text-center">New Patents Requested</p>
+              <p className="text-center main-Tipography">New Patents Requested</p>
             </div>
           </div>
         </div>
         <div className="flex items-center justify-center w-[290px] h-[290px]">
           <div className="bg-white border-[.4rem] border-ColorPrincipal w-full h-full rounded-[3rem] uppercase">
             <div className="bg-ColorPrincipal px-[4rem] py-[3.8rem] text-center rounded-[2rem]">
-              <h2 className="font-pragmatica text-white text-[2rem] leading-8">16</h2>
+              <h2 className="font-pragmatica main-Tipography text-white text-[2rem] leading-8">16</h2>
             </div>
             <div className="font-pragmatica text-ColorPrincipal px-[2rem] py-[2.1rem] text-[1.2rem]">
-              <p className="text-center">IMCO Patent Rankings</p>
+              <p className="text-center main-Tipography">IMCO Patent Rankings</p>
             </div>
           </div>
         </div>
         <div className="flex items-center justify-center w-[290px] h-[290px]">
           <div className="bg-white border-[.4rem] border-ColorPrincipal w-full h-full rounded-[3rem] uppercase">
             <div className="bg-ColorPrincipal px-[4rem] py-[3.8rem] text-center rounded-[2rem]">
-              <h2 className="font-pragmatica text-white text-[2rem] leading-8">8</h2>
+              <h2 className="font-pragmatica main-Tipography text-white text-[2rem] leading-8">8</h2>
             </div>
             <div className="font-pragmatica text-ColorPrincipal px-[2rem] py-[2.8rem] text-[1.2rem]">
-              <p className="text-center">IMPI IP Ranking</p>
+              <p className="text-center main-Tipography">IMPI IP Ranking</p>
             </div>
           </div>
         </div>
