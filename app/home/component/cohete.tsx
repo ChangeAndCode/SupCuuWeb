@@ -6,7 +6,7 @@ const Cohete = () => {
   return (
     <div>
         <Image
-          src="/cohete.webp"
+          src="/cohete1.webp"
           width={600}
           height={500}
           style={{ height: 'auto' }}
