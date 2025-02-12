@@ -36,7 +36,7 @@ const Page = () => {
           />
         </div>
 
-        <div className="container mx-auto pt-6">
+        <div className="container mx-auto pt-6 max-w-[1066px]">
           <div className="flex flex-col lg:flex-row justify-between">
             <ContacUs />
             <RedesSociales />
