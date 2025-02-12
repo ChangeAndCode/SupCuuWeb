@@ -73,6 +73,8 @@ export default function MeetTeam() {
           quality={80}
         />
       </div>
+
+      {/* meetTeam titles */}
       <div className="ml-[1rem] md:ml-[3rem] mt-[4rem] lg:ml-[4rem] xl:ml-[9rem] 2xl:ml-[16rem] relative overflow-hidden">
         <h3
           className="main-Tipography text-[1.5rem] md:text-[2.1rem] lg:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.3rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10 xl:w-8/12 2xl:w-7/12"
@@ -93,7 +95,6 @@ export default function MeetTeam() {
           }}
         />
 
-        {/* Texto detrás */}
         <div className="absolute inset-0 md:left-[40%] xl:left-[25%] 2xl:left-[19%] md:top-[2%] xl:top-[6%] 2xl:top-[6%]  flex justify-center items-center z-0">
           <p
             className="main-Tipography text-[3rem] hidden md:block md:text-[5rem] xl:text-[8rem] 2xl:text-[10rem] font-PerformanceMark text-white uppercase leading-[9rem] lg:leading-[9rem] whitespace-nowrap"
@@ -121,6 +122,7 @@ export default function MeetTeam() {
         </div>
       </div>
 
+      {/* partners */}
       <div className="flex justify-center mt-[-17rem] px-4 sm:px-8 md:px-[3rem] lg:px-[4rem] xl:px-[8rem] 2xl:px-[5rem] mb-[-20rem] sm:mb-[-25rem] md:mb-[-38rem] lg:mb-[-30rem] xl:mb-[-24rem] 2xl:mb-[-35rem] relative z-20">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
           {teamMembers.map((member, index) => (

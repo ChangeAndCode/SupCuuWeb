@@ -1,4 +1,4 @@
-import path from 'path';
+import path from "path";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -38,10 +38,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "3177",
-        pathname: "/media/**",
+        protocol: "https",
+        hostname: "startupqab.duckdns.org",
+        pathname: "/**",
       },
     ],
   },
