@@ -130,87 +130,96 @@ export default function InnovationForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen bg-white p-8">
+      <div className="max-w-6xl mx-auto">
         <h1 className="text-[clamp(3rem,7vw,5.5rem)] leading-tight font-PerformanceMark text-ColorPrincipal mb-4 whitespace-pre-line">
           {config.formTitle}
         </h1>
 
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="md:w-3/4">
-            <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-8">
+          {/* Main form fields section */}
+          <div className="space-y-6">
+            <FormField
+              label={config.nameFieldTag}
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required={true}
+              error={errors.name}
+              disabled={isSubmitting}
+            />
+
+            {config.customContactFormFields.items.map((field, index) => (
               <FormField
-                label={config.nameFieldTag}
-                name="name"
-                value={formData.name}
+                key={index}
+                label={field.content.properties.customFormFieldTitle}
+                name={index === 0 ? "specialization" : index === 1 ? "topics" : "supportType"}
+                type="select"
+                value={index === 0 ? formData.specialization : index === 1 ? formData.topics : formData.supportType}
                 onChange={handleChange}
                 required={true}
-                error={errors.name}
+                error={index === 0 ? errors.specialization : index === 1 ? errors.topics : errors.supportType}
                 disabled={isSubmitting}
+                options={field.content.properties.customFormDropdownField}
               />
-
-              {config.customContactFormFields.items.map((field, index) => (
-                <FormField
-                  key={index}
-                  label={field.content.properties.customFormFieldTitle}
-                  name={index === 0 ? "specialization" : index === 1 ? "topics" : "supportType"}
-                  type="select"
-                  value={index === 0 ? formData.specialization : index === 1 ? formData.topics : formData.supportType}
-                  onChange={handleChange}
-                  required={true}
-                  error={index === 0 ? errors.specialization : index === 1 ? errors.topics : errors.supportType}
-                  disabled={isSubmitting}
-                  options={field.content.properties.customFormDropdownField}
-                />
-              ))}
-
-              <div className="flex gap-6">
-                <div className="flex-1">
-                  <FormField
-                    label={config.emailFieldTag}
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required={true}
-                    error={errors.email}
-                    disabled={isSubmitting}
-                  />
-                </div>
-
-                <div className="flex-1">
-                  <FormField
-                    label={config.phoneFieldTag}
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required={true}
-                    error={errors.phone}
-                    disabled={isSubmitting}
-                  />
-                </div>
-              </div>
-
-              <FormStatus
-                isSubmitting={isSubmitting}
-                submitError={status?.success === false ? config.errorSendButtonText : null}
-                isSuccess={status?.success}
-                defaultText={config.defaultSendButtonText}
-                submittingText={config.sendingSendButtonText}
-                successText={config.successSendButtonText}
-              />
-            </form>
-          </div>
-
-          <div className="md:w-1/4 mt-4 md:mt-[450px] space-y-2">
-            {config.descriptiveTexts.map((text, index) => (
-              <div key={index} className="text-sm text-blue-600 uppercase">
-                {text}
-              </div>
             ))}
           </div>
-        </div>
+
+          {/* Contact info and decorative text section */}
+          <div className="flex flex-col lg:flex-row gap-6 xl:gap-12">
+            <div className="lg:flex-1 xl:max-w-3xl">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 xl:gap-8">
+                <FormField
+                  label={config.emailFieldTag}
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required={true}
+                  error={errors.email}
+                  disabled={isSubmitting}
+                />
+
+                <FormField
+                  label={config.phoneFieldTag}
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required={true}
+                  error={errors.phone}
+                  disabled={isSubmitting}
+                />
+              </div>
+            </div>
+
+            <div className="flex hidden sm:block md:flex lg:flex-col xl:flex justify-between lg:justify-start flex-wrap gap-0.5 lg:min-w-[200px] xl:min-w-[250px]">
+              {config.descriptiveTexts.map((text, index) => (
+                <div 
+                  key={index} 
+                  className="text-xs sm:text-sm lg:text-base xl:text-lg font-bold uppercase whitespace-nowrap"
+                >
+                  {text}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Submit button aligned with form width */}
+          <div className="lg:flex-1 ">
+            <FormStatus
+              isSubmitting={isSubmitting}
+              submitError={status?.success === false ? config.errorSendButtonText : null}
+              isSuccess={status?.success}
+              defaultText={config.defaultSendButtonText}
+              submittingText={config.sendingSendButtonText}
+              successText={config.successSendButtonText}
+              errorText={config.errorSendButtonText}
+            />
+          </div>
+
+        
+        </form>
       </div>
     </div>
   );
