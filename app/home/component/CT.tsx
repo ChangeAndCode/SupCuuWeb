@@ -55,7 +55,7 @@ const CT: React.FC = () => {
           <Carrusel />
         </div>
 
-        <div className="absolute bottom-[-50px] right-[.5rem] md:right-[4rem] lg:right-[8rem] xl-sm:right-[18rem] translate-y-[-2.5rem]">
+        <div className="absolute bottom-[-50px] 4xl:bottom-[-180px] right-[.5rem] md:right-[4rem] lg:right-[8rem] xl-sm:right-[18rem] 4xl:right-[25rem] translate-y-[-2.5rem]">
           <Image
             src="/logoV.webp"
             alt="Company Logo"
