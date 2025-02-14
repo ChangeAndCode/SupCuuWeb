@@ -2,7 +2,7 @@ import Collabs from "./Components/collabs";
 import Header from "./Components/header";
 import Grid from "./Components/Grid";
 import Image from "next/image";
-import InnovationForm from "./Components/ContactForm";
+import InnovationForm from "app/NextJump/components/ContactForm";
 import ContacUs from "../form/components/ContacUs";
 import RedesSociales from "../form/components/RedesSociales";
 
@@ -59,7 +59,7 @@ export default function Together() {
           <Grid />
         </div>
       </div>
-      <div className="mt-[-7rem]">
+      <div className="mt-4">
         {/* Add margin top for spacing */}
         <InnovationForm />
       </div>
