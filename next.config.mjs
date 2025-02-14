@@ -40,7 +40,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "startupqab.duckdns.org",
-        pathname: "/**",
+        pathname: "/media/**",
       },
     ],
   },

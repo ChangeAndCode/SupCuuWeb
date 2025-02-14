@@ -8,10 +8,10 @@ interface GloboProps {
 const Bubble = ({ selectedImage = 0 }: GloboProps) => {
   const getTrianglePosition = () => {
     switch(selectedImage) {
-      case 0: return 'left-[37%]';
+      case 0: return 'left-[23%] sm:left-[24%] md:left-[30%] xl:left-[37%] 4xl:left-[32%]';
       case 1: return 'left-[50%]';
-      case 2: return 'left-[61%]';
-      default: return 'left-[37%]';
+      case 2: return 'left-[72%] sm:left-[70%] md:left-[68%] xl:left-[61%] 4xl:left-[65%]';
+      default: return 'left-[23%] sm:left-[24%] md:left-[30%] xl:left-[37%]';
     }
   }
 
