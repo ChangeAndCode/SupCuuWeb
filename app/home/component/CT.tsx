@@ -55,7 +55,7 @@ const CT: React.FC = () => {
           <Carrusel />
         </div>
 
-        <div className="absolute bottom-[-50px] right-[.5rem] md:right-[4rem] lg:right-[8rem] xl-sm:right-[18rem] translate-y-[-2.5rem]">
+        <div className="absolute bottom-[-50px] 4xl:bottom-[-180px] right-[.5rem] md:right-[4rem] lg:right-[8rem] xl-sm:right-[18rem] 4xl:right-[25rem] translate-y-[-2.5rem]">
           <Image
             src="/logoV.webp"
             alt="Company Logo"
@@ -83,10 +83,10 @@ const CT: React.FC = () => {
       <div className="mb-[-2rem] md:mb-[-4rem] lg:mb-[-6rem] xl:mb-[-7rem]">
         <KeyImpact />
       </div>
-      <div className="bg-white mb-[-5rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">
+      <div className="bg-white mb-[-5rem] sm:mb-[-7rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">
         <Transformative />
       </div>
-      <div id="partners" className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-cover z-10 py-[15rem]">
+      <div id="partners" className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-cover z-10 py-[5rem] md:py-[15rem]">
         <Partners />
       </div>
       <div id="team">
