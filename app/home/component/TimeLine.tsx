@@ -25,7 +25,7 @@ const TimeLine: React.FC = () => {
               />
             </div>
           </div>
-          <div>
+          <div className="w-[80%] md:w-full">
             <div className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] translate-x-[2.3rem] md:translate-x-[2.5rem]">
               <Image
                 src="/barraV.webp"
