@@ -37,7 +37,7 @@ const CT: React.FC = () => {
         </div>
       </div>
       <div className="relative">
-        <div className="relative z-30 flex justify-center pt-[5rem] xl:pt-[28rem] mb-[-63rem] md:mb-[-57rem] lg:mb-[-62rem] xl:mb-[-53rem] xl-sm:mb-[-55rem] pointer-events-none">
+        <div className="relative z-30 flex justify-center pt-[5rem] xl:pt-[28rem] mb-[-63rem] sm-md:mb-[-59rem] md:mb-[-57rem] lg:mb-[-62rem] xl:mb-[-53rem] xl-sm:mb-[-55rem] pointer-events-none">
           <div className="w-[900px] h-[900px]">
             <Image
               src="/news.webp"

@@ -1,7 +1,7 @@
 const WeAre: React.FC = () => {
   return (
     <div className="overflow-hidden">
-      <h2 className="text-ColorPrincipal font-PerformanceMark translate-x-5 md:translate-x-[8rem] lg:translate-x-[10rem] -mb-[10rem] md:-mb-[11rem] lg:-mb-[14rem] xl:-mb-[14rem] 2xl:-mb-[16rem] 4xl:-mb-[22rem] text-[6rem] md:text-[8rem] lg:text-[11rem] xl:text-[14rem] 2xl:text-[18rem] 4xl:text-[26rem]">
+      <h2 className="text-ColorPrincipal font-PerformanceMark translate-x-5 md:translate-x-[8rem] lg:translate-x-[10rem] -mb-[10rem] sm-md:-mb-[8rem] md:-mb-[11rem] lg:-mb-[14rem] xl:-mb-[14rem] 2xl:-mb-[16rem] 4xl:-mb-[22rem] text-[6rem] md:text-[8rem] lg:text-[11rem] xl:text-[14rem] 2xl:text-[18rem] 4xl:text-[26rem]">
         We are
       </h2>
       <div className="flex items-center bg-[url('/Bg/bgWeAre.webp')] bg-no-repeat bg-center bg-cover z-10 relative px-[2rem] lg:px-[6rem] xl:px-[4rem] 2xl:px-[8rem] 4xl:px-[15rem] py-[12rem] md:py-[14rem] lg:py-[16rem] xl:py-[15rem] 4xl:py-[22rem]">
