@@ -32,7 +32,7 @@ module.exports = {
         'xl-md': '1440px',
         '2xl': '1536px',
         '3xl': '1850px',
-        '4xl': '2560px',
+        '4xl': '2115px',
       },
       backgroundImage: {
         landing: "url('/Bg/bglandin.webp')",
