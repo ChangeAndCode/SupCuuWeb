@@ -42,6 +42,18 @@ const nextConfig = {
         hostname: "startupqab.duckdns.org",
         pathname: "/media/**",
       },
+      {
+        protocol: 'https',
+        hostname: 'localhost',
+        port: '44323',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3177',
+        pathname: '/**',
+      }
     ],
   },
 };

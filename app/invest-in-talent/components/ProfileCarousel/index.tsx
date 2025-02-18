@@ -1,8 +1,9 @@
 'use client';
+// app/invest-in-talent/components/ProfileCarousel/index.tsx
 import React, { useState, useId, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import type { Profile } from './types';
+import type { Profile } from '@/types/invest-in-talent';
 
 const ProfileDisplay = React.memo(({
   profile,
@@ -44,7 +45,6 @@ const ProfileDisplay = React.memo(({
       }`}
     >
       <div className="bg-white rounded-3xl shadow-lg pt-8 px-8 mx-4 relative overflow-hidden lg:min-w-[950px]">
-        {/* Name and Role Section */}
         <div className="lg:absolute lg:top-0 lg:left-8 lg:right-8 z-10 mb-6 md:mb-0">
           <h3 className="font-PerformanceMark text-blue-600 text-4xl sm:text-5xl md:text-6xl lg:text-[10rem] leading-none">
             {profile.name.split(' ').map((part, index) => (
@@ -168,12 +168,16 @@ const NavButton = React.memo(({
 
 NavButton.displayName = 'NavButton';
 
-export const ProfileCarousel = ({ profiles }: { profiles: Profile[] }) => {
+interface ProfileCarouselProps {
+  profiles: Profile[];
+}
+
+export const ProfileCarousel = ({ profiles }: ProfileCarouselProps) => {
   const [[currentIndex, direction], setCurrentIndex] = useState([0, 0]);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const handleTransition = (newDirection: 'prev' | 'next') => {
-    if (isTransitioning) return;
+    if (isTransitioning || profiles.length === 0) return;
     
     setIsTransitioning(true);
     setCurrentIndex(([prev, _]) => {
@@ -186,6 +190,10 @@ export const ProfileCarousel = ({ profiles }: { profiles: Profile[] }) => {
     
     setTimeout(() => setIsTransitioning(false), 300);
   };
+
+  if (profiles.length === 0) {
+    return null;
+  }
 
   return (
     <section className="relative py-8 md:py-16">
@@ -207,7 +215,7 @@ export const ProfileCarousel = ({ profiles }: { profiles: Profile[] }) => {
           <NavButton 
             direction="prev"
             onClick={() => handleTransition('prev')}
-            disabled={isTransitioning}
+            disabled={isTransitioning || profiles.length <= 1}
           />
           
           <ProfileDisplay 
@@ -218,7 +226,7 @@ export const ProfileCarousel = ({ profiles }: { profiles: Profile[] }) => {
           <NavButton 
             direction="next"
             onClick={() => handleTransition('next')}
-            disabled={isTransitioning}
+            disabled={isTransitioning || profiles.length <= 1}
           />
         </div>
       </div>
