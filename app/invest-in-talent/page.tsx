@@ -1,26 +1,30 @@
-import React from 'react';
-import { ProfileCarousel } from './components/ProfileCarousel/index';
+// app/invest-in-talent/page.tsx
+import { Suspense } from 'react';
+import Image from 'next/image';
+import { getInvestPageData } from '@/lib/invest-in-talent';
+import { ProfileCarousel } from './components/ProfileCarousel';
 import { ContactForm } from './components/ContactForm';
 import { Header } from './components/Header';
-import { MOCK_PROFILES } from './data/profiles';
-import Image from 'next/image';
+import Loading from './loading';
 import ContacUs from '../form/components/ContacUs';
 import RedesSociales from '../form/components/RedesSociales';
 
-const Page = () => {
+export const revalidate = 3600; // Revalidate every hour
+
+export default async function InvestInTalentPage() {
+  const pageData = await getInvestPageData();
+  console.debug(pageData);
+
   return (
     <main className="min-h-screen bg-white pt-16">
-      <Header 
-        title="INVEST IN TALENT"
-        subtitle="GROW YOUR IMPACT"
-        heroImage={{
-          src: "/CT/tercera.webp",
-          alt: "Handshake with medal symbolizing success"
-        }}
-      />
+      <Suspense fallback={<Loading />}>
+        <Header {...pageData.header} />
+      </Suspense>
 
       <div className="relative">
-        <ProfileCarousel profiles={MOCK_PROFILES} />
+        <Suspense fallback={<Loading />}>
+          <ProfileCarousel profiles={pageData.profiles} />
+        </Suspense>
         <ContactForm />
       </div>
 
@@ -46,5 +50,3 @@ const Page = () => {
     </main>
   );
 }
-
-export default Page;
