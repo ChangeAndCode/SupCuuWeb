@@ -1,40 +1,91 @@
-import Image from 'next/image';
-import BtnCT from './BtnCT';
+"use client";
+import Image from "next/image";
+import BtnCT from "./BtnCT";
+import { UmbracoApi } from "@/lib/api";
+import { useState, useEffect } from "react";
 
-const CardStartups: React.FC = () => {
+interface ProfileCTA {
+  imageUrl: string;
+  imageAlt: string;
+  buttonContent: string;
+  buttonLink: string;
+  question: string[];
+}
+
+export default function CardStartups() {
+  const [content, setContent] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const data = await UmbracoApi.getContent("landing-page");
+        if (data && data.properties) {
+          setContent(data);
+        }
+      } catch (error) {
+        console.error("Error fetching content: ", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchContent();
+  }, []);
+
+  if (!content || loading) {
+    return <div>Cargando...</div>;
+  }
+  const { properties } = content;
+
+  const profiles: ProfileCTA = {
+    imageUrl:
+      properties.profileUrl.items[1].content.properties.profileImage[0].url,
+    imageAlt:
+      properties.profileUrl.items[1].content.properties.profileImage[0].name,
+    buttonContent: properties.profileUrl.items[1].content.properties.title,
+    buttonLink:
+      properties.profileUrl.items[1].content.properties.callToAction[0].url,
+    question:
+      properties.profileUrl.items[1]?.content?.properties?.question?.items?.map(
+        (item: any) =>
+          item?.content?.properties?.stringText ?? "Texto no disponible"
+      ) ?? [],
+  };
+
   return (
-    <div className='flex flex-col justify-center items-center group'>
+    <div className="flex flex-col justify-center items-center group">
       <div>
         <Image
-          src='/CT/segunda.webp'
-          alt='STARTUP & SCALEUPS'
+          src={`${nextPublicApiUrl}${profiles.imageUrl}`}
+          alt={profiles.imageAlt}
           width={560}
           height={460}
-          style={{ height: 'auto' }}
+          style={{ height: "auto" }}
           quality={80}
           priority
           loading="eager"
           placeholder="blur"
-          blurDataURL='/CT/segunda.webp'
-          className='grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300'
+          blurDataURL={`${nextPublicApiUrl}${profiles.imageUrl}`}
+          className="grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
         />
       </div>
-      <div className='xl:-translate-x-[4rem] xl:translate-y-[.5rem] text-center space-y-4'>
-        <div className='group-hover:scale-105 group-hover:grayscale-0'>
-          <BtnCT 
-            buttonText={['STARTUP &', 'SCALEUPS']}
-            link='/NextJump'
+      <div className="xl:-translate-x-[4rem] xl:translate-y-[.5rem] text-center space-y-4">
+        <div className="group-hover:scale-105 group-hover:grayscale-0">
+          <BtnCT
+            buttonText={profiles.buttonContent}
+            link={profiles.buttonLink}
           />
         </div>
         <div>
-          <p className='font-PerformanceMark text-ColorPrincipal text-2xl uppercase'>Need capital</p>
-          <p className='font-PerformanceMark text-ColorPrincipal text-2xl uppercase'>or want to</p>
-          <p className='font-PerformanceMark text-ColorPrincipal text-2xl uppercase'>strengthen</p>
-          <p className='font-PerformanceMark text-ColorPrincipal text-2xl uppercase'>your startup?</p>
+          <p
+            className="font-PerformanceMark text-ColorPrincipal text-2xl uppercase"
+            dangerouslySetInnerHTML={{
+              __html: profiles.question.join("<br />"),
+            }}
+          />
         </div>
       </div>
     </div>
   );
 };
-
-export default CardStartups;
