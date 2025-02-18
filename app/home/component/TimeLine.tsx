@@ -6,11 +6,11 @@ const TimeLine: React.FC = () => {
       <div className="flex justify-center">
         <div className="transform lg:translate-x-0">
           <div className="flex justify-center">
-          <div className="flex flex-col xl:flex-row translate-x-[-10.8rem] sm:translate-x-[-13.9rem] md:translate-x-[-17rem] lg:translate-x-[-16.5rem] xl:translate-x-[1rem] xl:translate-y-[-2.2rem] 2xl:translate-y-[-2.5rem] absolute">
-              <p className="font-poppins text-sm md:text-2xl translate-y-[19.5rem] md:translate-y-[23rem] lg:translate-y-[24rem] xl:translate-y-0 xl:translate-x-[-10.3rem] 2xl:translate-x-[-13.7rem]">
+          <div className="flex xl:translate-x-[1rem] xl:translate-y-[-2.2rem] 2xl:translate-y-[-2.5rem] absolute">
+              <p className="font-poppins hidden xl:block text-sm md:text-2xl translate-y-[19.5rem] md:translate-y-[23rem] lg:translate-y-[24rem] xl:translate-y-0 xl:translate-x-[-10.3rem] 2xl:translate-x-[-13.7rem]">
                 2019
               </p>
-              <p className="font-poppins text-sm md:text-2xl translate-y-[34rem] md:translate-y-[40.5rem] lg:translate-y-[42rem] xl:translate-y-0 xl:translate-x-[7.4rem] 2xl:translate-x-[8.5rem]">
+              <p className="font-poppins hidden xl:block text-sm md:text-2xl translate-y-[34rem] md:translate-y-[40.5rem] lg:translate-y-[42rem] xl:translate-y-0 xl:translate-x-[7.4rem] 2xl:translate-x-[8.5rem]">
                 2022
               </p>
             </div>
@@ -26,6 +26,14 @@ const TimeLine: React.FC = () => {
             </div>
           </div>
           <div className="w-[80%] md:w-full">
+          <div className="flex flex-col absolute">
+              <p className="font-poppins block xl:hidden text-sm md:text-2xl translate-x-[.5rem] md:translate-x-[-2rem] translate-y-[3rem] md:translate-y-[3.2rem]">
+                2019
+              </p>
+              <p className="font-poppins block xl:hidden text-sm md:text-2xl translate-x-[.5rem] md:translate-x-[-2rem] translate-y-[19rem] md:translate-y-[23rem]">
+                2022
+              </p>
+            </div>
             <div className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] translate-x-[2.3rem] md:translate-x-[2.5rem]">
               <Image
                 src="/barraV.webp"
@@ -50,7 +58,7 @@ const TimeLine: React.FC = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col w-full lg:w-2/12 mt-6 lg:mt-0 translate-y-[.5rem] md:translate-y-[2rem] lg:translate-y-[4rem] xl:translate-y-0 xl:translate-x-[-4.5rem] 2xl:translate-x-[-7.5rem]">
+              <div className="flex flex-col w-full xl:w-2/12 mt-6 lg:mt-0 translate-y-[.5rem] md:translate-y-[2rem] lg:translate-y-[4rem] xl:translate-y-0 xl:translate-x-[-4.5rem] 2xl:translate-x-[-7.5rem]">
                 <Image
                   src="/Logos/futura.webp"
                   width={200}
