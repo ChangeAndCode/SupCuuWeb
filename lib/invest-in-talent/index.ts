@@ -6,30 +6,42 @@ import {
   isInvestInTalentData 
 } from '@/types/invest-in-talent';
 import { getFirstText } from '@/utils/umbraco-text';
+import { MOCK_PROFILES } from './data';
 
 // Extract base URL from API URL
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
-const BACKEND_URL = API_URL.replace(/\/api\/?$/, ''); // Remove '/api' from the end
+const BACKEND_URL = API_URL.replace(/\/api\/?$/, '');
 
 function getFullImageUrl(path: string | undefined | null): string {
-  if (!path) return '/invest-in-talent/alan.webp'; // Local fallback
+  if (!path) return '/invest-in-talent/alan.webp';
   
-  // If it's already a full URL or a local path, return as is
   if (path.startsWith('http') || path.startsWith('/') && !path.startsWith('/media')) {
-    console.debug('Full URL or local path:', path);
     return path;
   }
 
-  // Otherwise, prepend the backend URL
   return `${BACKEND_URL}${path.startsWith('/') ? '' : '/'}${path}`;
 }
+
+// Fallback data
+const FALLBACK_DATA: InvestPageData = {
+  header: {
+    title: 'INVEST IN TALENT',
+    subtitle: 'GROW YOUR IMPACT',
+    heroImage: {
+      src: '/CT/tercera.webp',
+      alt: 'Handshake with medal symbolizing success'
+    }
+  },
+  profiles: MOCK_PROFILES
+};
 
 export async function getInvestPageData(): Promise<InvestPageData> {
   try {
     const data = await UmbracoApi.getContent('/sites/invest-in-talent/');
     
     if (!isInvestInTalentData(data)) {
-      throw new Error('Invalid content type received from Umbraco');
+      console.warn('Invalid content type received from Umbraco, using fallback data');
+      return FALLBACK_DATA;
     }
 
     // Transform carousel data
@@ -49,30 +61,35 @@ export async function getInvestPageData(): Promise<InvestPageData> {
       }
     }));
 
+    // If we got no profiles from the API, use mock data
+    if (profiles.length === 0) {
+      console.warn('No profiles received from Umbraco, using fallback profiles');
+      return {
+        header: {
+          title: getFirstText(data.properties.principalText.items, true, FALLBACK_DATA.header.title),
+          subtitle: getFirstText(data.properties.subtext.items, true, FALLBACK_DATA.header.subtitle),
+          heroImage: {
+            src: getFullImageUrl(data.properties.backgroundImage?.[0]?.url) || FALLBACK_DATA.header.heroImage.src,
+            alt: data.properties.backgroundImage?.[0]?.name || FALLBACK_DATA.header.heroImage.alt
+          }
+        },
+        profiles: MOCK_PROFILES
+      };
+    }
+
     return {
       header: {
-        title: getFirstText(data.properties.principalText.items, true, 'INVEST IN TALENT'),
-        subtitle: getFirstText(data.properties.subtext.items, true, 'GROW YOUR IMPACT'),
+        title: getFirstText(data.properties.principalText.items, true, FALLBACK_DATA.header.title),
+        subtitle: getFirstText(data.properties.subtext.items, true, FALLBACK_DATA.header.subtitle),
         heroImage: {
-          src: getFullImageUrl(data.properties.backgroundImage?.[0]?.url),
-          alt: data.properties.backgroundImage?.[0]?.name || 'Invest in Talent Hero Image'
+          src: getFullImageUrl(data.properties.backgroundImage?.[0]?.url) || FALLBACK_DATA.header.heroImage.src,
+          alt: data.properties.backgroundImage?.[0]?.name || FALLBACK_DATA.header.heroImage.alt
         }
       },
       profiles
     };
   } catch (error) {
     console.error('Failed to fetch invest page data:', error);
-    
-    return {
-      header: {
-        title: 'INVEST IN TALENT',
-        subtitle: 'GROW YOUR IMPACT',
-        heroImage: {
-          src: '/CT/tercera.webp', // Local fallback
-          alt: 'Handshake with medal symbolizing success'
-        }
-      },
-      profiles: [] // You might want to add some fallback profiles here
-    };
+    return FALLBACK_DATA;
   }
 }
