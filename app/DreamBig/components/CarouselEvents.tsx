@@ -3,21 +3,11 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { UmbracoApi } from "@/lib/api";
-
-interface CarouselEventData {
-  title: string;
-  description: string;
-  date: string;
-  location: string;
-  image: {
-    url: string;
-    name: string;
-  }[];
-  imageAlt: string;
-}
+import CarouselEventsData from "../data/CarouselEventsData";
+import { CarouselEventData } from "@/types/DreamBig";
 
 const CarouselEvents = () => {
-  const [content, setContent] = useState<any>(null);
+  const [content, setContent] = useState<any>(CarouselEventsData);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(
@@ -34,7 +24,7 @@ const CarouselEvents = () => {
           setContent(data);
         }
       } catch (error) {
-        console.error("Error fetching content: ", error);
+        console.error("Error al obtener contenido: ", error);
       } finally {
         setLoading(false);
       }
