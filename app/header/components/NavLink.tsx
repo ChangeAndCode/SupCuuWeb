@@ -28,6 +28,11 @@ const navLinks: NavLink[] = [
     ],
   },
   {
+    href: "https://creatorapp.zohopublic.com/inndech/ecosistema/page-perma/Unidades_Validadas_Chihuahua/YbU1ESXWbNpfXkvea9yZuODkUBY9ewh6ZFtujjFk1Pd27sdJOdsdwMwuMThfPWejDmJuHgmu5bhQQrMFjzFDXWUGERzkN57pfBNp",
+    label: "Startups",
+    external: true,
+  },
+  {
     href: "https://kumu.io/gedi/chihuahua",
     label: "Ecosystem",
     external: true,

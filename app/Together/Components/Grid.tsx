@@ -57,7 +57,7 @@ const Grid = () => {
         {communityData.benefits.items.map((item) => (
           <div
             key={item.id}
-            className="flex items-center justify-center w-[290px] h-[250px] relative" // Eliminado transition-transform, hover:scale-105 y hover:shadow-lg
+            className="flex items-center justify-center w-[290px] h-[250px] relative" 
           >
             <div className="bg-white group hover:bg-ColorPrincipal border-[.4rem] border-ColorPrincipal w-full h-full rounded-[3rem] flex flex-col justify-between transition-colors duration-300">
               <div className="absolute top-[-5rem] left-0 right-0 flex justify-center">

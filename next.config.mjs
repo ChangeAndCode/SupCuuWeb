@@ -1,4 +1,4 @@
-import path from 'path';
+import path from "path";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,26 +11,50 @@ const nextConfig = {
     if (!dev && !isServer) {
       config.plugins = config.plugins.filter(
         (plugin) =>
-          plugin.constructor.name !== 'ReactRefreshWebpackPlugin' &&
-          plugin.constructor.name !== 'ReactDevOverlayPlugin'
+          plugin.constructor.name !== "ReactRefreshWebpackPlugin" &&
+          plugin.constructor.name !== "ReactDevOverlayPlugin"
       );
     }
-    config.resolve.alias['@components'] = path.resolve(process.cwd(), 'components');
-  
+    config.resolve.alias["@components"] = path.resolve(
+      process.cwd(),
+      "components"
+    );
+
     return config;
   },
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: "/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
     ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "startupqab.duckdns.org",
+        pathname: "/media/**",
+      },
+      {
+        protocol: 'https',
+        hostname: 'localhost',
+        port: '44323',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3177',
+        pathname: '/**',
+      }
+    ],
   },
 };
 

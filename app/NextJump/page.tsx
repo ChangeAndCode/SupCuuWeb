@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Checklist from "app/NextJump/components/Checklist";
 import Accelerators from "app/NextJump/components/Accelerators";
+import  InnovationForm  from "./components/ContactForm";
 
 const NextJump = () => {
   return (
@@ -90,14 +91,20 @@ const NextJump = () => {
       </div>
 
       {/* Sección de Accelerators */}
-      <div className="bg-[url('/Bg/bgPartners.webp')] 
-        bg-no-repeat bg-center 
-        bg-cover md:bg-[length:120vw_100%] 
-        mt-[-8rem] sm:mt-[-12rem] md:mt-[-18rem]">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32">
-          <Accelerators />
+     {/* Sección de Accelerators */}
+        <div className="bg-[url('/Bg/bgPartners.webp')] 
+          bg-no-repeat bg-center 
+          bg-cover md:bg-[length:120vw_100%] 
+          mt-[-8rem] sm:mt-[-12rem] md:mt-[-18rem]
+          relative pb-24"> {/* Added relative positioning and bottom padding */}
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32">
+            <Accelerators />
+            {/* Move InnovationForm inside the max-width container */}
+          </div>
         </div>
-      </div>
+        <div className="mt-4"> {/* Add margin top for spacing */}
+              <InnovationForm />
+        </div>
     </div>
   );
 };

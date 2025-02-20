@@ -17,7 +17,7 @@ const Home: React.FC = () => {
               width={180}
               height={180}
               alt="We are"
-              className="absolute hidden md:block top-[60%] transform -translate-x-[-470%] z-10"
+              className="absolute hidden md:block top-[60%] transform -translate-x-[-470%] 4xl:-translate-x-[-350%] z-10"
               style={{ width: '9vw', height: 'auto' }}
               quality={80}
               priority
