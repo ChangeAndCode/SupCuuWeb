@@ -53,7 +53,7 @@ const TimeLine: React.FC = () => {
                   alt="DESEC logo"
                   quality={80}
                 />
-                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 uppercase w-[18rem] text-left">
+                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 capitalize w-[18rem] text-left">
                   <span className="font-bold">DESEC</span> transforming Chihuahua&rsquo;s economy over the past 50 years.
                 </p>
               </div>
@@ -66,7 +66,7 @@ const TimeLine: React.FC = () => {
                   alt="Futura logo"
                   quality={80}
                 />
-                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 uppercase w-[15rem] md:w-[13rem] text-left">
+                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 capitalize w-[15rem] md:w-[13rem] text-left">
                   <span className="font-bold">DESEC</span> launches <span className="font-bold">Chihuahua Futura</span> to drive innovation and technology.
                 </p>
               </div>
@@ -88,7 +88,7 @@ const TimeLine: React.FC = () => {
                     quality={80}
                   />
                 </div>
-                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] uppercase mt-4 w-10/12 md:w-[32rem] text-left">
+                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] capitalize mt-4 w-10/12 md:w-[32rem] text-left">
                   Chihuahua joins the <span className="font-bold">MIT REAP</span> program. Local leaders gather data, define a strategic plan, and create a collective organization to transform the ecosystem called <span className="font-bold">STARTUP CHIHUAHUA</span>.
                 </p>
               </div>
