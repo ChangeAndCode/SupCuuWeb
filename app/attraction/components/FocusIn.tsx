@@ -72,7 +72,7 @@ const FocusIn = () => {
                         </div>
                     <div className="relative bg-white border-[.4rem] border-ColorPrincipal rounded-3xl uppercase z-10">
                     <div className="bg-ColorPrincipal px-[1.5rem] py-[1.5rem] text-center rounded-2xl">
-                        <h2 className="main-Tipography text-white text-[2rem] leading-8">construction tecnology</h2>
+                        <h2 className="main-Tipography text-white text-[2rem] leading-8">construction Technology</h2>
                     </div>
                     <div className="px-[3rem] py-[1rem]">
                         <ul className="list-disc text-[1.2rem]">
