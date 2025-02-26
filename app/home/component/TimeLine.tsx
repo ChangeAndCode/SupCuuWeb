@@ -1,12 +1,25 @@
 import Image from "next/image";
+import { getTimelineContent } from "@/lib/timeline";
 
-const TimeLine: React.FC = () => {
+const TimeLine = async () => {
+  const timelineContent = await getTimelineContent();
+
+  if (!timelineContent?.properties) {
+    return null;
+  }
+
+  const content = {
+    desecText: timelineContent.properties.text || 'Texto DESEC por defecto',
+    futuraText: timelineContent.properties.text2 || 'Texto Futura por defecto',
+    mitText: timelineContent.properties.text3 || 'Texto MIT por defecto',
+  };
+
   return (
     <div className="relative mt-[7rem] xl:mt-[5rem]">
       <div className="flex justify-center">
         <div className="transform lg:translate-x-0">
           <div className="flex justify-center">
-          <div className="flex xl:translate-x-[1rem] xl:translate-y-[-2.2rem] 2xl:translate-y-[-2.5rem] absolute">
+            <div className="flex xl:translate-x-[1rem] xl:translate-y-[-2.2rem] 2xl:translate-y-[-2.5rem] absolute">
               <p className="font-poppins hidden xl:block text-sm md:text-2xl translate-y-[19.5rem] md:translate-y-[23rem] lg:translate-y-[24rem] xl:translate-y-0 xl:translate-x-[-10.3rem] 2xl:translate-x-[-13.7rem]">
                 2019
               </p>
@@ -26,7 +39,7 @@ const TimeLine: React.FC = () => {
             </div>
           </div>
           <div className="w-[80%] md:w-full">
-          <div className="flex flex-col absolute">
+            <div className="flex flex-col absolute">
               <p className="font-poppins block xl:hidden text-sm md:text-2xl translate-x-[.5rem] md:translate-x-[-2rem] translate-y-[3rem] md:translate-y-[3.2rem]">
                 2019
               </p>
@@ -53,9 +66,10 @@ const TimeLine: React.FC = () => {
                   alt="DESEC logo"
                   quality={80}
                 />
-                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 capitalize w-[18rem] text-left">
-                  <span className="font-bold">DESEC</span> transforming Chihuahua&rsquo;s economy over the past 50 years.
-                </p>
+                <p 
+                  className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 capitalize w-[18rem] text-left"
+                  dangerouslySetInnerHTML={{ __html: content.desecText }}
+                />
               </div>
 
               <div className="flex flex-col w-full xl:w-2/12 mt-6 lg:mt-0 translate-y-[.5rem] md:translate-y-[2rem] lg:translate-y-[4rem] xl:translate-y-0 xl:translate-x-[-4.5rem] 2xl:translate-x-[-7.5rem]">
@@ -66,9 +80,10 @@ const TimeLine: React.FC = () => {
                   alt="Futura logo"
                   quality={80}
                 />
-                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 capitalize w-[15rem] md:w-[13rem] text-left">
-                  <span className="font-bold">DESEC</span> launches <span className="font-bold">Chihuahua Futura</span> to drive innovation and technology.
-                </p>
+                <p 
+                  className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 capitalize w-[15rem] md:w-[13rem] text-left"
+                  dangerouslySetInnerHTML={{ __html: content.futuraText }}
+                />
               </div>
 
               <div className="flex flex-col w-full lg:w-5/12 mt-6 lg:mt-0 translate-y-[-1.8rem] sm:translate-y-[.5rem] md:translate-y-[2rem] lg:translate-y-[4rem] xl:translate-y-0 xl:translate-x-[2rem] 2xl:translate-x-[4rem]">
@@ -88,9 +103,10 @@ const TimeLine: React.FC = () => {
                     quality={80}
                   />
                 </div>
-                <p className="font-poppins text-[1.3rem] md:text-[1.5rem] capitalize mt-4 w-10/12 md:w-[32rem] text-left">
-                  Chihuahua joins the <span className="font-bold">MIT REAP</span> program. Local leaders gather data, define a strategic plan, and create a collective organization to transform the ecosystem called <span className="font-bold">STARTUP CHIHUAHUA</span>.
-                </p>
+                <p 
+                  className="font-poppins text-[1.3rem] md:text-[1.5rem] capitalize mt-4 w-10/12 md:w-[32rem] text-left"
+                  dangerouslySetInnerHTML={{ __html: content.mitText }}
+                />
               </div>
             </div>
           </div>
