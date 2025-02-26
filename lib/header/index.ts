@@ -44,3 +44,4 @@ export function getImageUrl(imageUrl: string): string {
   const baseUrl = process.env.UMBRACO_API_URL?.replace('/umbraco/delivery/api/v2', '');
   return `${baseUrl}${imageUrl}`;
 }
+
