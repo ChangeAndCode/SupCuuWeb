@@ -15,6 +15,7 @@ import Partners from "./Partners";
 import MeetTeam from "./MeetTeam";
 import Backbone from "./Backbone";
 import Form from "../../form/page";
+import CarouselNews from "./CarouselNews";
 
 const CT: React.FC = () => {
   return (
@@ -54,7 +55,9 @@ const CT: React.FC = () => {
         <div className="relative flex justify-center items-center bg-[url('/Bg/bgNews.webp')] bg-no-repeat bg-center bg-cover z-10 py-0 lg:py-[7rem] xl:py-0">
           <Carrusel />
         </div>
-
+        <div> 
+        {/* <CarouselNews/> */}
+        </div>
         <div className="absolute bottom-[-50px] 4xl:bottom-[-180px] right-[.5rem] md:right-[4rem] lg:right-[8rem] xl-sm:right-[18rem] 4xl:right-[25rem] translate-y-[-2.5rem]">
           <Image
             src="/logoV.webp"
