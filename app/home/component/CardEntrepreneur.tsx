@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import BtnCT from "./BtnCT";
 import { getCardCorporateData } from "@/lib/landing-page";
