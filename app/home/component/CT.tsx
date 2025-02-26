@@ -24,16 +24,16 @@ const CT: React.FC = () => {
       </div>
       <div className="relative flex flex-col items-center md:pt-[-10rem] lg:pt-[-20rem] xl:pt-[11.2rem] 2xl:pt-[12rem] xl:flex-row xl:justify-center bg-transparent space-y-6 lg:space-y-0 pointer-events-none">
         <div className="relative xl:absolute xl:z-[10] xl:transform xl:-translate-x-[30rem] xl:translate-y-[-3rem]">
-          <CardEntrepreneur />
+          <CardEntrepreneur itemIndex={0} />
         </div>
         <div className="relative xl:absolute xl:z-[5] xl:transform xl:-translate-x-[6rem] xl:translate-y-[2rem]">
-          <CardStartups />
+          <CardStartups itemIndex={1} />
         </div>
         <div className="relative xl:absolute xl:z-[10] xl:transform xl:translate-x-[10.5rem] xl:translate-y-[2rem]">
-          <CardInvestors />
+          <CardInvestors itemIndex={2} />
         </div>
         <div className="relative xl:absolute xl:z-[5] xl:transform xl:translate-x-[30rem] xl:translate-y-[1rem]">
-          <CardCorporates />
+          <CardCorporates itemIndex={3} />
         </div>
       </div>
       <div className="relative">
@@ -44,7 +44,7 @@ const CT: React.FC = () => {
               alt="News"
               width={900}
               height={900}
-              style={{ height: 'auto' }}
+              style={{ height: "auto" }}
               quality={80}
               priority
             />
@@ -61,12 +61,11 @@ const CT: React.FC = () => {
             alt="Company Logo"
             width={370}
             height={270}
-            style={{ height: 'auto' }}
+            style={{ height: "auto" }}
             quality={80}
           />
         </div>
       </div>
-
 
       <div id="weAre" className="py-16 overflow-hidden">
         <WeAre />
@@ -86,7 +85,10 @@ const CT: React.FC = () => {
       <div className="bg-white mb-[-5rem] sm:mb-[-7rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">
         <Transformative />
       </div>
-      <div id="partners" className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-cover z-10 py-[5rem] md:py-[15rem]">
+      <div
+        id="partners"
+        className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-cover z-10 py-[5rem] md:py-[15rem]"
+      >
         <Partners />
       </div>
       <div id="team">
@@ -95,7 +97,7 @@ const CT: React.FC = () => {
           <Backbone />
         </div>
       </div>
-      <div className='mt-[-5rem]'>
+      <div className="mt-[-5rem]">
         <Form />
       </div>
     </div>
