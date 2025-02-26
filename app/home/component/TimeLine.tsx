@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTimelineContent } from "@/lib/timeline";
+import { defaultTimelineData } from "@/lib/timeline/data/dataTimeline";
 
 const TimeLine = async () => {
   const timelineContent = await getTimelineContent();
@@ -9,9 +10,9 @@ const TimeLine = async () => {
   }
 
   const content = {
-    desecText: timelineContent.properties.text || 'Texto DESEC por defecto',
-    futuraText: timelineContent.properties.text2 || 'Texto Futura por defecto',
-    mitText: timelineContent.properties.text3 || 'Texto MIT por defecto',
+    desecText: timelineContent.properties.text || defaultTimelineData.desecText,
+    futuraText: timelineContent.properties.text2 || defaultTimelineData.futuraText,
+    mitText: timelineContent.properties.text3 || defaultTimelineData.mitText,
   };
 
   return (
