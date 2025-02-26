@@ -1,46 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { UmbracoApi } from '@/lib/api';
-import { UmbracoContent } from '@/types/umbraco';
-
-interface TextItem {
-  content: {
-    contentType: string;
-    id: string;
-    properties: {
-      stringText: string;
-    };
-  };
-  settings: null;
-}
-
-interface HomeProperties {
-  principalText: {
-    items: TextItem[];
-  };
-  subtext: {
-    items: TextItem[];
-  };
-  backgroundImage: Array<{
-    url: string;
-    width: number;
-    height: number;
-  }>;
-}
-
-interface HomeContent extends UmbracoContent {
-  properties: HomeProperties;
-}
-
-async function getHomeContent(): Promise<HomeContent | null> {
-  try {
-    const content = await UmbracoApi.getContent('header-hero') as HomeContent;
-    return content;
-  } catch (error) {
-    console.error('Error fetching header content:', error);
-    return null;
-  }
-}
+import { getHomeContent, getImageUrl } from '@/lib/header';
 
 const Home: React.FC = async () => {
   const content = await getHomeContent();
@@ -54,12 +14,7 @@ const Home: React.FC = async () => {
   }
 
   const { properties } = content;
-
-  // Build the correct image URL
-  // We use the base URL without the API part
-  const baseUrl = process.env.UMBRACO_API_URL?.replace('/umbraco/delivery/api/v2', '');
-  const imageUrl = `${baseUrl}${properties.backgroundImage[0].url}`;
-  
+  const imageUrl = getImageUrl(properties.backgroundImage[0].url);
   const { width: imageWidth, height: imageHeight } = properties.backgroundImage[0];
 
   return (
