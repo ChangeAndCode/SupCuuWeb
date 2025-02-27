@@ -3,6 +3,7 @@ import BtnCT from "./BtnCT";
 import { getCardCorporateData } from "@/lib/landing-page";
 import { GetStaticProps } from "next";
 import { Suspense } from "react";
+import Loading from "../loading";
 
 export default async function CardCorporates({
   itemIndex,
@@ -12,7 +13,7 @@ export default async function CardCorporates({
   const profiles = await getCardCorporateData(itemIndex);
 
   return (
-    <Suspense fallback={<div>Cargando...</div>}>
+    <Suspense fallback={<Loading />}>
       <div className="flex flex-col justify-center items-center group">
         <div>
           <Image
