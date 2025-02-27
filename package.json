@@ -11,6 +11,7 @@
   "dependencies": {
     "@shadcn/ui": "^0.0.4",
     "framer-motion": "^12.0.6",
+    "lru-cache": "^11.0.2",
     "lucide-react": "^0.473.0",
     "next": "15.0.3",
     "react": "^18.2.0",
