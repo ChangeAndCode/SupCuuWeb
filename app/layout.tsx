@@ -1,3 +1,5 @@
+// RootLayout.tsx
+import { LocaleProvider } from '@components/Localization/LocaleContext';
 import './globals.css';
 import HeaderLayout from './header/layout';
 import { Metadata } from 'next';
@@ -16,12 +18,16 @@ interface RootLayoutProps {
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-y-scroll">
       <head>
       </head>
       <body>
-        <HeaderLayout />
-        <main>{children}</main>
+        <LocaleProvider>
+          <HeaderLayout />
+          <main>
+            {children}
+          </main>
+        </LocaleProvider>
       </body>
     </html>
   );
