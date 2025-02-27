@@ -1,5 +1,5 @@
 import { UmbracoApi } from "@/lib/api";
-import { ProfileCTA } from "@/types/landingPage";
+import { ProfileCTA, BtnCTProps, BtnIconProps } from "@/types/landingPage";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
 const BACKEND_URL = API_URL.replace(/\/api\/?$/, "");
@@ -44,5 +44,45 @@ export async function getCardCorporateData(
       buttonLink: "#",
       question: ["Fallback Question"],
     };
+  }
+}
+
+export async function fetchContentData(): Promise<BtnCTProps[]> {
+  try {
+    const data = await UmbracoApi.getContent("landing-page");
+
+    if (!data.properties || !data.properties.profileUrl?.items) {
+      console.warn("Invalid content type received from Umbraco");
+      return [];
+    }
+    return data.properties.profileUrl.items.map((card) => ({
+      buttonText: card.content.properties.title || "untitled text",
+      customLines:
+        card.content.properties.question.items.map(
+          (line) => line.content.properties.stringText
+        ) || [],
+      link: card.content.properties.callToAction[0].url || "#",
+    }));
+  } catch (error) {
+    console.error("Failed to fetch landing page data:", error);
+    return [];
+  }
+}
+
+export async function fetchIconData(): Promise<BtnIconProps> {
+  try {
+    const data = await UmbracoApi.getContent("landing-page");
+
+    if (!data.properties || !data.properties.profileIcon?.length) {
+      console.warn("Invalid content type received from Umbraco");
+      return { buttonIcon: "/default-icon.webp", altButton: "Default Icon" };
+    }
+    return {
+      buttonIcon: data.properties.profileIcon[0].url,
+      altButton: data.properties.profileIcon[0].name,
+    };
+  } catch (error) {
+    console.error("Failed to fetch landing page data:", error);
+    return { buttonIcon: "/error-icon.webp", altButton: "Error Icon" };
   }
 }
