@@ -3,7 +3,6 @@
 import { useLocale } from './LocaleContext';
 import { AVAILABLE_LOCALES } from '@/lib/Localization/constants';
 import { CheckIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { useEffect, useState, useRef } from 'react';
 
 // Enhanced locale details with proper flag emojis
