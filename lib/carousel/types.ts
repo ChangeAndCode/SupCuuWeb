@@ -3,6 +3,7 @@ export interface NewsSlide {
   carouselDescription: string;
   carouselImage: string;
   carouselImageName: string;
+  isActive: boolean;
 }
 
 export interface CarouselResponse {
