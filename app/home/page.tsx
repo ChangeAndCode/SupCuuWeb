@@ -1,9 +1,12 @@
 import Image from 'next/image';
 import React from 'react';
 import { getHomeContent, getImageUrl } from '@/lib/header';
+import { getLandingPageData } from '@/lib/home/umbracoDataService';
+import CT from './component/CT';
 
 const Home: React.FC = async () => {
   const content = await getHomeContent();
+  const pageData = await getLandingPageData();
   // console.log('content', content);
   if (!content?.properties) {
     return (
@@ -18,6 +21,8 @@ const Home: React.FC = async () => {
   const { width: imageWidth, height: imageHeight } = properties.backgroundImage[0];
 
   return (
+    <div>
+
     <div className="px-14 lg:px-24 xl:px-32 py-32 md:py-48">
       <div className="max-w-[1920px] mx-auto w-full">
         <h2 className="font-PerformanceMark xs:text-[1rem] sm:text-[1.2rem] md:text-[2.5rem] lg:text-[2.8rem] xl:text-[2rem] xl-md:text-[3rem] 2xl:text-[5rem] md:leading-[3.5rem] lg:leading-[5rem] xl:leading-[5rem] 2xl:leading-[7rem] text-white uppercase">
@@ -35,15 +40,19 @@ const Home: React.FC = async () => {
               className="absolute hidden md:block top-[60%] transform -translate-x-[-470%] 4xl:-translate-x-[-350%] z-10"
               style={{ width: '9vw', height: 'auto' }}
               priority
-            />
+              />
           </span>
           {properties.subtext.items[0].content.properties.stringText}
         </p>
         <p className="font-PerformanceMark xs:text-[1rem] sm:text-[1.2rem] md:text-[2.5rem] lg:text-[2.8rem] xl-md:text-[3rem] 2xl:text-[5rem] md:leading-[3.5rem] lg:leading-[5rem] xl:leading-[5rem] 2xl:leading-[7rem] text-white uppercase">
           {properties.subtext.items[1].content.properties.stringText}
         </p>
-      </div>
+      </div>  
     </div>
+    <div className='bg-[#EDEFF0] rounded-t-[8rem] w-100'>
+        <CT pageData={pageData} />
+      </div>
+  </div>
   );
 };
 

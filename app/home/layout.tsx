@@ -15,19 +15,10 @@ interface Props {
 }
 
 const HomeLayout = async ({ children }: Props) => {
-  // Fetch the data
-  console.log('Fetching data in homepage');
-  const pageData = await getLandingPageData();
-  
   return (
     <>
-      <HeaderLayout />
-      <main>
-        <div className='bg-ColorPrincipal'>
-
-        {children}
-        </div>
-        <CT pageData={pageData} />
+      <main>        
+        {children}        
       </main>
     </>
   );
