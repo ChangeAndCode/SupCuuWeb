@@ -15,7 +15,6 @@ import Partners from "./Partners";
 import MeetTeam from "./MeetTeam";
 import Backbone from "./Backbone";
 import Form from "../../form/page";
-import CarouselNews from "./CarouselNews";
 
 const CT: React.FC = () => {
   return (

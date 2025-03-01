@@ -1,7 +1,7 @@
 // app/test/page.tsx
 import { getLocale } from '@/lib/Localization';
 import { getUmbracoContent } from '@/lib/server/umbracoApi';
-
+export const dynamic = 'force-dynamic';
 export default async function TestPage() {
   // Properly handle the async nature of getLocale
   const locale = await getLocale();
