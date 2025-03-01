@@ -15,8 +15,15 @@ import Partners from "./Partners";
 import MeetTeam from "./MeetTeam";
 import Backbone from "./Backbone";
 import Form from "../../form/page";
+import { getLandingPageData, UmbracoPageData, MeetTeamTitles } from "@/lib/home/umbracoDataService";
 
-const CT: React.FC = () => {
+interface CTProps {
+  pageData: UmbracoPageData;
+}
+
+const CT: React.FC<CTProps> = ({ pageData }) => {
+  const { profiles, profileIcon, teamMembers, meetTeamTitles } = pageData;
+  
   return (
     <div className="pt-24 overflow-hidden">
       <div className="relative flex flex-col justify-center items-center pt-[3rem] md:pt-[1rem] lg:pt-[4rem] xl:pt-[8rem] overflow-hidden pointer-events-none">
@@ -24,16 +31,32 @@ const CT: React.FC = () => {
       </div>
       <div className="relative flex flex-col items-center md:pt-[-10rem] lg:pt-[-20rem] xl:pt-[11.2rem] 2xl:pt-[12rem] xl:flex-row xl:justify-center bg-transparent space-y-6 lg:space-y-0 pointer-events-none">
         <div className="relative xl:absolute xl:z-[10] xl:transform xl:-translate-x-[30rem] xl:translate-y-[-3rem]">
-          <CardEntrepreneur />
+          <CardEntrepreneur 
+            profile={profiles.entrepreneur}
+            buttonIcon={profileIcon.url}
+            buttonIconAlt={profileIcon.name}
+          />
         </div>
         <div className="relative xl:absolute xl:z-[5] xl:transform xl:-translate-x-[6rem] xl:translate-y-[2rem]">
-          <CardStartups />
+          <CardStartups 
+            profile={profiles.startups}
+            buttonIcon={profileIcon.url}
+            buttonIconAlt={profileIcon.name}
+          />
         </div>
         <div className="relative xl:absolute xl:z-[10] xl:transform xl:translate-x-[10.5rem] xl:translate-y-[2rem]">
-          <CardInvestors />
+          <CardInvestors 
+            profile={profiles.investors}
+            buttonIcon={profileIcon.url}
+            buttonIconAlt={profileIcon.name}
+          />
         </div>
         <div className="relative xl:absolute xl:z-[5] xl:transform xl:translate-x-[30rem] xl:translate-y-[1rem]">
-          <CardCorporates />
+          <CardCorporates 
+            profile={profiles.corporates}
+            buttonIcon={profileIcon.url}
+            buttonIconAlt={profileIcon.name}
+          />
         </div>
       </div>
       <div className="relative">
@@ -92,7 +115,10 @@ const CT: React.FC = () => {
         <Partners />
       </div>
       <div id="team">
-        <MeetTeam />
+      <MeetTeam
+          titles={meetTeamTitles as MeetTeamTitles} // Cast to MeetTeamTitles
+          teamMembers={teamMembers}
+        />
         <div className="pb-[14rem] sm:pb-[13rem] md:pb-[15rem] lg:pb-[9rem] xl:pb-[15rem] bg-[#c4cfd6] mt-[-20rem] md:mt-[-33rem] lg:mt-[-30rem] xl:mt-[-35rem]">
           <Backbone />
         </div>

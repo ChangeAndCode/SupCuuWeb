@@ -1,66 +1,14 @@
-"use client";
+// components/MeetTeam.tsx
 import Image from "next/image";
 import Presidente from "./presidente";
-import { UmbracoApi } from "@/lib/api";
-import { useState, useEffect } from "react";
+import { MeetTeamTitles, TeamMember } from "@/lib/home/umbracoDataService";
 
-interface MeetTeam {
-  titleH3: string;
-  titleH4: string;
-  titleH5: string;
-  backgroundTitle: string;
+interface MeetTeamProps {
+  titles: MeetTeamTitles;
+  teamMembers: TeamMember[];
 }
-interface TeamMember {
-  id: number;
-  image: string;
-  name: string;
-  position: string;
-  description: string;
-}
-export default function MeetTeam() {
-  const [content, setContent] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
-  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  useEffect(() => {
-    const fetchContent = async () => {
-      try {
-        const data = await UmbracoApi.getContent("landing-page");
-        if (data && data.properties) {
-          setContent(data);
-
-          const members = data.properties.partners?.items.map((item: any) => ({
-            id: item.content.properties.pId,
-            image: item.content.properties.pImage[0].url || "/placeholder.webp",
-            name: item.content.properties.pName,
-            position: item.content.properties.pPosition,
-            description:
-              item.content.properties.pDescription?.markup || "Sin descripción",
-          }));
-          setTeamMembers(members || []);
-        }
-      } catch (error) {
-        console.error("Error fetching content: ", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchContent();
-  }, []);
-
-  if (!content || loading) {
-    return <div>Cargando...</div>;
-  }
-
-  const { properties } = content;
-  const titles: MeetTeam = {
-    titleH3: properties.textH3?.markup || "Titulo por defecto H3",
-    titleH4: properties.textH4?.markup || "Titulo por defecto H4",
-    titleH5: properties.textH5?.markup || "Titulo por defecto H5",
-    backgroundTitle:
-      properties.backgroundText?.markup || "Background por defecto",
-  };
+export default function MeetTeam({ titles, teamMembers }: MeetTeamProps) {
   return (
     <div>
       <div className="flex justify-center items-center space-x-8">
@@ -77,32 +25,20 @@ export default function MeetTeam() {
 
       {/* meetTeam titles */}
       <div className="ml-[1rem] md:ml-[3rem] mt-[4rem] lg:ml-[4rem] xl:ml-[9rem] 2xl:ml-[16rem] 4xl:ml-[20rem] relative overflow-hidden">
-        <h3
-          className="main-Tipography text-[1.5rem] md:text-[2.1rem] lg:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.3rem] 4xl:text-[4rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10 xl:w-8/12 2xl:w-7/12"
-          dangerouslySetInnerHTML={{
-            __html: titles.titleH3,
-          }}
-        />
-        <h4
-          className="main-Tipography text-[2rem] md:text-[4.5rem] lg:text-[5.3rem] xl:text-[6rem] 2xl:text-[7rem] 4xl:text-[8.5rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[6rem] relative z-10"
-          dangerouslySetInnerHTML={{
-            __html: titles.titleH4,
-          }}
-        />
-        <h5
-          className="main-Tipography text-[2rem] md:text-[2.1rem] lg:text-[2.5rem] xl:text-[2.8rem] 2xl:text-[3.3rem] 4xl:text-[4rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10"
-          dangerouslySetInnerHTML={{
-            __html: titles.titleH5,
-          }}
-        />
+        <h3 className="main-Tipography text-[1.5rem] md:text-[2.1rem] lg:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.3rem] 4xl:text-[4rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10 xl:w-8/12 2xl:w-7/12">
+          {titles.titleH3} {/* Render as plain text */}
+        </h3>
+        <h4 className="main-Tipography text-[2rem] md:text-[4.5rem] lg:text-[5.3rem] xl:text-[6rem] 2xl:text-[7rem] 4xl:text-[8.5rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[6rem] relative z-10">
+          {titles.titleH4} {/* Render as plain text */}
+        </h4>
+        <h5 className="main-Tipography text-[2rem] md:text-[2.1rem] lg:text-[2.5rem] xl:text-[2.8rem] 2xl:text-[3.3rem] 4xl:text-[4rem] text-ColorPrincipal font-pragmatica uppercase md:leading-[3.5rem] relative z-10">
+          {titles.titleH5} {/* Render as plain text */}
+        </h5>
 
         <div className="absolute inset-0 md:left-[40%] xl:left-[25%] 2xl:left-[19%] 4xl:left-[15%] md:top-[2%] xl:top-[6%] 2xl:top-[6%] flex justify-center items-center z-0">
-          <p
-            className="main-Tipography text-[3rem] hidden md:block md:text-[5rem] xl:text-[8rem] 2xl:text-[10rem] 4xl:text-[12rem] font-PerformanceMark text-white uppercase leading-[9rem] lg:leading-[9rem] whitespace-nowrap"
-            dangerouslySetInnerHTML={{
-              __html: titles.backgroundTitle,
-            }}
-          />
+          <p className="main-Tipography text-[3rem] hidden md:block md:text-[5rem] xl:text-[8rem] 2xl:text-[10rem] 4xl:text-[12rem] font-PerformanceMark text-white uppercase leading-[9rem] lg:leading-[9rem] whitespace-nowrap">
+            {titles.backgroundTitle} {/* Render as plain text */}
+          </p>
         </div>
       </div>
 
@@ -147,12 +83,9 @@ export default function MeetTeam() {
                     <p className="main-Tipography uppercase text-[0.8rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] 2xl:text-[1.3rem] 4xl:text-[1.4rem] mb-1 md:mb-2 line-clamp-1">
                       {member.position}
                     </p>
-                    <p
-                      className="font-poppins text-[0.8rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] 2xl:text-[1.2rem] 4xl:text-[1.3rem] uppercase line-clamp-3"
-                      dangerouslySetInnerHTML={{
-                        __html: member.description,
-                      }}
-                    />
+                    <p className="font-poppins text-[0.8rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] 2xl:text-[1.2rem] 4xl:text-[1.3rem] uppercase line-clamp-3">
+                      {member.description} {/* Render as plain text */}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -164,7 +97,7 @@ export default function MeetTeam() {
                 }`}
               >
                 <Image
-                  src={`${nextPublicApiUrl}${member.image}`}
+                  src={member.image}
                   width={260}
                   height={260}
                   alt={`Team ${member.id}`}

@@ -4,7 +4,7 @@ import { getHomeContent, getImageUrl } from '@/lib/header';
 
 const Home: React.FC = async () => {
   const content = await getHomeContent();
-
+  // console.log('content', content);
   if (!content?.properties) {
     return (
       <div className="flex items-center justify-center min-h-screen">

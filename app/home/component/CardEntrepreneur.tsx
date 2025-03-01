@@ -1,64 +1,20 @@
-"use client";
 import Image from "next/image";
 import BtnCT from "./BtnCT";
-import { UmbracoApi } from "@/lib/api";
-import { useState, useEffect } from "react";
+import { ProfileCTA } from "@/lib/home/umbracoDataService";
 
-interface ProfileCTA {
-  imageUrl: string;
-  imageAlt: string;
-  buttonContent: string;
-  buttonLink: string;
-  question: string[];
+interface CardEntrepreneurProps {
+  profile: ProfileCTA;
+  buttonIcon: string;
+  buttonIconAlt: string;
 }
 
-export default function CardEntrepreneur() {
-  const [content, setContent] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  useEffect(() => {
-    const fetchContent = async () => {
-      try {
-        const data = await UmbracoApi.getContent("landing-page");
-        if (data && data.properties) {
-          setContent(data);
-        }
-      } catch (error) {
-        console.error("Error fetching content: ", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchContent();
-  }, []);
-
-  if (!content || loading) {
-    return <div>Cargando...</div>;
-  }
-  const { properties } = content;
-
-  const profiles: ProfileCTA = {
-    imageUrl:
-      properties.profileUrl.items[0].content.properties.profileImage[0].url,
-    imageAlt:
-      properties.profileUrl.items[0].content.properties.profileImage[0].name,
-    buttonContent: properties.profileUrl.items[0].content.properties.title,
-    buttonLink:
-      properties.profileUrl.items[0].content.properties.callToAction[0].url,
-    question:
-      properties.profileUrl.items[0]?.content?.properties?.question?.items?.map(
-        (item: any) =>
-          item?.content?.properties?.stringText ?? "Texto no disponible"
-      ) ?? [],
-  };
-
+export default function CardEntrepreneur({ profile, buttonIcon, buttonIconAlt }: CardEntrepreneurProps) {
   return (
     <div className="flex flex-col justify-center items-center group">
       <div>
         <Image
-          src={`${nextPublicApiUrl}${profiles.imageUrl}`}
-          alt={profiles.imageAlt}
+          src={profile.imageUrl}
+          alt={profile.imageAlt}
           width={490}
           height={390}
           style={{ height: "auto" }}
@@ -66,22 +22,24 @@ export default function CardEntrepreneur() {
           priority
           loading="eager"
           placeholder="blur"
-          blurDataURL={`${nextPublicApiUrl}${profiles.imageUrl}`}
+          blurDataURL={profile.imageUrl}
           className="grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
         />
       </div>
       <div className="text-center xl:translate-y-[1.8rem] space-y-4">
         <div className="group-hover:scale-105 group-hover:grayscale-0">
           <BtnCT
-            buttonText={profiles.buttonContent}
-            link={profiles.buttonLink}
+            buttonText={profile.buttonContent}
+            link={profile.buttonLink}
+            buttonIcon={buttonIcon}
+            buttonIconAlt={buttonIconAlt}
           />
         </div>
         <div>
           <p
             className="font-PerformanceMark text-ColorPrincipal text-2xl uppercase"
             dangerouslySetInnerHTML={{
-              __html: profiles.question.join("<br />"),
+              __html: profile.question.join("<br />"),
             }}
           />
         </div>
