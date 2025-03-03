@@ -6,7 +6,7 @@ const WhoIs = () => {
         <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
           <iframe
             className="absolute top-0 left-0 w-full h-full"
-            src="https://www.youtube.com/embed/jVe-7hgynDI?si=az7wvDwGxg7GftLy"
+            src="https://www.youtube.com/embed/OKzOwlZPLQw?si=0EroAMkFlLLCLSas"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
