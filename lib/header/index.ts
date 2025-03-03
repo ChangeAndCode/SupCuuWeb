@@ -1,4 +1,5 @@
-import { UmbracoApi } from '@/lib/api';
+// src/lib/header.ts
+import { getUmbracoContent } from '@/lib/server/umbracoApi';
 import { UmbracoContent } from '@/types/umbraco';
 
 interface TextItem {
@@ -32,7 +33,7 @@ export interface HomeContent extends UmbracoContent {
 
 export async function getHomeContent(): Promise<HomeContent | null> {
   try {
-    const content = await UmbracoApi.getContent('header-hero') as HomeContent;
+    const content = (await getUmbracoContent('header-hero')) as HomeContent;
     return content;
   } catch (error) {
     console.error('Error fetching header content:', error);
@@ -41,7 +42,9 @@ export async function getHomeContent(): Promise<HomeContent | null> {
 }
 
 export function getImageUrl(imageUrl: string): string {
-  const baseUrl = process.env.UMBRACO_API_URL?.replace('/umbraco/delivery/api/v2', '');
+  const baseUrl = process.env.UMBRACO_API_URL?.replace(
+    '/umbraco/delivery/api/v2',
+    ''
+  );
   return `${baseUrl}${imageUrl}`;
 }
-

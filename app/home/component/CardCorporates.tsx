@@ -1,6 +1,6 @@
 import Image from "next/image";
 import BtnCT from "./BtnCT";
-import { ProfileCTA } from "@/lib/home/umbracoDataService";
+import { ProfileCTA } from "@/types/home";
 
 interface CardCorporatesProps {
   profile: ProfileCTA;

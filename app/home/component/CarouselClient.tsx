@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Image from "next/image";
 import { useCarousel } from "@/lib/carousel/useCarousel";
-import type { NewsSlide } from "@/lib/carousel/index";
+import type { NewsSlide } from "@/types/home";
 
 interface CarouselClientProps {
   slides: NewsSlide[];

@@ -1,18 +1,17 @@
-import Image from "next/image";
-import { getTimelineContent } from "@/lib/timeline";
-import { defaultTimelineData } from "@/lib/timeline/data/dataTimeline";
+// src/app/component/TimeLine.tsx
+import Image from 'next/image';
+import { TimelineData } from '@/types/home';
+import { defaultTimelineData } from '@/lib/timeline/data/dataTimeline';
 
-const TimeLine = async () => {
-  const timelineContent = await getTimelineContent();
+interface TimeLineProps {
+  timelineData: TimelineData;
+}
 
-  if (!timelineContent?.properties) {
-    return null;
-  }
-
+const TimeLine: React.FC<TimeLineProps> = ({ timelineData }) => {
   const content = {
-    desecText: timelineContent.properties.text || defaultTimelineData.desecText,
-    futuraText: timelineContent.properties.text2 || defaultTimelineData.futuraText,
-    mitText: timelineContent.properties.text3 || defaultTimelineData.mitText,
+    desecText: timelineData.desecText || defaultTimelineData.desecText,
+    futuraText: timelineData.futuraText || defaultTimelineData.futuraText,
+    mitText: timelineData.mitText || defaultTimelineData.mitText,
   };
 
   return (
@@ -67,7 +66,7 @@ const TimeLine = async () => {
                   alt="DESEC logo"
                   quality={80}
                 />
-                <p 
+                <p
                   className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 capitalize w-[18rem] text-left"
                   dangerouslySetInnerHTML={{ __html: content.desecText }}
                 />
@@ -81,7 +80,7 @@ const TimeLine = async () => {
                   alt="Futura logo"
                   quality={80}
                 />
-                <p 
+                <p
                   className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 capitalize w-[15rem] md:w-[13rem] text-left"
                   dangerouslySetInnerHTML={{ __html: content.futuraText }}
                 />
@@ -104,7 +103,7 @@ const TimeLine = async () => {
                     quality={80}
                   />
                 </div>
-                <p 
+                <p
                   className="font-poppins text-[1.3rem] md:text-[1.5rem] capitalize mt-4 w-10/12 md:w-[32rem] text-left"
                   dangerouslySetInnerHTML={{ __html: content.mitText }}
                 />

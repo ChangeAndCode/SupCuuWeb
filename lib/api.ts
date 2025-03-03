@@ -14,12 +14,12 @@ export class UmbracoApi {
     culture: string = "en-us"
   ): Promise<UmbracoContent> {
     // Exit early during build time with empty placeholder
-    if (!isBrowser) {
-      console.warn(
-        "UmbracoApi.getContent was called during build time, returning empty data"
-      );
-      return {} as UmbracoContent;
-    }
+    // if (!isBrowser) {
+    //   console.warn(
+    //     "UmbracoApi.getContent was called during build time, returning empty data"
+    //   );
+    //   return {} as UmbracoContent;
+    // }
 
     try {
       const baseUrl = getBaseUrl();

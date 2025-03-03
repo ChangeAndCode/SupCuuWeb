@@ -1,32 +1,29 @@
-import { Suspense } from "react";
-import { getCarouselContent } from "@/lib/carousel/index";
-import CarouselClient from "./CarouselClient";
+// src/app/component/Carousel.tsx
+import { Suspense } from 'react';
+import CarouselClient from './CarouselClient';
+import { NewsSlide } from '@/types/home';
 
-const Carousel = async () => {
-  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL;
-  
-  try {
-    const slides = await getCarouselContent();
-    
-    if (!slides || slides.length === 0) {
-      return null;
-    }
+interface CarouselProps {
+  slides: NewsSlide[];
+  nextPublicApiUrl: string;
+}
 
-    // We ensure that the data is correctly serialized.
-    const serializedSlides = JSON.parse(JSON.stringify(slides));
-
-    return (
-      <Suspense fallback={null}>
-        <CarouselClient 
-          slides={serializedSlides} 
-          nextPublicApiUrl={nextPublicApiUrl || ''} 
-        />
-      </Suspense>
-    );
-  } catch (error) {
-    console.error("Error fetching slides:", error);
+const Carousel = ({ slides, nextPublicApiUrl }: CarouselProps) => {
+  if (!slides || slides.length === 0) {
     return null;
   }
+
+  // We ensure that the data is correctly serialized.
+  const serializedSlides = JSON.parse(JSON.stringify(slides));
+
+  return (
+    <Suspense fallback={null}>
+      <CarouselClient
+        slides={serializedSlides}
+        nextPublicApiUrl={nextPublicApiUrl || ''}
+      />
+    </Suspense>
+  );
 };
 
 export default Carousel;

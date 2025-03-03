@@ -1,7 +1,7 @@
 // components/MeetTeam.tsx
 import Image from "next/image";
 import Presidente from "./presidente";
-import { MeetTeamTitles, TeamMember } from "@/lib/home/umbracoDataService";
+import { MeetTeamTitles, TeamMember } from "@/types/home";
 
 interface MeetTeamProps {
   titles: MeetTeamTitles;
