@@ -1,14 +1,19 @@
 // components/MeetTeam.tsx
 import Image from "next/image";
 import Presidente from "./presidente";
-import { MeetTeamTitles, TeamMember } from "@/types/home";
+import { MeetTeamTitles, TeamMember, presidentCardData } from "@/types/home";
 
 interface MeetTeamProps {
   titles: MeetTeamTitles;
   teamMembers: TeamMember[];
+  presidentData: presidentCardData;
 }
 
-export default function MeetTeam({ titles, teamMembers }: MeetTeamProps) {
+export default function MeetTeam({
+  titles,
+  teamMembers,
+  presidentData,
+}: MeetTeamProps) {
   return (
     <div>
       <div className="flex justify-center items-center space-x-8">
@@ -111,7 +116,7 @@ export default function MeetTeam({ titles, teamMembers }: MeetTeamProps) {
       </div>
 
       <div className="relative flex justify-center items-center bg-[url('/Bg/bgHoja.webp')] bg-no-repeat bg-center bg-cover z-10 pb-[18rem] md:pb-[38rem] lg:pb-[30rem] pt-[40rem] md:pt-[35rem] xl:py-[50rem] 4xl:pt-[70rem]">
-        <Presidente />
+        <Presidente presidentData={presidentData}/>
       </div>
     </div>
   );
