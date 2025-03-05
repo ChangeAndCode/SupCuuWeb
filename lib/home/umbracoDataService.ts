@@ -149,17 +149,24 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
     newsSlides: newsSlides.length > 0 ? newsSlides : defaultSlides,
 
     presidentCardData: {
-      firstContent: properties.firstContent.items.map((item: any) => {
-        item.content.properties.stringText;
-      }),
-      logoImageUrl: properties.logoImage[0].url,
+      firstContent: (properties.firstContent.items as TextElement[]).map(
+        (item) => {
+          if (item.content.contentType === "stringTextElement") {
+            return item.content.properties.stringText;
+          }
+          return ""; // Or handle other types appropriately
+        }
+      ),
+      logoImageUrl: `${nextPublicApiUrl}${properties.logoImage[0].url}`,
       logoImageName: properties.logoImage[0].name,
-      subContent: properties.subContent.items.map((item: any) => {
-        item.content.properties.stringText;
+      subContent: (properties.subContent.items as TextElement[]).map((item) => {
+        if (item.content.contentType === "stringTextElement") {
+          return item.content.properties.stringText;
+        }
+        return ""; // Or handle other types appropriately
       }),
-      presidentImageUrl: properties.presidentImage[0].url,
+      presidentImageUrl: `${nextPublicApiUrl}${properties.presidentImage[0].url}`,
       presidentImageName: properties.presidentImage[0].name,
     },
   };
-  3;
 }

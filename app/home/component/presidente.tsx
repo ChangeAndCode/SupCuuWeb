@@ -52,26 +52,31 @@ export default function Presidente({ presidentData }: PresidenteProps) {
             </p>
           ))}
           <Image
-            src="/Logos/equity.webp"
+            src={presidentData.logoImageUrl}
             width={500}
             height={500}
-            alt="Equity"
+            alt={presidentData.logoImageName}
             className="mb-[2rem]"
             quality={80}
           />
-          <p className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.6rem] 4xl:text-[2.9rem] font-pragmatica uppercase w-full xl:w-10/12 leading-[2rem] 4xl:leading-[3.2rem]">
-            Member of business councils such as COPARMEX, ASOFOM, and DESEC
-          </p>
+          {presidentData.subContent.map((item, index) => (
+            <p
+              key={index}
+              className="text-[1.2rem] md:text-[1.5rem] lg:text-[1.6rem] 4xl:text-[2.9rem] font-pragmatica uppercase w-full xl:w-10/12 leading-[2rem] 4xl:leading-[3.2rem]"
+            >
+              {item}
+            </p>
+          ))}
         </div>
         <div
           ref={elementRef}
           className="relative xl:absolute xl:translate-x-[24rem] 4xl:translate-x-[39rem] mb-[-4rem] md:mb-[-6rem] lg:mb-[-6.5rem] xl:mb-0 xl:mt-[6rem]"
         >
           <Image
-            src="/Team/presidente.webp"
+            src={presidentData.presidentImageUrl}
             width={650}
             height={650}
-            alt="Presidente"
+            alt={presidentData.presidentImageName}
             quality={80}
             className={`${
               isVisible ? "slide-in-right" : "opacity-0"
