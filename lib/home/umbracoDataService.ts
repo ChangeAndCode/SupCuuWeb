@@ -1,10 +1,7 @@
 import { getUmbracoContent } from "../server/umbracoApi";
 import { stripHtml } from "@/utils/umbraco-text";
-import {
-  UmbracoPageData,
-  NewsSlide,
-} from "@/types/home";
-import {TextElement} from "@/types/common/text-elements"
+import { UmbracoPageData, NewsSlide } from "@/types/home";
+import { TextElement } from "@/types/common/text-elements";
 const defaultSlides: NewsSlide[] = [
   {
     carouselTitle: "Título por defecto",
@@ -27,17 +24,17 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
 
   const newsSlides: NewsSlide[] = properties.newsCarousel?.items
     ? properties.newsCarousel.items
-      .map((item: any) => ({
-        carouselTitle: item.content.properties.carouselTitle?.markup || "",
-        carouselDescription:
-          item.content.properties.carouselDescription?.markup || "",
-        carouselImage:
-          item.content.properties.carouselImage?.[0]?.url || "/prueba.webp",
-        carouselImageName:
-          item.content.properties.carouselImage?.[0]?.name || "untitled",
-        isActive: item.content.properties.isActive || false,
-      }))
-      .filter((slide: NewsSlide) => slide.isActive)
+        .map((item: any) => ({
+          carouselTitle: item.content.properties.carouselTitle?.markup || "",
+          carouselDescription:
+            item.content.properties.carouselDescription?.markup || "",
+          carouselImage:
+            item.content.properties.carouselImage?.[0]?.url || "/prueba.webp",
+          carouselImageName:
+            item.content.properties.carouselImage?.[0]?.name || "untitled",
+          isActive: item.content.properties.isActive || false,
+        }))
+        .filter((slide: NewsSlide) => slide.isActive)
     : defaultSlides;
   console.log(JSON.stringify(properties.firstContent));
   return {
@@ -151,7 +148,7 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           return "";
         }
       ),
-      logoImageUrl: `${nextPublicApiUrl}${properties.logoImage[0].url}`,
+      logoImageUrl: properties.logoImage[0].url,
       logoImageName: properties.logoImage[0].name,
       subContent: (properties.subContent.items as TextElement[]).map((item) => {
         if (item.content.contentType === "stringTextElement") {
@@ -159,7 +156,7 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         }
         return "";
       }),
-      presidentImageUrl: `${nextPublicApiUrl}${properties.presidentImage[0].url}`,
+      presidentImageUrl: properties.presidentImage[0].url,
       presidentImageName: properties.presidentImage[0].name,
     },
   };

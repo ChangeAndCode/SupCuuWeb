@@ -8,6 +8,7 @@ interface PresidenteProps {
 }
 
 export default function Presidente({ presidentData }: PresidenteProps) {
+  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL || "";
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef(null);
 
@@ -52,7 +53,7 @@ export default function Presidente({ presidentData }: PresidenteProps) {
             </p>
           ))}
           <Image
-            src={presidentData.logoImageUrl}
+            src={`${nextPublicApiUrl}${presidentData.logoImageUrl}`}
             width={500}
             height={500}
             alt={presidentData.logoImageName}
@@ -73,7 +74,7 @@ export default function Presidente({ presidentData }: PresidenteProps) {
           className="relative xl:absolute xl:translate-x-[24rem] 4xl:translate-x-[39rem] mb-[-4rem] md:mb-[-6rem] lg:mb-[-6.5rem] xl:mb-0 xl:mt-[6rem]"
         >
           <Image
-            src={presidentData.presidentImageUrl}
+            src={`${nextPublicApiUrl}${presidentData.presidentImageUrl}`}
             width={650}
             height={650}
             alt={presidentData.presidentImageName}
