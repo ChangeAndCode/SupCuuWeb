@@ -1,25 +1,22 @@
 // src/app/component/CT.tsx
-import Image from 'next/image';
-import Startup from './Startup';
-import CardEntrepreneur from './CardEntrepreneur';
-import CardStartups from './CardStartups';
-import CardInvestors from './CardInvestors';
-import CardCorporates from './CardCorporates';
-import Carousel from './Carousel';
-import WeAre from './WeAre';
-import Cohete from './cohete';
-import AnImpact from './AnImpact';
-import TimeLine from './TimeLine';
-import KeyImpact from './KeyImpact';
-import Transformative from './Transformative';
-import Partners from './Partners';
-import MeetTeam from './MeetTeam';
-import Backbone from './Backbone';
-import Form from '../../form/page';
-import {
-  UmbracoPageData,
-  MeetTeamTitles,
-} from '@/types/home';
+import Image from "next/image";
+import Startup from "./Startup";
+import CardEntrepreneur from "./CardEntrepreneur";
+import CardStartups from "./CardStartups";
+import CardInvestors from "./CardInvestors";
+import CardCorporates from "./CardCorporates";
+import Carousel from "./Carousel";
+import WeAre from "./WeAre";
+import Cohete from "./cohete";
+import AnImpact from "./AnImpact";
+import TimeLine from "./TimeLine";
+import KeyImpact from "./KeyImpact";
+import Transformative from "./Transformative";
+import Partners from "./Partners";
+import MeetTeam from "./MeetTeam";
+import Backbone from "./Backbone";
+import Form from "../../form/page";
+import { UmbracoPageData, MeetTeamTitles } from "@/types/home";
 
 interface CTProps {
   pageData: UmbracoPageData;
@@ -33,9 +30,10 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
     meetTeamTitles,
     timelineData,
     newsSlides,
+    presidentCardData,
   } = pageData;
 
-  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL || '';
+  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL || "";
 
   return (
     <div className="pt-24 overflow-hidden">
@@ -80,7 +78,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
               alt="News"
               width={900}
               height={900}
-              style={{ height: 'auto' }}
+              style={{ height: "auto" }}
               quality={80}
               priority
             />
@@ -90,16 +88,14 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
         <div className="relative flex justify-center items-center bg-[url('/Bg/bgNews.webp')] bg-no-repeat bg-center bg-cover z-10 py-0 lg:py-[7rem] xl:py-0">
           <Carousel slides={newsSlides} nextPublicApiUrl={nextPublicApiUrl} />
         </div>
-        <div>
-          {/* <CarouselNews/> */}
-        </div>
+        <div>{/* <CarouselNews/> */}</div>
         <div className="absolute bottom-[-50px] 4xl:bottom-[-180px] right-[.5rem] md:right-[4rem] lg:right-[8rem] xl-sm:right-[18rem] 4xl:right-[25rem] translate-y-[-2.5rem]">
           <Image
             src="/logoV.webp"
             alt="Company Logo"
             width={370}
             height={270}
-            style={{ height: 'auto' }}
+            style={{ height: "auto" }}
             quality={80}
           />
         </div>
@@ -133,6 +129,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
         <MeetTeam
           titles={meetTeamTitles as MeetTeamTitles} // Cast to MeetTeamTitles
           teamMembers={teamMembers}
+          presidentData={presidentCardData}
         />
         <div className="pb-[14rem] sm:pb-[13rem] md:pb-[15rem] lg:pb-[9rem] xl:pb-[15rem] bg-[#c4cfd6] mt-[-20rem] md:mt-[-33rem] lg:mt-[-30rem] xl:mt-[-35rem]">
           <Backbone />
