@@ -4,7 +4,7 @@ import {
   UmbracoPageData,
   NewsSlide,
 } from "@/types/home";
-import {TextElement} from "@/types/common/text-elements"// Import the TextElement type
+import {TextElement} from "@/types/common/text-elements"
 const defaultSlides: NewsSlide[] = [
   {
     carouselTitle: "Título por defecto",
@@ -148,7 +148,7 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           if (item.content.contentType === "stringTextElement") {
             return item.content.properties.stringText;
           }
-          return ""; // Or handle other types appropriately
+          return "";
         }
       ),
       logoImageUrl: `${nextPublicApiUrl}${properties.logoImage[0].url}`,
@@ -157,7 +157,7 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         if (item.content.contentType === "stringTextElement") {
           return item.content.properties.stringText;
         }
-        return ""; // Or handle other types appropriately
+        return "";
       }),
       presidentImageUrl: `${nextPublicApiUrl}${properties.presidentImage[0].url}`,
       presidentImageName: properties.presidentImage[0].name,
