@@ -23,7 +23,7 @@ const KeyImpact: React.FC = () => {
               height={400}
               quality={80}
             />
-            <p className="text-2xl font-poppins font-semibold uppercase">
+            <p className="text-2xl font-poppins font-semibold capitalize">
               Attract or promote tech-based companies in the region, with a focus on sectors aligned with regional specialization.
             </p>
           </div>
@@ -35,7 +35,7 @@ const KeyImpact: React.FC = () => {
               height={400}
               quality={80}
             />
-            <p className="text-2xl font-poppins font-semibold uppercase">
+            <p className="text-2xl font-poppins font-semibold capitalize">
               Structure risk capital funds with an emphasis on angel investment, seeking to achieve this total investment.
             </p>
           </div>
@@ -47,7 +47,7 @@ const KeyImpact: React.FC = () => {
               height={400}
               quality={80}
             />
-            <p className="text-2xl font-poppins font-semibold uppercase">
+            <p className="text-2xl font-poppins font-semibold capitalize">
               Encourage regional startups and tech-based companies to contribute to this percentage of the region’s economic output.
             </p>
           </div>

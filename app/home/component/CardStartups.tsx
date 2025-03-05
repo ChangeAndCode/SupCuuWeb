@@ -1,21 +1,28 @@
 import Image from "next/image";
 import BtnCT from "./BtnCT";
-import { getCardCorporateData } from "@/lib/landing-page";
 import { GetStaticProps } from "next";
 import { Suspense } from "react";
-export default async function CardStartups({
-  itemIndex,
-}: {
-  itemIndex?: number;
-}) {
-  const profiles = await getCardCorporateData(itemIndex);
+import { getLandingPageData } from "@/lib/home/umbracoDataService";
+import { ProfileCTA } from "@/types/home";
+
+interface CardStartupsProps {
+  profile: ProfileCTA;
+  buttonIcon: string;
+  buttonIconAlt: string;
+}
+
+export default function CardStartups({
+  profile,
+  buttonIcon,
+  buttonIconAlt,
+}: CardStartupsProps) {
   return (
     <Suspense fallback={<div>Cargando...</div>}>
       <div className="flex flex-col justify-center items-center group">
         <div>
           <Image
-            src={profiles.imageUrl}
-            alt={profiles.imageAlt}
+            src={profile.imageUrl}
+            alt={profile.imageAlt}
             width={560}
             height={460}
             style={{ height: "auto" }}
@@ -23,24 +30,42 @@ export default async function CardStartups({
             priority
             loading="eager"
             placeholder="blur"
-            blurDataURL={profiles.imageUrl}
+            blurDataURL={profile.imageUrl}
             className="grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
           />
         </div>
         <div className="xl:-translate-x-[4rem] xl:translate-y-[.5rem] text-center space-y-4">
           <div className="group-hover:scale-105 group-hover:grayscale-0">
             <BtnCT
-              buttonText={profiles.buttonContent}
-              link={profiles.buttonLink}
+              buttonText={profile.buttonContent}
+              link={profile.buttonLink}
+              buttonIcon={buttonIcon}
+              buttonIconAlt={buttonIconAlt}
             />
           </div>
           <div>
             <p
               className="font-PerformanceMark text-ColorPrincipal text-2xl uppercase"
               dangerouslySetInnerHTML={{
-                __html: profiles.question.join("<br />"),
+                __html: profile.question.join("<br />"),
               }}
             />
+          </div>
+          <div className="xl:-translate-x-[4rem] xl:translate-y-[.5rem] text-center space-y-4">
+            <div className="group-hover:scale-105 group-hover:grayscale-0">
+              <BtnCT
+                buttonText={profile.buttonContent}
+                link={profile.buttonLink}
+              />
+            </div>
+            <div>
+              <p
+                className="font-PerformanceMark text-ColorPrincipal text-2xl uppercase"
+                dangerouslySetInnerHTML={{
+                  __html: profile.question.join("<br />"),
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -48,11 +73,26 @@ export default async function CardStartups({
   );
 }
 export const getStaticProps: GetStaticProps = async () => {
-  const profiles = await getCardCorporateData(1);
-  return {
-    props: {
-      profiles,
-    },
-    revalidate: 3600,
-  };
+  try {
+    const profiles = await getLandingPageData();
+
+    if (!profiles) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        profiles,
+      },
+      revalidate: 3600,
+    };
+  } catch (error) {
+    console.error("Error al obtener los datos de Umbraco:", error);
+
+    return {
+      notFound: true,
+    };
+  }
 };

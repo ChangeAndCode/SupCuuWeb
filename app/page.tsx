@@ -1,15 +1,16 @@
+// app/page.tsx
 import Home from './home/page';
-import CT from './home/component/CT';
+import HomeLayout from './home/layout'; // Import the layout
 
-export default function HomeRoot() {
+export default async function HomeRoot() {
   return (
-    <>
-    <div className='bg-ColorPrincipal'>
-      <Home />
-      <div className='bg-[#EDEFF0] rounded-t-[8rem]'>
-        <CT />
-      </div>
+    <HomeLayout>
+  <div className='bg-ColorPrincipal'>
+    <Home />
+    <div className='bg-[#EDEFF0] rounded-t-[8rem]'>
+      {/* CT is now rendered from layout */}
     </div>
-    </>
+  </div>
+</HomeLayout>
   );
 }

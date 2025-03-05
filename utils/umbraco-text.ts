@@ -1,4 +1,5 @@
 // utils/umbraco-text.ts
+import { JSDOM } from 'jsdom';
 import type { TextElement, StringTextElement, RichTextElement } from '@/types/common/text-elements';
 
 export function isStringTextElement(element: TextElement): element is StringTextElement {
@@ -21,9 +22,8 @@ export function getTextContent(element: TextElement): string {
 
 // Helper to get plain text from rich text markup (strips HTML)
 export function stripHtml(markup: string): string {
-  const tmp = document.createElement('div');
-  tmp.innerHTML = markup;
-  return tmp.textContent || tmp.innerText || '';
+  const dom = new JSDOM(markup);
+  return dom.window.document.body.textContent || '';
 }
 
 // Helper to get text content and optionally strip HTML from rich text
@@ -34,7 +34,7 @@ export function getText(element: TextElement, stripHtmlTags: boolean = false): s
 
 // Helper to safely get text from an array of text elements
 export function getFirstText(
-  items: TextElement[] | undefined, 
+  items: TextElement[] | undefined,
   stripHtmlTags: boolean = false,
   fallback: string = ''
 ): string {
