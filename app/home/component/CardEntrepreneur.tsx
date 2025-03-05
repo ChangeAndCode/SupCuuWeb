@@ -2,7 +2,6 @@ import Image from "next/image";
 import BtnCT from "./BtnCT";
 import { ProfileCTA } from "@/types/home";
 import { Suspense } from "react";
-import Loading from "../loading";
 
 interface CardEntrepreneurProps {
   profile: ProfileCTA;
@@ -12,7 +11,7 @@ interface CardEntrepreneurProps {
 
 export default function CardEntrepreneur({ profile, buttonIcon, buttonIconAlt }: CardEntrepreneurProps) {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<div>Cargando...</div>}>
       <div className="flex flex-col justify-center items-center group">
         <div>
           <Image
