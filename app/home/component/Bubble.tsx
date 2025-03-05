@@ -28,13 +28,13 @@ const Bubble = ({ selectedImage = 0 }: GloboProps) => {
       <p className='main-Tipography text-[1.2rem] sm-md:text-[1rem] md:text-[2rem] lg:text-[2.5rem] xl:text-[3rem] xl:leading-[3rem] text-ColorPrincipal font-pragmatica uppercase'>
         {currentText.title}
       </p>
-      <p className='main-Tipography text-[.8rem] sm-md:text-[.6rem] md:text-[1rem] lg:text-[1.3rem] xl:text-[1.5rem] xl:mb-[1.5rem] text-ColorPrincipal font-pragmatica uppercase'>
+      <p className='main-Tipography text-[.8rem] sm-md:text-[.6rem] md:text-[1rem] lg:text-[1.3rem] xl:text-[1.5rem] xl:mb-[1.5rem] text-ColorPrincipal font-pragmatica capitalize'>
         {currentText.subtitle}
       </p>
-      <p className='main-Tipography text-[.8rem] sm-md:text-[.6rem] md:text-[1rem] lg:text-[1.3rem] xl:text-[1.5rem] text-ColorPrincipal font-pragmatica uppercase md:mb-[.7rem] xl:mb-[1.5rem]'>
+      <p className='main-Tipography text-[.8rem] sm-md:text-[.6rem] md:text-[1rem] lg:text-[1.3rem] xl:text-[1.5rem] text-ColorPrincipal font-pragmatica capitalize md:mb-[.7rem] xl:mb-[1.5rem]'>
         {currentText.description}
       </p>
-      <p className='main-Tipography text-[.8rem] md:text-[1rem] lg:text-[1.3rem] xl:text-[1.5rem] text-ColorPrincipal font-pragmatica uppercase md:mb-[.7rem] xl:mb-[1.5rem]'>
+      <p className='main-Tipography text-[.8rem] md:text-[1rem] lg:text-[1.3rem] xl:text-[1.5rem] text-ColorPrincipal font-pragmatica capitalize md:mb-[.7rem] xl:mb-[1.5rem]'>
         {currentText.emailText}&nbsp;
         <a
           href={`mailto:${currentText.email}`}

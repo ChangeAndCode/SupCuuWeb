@@ -1,23 +1,25 @@
 // app/Engine/layout.tsx
 import React from 'react';
 import { Metadata } from 'next';
-import HeaderLayout from '../header/layout'; // Barra de navegación común
+import HeaderLayout from '../header/layout';
+import CT from './component/CT';
+import { getLandingPageData } from '@/lib/home/umbracoDataService';
 
-// Metadata específica para la página Engine
 export const metadata: Metadata = {
   title: 'Home - StartUp Chihuahua',
   description: 'Página de Engine para StartUp Chihuahua',
 };
 
-interface HomeLayoutProps {
+interface Props {
   children: React.ReactNode;
 }
 
-const HomeLayout: React.FC<HomeLayoutProps> = ({ children }) => {
+const HomeLayout = async ({ children }: Props) => {
   return (
     <>
-      <HeaderLayout />
-      <main>{children}</main>
+      <main>        
+        {children}        
+      </main>
     </>
   );
 };

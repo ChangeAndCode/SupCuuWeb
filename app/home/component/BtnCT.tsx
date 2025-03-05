@@ -1,17 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BtnCTProps } from "@/types/landingPage";
-import { fetchIconData } from "@/lib/landing-page";
 import { Suspense } from "react";
 
-const BtnCT: React.FC<BtnCTProps> = async ({
+interface BtnCTProps {
+  buttonText: string | string[];
+  customLines?: string[];
+  link?: string;
+  buttonIcon?: string;
+  buttonIconAlt?: string;
+}
+
+const BtnCT: React.FC<BtnCTProps> = ({
   buttonText,
   customLines,
   link,
+  buttonIcon,
+  buttonIconAlt = "Button icon",
 }) => {
-  const { buttonIcon, altButton } = await fetchIconData();
-  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL;
-
   const lines =
     customLines ||
     (typeof buttonText === "string"
@@ -31,18 +36,19 @@ const BtnCT: React.FC<BtnCTProps> = async ({
         {lines.map((line, index) => (
           <span key={index}>{line}</span>
         ))}
-
-        <Image
-          src={`${nextPublicApiUrl}${buttonIcon}`}
-          width={35}
-          height={35}
-          alt={altButton}
-          className="absolute right-[1.3rem] bottom-[-.8rem]"
-          quality={80}
-          priority
-          loading="eager"
-          blurDataURL={`${nextPublicApiUrl}${buttonIcon}`}
-        />
+        {buttonIcon && (
+          <Image
+            src={buttonIcon}
+            width={35}
+            height={35}
+            alt={buttonIconAlt}
+            className="absolute right-[1.3rem] bottom-[-.8rem]"
+            quality={80}
+            priority
+            loading="eager"
+            blurDataURL={buttonIcon}
+          />
+        )}
       </Link>
     </Suspense>
   );
