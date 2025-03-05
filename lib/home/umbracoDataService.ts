@@ -1,16 +1,10 @@
-// lib/home/umbracoDataService.ts
 import { getUmbracoContent } from "../server/umbracoApi";
 import { stripHtml } from "@/utils/umbraco-text";
 import {
   UmbracoPageData,
-  ProfileCTA,
-  TeamMember,
-  MeetTeamTitles,
-  TimelineData,
   NewsSlide,
-  presidentCardData,
 } from "@/types/home";
-
+import {TextElement} from "@/types/common/text-elements"// Import the TextElement type
 const defaultSlides: NewsSlide[] = [
   {
     carouselTitle: "Título por defecto",
@@ -33,19 +27,19 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
 
   const newsSlides: NewsSlide[] = properties.newsCarousel?.items
     ? properties.newsCarousel.items
-        .map((item: any) => ({
-          carouselTitle: item.content.properties.carouselTitle?.markup || "",
-          carouselDescription:
-            item.content.properties.carouselDescription?.markup || "",
-          carouselImage:
-            item.content.properties.carouselImage?.[0]?.url || "/prueba.webp",
-          carouselImageName:
-            item.content.properties.carouselImage?.[0]?.name || "untitled",
-          isActive: item.content.properties.isActive || false,
-        }))
-        .filter((slide: NewsSlide) => slide.isActive)
+      .map((item: any) => ({
+        carouselTitle: item.content.properties.carouselTitle?.markup || "",
+        carouselDescription:
+          item.content.properties.carouselDescription?.markup || "",
+        carouselImage:
+          item.content.properties.carouselImage?.[0]?.url || "/prueba.webp",
+        carouselImageName:
+          item.content.properties.carouselImage?.[0]?.name || "untitled",
+        isActive: item.content.properties.isActive || false,
+      }))
+      .filter((slide: NewsSlide) => slide.isActive)
     : defaultSlides;
-
+  console.log(JSON.stringify(properties.firstContent));
   return {
     profileIcon: {
       url: `${nextPublicApiUrl}${properties.profileIcon[0].url}`,
@@ -136,30 +130,37 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         : "Background por defecto",
     },
     timelineData: {
-      desecText: properties.desecText?.markup
-        ? stripHtml(properties.desecText.markup)
+      desecText: properties.text
+        ? stripHtml(properties.text)
         : "Default desecText",
-      futuraText: properties.futuraText?.markup
-        ? stripHtml(properties.futuraText.markup)
+      futuraText: properties.text2
+        ? stripHtml(properties.text2)
         : "Default futuraText",
-      mitText: properties.mitText?.markup
-        ? stripHtml(properties.mitText.markup)
+      mitText: properties.text3
+        ? stripHtml(properties.text3)
         : "Default mitText",
     },
     newsSlides: newsSlides.length > 0 ? newsSlides : defaultSlides,
 
     presidentCardData: {
-      firstContent: properties.firstContent.items.map((item: any) => {
-        item.content.properties.stringText;
-      }),
+      firstContent: (properties.firstContent.items as TextElement[]).map(
+        (item) => {
+          if (item.content.contentType === "stringTextElement") {
+            return item.content.properties.stringText;
+          }
+          return ""; // Or handle other types appropriately
+        }
+      ),
       logoImageUrl: properties.logoImage[0].url,
       logoImageName: properties.logoImage[0].name,
-      subContent: properties.subContent.items.map((item: any) => {
-        item.content.properties.stringText;
+      subContent: (properties.subContent.items as TextElement[]).map((item) => {
+        if (item.content.contentType === "stringTextElement") {
+          return item.content.properties.stringText;
+        }
+        return ""; // Or handle other types appropriately
       }),
       presidentImageUrl: properties.presidentImage[0].url,
       presidentImageName: properties.presidentImage[0].name,
     },
   };
-  3;
 }
