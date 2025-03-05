@@ -51,22 +51,6 @@ export default function CardInvestors({
               }}
             />
           </div>
-          <div className="text-center space-y-4">
-            <div className="group-hover:scale-105 group-hover:grayscale-0">
-              <BtnCT
-                buttonText={profile.buttonContent}
-                link={profile.buttonLink}
-              />
-            </div>
-            <div>
-              <p
-                className="font-PerformanceMark text-ColorPrincipal text-2xl uppercase"
-                dangerouslySetInnerHTML={{
-                  __html: profile.question.join("<br />"),
-                }}
-              />
-            </div>
-          </div>
         </div>
       </div>
     </Suspense>

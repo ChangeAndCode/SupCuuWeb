@@ -47,22 +47,6 @@ export default function CardCorporates({ profile, buttonIcon, buttonIconAlt }: C
             }}
           />
         </div>
-        <div className="xl:transform xl:translate-x-[2rem] xl:translate-y-[2.4rem] text-center space-y-4">
-          <div className="group-hover:scale-105 group-hover:grayscale-0">
-            <BtnCT
-              buttonText={profile.buttonContent}
-              link={profile.buttonLink}
-            />
-          </div>
-          <div>
-            <p
-              className="font-PerformanceMark text-ColorPrincipal text-2xl uppercase"
-              dangerouslySetInnerHTML={{
-                __html: profile.question.join("<br />"),
-              }}
-            />
-          </div>
-        </div>
       </div>
     </div>
     </Suspense>
