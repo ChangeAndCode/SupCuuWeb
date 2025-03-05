@@ -1,8 +1,6 @@
 import Image from "next/image";
 import BtnCT from "./BtnCT";
-import { GetStaticProps } from "next";
 import { Suspense } from "react";
-import { getLandingPageData } from "@/lib/home/umbracoDataService";
 import { ProfileCTA } from "@/types/home";
 
 interface CardStartupsProps {
@@ -56,27 +54,3 @@ export default function CardStartups({
     </Suspense>
   );
 }
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const profiles = await getLandingPageData();
-
-    if (!profiles) {
-      return {
-        notFound: true,
-      };
-    }
-
-    return {
-      props: {
-        profiles,
-      },
-      revalidate: 3600,
-    };
-  } catch (error) {
-    console.error("Error al obtener los datos de Umbraco:", error);
-
-    return {
-      notFound: true,
-    };
-  }
-};
