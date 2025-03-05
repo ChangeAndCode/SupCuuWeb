@@ -1,5 +1,5 @@
 import { getNextJumpData } from "@/lib/NextJump";
-import { getLocale } from '@/lib/Localization';
+import { getLocale } from "@/lib/Localization";
 import NextJumpComponent from "./components/NextJumpCT";
 
 export async function generateMetadata() {

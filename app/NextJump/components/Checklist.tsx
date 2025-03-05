@@ -38,22 +38,22 @@ const Checklist = ({ checklistItems, ctaParagraph }: ChecklistProps) => {
                 {item.content.properties.stringText}
               </ChecklistItem>
             </span>
-            
           </div>
         ))}
-        
       </div>
       {ctaParagraph && (
         <div className="mt-6 text-center lg:text-right">
-          {ctaParagraph.split('\n').map((line, index) => (
-            <p key={index} className="font-pragmatica main-Tipography text-ColorPrincipal text-base sm:text-lg md:text-xl lg:text-[1.3rem]">
+          {ctaParagraph.split("\n").map((line, index) => (
+            <p
+              key={index}
+              className="font-pragmatica main-Tipography text-ColorPrincipal text-base sm:text-lg md:text-xl lg:text-[1.3rem]"
+            >
               {line}
             </p>
           ))}
         </div>
       )}
     </div>
-    
   );
 };
 

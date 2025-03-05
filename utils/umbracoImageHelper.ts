@@ -1,5 +1,3 @@
-
-
 /**
  * Utility function to convert Umbraco media paths to full URLs
  * @param path The image path from Umbraco
@@ -11,9 +9,10 @@ export function getImageUrl(
   fallback: string = "/invest-in-talent/alan.webp"
 ): string {
   if (!path) return fallback;
-    const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3177";
+  const BACKEND_URL =
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:3177";
   console.log(path);
-    if (
+  if (
     path.startsWith("http") ||
     (path.startsWith("/") && !path.startsWith("/media"))
   ) {

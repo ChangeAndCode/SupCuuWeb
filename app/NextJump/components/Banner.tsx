@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { BannerProps } from "@/types/NextJump";
 
-
 /**
  * Banner Component (Image with Text Overlay)
  */

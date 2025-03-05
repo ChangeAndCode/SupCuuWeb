@@ -14,7 +14,7 @@ const Accelerators = ({ accelerators, title }: AcceleratorsProps) => {
   return (
     <div className="overflow-hidden bg-cover bg-center">
       <div className="flex flex-col items-center py-[4rem] md:py-[8rem] px-[1rem] md:px-[3rem]">
-      <div className="w-full mb-4 md:mb-8">
+        <div className="w-full mb-4 md:mb-8">
           <h2 className="text-[2rem] sm:text-[3rem] md:text-[5rem] lg:text-[7rem] text-ColorPrincipal font-PerformanceMark w-full leading-[2.5rem] sm:leading-[3.5rem] md:leading-[5rem] lg:leading-[7rem]">
             {title}
           </h2>
