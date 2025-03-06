@@ -1,3 +1,4 @@
+// lib/home/umbracoDataService.ts
 import { getUmbracoContent } from "../server/umbracoApi";
 import { stripHtml } from "@/utils/umbraco-text";
 import { UmbracoPageData, NewsSlide } from "@/types/home";
@@ -14,7 +15,7 @@ const defaultSlides: NewsSlide[] = [
 
 export async function getLandingPageData(): Promise<UmbracoPageData> {
   const content = await getUmbracoContent("landing-page");
-  console.log(content);
+  // console.log(content);
   if (!content || !content.properties) {
     throw new Error("Failed to fetch landing page data");
   }
@@ -36,7 +37,6 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         }))
         .filter((slide: NewsSlide) => slide.isActive)
     : defaultSlides;
-  console.log(JSON.stringify(properties.firstContent));
   return {
     profileIcon: {
       url: `${nextPublicApiUrl}${properties.profileIcon[0].url}`,
@@ -159,5 +159,16 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
       presidentImageUrl: properties.presidentImage[0].url,
       presidentImageName: properties.presidentImage[0].name,
     },
+    teamBackbone: properties.teamMembers?.items.map((item: any) => ({
+      memberName: item.content.properties.memberName,
+      image: `${nextPublicApiUrl}${
+        item.content.properties.image[0].url || "/placeholder.webp"
+      }`,
+      title: item.content.properties.title,
+      subtitle: item.content.properties.subtitle,
+      description: item.content.properties.description,
+      emailText: item.content.properties.emailText,
+      email: item.content.properties.email,
+    })),
   };
 }
