@@ -1,43 +1,47 @@
-'use client';
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
+"use client";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { FooterData } from "@/types/form";
 
-const RedesSociales: React.FC = () => {
+interface SocialMediaProps {
+  data: FooterData;
+}
+
+const RedesSociales: React.FC<SocialMediaProps> = ({ data }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const redesSociales = [
-    { 
-      src: '/redesSociales/insta.webp', 
-      alt: 'Instagram',
-      href: 'https://www.instagram.com/startupchihuahua/'
-    },
-    { 
-      src: '/redesSociales/link.webp', 
-      alt: 'LinkedIn',
-      href: 'https://www.linkedin.com/company/startupchihuahua/ '
-    },
-    { 
-      src: '/redesSociales/facebook.webp', 
-      alt: 'Facebook',
-      href: 'https://www.facebook.com/startupchih'
-    }
-  ];
+  const socialMedia =
+    data.socialMedia?.socialMedia?.items
+      ?.filter(
+        (item: any) =>
+          item?.content?.properties?.logo?.length > 0 &&
+          item?.content?.properties?.url?.length > 0
+      )
+      .map((item: any) => ({
+        src: item.content.properties.logo[0]?.url || "",
+        alt: item.content.properties.url[0]?.title || "Unknown",
+        href: item.content.properties.url[0]?.url || "#",
+      })) || [];
+
+  console.log("mensaje ", socialMedia);
 
   if (!mounted) {
-    return <div className='h-[200px] animate-pulse bg-gray-200/20 rounded-lg' />;
+    return (
+      <div className="h-[200px] animate-pulse bg-gray-200/20 rounded-lg" />
+    );
   }
 
   return (
     <div suppressHydrationWarning>
-      <p className='text-[1.2rem] xs:text-[1.5rem] md:text-[2rem] font-pragmatica uppercase text-white mb-[1.5rem]'>
-        @startupchihuahua
+      <p className="text-[1.2rem] xs:text-[1.5rem] md:text-[2rem] font-pragmatica uppercase text-white mb-[1.5rem]">
+        {data.nameCompany.markup}
       </p>
-      <div className='flex lg:justify-end'>
-        {redesSociales.map((red) => (
+      <div className="flex lg:justify-end">
+        {socialMedia.map((red) => (
           <a
             key={red.alt}
             href={red.href}

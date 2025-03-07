@@ -15,18 +15,16 @@ export async function getFooterData(): Promise<FooterData> {
     socialMedia: {
       socialMedia: {
         items: properties.socialMedia.items.map((item: any) => ({
-          item: {
-            content: {
-              properties: {
-                logo: {
-                  name: item.content.properties.logo[0].name,
-                  url: `${nextPublicApiUrl}${item.content.properties.logo[0].url}`,
-                },
-                url: {
-                  url: `${nextPublicApiUrl}${item.content.properties.url[0].url}`,
-                  title: item.content.properties.url[0].title,
-                },
-              },
+          content: {
+            properties: {
+              logo: item.content.properties.logo.map((img: any) => ({
+                name: img.name,
+                url: `${nextPublicApiUrl}${img.url}`,
+              })),
+              url: item.content.properties.url.map((link: any) => ({
+                url: link.url,
+                title: link.title || "Unknown", // Evitar valores undefined
+              })),
             },
           },
         })),

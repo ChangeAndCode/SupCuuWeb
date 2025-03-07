@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic";
 import ClientForm from "./components/ClientForm";
 
+import { getFooterData } from "@/lib/form/umbracoFooterDataService";
+
 // Only keep dynamic imports for non-critical components
 const ContactUs = dynamic(() => import("./components/ContacUs"), {
   loading: () => (
@@ -14,7 +16,8 @@ const RedesSociales = dynamic(() => import("./components/RedesSociales"), {
   ),
 });
 
-export default function Form() {
+export default async function Form() {
+  const footerData = await getFooterData();
   return (
     <>
       <ClientForm />
@@ -22,8 +25,8 @@ export default function Form() {
         <div className="flex flex-col items-center">
           <div className="space-y-8 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12">
             <div className="flex flex-col lg:flex-row justify-between">
-              <ContactUs />
-              <RedesSociales />
+              <ContactUs data={footerData} />
+              <RedesSociales data={footerData} />
             </div>
           </div>
         </div>
