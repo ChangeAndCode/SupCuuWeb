@@ -31,6 +31,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
     timelineData,
     newsSlides,
     presidentCardData,
+    teamBackbone,
   } = pageData;
 
   const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL || "";
@@ -132,7 +133,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
           presidentData={presidentCardData}
         />
         <div className="pb-[14rem] sm:pb-[13rem] md:pb-[15rem] lg:pb-[9rem] xl:pb-[15rem] bg-[#c4cfd6] mt-[-20rem] md:mt-[-33rem] lg:mt-[-30rem] xl:mt-[-35rem]">
-          <Backbone />
+          {teamBackbone && <Backbone teamBackbone={teamBackbone} />}
         </div>
       </div>
       <div className="mt-[-5rem]">
