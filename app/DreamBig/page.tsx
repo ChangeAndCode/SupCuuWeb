@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "./components/Banner";
 import ProgramShowCase from "./components/ProgramShowCase";
-import CarouselEvents from "./components/CarouselEvents";
+import CarouselEventsContainer from "@components/CarouselEvents/CarouselEventsContainer";
 import Form from "../form/page";
 
 const Page = () => {
@@ -13,7 +13,7 @@ const Page = () => {
         max-sm:px-10 sm:px-10 md:px-20 lg:px-28 
         bg-[#EDEFF0]"
       >
-        {/* Contenido principal de la página */}
+         {/* Main page content */}
         <div className="max-w-[1500px] mx-auto md:mb-20 lg:mb-52 xl:mb-40 2xl:mb-24">
           <Banner />
         </div>
@@ -21,7 +21,7 @@ const Page = () => {
           <ProgramShowCase />
         </div>
         <div className="max-w-[1500px] mx-auto">
-          <CarouselEvents />
+        <CarouselEventsContainer />
         </div>
       </div>
       <Form />

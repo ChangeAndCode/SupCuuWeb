@@ -4,6 +4,7 @@ import Checklist from "./Checklist";
 import { NextJumpProps } from "@/types/NextJump";
 import Header from "./Header";
 import Banner from "./Banner";
+import CarouselEventsContainer from "@components/CarouselEvents/CarouselEventsContainer";
 
 /**
  * NextJump main presentation component
@@ -77,6 +78,9 @@ function NextJumpComponent({
           <Accelerators accelerators={accelerators} title={acceleratorsTitle} />
         </div>
       </div>
+      <div className="max-w-[1500px] mx-auto">
+        <CarouselEventsContainer />
+        </div>
 
       {/* Contact Form */}
       <div className="mt-4">
