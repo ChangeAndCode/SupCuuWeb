@@ -1,5 +1,5 @@
 import FilterBy from "./Components/FilterBy";
-import Cards from "./Components/Cards";
+import CardsContainer from "./Components/CardsContainer";
 import WantToStayUpdated from "./Components/WantToStayUpdated";
 import Form from "../form/page";
 
@@ -34,7 +34,7 @@ const pageEvents = () => {
           <FilterBy />
         </div>
         <div className="max-w-[1500px] mx-auto">
-          <Cards />
+        <CardsContainer />
         </div>
         <div className="max-w-[1500px] mx-auto">
           <WantToStayUpdated />
