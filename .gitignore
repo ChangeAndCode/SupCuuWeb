@@ -19,7 +19,8 @@
 
 # production
 /build
-
+Web.config
+web.config
 # misc
 .DS_Store
 *.pem
