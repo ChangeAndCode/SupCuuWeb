@@ -21,7 +21,9 @@ export default async function Form() {
   const footerData = await getFooterData();
   return (
     <>
-      <ClientForm />
+      <Suspense fallback={<Loading />}>
+        <ClientForm />
+      </Suspense>
       <div className="relative bg-ColorPrincipal px-[2rem] xs:pt-10 md:px-[3rem] lg:px-0 pb-[10rem] z-30 ">
         <div className="flex flex-col items-center">
           <div className="space-y-8 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12">
