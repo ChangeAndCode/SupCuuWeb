@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FooterData } from "@/types/form";
 
+
 interface SocialMediaProps {
   data: FooterData;
 }
@@ -26,8 +27,6 @@ const RedesSociales: React.FC<SocialMediaProps> = ({ data }) => {
         alt: item.content.properties.url[0]?.title || "Unknown",
         href: item.content.properties.url[0]?.url || "#",
       })) || [];
-
-  console.log("mensaje ", socialMedia);
 
   if (!mounted) {
     return (

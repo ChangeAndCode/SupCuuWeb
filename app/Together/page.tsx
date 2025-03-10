@@ -5,8 +5,10 @@ import Image from "next/image";
 import InnovationForm from "app/NextJump/components/ContactForm";
 import ContacUs from "../form/components/ContacUs";
 import RedesSociales from "../form/components/RedesSociales";
+import { getFooterData } from "@/lib/form/umbracoFooterDataService";
 
-export default function Together() {
+export default async function Together() {
+  const footerData = await getFooterData();
   return (
     <>
       <div>
@@ -77,8 +79,8 @@ export default function Together() {
 
         <div className="container mx-auto pt-6 max-w-[1066px]">
           <div className="flex flex-col lg:flex-row justify-between">
-            <ContacUs />
-            <RedesSociales />
+            <ContacUs data={footerData} />
+            <RedesSociales data={footerData} />
           </div>
         </div>
       </footer>

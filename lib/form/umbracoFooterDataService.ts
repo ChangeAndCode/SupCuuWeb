@@ -3,7 +3,7 @@ import { FooterData } from "@/types/form";
 
 export async function getFooterData(): Promise<FooterData> {
   const content = await getUmbracoContent("footer");
-  console.log(content);
+  // console.log(content);
   if (!content || !content.properties) {
     throw new Error("Failed to fetch landing page data");
   }
@@ -23,7 +23,7 @@ export async function getFooterData(): Promise<FooterData> {
               })),
               url: item.content.properties.url.map((link: any) => ({
                 url: link.url,
-                title: link.title || "Unknown", // Evitar valores undefined
+                title: link.title || "Unknown",
               })),
             },
           },
@@ -31,28 +31,28 @@ export async function getFooterData(): Promise<FooterData> {
       },
     },
     telephone: {
-      markup: properties.telephone.markup,
+      markup: properties.telephone,
     },
     telephoneIcon: {
       name: properties.telephoneIcon[0].name,
       url: `${nextPublicApiUrl}${properties.telephoneIcon[0].url}`,
     },
     location: {
-      markup: properties.location.markup,
+      markup: properties.location,
     },
     locationIcon: {
       name: properties.locationIcon[0].name,
-      url: properties.locationIcon[0].url,
+      url: `${nextPublicApiUrl}${properties.locationIcon[0].url}`,
     },
     image: {
       name: properties.image[0].name,
-      url: properties.image[0].url,
+      url: `${nextPublicApiUrl}${properties.image[0].url}`,
     },
     nameCompany: {
-      markup: properties.nameCompany.markup,
+      markup: properties.nameCompany,
     },
     slogan: {
-      markup: properties.slogan.markup,
+      markup: properties.slogan,
     },
   };
 }
