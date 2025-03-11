@@ -3,8 +3,13 @@ import Banner from "./components/Banner";
 import ProgramShowCase from "./components/ProgramShowCase";
 import CarouselEventsContainer from "@components/CarouselEvents/CarouselEventsContainer";
 import Form from "../form/page";
+import { UmbracoDreamBigData } from "@/types/dream-big";
 
-const Page = () => {
+interface DreamBigProps {
+  pageData: UmbracoDreamBigData;
+}
+
+const Page: React.FC<DreamBigProps> = ({ pageData }) => {
   return (
     <>
       <div
@@ -13,7 +18,7 @@ const Page = () => {
         max-sm:px-10 sm:px-10 md:px-20 lg:px-28 
         bg-[#EDEFF0]"
       >
-         {/* Main page content */}
+        {/* Main page content */}
         <div className="max-w-[1500px] mx-auto md:mb-20 lg:mb-52 xl:mb-40 2xl:mb-24">
           <Banner />
         </div>
@@ -21,7 +26,7 @@ const Page = () => {
           <ProgramShowCase />
         </div>
         <div className="max-w-[1500px] mx-auto">
-        <CarouselEventsContainer />
+          <CarouselEventsContainer />
         </div>
       </div>
       <Form />
