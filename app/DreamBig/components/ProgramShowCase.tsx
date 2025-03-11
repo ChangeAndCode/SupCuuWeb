@@ -1,12 +1,16 @@
 import Image from "next/image";
 import React from "react";
-import ProgramShowCaseData from "../data/ProgramShowCaseData";
 import BackGroundShowCase from "./BackGroundShowCase";
+import { UmbracoDreamBigData } from "@/types/dream-big";
 
-const ProgramShowCase = () => {
+interface DreamBigData {
+  data: UmbracoDreamBigData;
+}
+
+const ProgramShowCase: React.FC<DreamBigData> = ({ data }) => {
   return (
     <div className="relative">
-      <BackGroundShowCase />
+      <BackGroundShowCase backgroundText={data.backgroundText} />
       {/* showCase Content */}
       <div
         className="
@@ -17,18 +21,17 @@ const ProgramShowCase = () => {
       sm:items-center
       "
       >
-        {ProgramShowCaseData.map((program, index) => {
+        {data.showcasesContent.items.map((item, index) => {
           const {
-            imageSrc,
-            imageAlt,
-            button1Text,
-            button2Text,
-            color1Text,
-            color2Text,
-            description,
+            companyImage,
+            buttonOne,
+            colorButtonOne,
+            buttonTwo,
+            colorButtonTwo,
             width,
             height,
-          } = program;
+            description,
+          } = item.content.properties;
           return (
             <div
               key={index}
@@ -73,12 +76,14 @@ const ProgramShowCase = () => {
                 h-40 
                 bg-white"
                 >
-                  <Image
-                    src={imageSrc}
-                    alt={imageAlt}
-                    width={width}
-                    height={height}
-                  />
+                  {companyImage.length > 0 && (
+                    <Image
+                      src={companyImage[0].url}
+                      alt={companyImage[0].name}
+                      width={width}
+                      height={height}
+                    />
+                  )}
                 </div>
 
                 <div
@@ -96,25 +101,25 @@ const ProgramShowCase = () => {
                 >
                   <button
                     type="button"
-                    style={{ backgroundColor: color1Text }}
+                    style={{ backgroundColor: `#${colorButtonOne}` }}
                     className={`
                     max-sm:w-36 sm:w-36 md:w-[48%] lg:w-[48%] xl:w-36
                     h-16 
                     font-pragmatica 
                     text-white font-bold`}
                   >
-                    <p className="uppercase text-2xl">{button1Text}</p>
+                    <p className="uppercase text-2xl">{buttonOne}</p>
                   </button>
                   <button
                     type="button"
-                    style={{ backgroundColor: color2Text }}
+                    style={{ backgroundColor: `#${colorButtonTwo}` }}
                     className={`
                     max-sm:w-36 sm:w-36 md:w-[48%] lg:w-[48%] xl:w-36
                     h-16 
                     font-pragmatica 
                     text-white font-bold`}
                   >
-                    <p className="uppercase text-2xl">{button2Text}</p>
+                    <p className="uppercase text-2xl">{buttonTwo}</p>
                   </button>
                 </div>
               </div>
@@ -141,7 +146,7 @@ const ProgramShowCase = () => {
                   xl:h-40
                   "
                 >
-                  {description}
+                  {description.markup}
                 </h1>
               </div>
             </div>

@@ -1,10 +1,19 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Banner from "./components/Banner";
 import ProgramShowCase from "./components/ProgramShowCase";
 import CarouselEventsContainer from "@components/CarouselEvents/CarouselEventsContainer";
 import Form from "../form/page";
+import { getDreamBigData } from "@/lib/dream-big/umbracoDreamBigDataService";
 
-const Page = () => {
+// Suspense Fallback Component
+const Loading = () => (
+  <div className="flex justify-center items-center h-screen">
+    <p className="text-lg font-bold">Cargando...</p>
+  </div>
+);
+
+export default async function Page() {
+  const dreamBigData = await getDreamBigData();
   return (
     <>
       <div
@@ -13,20 +22,24 @@ const Page = () => {
         max-sm:px-10 sm:px-10 md:px-20 lg:px-28 
         bg-[#EDEFF0]"
       >
-         {/* Main page content */}
+        {/* Main page content */}
         <div className="max-w-[1500px] mx-auto md:mb-20 lg:mb-52 xl:mb-40 2xl:mb-24">
-          <Banner />
+          <Suspense fallback={<Loading />}>
+            <Banner data={dreamBigData} />
+          </Suspense>
         </div>
         <div className="max-w-[1500px] mx-auto">
-          <ProgramShowCase />
+          <Suspense fallback={<Loading />}>
+            <ProgramShowCase data={dreamBigData} />
+          </Suspense>
         </div>
         <div className="max-w-[1500px] mx-auto">
-        <CarouselEventsContainer />
+          <Suspense fallback={<Loading />}>
+            <CarouselEventsContainer />
+          </Suspense>
         </div>
       </div>
       <Form />
     </>
   );
-};
-
-export default Page;
+}
