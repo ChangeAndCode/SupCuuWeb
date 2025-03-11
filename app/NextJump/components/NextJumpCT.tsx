@@ -1,10 +1,10 @@
-import InnovationForm from "./ContactForm";
 import Accelerators from "./Accelerators";
 import Checklist from "./Checklist";
 import { NextJumpProps } from "@/types/NextJump";
 import Header from "./Header";
 import Banner from "./Banner";
 import CarouselEventsContainer from "@components/CarouselEvents/CarouselEventsContainer";
+import Form from "../../form/page";
 
 /**
  * NextJump main presentation component
@@ -84,7 +84,7 @@ function NextJumpComponent({
 
       {/* Contact Form */}
       <div className="mt-4">
-        <InnovationForm />
+        <Form />
       </div>
     </div>
   );
