@@ -1,4 +1,9 @@
-const BackGroundShowCase = () => {
+interface BackGroundShowCaseProps {
+  backgroundText: string;
+}
+const BackGroundShowCase: React.FC<BackGroundShowCaseProps> = ({
+  backgroundText,
+}) => {
   return (
     <>
       <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none opacity-10">
@@ -15,7 +20,7 @@ const BackGroundShowCase = () => {
           xl:text-[140px] xl:left-[-10%] xl:top-[-10%]
           2xl:text-[200px] 2xl:left-[-30%] 2xl:top-[-10%]"
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -31,7 +36,7 @@ const BackGroundShowCase = () => {
           xl:text-[140px] xl:left-[-20%] xl:top-[5%]
           2xl:text-[200px] 2xl:left-[-50%] 2xl:top-[10%]"
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -47,7 +52,7 @@ const BackGroundShowCase = () => {
           xl:text-[140px] xl:left-[-5%] xl:top-[20%]
           2xl:text-[200px] 2xl:left-[-20%] 2xl:top-[30%]"
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -63,7 +68,7 @@ const BackGroundShowCase = () => {
           xl:text-[140px] xl:left-[-30%] xl:top-[35%]
           2xl:text-[200px] 2xl:left-[-50%] 2xl:top-[50%]"
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -79,7 +84,7 @@ const BackGroundShowCase = () => {
           xl:text-[140px] xl:left-[-10%] xl:top-[50%]
           2xl:text-[200px] 2xl:left-[-30%] 2xl:top-[70%]"
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -95,7 +100,7 @@ const BackGroundShowCase = () => {
           xl:text-[140px] xl:left-[-25%] xl:top-[65%]
           2xl:text-[200px] 2xl:left-[-70%] 2xl:top-[90%]"
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -111,7 +116,7 @@ const BackGroundShowCase = () => {
           xl:text-[140px] xl:left-[-5%] xl:top-[80%]
           2xl:hidden"
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -127,7 +132,7 @@ const BackGroundShowCase = () => {
           xl:text-[140px] xl:left-[-55%] xl:top-[95%]
           2xl:hidden"
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -144,7 +149,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -161,7 +166,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -178,7 +183,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -195,7 +200,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -212,7 +217,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -229,7 +234,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -246,7 +251,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -263,7 +268,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -280,7 +285,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -297,7 +302,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -314,7 +319,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
 
         <div
@@ -331,7 +336,7 @@ const BackGroundShowCase = () => {
           2xl:hidden
           "
         >
-          innovation labs
+          {backgroundText}
         </div>
       </div>
     </>

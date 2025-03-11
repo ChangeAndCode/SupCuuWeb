@@ -1,7 +1,12 @@
 import React from "react";
 import Image from "next/image";
+import { UmbracoDreamBigData } from "@/types/dream-big";
 
-const Banner = () => {
+interface DreamBigData {
+  data: UmbracoDreamBigData;
+}
+
+const Banner: React.FC<DreamBigData> = ({ data }) => {
   return (
     <>
       <div
@@ -32,8 +37,8 @@ const Banner = () => {
             "
           >
             <Image
-              src="/CT/primera.webp"
-              alt="Entrepreneur"
+              src={data.bannerImage[0].url}
+              alt={data.bannerImage[0].name}
               width={562}
               height={390}
               className="
@@ -64,7 +69,7 @@ const Banner = () => {
               text-ColorPrincipal font-PerformanceMark
                 "
             >
-              Dream
+              {data.principalTitle}
             </h2>
             <div className="flex flex-row text-ColorPrincipal">
               <h2
@@ -77,7 +82,7 @@ const Banner = () => {
                   font-PerformanceMark w-[50%] h-auto leading-[8rem]
                 "
               >
-                big,
+                {data.principalTitleTwo}
               </h2>
               <h2
                 className="
@@ -90,7 +95,7 @@ const Banner = () => {
                   font-PerformanceMark w-[50%] h-auto leading-[8rem] text-end
                 "
               >
-                start small,
+                {data.subtitleOne}
               </h2>
             </div>
           </div>
@@ -116,7 +121,7 @@ const Banner = () => {
                 text-7xl text-ColorPrincipal font-pragmatica w-full
               "
             >
-              and keep
+              {data.subtitleTwo}
             </h2>
             <h2
               className="
@@ -128,7 +133,7 @@ const Banner = () => {
                 text-7xl text-ColorPrincipal font-pragmatica w-full
               "
             >
-              moving forward
+              {data.subtitleThree}
             </h2>
           </div>
         </div>

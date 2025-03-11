@@ -14,8 +14,10 @@ export async function getDreamBigData(): Promise<UmbracoDreamBigData> {
 
   return {
     principalTitle: properties.principalTitle,
+    principalTitleTwo: properties.principalTitleTwo,
     subtitleOne: properties.subtitleOne,
     subtitleTwo: properties.subtitleTwo,
+    subtitleThree: properties.subtitleThree,
     backgroundText: properties.backgroundText,
     bannerImage: properties.bannerImage.map((image: any) => ({
       name: image.name,
@@ -32,7 +34,11 @@ export async function getDreamBigData(): Promise<UmbracoDreamBigData> {
               })
             ),
             buttonOne: item.content.properties.buttonOne,
+            colorButtonOne: item.content.properties.colorButtonOne,
             buttonTwo: item.content.properties.buttonTwo,
+            colorButtonTwo: item.content.properties.colorButtonTwo,
+            width: item.content.properties.width,
+            height: item.content.properties.height,
             description: {
               markup: item.content.properties.description?.markup
                 ? stripHtml(item.content.properties.description.markup)

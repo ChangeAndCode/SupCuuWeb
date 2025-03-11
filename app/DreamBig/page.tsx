@@ -3,13 +3,10 @@ import Banner from "./components/Banner";
 import ProgramShowCase from "./components/ProgramShowCase";
 import CarouselEventsContainer from "@components/CarouselEvents/CarouselEventsContainer";
 import Form from "../form/page";
-import { UmbracoDreamBigData } from "@/types/dream-big";
+import { getDreamBigData } from "@/lib/dream-big/umbracoDreamBigDataService";
 
-interface DreamBigProps {
-  pageData: UmbracoDreamBigData;
-}
-
-const Page: React.FC<DreamBigProps> = ({ pageData }) => {
+export default async function Page() {
+  const dreamBigData = await getDreamBigData();
   return (
     <>
       <div
@@ -20,10 +17,10 @@ const Page: React.FC<DreamBigProps> = ({ pageData }) => {
       >
         {/* Main page content */}
         <div className="max-w-[1500px] mx-auto md:mb-20 lg:mb-52 xl:mb-40 2xl:mb-24">
-          <Banner />
+          <Banner data={dreamBigData} />
         </div>
         <div className="max-w-[1500px] mx-auto">
-          <ProgramShowCase />
+          <ProgramShowCase data={dreamBigData} />
         </div>
         <div className="max-w-[1500px] mx-auto">
           <CarouselEventsContainer />
@@ -32,6 +29,4 @@ const Page: React.FC<DreamBigProps> = ({ pageData }) => {
       <Form />
     </>
   );
-};
-
-export default Page;
+}
