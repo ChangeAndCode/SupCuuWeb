@@ -16,7 +16,8 @@ interface HomeProps {
   homeContent: HomeContent | null;
   pageData: UmbracoPageData;
 }
-
+export const dynamic = 'force-dynamic';
+export const revalidate = 10;
 const Home: React.FC<HomeProps> = async ({ homeContent, pageData }) => {
   if (!homeContent?.properties) {
     return (

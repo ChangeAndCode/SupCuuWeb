@@ -1,4 +1,5 @@
 // lib/server/umbracoApi.ts
+
 import { UmbracoContent } from "@/types/umbraco";
 import { getCachedContent, setCachedContent } from "@/utils/cache";
 
@@ -16,6 +17,7 @@ export async function getUmbracoContent(
     const cached = getCachedContent(cacheKey);
 
     if (cached) {
+      console.log(`Cache hit for ${cacheKey}`); // Add this log
       return cached;
     }
 
@@ -23,24 +25,34 @@ export async function getUmbracoContent(
     const apiUrl = `${UMBRACO_API_URL}/content/item/${encodeURIComponent(
       path
     )}?fields=${fields}`;
+    const cacheTag = `umbraco-content:${path}`;
+
+    console.log(`Fetching from Umbraco: ${apiUrl}`); // Add this log
+
     const response = await fetch(apiUrl, {
       headers: {
         Accept: 'application/json',
         'Api-Key': API_KEY as string,
         'Accept-Language': culture
       },
-      next: { revalidate: 60 } // Next.js cache control
+      next: {
+        revalidate: 10, // Revalidate every 10 seconds (adjust as needed)
+        tags: [cacheTag]
+      }
     });
+
     if (!response.ok) {
-        if (response.status === 404) {
-          throw new Error('The fetched data does not exist, contact the admin, something went wrong.');
-        }
+      if (response.status === 404) {
+        throw new Error('The fetched data does not exist, contact the admin, something went wrong.');
+      }
       throw new Error(`API Error: ${response.status}`);
     }
 
     const content = (await response.json()) as UmbracoContent;
+
     // Save in cache for future requests
     setCachedContent(cacheKey, content);
+    console.log(`Content cached for ${cacheKey}`); // Add this log
     return content;
   } catch (error) {
     console.error('Failed to fetch content:', error);

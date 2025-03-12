@@ -9,11 +9,10 @@ import Loading from './loading';
 import ContacUs from '../form/components/ContacUs';
 import RedesSociales from '../form/components/RedesSociales';
 
-export const revalidate = 3600; // Revalidate every hour
-
+export const dynamic = 'force-dynamic';
+export const revalidate = 10; // Revalidate every hour
 export default async function InvestInTalentPage() {
   const pageData = await getInvestPageData();
-  console.debug(pageData);
 
   return (
     <main className="min-h-screen bg-white pt-16">
