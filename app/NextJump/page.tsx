@@ -9,6 +9,7 @@ export async function generateMetadata() {
 }
 
 export const dynamic = "force-dynamic";
+export const revalidate = 10;
 export default async function Page() {
   const locale = await getLocale();
   const props = await getNextJumpData(locale);

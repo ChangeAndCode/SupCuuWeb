@@ -11,7 +11,8 @@ const Loading = () => (
     <p className="text-lg font-bold">Cargando...</p>
   </div>
 );
-
+export const dynamic = "force-dynamic";
+export const revalidate = 10;
 export default async function Page() {
   const dreamBigData = await getDreamBigData();
   return (
