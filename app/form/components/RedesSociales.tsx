@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { FooterData } from "@/types/form";
 import { Suspense } from "react";
 import Loading from "../loading";
+import { parseSocialMedia } from "@/utils/parseSocialMedia";
 
 interface SocialMediaProps {
   data: FooterData;
@@ -16,18 +17,7 @@ const RedesSociales: React.FC<SocialMediaProps> = ({ data }) => {
     setMounted(true);
   }, []);
 
-  const socialMedia =
-    data.socialMedia?.socialMedia?.items
-      ?.filter(
-        (item: any) =>
-          item?.content?.properties?.logo?.length > 0 &&
-          item?.content?.properties?.url?.length > 0
-      )
-      .map((item: any) => ({
-        src: item.content.properties.logo[0]?.url || "",
-        alt: item.content.properties.url[0]?.title || "Unknown",
-        href: item.content.properties.url[0]?.url || "#",
-      })) || [];
+  const socialMedia = parseSocialMedia(data);
 
   if (!mounted) {
     return (
