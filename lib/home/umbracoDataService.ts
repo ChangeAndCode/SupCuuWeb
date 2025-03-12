@@ -3,6 +3,7 @@ import { getUmbracoContent } from "../server/umbracoApi";
 import { stripHtml } from "@/utils/umbraco-text";
 import { UmbracoPageData, NewsSlide } from "@/types/home";
 import { TextElement } from "@/types/common/text-elements";
+
 const defaultSlides: NewsSlide[] = [
   {
     carouselTitle: "Título por defecto",
@@ -44,13 +45,17 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
     },
     profiles: {
       entrepreneur: {
-        imageUrl: `${nextPublicApiUrl}${properties.profileUrl.items[0].content.properties.profileImage[0].url}`,
+        imageUrl: `${nextPublicApiUrl}${
+          properties.profileUrl.items[0].content.properties.profileImage[0].url
+        }`,
         imageAlt:
           properties.profileUrl.items[0].content.properties.profileImage[0]
             .name,
-        buttonContent: properties.profileUrl.items[0].content.properties.title,
+        buttonContent:
+          properties.profileUrl.items[0].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[0].content.properties.callToAction[0].url,
+          properties.profileUrl.items[0].content.properties.callToAction[0]
+            .url,
         question:
           properties.profileUrl.items[0]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -58,13 +63,17 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           ) ?? [],
       },
       startups: {
-        imageUrl: `${nextPublicApiUrl}${properties.profileUrl.items[1].content.properties.profileImage[0].url}`,
+        imageUrl: `${nextPublicApiUrl}${
+          properties.profileUrl.items[1].content.properties.profileImage[0].url
+        }`,
         imageAlt:
           properties.profileUrl.items[1].content.properties.profileImage[0]
             .name,
-        buttonContent: properties.profileUrl.items[1].content.properties.title,
+        buttonContent:
+          properties.profileUrl.items[1].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[1].content.properties.callToAction[0].url,
+          properties.profileUrl.items[1].content.properties.callToAction[0]
+            .url,
         question:
           properties.profileUrl.items[1]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -72,13 +81,17 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           ) ?? [],
       },
       investors: {
-        imageUrl: `${nextPublicApiUrl}${properties.profileUrl.items[2].content.properties.profileImage[0].url}`,
+        imageUrl: `${nextPublicApiUrl}${
+          properties.profileUrl.items[2].content.properties.profileImage[0].url
+        }`,
         imageAlt:
           properties.profileUrl.items[2].content.properties.profileImage[0]
             .name,
-        buttonContent: properties.profileUrl.items[2].content.properties.title,
+        buttonContent:
+          properties.profileUrl.items[2].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[2].content.properties.callToAction[0].url,
+          properties.profileUrl.items[2].content.properties.callToAction[0]
+            .url,
         question:
           properties.profileUrl.items[2]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -86,13 +99,17 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           ) ?? [],
       },
       corporates: {
-        imageUrl: `${nextPublicApiUrl}${properties.profileUrl.items[3].content.properties.profileImage[0].url}`,
+        imageUrl: `${nextPublicApiUrl}${
+          properties.profileUrl.items[3].content.properties.profileImage[0].url
+        }`,
         imageAlt:
           properties.profileUrl.items[3].content.properties.profileImage[0]
             .name,
-        buttonContent: properties.profileUrl.items[3].content.properties.title,
+        buttonContent:
+          properties.profileUrl.items[3].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[3].content.properties.callToAction[0].url,
+          properties.profileUrl.items[3].content.properties.callToAction[0]
+            .url,
         question:
           properties.profileUrl.items[3]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -127,15 +144,11 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         : "Background por defecto",
     },
     timelineData: {
-      desecText: properties.text
-        ? stripHtml(properties.text)
-        : "Default desecText",
+      desecText: properties.text ? stripHtml(properties.text) : "Default desecText",
       futuraText: properties.text2
         ? stripHtml(properties.text2)
         : "Default futuraText",
-      mitText: properties.text3
-        ? stripHtml(properties.text3)
-        : "Default mitText",
+      mitText: properties.text3 ? stripHtml(properties.text3) : "Default mitText",
     },
     newsSlides: newsSlides.length > 0 ? newsSlides : defaultSlides,
 

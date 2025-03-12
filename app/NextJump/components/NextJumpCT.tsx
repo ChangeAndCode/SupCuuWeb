@@ -45,7 +45,7 @@ function NextJumpComponent({
           {/* CTA Button */}
           <a
             href={checkListCtaButtonHref}
-            className="mt-4 flex justify-center lg:justify-end relative" // Add relative and z-20
+            className="mt-4 flex justify-center lg:justify-end relative z-20" // Add relative and z-20
           >
             <button
               className="bg-[#ff4544] text-white 
