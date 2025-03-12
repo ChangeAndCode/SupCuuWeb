@@ -1,7 +1,6 @@
 // lib/server/umbracoApi.ts
 
 import { UmbracoContent } from "@/types/umbraco";
-import { getCachedContent, setCachedContent } from "@/utils/cache";
 
 const UMBRACO_API_URL = process.env.UMBRACO_API_URL;
 const API_KEY = process.env.UMBRACO_API_KEY;
@@ -12,15 +11,6 @@ export async function getUmbracoContent(
   fields: string = 'properties[$all]'
 ): Promise<UmbracoContent> {
   try {
-    // Cache key built using path and culture
-    const cacheKey = `${path}:${culture}:${fields}`;
-    const cached = getCachedContent(cacheKey);
-
-    if (cached) {
-      console.log(`Cache hit for ${cacheKey}`); // Add this log
-      return cached;
-    }
-
     // Direct API call to Umbraco
     const apiUrl = `${UMBRACO_API_URL}/content/item/${encodeURIComponent(
       path
@@ -50,9 +40,7 @@ export async function getUmbracoContent(
 
     const content = (await response.json()) as UmbracoContent;
 
-    // Save in cache for future requests
-    setCachedContent(cacheKey, content);
-    console.log(`Content cached for ${cacheKey}`); // Add this log
+    console.log(`Content fetched from Umbraco: ${path}`); // Add this log
     return content;
   } catch (error) {
     console.error('Failed to fetch content:', error);
