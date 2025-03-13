@@ -1,46 +1,15 @@
-"use client";
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+// components/NavLink.tsx
+'use client';
 
-interface NavLink {
-  href?: string;
-  label: string;
-  subLinks?: NavLink[];
-  external?: boolean;
+import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { NavLink } from '@/types/umbraco';
+
+interface NavLinksProps {
+  navLinks: NavLink[];
 }
 
-const navLinks: NavLink[] = [
-  {
-    href: "#weAre",
-    label: "About us",
-    subLinks: [
-      { href: "#anImpact", label: "History and Impact" },
-      { href: "#partners", label: "Partners" },
-      { href: "#team", label: "The Team" },
-    ],
-  },
-  {
-    href: "/Opportunities",
-    label: "Events & Opportunities",
-    subLinks: [
-      { href: "/Opportunities", label: "For Locals" },
-      { href: "/attraction", label: "For Foreigners" },
-    ],
-  },
-  {
-    href: "https://creatorapp.zohopublic.com/inndech/ecosistema/page-perma/Unidades_Validadas_Chihuahua/YbU1ESXWbNpfXkvea9yZuODkUBY9ewh6ZFtujjFk1Pd27sdJOdsdwMwuMThfPWejDmJuHgmu5bhQQrMFjzFDXWUGERzkN57pfBNp",
-    label: "Startups",
-    external: true,
-  },
-  {
-    href: "https://kumu.io/gedi/chihuahua",
-    label: "Ecosystem",
-    external: true,
-  },
-  { href: "https://zcform.com/btnwb", label: "Contact" },
-];
-
-const NavLinks: React.FC = () => {
+const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -66,15 +35,18 @@ const NavLinks: React.FC = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
         setActiveSubMenu(null);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -83,11 +55,11 @@ const NavLinks: React.FC = () => {
       setIsMobile(window.innerWidth < 1024);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     handleResize();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -110,14 +82,14 @@ const NavLinks: React.FC = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+            d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
           />
         </svg>
       </button>
 
       <nav
         className={`${
-          isOpen ? "block" : "hidden"
+          isOpen ? 'block' : 'hidden'
         } xl:block absolute xl:static top-16 left-0 w-full xl:w-auto bg-ColorPrincipal xl:bg-transparent shadow-md xl:shadow-none z-10`}
       >
         <ul
@@ -128,7 +100,7 @@ const NavLinks: React.FC = () => {
             <li
               key={link.label}
               className={`relative ${
-                isMobile && link.label === activeSubMenu ? "mb-12" : ""
+                isMobile && link.label === activeSubMenu ? 'mb-12' : ''
               }`}
             >
               {link.subLinks ? (
@@ -164,9 +136,11 @@ const NavLinks: React.FC = () => {
               )}
 
               {link.subLinks && activeSubMenu === link.label && (
-                <ul className={`absolute left-0 mt-2 bg-white shadow-md text-black p-4 rounded-lg space-y-2 z-20 ${
-                  link.label === "About us" ? "w-64" : "w-full"
-                }`}>
+                <ul
+                  className={`absolute left-0 mt-2 bg-white shadow-md text-black p-4 rounded-lg space-y-2 z-20 ${
+                    link.label === 'About us' ? 'w-64' : 'w-full'
+                  }`}
+                >
                   {link.subLinks.map((subLink) => (
                     <li key={subLink.label}>
                       {subLink.href?.startsWith('#') ? (

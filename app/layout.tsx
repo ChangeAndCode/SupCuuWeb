@@ -3,6 +3,7 @@ import { LocaleProvider } from '@components/Localization/LocaleContext';
 import './globals.css';
 import HeaderLayout from './header/layout';
 import { Metadata } from 'next';
+import { fetchAndProcessNavData } from '@/lib/Navigation/navData';
 
 export const metadata: Metadata = {
   title: 'StartUp Chihuahua',
@@ -16,21 +17,19 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
+// Mark RootLayout as an async Server Component
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const { navLinks, companyLogo } = await fetchAndProcessNavData('/nav/');
+
   return (
     <html lang="en" className="overflow-y-scroll">
-      <head>
-      </head>
+      <head></head>
       <body>
         <LocaleProvider>
-          <HeaderLayout />
-          <main>
-            {children}
-          </main>
+          <HeaderLayout navLinks={navLinks} companyLogo={companyLogo} />
+          <main>{children}</main>
         </LocaleProvider>
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}
