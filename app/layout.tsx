@@ -3,7 +3,6 @@ import { LocaleProvider } from '@components/Localization/LocaleContext';
 import './globals.css';
 import HeaderLayout from './header/layout';
 import { Metadata } from 'next';
-import { NavLink } from '@/types/umbraco';
 import { fetchAndProcessNavData } from '@/lib/Navigation/navData';
 
 export const metadata: Metadata = {
@@ -20,14 +19,14 @@ interface RootLayoutProps {
 
 // Mark RootLayout as an async Server Component
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const navLinks: NavLink[] = await fetchAndProcessNavData('/nav/');
+  const { navLinks, companyLogo } = await fetchAndProcessNavData('/nav/');
 
   return (
     <html lang="en" className="overflow-y-scroll">
       <head></head>
       <body>
         <LocaleProvider>
-          <HeaderLayout navLinks={navLinks} />
+          <HeaderLayout navLinks={navLinks} companyLogo={companyLogo} />
           <main>{children}</main>
         </LocaleProvider>
       </body>

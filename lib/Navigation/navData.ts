@@ -1,6 +1,8 @@
-// utils/navData.ts
-import {getUmbracoContent} from '@/lib/server/umbracoApi';
-import { getImageUrl } from '@/utils/umbracoImageHelper';
+// lib/Navigation/navData.ts
+
+import {
+    getUmbracoContent,
+  } from '@/lib/server/umbracoApi';
   import {
     NavBarData,
     NavLink,
@@ -10,9 +12,14 @@ import { getImageUrl } from '@/utils/umbracoImageHelper';
     UmbracoImage,
   } from '@/types/umbraco';
   
+  interface ProcessedNavData {
+    navLinks: NavLink[];
+    companyLogo: UmbracoImage | null;
+  }
+  
   export const fetchAndProcessNavData = async (
     path: string
-  ): Promise<NavLink[]> => {
+  ): Promise<ProcessedNavData> => {
     try {
       const data: UmbracoContent = await getUmbracoContent(path);
   
@@ -24,7 +31,7 @@ import { getImageUrl } from '@/utils/umbracoImageHelper';
         !Array.isArray(navBarData.properties.navigationMenuItems.items)
       ) {
         console.warn('No navigation items found in Umbraco data.');
-        return [];
+        return { navLinks: [], companyLogo: null };
       }
   
       const navLinks: NavLink[] = navBarData.properties.navigationMenuItems.items.map(
@@ -59,19 +66,11 @@ import { getImageUrl } from '@/utils/umbracoImageHelper';
         }
       );
   
-      // Example usage of getImageUrl with companyLogo
-      const companyLogo: UmbracoImage | null =
-        navBarData.properties.companyLogo;
-      if (companyLogo) {
-        const logoUrl = getImageUrl(companyLogo.url);
-        console.log('Company Logo URL:', logoUrl);
-        // Use the logoUrl in your component
-      }
-  
-      return navLinks;
+      const companyLogo: UmbracoImage | null = navBarData.properties.companyLogo;
+      return { navLinks, companyLogo };
     } catch (error) {
       console.error('Failed to fetch and process navigation data:', error);
-      return [];
+      return { navLinks: [], companyLogo: null };
     }
   };
   
