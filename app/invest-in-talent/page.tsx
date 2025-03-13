@@ -1,17 +1,19 @@
 // app/invest-in-talent/page.tsx
-import { Suspense } from 'react';
-import Image from 'next/image';
-import { getInvestPageData } from '@/lib/invest-in-talent';
-import { ProfileCarousel } from './components/ProfileCarousel';
-import { ContactForm } from './components/ContactForm';
-import { Header } from './components/Header';
-import Loading from './loading';
-import ContacUs from '../form/components/ContacUs';
-import RedesSociales from '../form/components/RedesSociales';
+import { Suspense } from "react";
+import Image from "next/image";
+import { getInvestPageData } from "@/lib/invest-in-talent";
+import { ProfileCarousel } from "./components/ProfileCarousel";
+import { ContactForm } from "./components/ContactForm";
+import { Header } from "./components/Header";
+import Loading from "./loading";
+import ContacUs from "../form/components/ContacUs";
+import RedesSociales from "../form/components/RedesSociales";
+import { getFooterData } from "@/lib/form/umbracoFooterDataService";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 10; // Revalidate every hour
 export default async function InvestInTalentPage() {
+  const footerData = await getFooterData();
   const pageData = await getInvestPageData();
 
   return (
@@ -41,8 +43,8 @@ export default async function InvestInTalentPage() {
 
         <div className="container mx-auto pt-6 max-w-[1066px]">
           <div className="flex flex-col lg:flex-row justify-between">
-            <ContacUs />
-            <RedesSociales />
+            <ContacUs data={footerData} />
+            <RedesSociales data={footerData} />
           </div>
         </div>
       </footer>
