@@ -14,6 +14,7 @@ import CarruselDoors from './components/CarruselDoors'
 import Possible from './components/Possible'
 import World from './components/World'
 import Form from '../form/page'
+import BtnFAQ from '@components/btnct/btnFAQ'
 
 const page = () => {
   return (
@@ -96,6 +97,9 @@ const page = () => {
         <World />
       </div>
       <Form />
+      <div className='fixed bottom-8 right-8 z-50'>
+        <BtnFAQ pdfUrl="/FAQ.pdf" buttonText="FAQ" />
+      </div>
     </div>
   )
 }
