@@ -32,6 +32,8 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
     newsSlides,
     presidentCardData,
     teamBackbone,
+    weAreContent,   
+    impactContent 
   } = pageData;
 
   const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL || "";
@@ -103,13 +105,16 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
       </div>
 
       <div id="weAre" className="py-16 overflow-hidden">
-        <WeAre />
+      <WeAre 
+    highlightText={weAreContent.highlightText}
+    description={weAreContent.description}
+  />
       </div>
       <div className="relative hidden xl:block 2xl:-mb-[9rem]">
         <Cohete />
       </div>
       <div id="anImpact">
-        <AnImpact />
+      <AnImpact mainText={impactContent.mainText} />
       </div>
       <div className="pb-[5rem] sm:pb-[10rem] md:pb-[20rem] lg:pb-[20rem] xl:pb-[6rem]">
         <TimeLine timelineData={timelineData} />

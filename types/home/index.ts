@@ -14,7 +14,14 @@ export interface UmbracoPageData {
   timelineData: TimelineData;
   newsSlides: NewsSlide[];
   presidentCardData: presidentCardData;
-  teamBackbone: BackboneTeamMember[]
+  teamBackbone: BackboneTeamMember[];
+  weAreContent: {
+    highlightText: string;
+    description: string;
+  };
+  impactContent: {
+    mainText: string;
+  };
 }
 
 export interface ProfileCTA {
