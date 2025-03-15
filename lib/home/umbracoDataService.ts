@@ -117,6 +117,15 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           ) ?? [],
       },
     },
+    weAreContent: {
+      highlightText: properties.highlightText || "Sin descripción",
+      description: properties.description?.markup 
+      ? stripHtml(properties.description.markup)
+      : "Sin descripción"
+    },
+    impactContent: {
+      mainText: properties.mainText || "Sin descripción"
+    },
     teamMembers:
       properties.partners?.items.map((item: any) => ({
         id: item.content.properties.pId,
