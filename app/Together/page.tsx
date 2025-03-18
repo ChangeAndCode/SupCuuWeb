@@ -9,7 +9,7 @@ import ContacUs from "../form/components/ContacUs";
 import RedesSociales from "../form/components/RedesSociales";
 import { getFooterData } from "@/lib/form/umbracoFooterDataService";
 import { getTogetherPageData } from "@/lib/together/umbracoTogetherDataService";
-import Loading from "../invest-in-talent/loading";
+import Loading from "@components/Loading";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 10; // Revalidate every 10 seconds

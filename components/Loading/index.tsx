@@ -1,4 +1,4 @@
-// app/invest-in-talent/loading.tsx
+// components/Loading/index.tsx
 export default function Loading() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
