@@ -1,28 +1,41 @@
+// app/Together/page.tsx
+import { Suspense } from "react";
+import Image from "next/image";
 import Collabs from "./Components/collabs";
 import Header from "./Components/header";
 import Grid from "./Components/Grid";
-import Image from "next/image";
 import InnovationForm from "app/NextJump/components/ContactForm";
 import ContacUs from "../form/components/ContacUs";
 import RedesSociales from "../form/components/RedesSociales";
 import { getFooterData } from "@/lib/form/umbracoFooterDataService";
+import { getTogetherPageData } from "@/lib/together/umbracoTogetherDataService";
+import Loading from "@components/Loading";
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 10; // Revalidate every 10 seconds
 
 export default async function Together() {
   const footerData = await getFooterData();
+  const pageData = await getTogetherPageData();
+
   return (
     <>
       <div>
-        <Header />
+        <Suspense fallback={<Loading />}>
+          <Header headerData={pageData.header} />
+        </Suspense>
       </div>
       <div className="mt-[-5rem]">
-        <Collabs />
+        <Suspense fallback={<Loading />}>
+          <Collabs images={pageData.collabs.images} />
+        </Suspense>
       </div>
       <div className="flex bg-gray-100 min-h-[50vh] pb-[15vh] items-center justify-center relative flex-col">
         <h1 className="font-PerformanceMark w-full text-center text-ColorPrincipal text-[8vw] z-0 leading-[0.5] top-[40] relative">
-          IF YOU&rsquo;RE LOOKING TO
+          {pageData.lookingTo.bigTitle}
         </h1>
         <h1 className="font-PerformanceMark w-full text-center text-white text-[8vw] z-10 leading-[1] relative -top-2">
-          IF YOU&rsquo;RE LOOKING TO
+          {pageData.lookingTo.bigTitle}
         </h1>
       </div>
 
@@ -42,7 +55,7 @@ export default async function Together() {
               className="w-full h-auto"
             />
             <h2 className="font-PerformanceMark text-center text-white text-[3.5vw] sm:text-[3vw] md:text-[2.5vw] lg:text-[2vw] whitespace-nowrap absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-[90%]">
-              IF YOU&rsquo;RE LOOKING TO:
+              {pageData.lookingTo.smallTitle}
             </h2>
           </div>
         </div>
@@ -58,11 +71,12 @@ export default async function Together() {
         </div>
 
         <div className="max-w-[1400px] mx-auto xl:px-40 md:px-4 px-2 mt-[2rem] md:mt-0">
-          <Grid />
+          <Suspense fallback={<Loading />}>
+            <Grid gridElements={pageData.gridElements} />
+          </Suspense>
         </div>
       </div>
       <div className="mt-4">
-        {/* Add margin top for spacing */}
         <InnovationForm />
       </div>
       <footer className="relative bg-ColorPrincipal rounded-t-7xl px-8 py-16">

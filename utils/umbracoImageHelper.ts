@@ -1,3 +1,4 @@
+// utils/umbracoImageHelper.ts
 /**
  * Utility function to convert Umbraco media paths to full URLs
  * @param path The image path from Umbraco
