@@ -1,4 +1,4 @@
-// app/Together/Components/header.tsx
+// app/Together/Components/header.tsx (with overflow handling)
 import React from "react";
 import Image from "next/image";
 
@@ -53,18 +53,21 @@ const Header: React.FC<HeaderProps> = ({ headerData }) => {
       </div>
       <div className="mt-[2rem] md:mt-[-80px] relative z-0 w-full flex justify-center md:justify-start">
         <div className="w-[90%] md:w-[800px] lg:w-[900px] xl:w-[1000px] md:ml-[6rem] relative">
-          <h2 className="font-pragmatica main-Tipography text-white text-[3.5vw] sm:text-[3vw] md:text-[2.5vw] lg:text-[2.5vw] 
-              whitespace-nowrap absolute top-1/2 left-[8%] transform -translate-y-1/2 z-10 text-left">
-              {headerData.communityText}
-          </h2>
-          <Image
-              src="/bgtitle.webp"
-              alt="Imagen"
-              width={900}
-              height={900}
-              className="w-full h-auto"
-              priority
-          />
+          <div className="relative">
+            <Image
+                src="/bgtitle.webp"
+                alt="Background Title"
+                width={900}
+                height={900}
+                className="w-full h-auto"
+                priority
+            />
+            <div className="absolute top-0 left-0 w-full h-full flex items-center">
+              <h2 className="font-pragmatica main-Tipography text-white px-[8%] text-[clamp(16px,2.5vw,32px)] w-[90%] overflow-hidden text-ellipsis line-clamp-3 md:line-clamp-2">
+                {headerData.communityText}
+              </h2>
+            </div>
+          </div>
         </div>
       </div>
     </>
