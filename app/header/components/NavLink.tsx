@@ -1,4 +1,3 @@
-// components/NavLink.tsx
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -14,9 +13,11 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const menuRef = useRef<HTMLUListElement | null>(null);
+  const subMenuRefs = useRef<Map<string, HTMLUListElement>>(new Map());
 
-  const toggleSubMenu = (label: string) => {
-    setActiveSubMenu(activeSubMenu === label ? null : label);
+  const toggleSubMenu = (id: string, event: React.MouseEvent) => {
+    event.stopPropagation();
+    setActiveSubMenu(activeSubMenu === id ? null : id);
   };
 
   const handleSubLinkClick = () => {
@@ -33,21 +34,45 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
     }
   };
 
+  // Position submenu based on available screen space
+  useEffect(() => {
+    if (activeSubMenu) {
+      const subMenu = subMenuRefs.current.get(activeSubMenu);
+      if (subMenu) {
+        const rect = subMenu.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        
+        // Reset position first
+        subMenu.style.left = '0';
+        subMenu.style.right = 'auto';
+        
+        // Calculate if submenu goes beyond right edge
+        if (rect.right > viewportWidth) {
+          // Position from right instead of left
+          subMenu.style.left = 'auto';
+          subMenu.style.right = '0';
+        }
+        
+        // Ensure minimum width for the submenu
+        subMenu.style.minWidth = '200px';
+        
+        // If mobile, make it full width of parent
+        if (isMobile) {
+          subMenu.style.width = '100%';
+        }
+      }
+    }
+  }, [activeSubMenu, isMobile]);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node)
-      ) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setActiveSubMenu(null);
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   useEffect(() => {
@@ -57,10 +82,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
 
     window.addEventListener('resize', handleResize);
     handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -96,78 +118,95 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
           ref={menuRef}
           className="flex flex-col xl:flex-row space-y-4 xl:space-y-0 xl:space-x-6 p-4 xl:p-0"
         >
-          {navLinks.map((link) => (
-            <li
-              key={link.label}
-              className={`relative ${
-                isMobile && link.label === activeSubMenu ? 'mb-12' : ''
-              }`}
-            >
-              {link.subLinks ? (
-                <button
-                  onClick={() => toggleSubMenu(link.label)}
-                  className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
-                >
-                  {link.label}
-                </button>
-              ) : link.external ? (
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
-                >
-                  {link.label}
-                </a>
-              ) : link.href?.startsWith('#') ? (
-                <button
-                  onClick={() => handleScrollTo(link.href!.substring(1))}
-                  className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
-                >
-                  {link.label}
-                </button>
-              ) : (
-                <Link
-                  href={link.href as string}
-                  className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
-                >
-                  {link.label}
-                </Link>
-              )}
+          {navLinks.map((link, index) => {
+            // Generate a unique ID for each link
+            const linkId = `nav-link-${index}`;
+            const displayLabel = link.label || 'Menu Item';
+            
+            return (
+              <li
+                key={linkId}
+                className={`relative ${
+                  isMobile && activeSubMenu === linkId ? 'mb-16' : ''
+                }`}
+              >
+                {link.subLinks && link.subLinks.length > 0 ? (
+                  <button
+                    onClick={(e) => toggleSubMenu(linkId, e)}
+                    className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
+                  >
+                    {displayLabel}
+                  </button>
+                ) : link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
+                  >
+                    {displayLabel}
+                  </a>
+                ) : link.href?.startsWith('#') ? (
+                  <button
+                    onClick={() => handleScrollTo(link.href!.substring(1))}
+                    className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
+                  >
+                    {displayLabel}
+                  </button>
+                ) : (
+                  <Link
+                    href={link.href || '#'}
+                    className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
+                  >
+                    {displayLabel}
+                  </Link>
+                )}
 
-              {link.subLinks && activeSubMenu === link.label && (
-                <ul
-                  className={`absolute left-0 mt-2 bg-white shadow-md text-black p-4 rounded-lg space-y-2 z-20 ${
-                    link.label === 'About us' ? 'w-64' : 'w-full'
-                  }`}
-                >
-                  {link.subLinks.map((subLink) => (
-                    <li key={subLink.label}>
-                      {subLink.href?.startsWith('#') ? (
-                        <button
-                          onClick={() => {
-                            handleScrollTo(subLink.href!.substring(1));
-                            handleSubLinkClick();
-                          }}
-                          className="block w-full text-left text-black font-poppins hover:text-blue-500 font-semibold uppercase transition-colors"
-                        >
-                          {subLink.label}
-                        </button>
-                      ) : (
-                        <Link
-                          href={subLink.href as string}
-                          className="block text-black font-poppins hover:text-blue-500 font-semibold uppercase transition-colors"
-                          onClick={handleSubLinkClick}
-                        >
-                          {subLink.label}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
+                {link.subLinks && link.subLinks.length > 0 && activeSubMenu === linkId && (
+                  <ul
+                    ref={(el) => {
+                      if (el) subMenuRefs.current.set(linkId, el);
+                    }}
+                    className="absolute mt-2 bg-white shadow-md text-black p-4 rounded-lg space-y-2 z-20"
+                    style={{ 
+                      minWidth: '200px',
+                      maxWidth: '300px',
+                      boxSizing: 'border-box'
+                    }}
+                  >
+                    {link.subLinks.map((subLink, subIndex) => {
+                      const subLinkId = `${linkId}-sublink-${subIndex}`;
+                      const subLinkLabel = subLink.label || 'Submenu Item';
+                      
+                      return (
+                        <li key={subLinkId}>
+                          {subLink.href?.startsWith('#') ? (
+                            <button
+                              onClick={() => {
+                                handleScrollTo(subLink.href!.substring(1));
+                                handleSubLinkClick();
+                              }}
+                              className="block w-full text-left text-black font-poppins hover:text-blue-500 font-semibold uppercase transition-colors"
+                            >
+                              {subLinkLabel}
+                            </button>
+                          ) : (
+                            <Link
+                              href={subLink.href || '#'}
+                              className="block text-black font-poppins hover:text-blue-500 font-semibold uppercase transition-colors"
+                              onClick={handleSubLinkClick}
+                            >
+                              {subLinkLabel}
+                            </Link>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>
