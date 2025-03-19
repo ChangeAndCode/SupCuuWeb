@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import BackGroundShowCase from "./BackGroundShowCase";
 import { UmbracoDreamBigData } from "@/types/dream-big";
+import Link from "next/link";
 
 interface DreamBigData {
   data: UmbracoDreamBigData;
@@ -26,12 +27,23 @@ const ProgramShowCase: React.FC<DreamBigData> = ({ data }) => {
             companyImage,
             buttonOne,
             colorButtonOne,
+            hrefButtonOne,
             buttonTwo,
             colorButtonTwo,
+            hrefButtonTwo,
             width,
             height,
             description,
           } = item.content.properties;
+          
+          // Get URLs from CMS or use fallbacks
+          const infoUrl = hrefButtonOne && hrefButtonOne.length > 0 ? hrefButtonOne[0].url : '#';
+          const applyUrl = hrefButtonTwo && hrefButtonTwo.length > 0 ? hrefButtonTwo[0].url : '#';
+          
+          // Get target attributes if they exist
+          const infoTarget = hrefButtonOne && hrefButtonOne.length > 0 && hrefButtonOne[0].target ? hrefButtonOne[0].target : undefined;
+          const applyTarget = hrefButtonTwo && hrefButtonTwo.length > 0 && hrefButtonTwo[0].target ? hrefButtonTwo[0].target : undefined;
+          
           return (
             <div
               key={index}
@@ -99,28 +111,35 @@ const ProgramShowCase: React.FC<DreamBigData> = ({ data }) => {
                   xl:px-5
                 "
                 >
-                  <button
-                    type="button"
-                    style={{ backgroundColor: `#${colorButtonOne}` }}
+                  <Link 
+                    href={infoUrl} 
+                    target={infoTarget}
                     className={`
                     max-sm:w-36 sm:w-36 md:w-[48%] lg:w-[48%] xl:w-36
                     h-16 
                     font-pragmatica 
-                    text-white font-bold`}
+                    text-white font-bold
+                    flex items-center justify-center
+                    `}
+                    style={{ backgroundColor: `#${colorButtonOne}` }}
                   >
                     <p className="uppercase text-2xl">{buttonOne}</p>
-                  </button>
-                  <button
-                    type="button"
-                    style={{ backgroundColor: `#${colorButtonTwo}` }}
+                  </Link>
+                  
+                  <Link 
+                    href={applyUrl} 
+                    target={applyTarget}
                     className={`
                     max-sm:w-36 sm:w-36 md:w-[48%] lg:w-[48%] xl:w-36
                     h-16 
                     font-pragmatica 
-                    text-white font-bold`}
+                    text-white font-bold
+                    flex items-center justify-center
+                    `}
+                    style={{ backgroundColor: `#${colorButtonTwo}` }}
                   >
                     <p className="uppercase text-2xl">{buttonTwo}</p>
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div
@@ -145,9 +164,8 @@ const ProgramShowCase: React.FC<DreamBigData> = ({ data }) => {
                   text-2xl
                   xl:h-40
                   "
-                >
-                  {description.markup}
-                </h1>
+                  dangerouslySetInnerHTML={{ __html: description.markup }}
+                />
               </div>
             </div>
           );
