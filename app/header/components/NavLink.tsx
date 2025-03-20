@@ -10,18 +10,33 @@ interface NavLinksProps {
 
 const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
+  const [activeMenus, setActiveMenus] = useState<Set<string>>(new Set());
   const [isMobile, setIsMobile] = useState(false);
   const menuRef = useRef<HTMLUListElement | null>(null);
   const subMenuRefs = useRef<Map<string, HTMLUListElement>>(new Map());
 
-  const toggleSubMenu = (id: string, event: React.MouseEvent) => {
+  const toggleMenu = (id: string, event: React.MouseEvent) => {
     event.stopPropagation();
-    setActiveSubMenu(activeSubMenu === id ? null : id);
+    
+    setActiveMenus(prevActiveMenus => {
+      const newActiveMenus = new Set(prevActiveMenus);
+      
+      if (newActiveMenus.has(id)) {
+        // Find and remove this menu and all its children
+        const toRemove = Array.from(newActiveMenus).filter(
+          menu => menu === id || menu.startsWith(`${id}-`)
+        );
+        toRemove.forEach(menu => newActiveMenus.delete(menu));
+      } else {
+        newActiveMenus.add(id);
+      }
+      
+      return newActiveMenus;
+    });
   };
 
   const handleSubLinkClick = () => {
-    setActiveSubMenu(null);
+    setActiveMenus(new Set());
     if (isMobile) {
       setIsOpen(false);
     }
@@ -34,40 +49,49 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
     }
   };
 
-  // Position submenu based on available screen space
+  // Position submenus based on available screen space
   useEffect(() => {
-    if (activeSubMenu) {
-      const subMenu = subMenuRefs.current.get(activeSubMenu);
-      if (subMenu) {
+    subMenuRefs.current.forEach((subMenu, id) => {
+      if (activeMenus.has(id)) {
         const rect = subMenu.getBoundingClientRect();
         const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
         
-        // Reset position first
-        subMenu.style.left = '0';
-        subMenu.style.right = 'auto';
-        
-        // Calculate if submenu goes beyond right edge
+        // Handle horizontal overflow
         if (rect.right > viewportWidth) {
-          // Position from right instead of left
-          subMenu.style.left = 'auto';
-          subMenu.style.right = '0';
+          if (id.includes('-')) {
+            // For nested submenus, position to the left of parent
+            subMenu.style.left = 'auto';
+            subMenu.style.right = '100%';
+          } else {
+            // For top-level, align to right of parent
+            subMenu.style.left = 'auto';
+            subMenu.style.right = '0';
+          }
         }
         
-        // Ensure minimum width for the submenu
-        subMenu.style.minWidth = '200px';
-        
-        // If mobile, make it full width of parent
-        if (isMobile) {
-          subMenu.style.width = '100%';
+        // Handle vertical overflow
+        if (rect.bottom > viewportHeight) {
+          const overflow = rect.bottom - viewportHeight;
+          // Ensure the submenu doesn't go below viewport
+          if (id.includes('-')) {
+            // For nested submenus
+            subMenu.style.top = 'auto';
+            subMenu.style.bottom = '0';
+          } else {
+            // For top-level, scroll if needed
+            subMenu.style.maxHeight = `${rect.height - overflow - 20}px`;
+            subMenu.style.overflowY = 'auto';
+          }
         }
       }
-    }
-  }, [activeSubMenu, isMobile]);
+    });
+  }, [activeMenus, isMobile]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setActiveSubMenu(null);
+        setActiveMenus(new Set());
       }
     };
 
@@ -84,6 +108,88 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
     handleResize();
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Recursive function to render menu items
+  const renderMenuItem = (link: NavLink, parentId: string = '', index: number = 0) => {
+    const hasSubLinks = link.subLinks && link.subLinks.length > 0;
+    const id = parentId ? `${parentId}-${index}` : `nav-${index}`;
+    const isActive = activeMenus.has(id);
+    const displayLabel = link.label || 'Menu Item';
+    
+    // Check if this is a top-level menu item (no parent) or an item in a dropdown
+    const isInDropdown = parentId !== '';
+    
+    // Apply styling based on whether item is in a dropdown
+    const textColorClass = isInDropdown 
+      ? "text-black hover:text-blue-500" 
+      : "text-white hover:text-blue-200";
+
+    return (
+      <li 
+        key={id} 
+        className={`relative ${isMobile && isActive && hasSubLinks ? 'mb-16' : ''}`}
+      >
+        {hasSubLinks ? (
+          // It's a dropdown menu
+          <button
+            onClick={(e) => toggleMenu(id, e)}
+            className={`${textColorClass} font-poppins font-semibold uppercase transition-colors`}
+          >
+            {displayLabel}
+          </button>
+        ) : link.external ? (
+          // It's an external link
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${textColorClass} font-poppins font-semibold uppercase transition-colors`}
+          >
+            {displayLabel}
+          </a>
+        ) : link.href?.startsWith('#') ? (
+          // It's an anchor link
+          <button
+            onClick={() => handleScrollTo(link.href!.substring(1))}
+            className={`${textColorClass} font-poppins font-semibold uppercase transition-colors`}
+          >
+            {displayLabel}
+          </button>
+        ) : (
+          // It's a normal internal link
+          <Link
+            href={link.href || '#'}
+            className={`${textColorClass} font-poppins font-semibold uppercase transition-colors`}
+          >
+            {displayLabel}
+          </Link>
+        )}
+
+        {/* Render submenu if it has children and is active */}
+        {hasSubLinks && isActive && (
+          <ul
+            ref={(el) => {
+              if (el) subMenuRefs.current.set(id, el);
+            }}
+            className="absolute bg-white shadow-md text-black p-4 rounded-lg space-y-2 z-20"
+            style={{ 
+              minWidth: '200px',
+              maxWidth: '300px',
+              left: isInDropdown ? '100%' : '0',
+              top: isInDropdown ? '0' : 'auto',
+              marginLeft: isInDropdown ? '1px' : '0',
+              marginTop: isInDropdown ? '0' : '8px',
+              boxSizing: 'border-box' 
+            }}
+          >
+            {link.subLinks!.map((subLink, subIndex) => 
+              renderMenuItem(subLink, id, subIndex)
+            )}
+          </ul>
+        )}
+      </li>
+    );
+  };
 
   return (
     <div>
@@ -118,95 +224,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
           ref={menuRef}
           className="flex flex-col xl:flex-row space-y-4 xl:space-y-0 xl:space-x-6 p-4 xl:p-0"
         >
-          {navLinks.map((link, index) => {
-            // Generate a unique ID for each link
-            const linkId = `nav-link-${index}`;
-            const displayLabel = link.label || 'Menu Item';
-            
-            return (
-              <li
-                key={linkId}
-                className={`relative ${
-                  isMobile && activeSubMenu === linkId ? 'mb-16' : ''
-                }`}
-              >
-                {link.subLinks && link.subLinks.length > 0 ? (
-                  <button
-                    onClick={(e) => toggleSubMenu(linkId, e)}
-                    className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
-                  >
-                    {displayLabel}
-                  </button>
-                ) : link.external ? (
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
-                  >
-                    {displayLabel}
-                  </a>
-                ) : link.href?.startsWith('#') ? (
-                  <button
-                    onClick={() => handleScrollTo(link.href!.substring(1))}
-                    className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
-                  >
-                    {displayLabel}
-                  </button>
-                ) : (
-                  <Link
-                    href={link.href || '#'}
-                    className="text-white font-poppins hover:text-blue-200 font-semibold uppercase transition-colors"
-                  >
-                    {displayLabel}
-                  </Link>
-                )}
-
-                {link.subLinks && link.subLinks.length > 0 && activeSubMenu === linkId && (
-                  <ul
-                    ref={(el) => {
-                      if (el) subMenuRefs.current.set(linkId, el);
-                    }}
-                    className="absolute mt-2 bg-white shadow-md text-black p-4 rounded-lg space-y-2 z-20"
-                    style={{ 
-                      minWidth: '200px',
-                      maxWidth: '300px',
-                      boxSizing: 'border-box'
-                    }}
-                  >
-                    {link.subLinks.map((subLink, subIndex) => {
-                      const subLinkId = `${linkId}-sublink-${subIndex}`;
-                      const subLinkLabel = subLink.label || 'Submenu Item';
-                      
-                      return (
-                        <li key={subLinkId}>
-                          {subLink.href?.startsWith('#') ? (
-                            <button
-                              onClick={() => {
-                                handleScrollTo(subLink.href!.substring(1));
-                                handleSubLinkClick();
-                              }}
-                              className="block w-full text-left text-black font-poppins hover:text-blue-500 font-semibold uppercase transition-colors"
-                            >
-                              {subLinkLabel}
-                            </button>
-                          ) : (
-                            <Link
-                              href={subLink.href || '#'}
-                              className="block text-black font-poppins hover:text-blue-500 font-semibold uppercase transition-colors"
-                              onClick={handleSubLinkClick}
-                            >
-                              {subLinkLabel}
-                            </Link>
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-              </li>
-            );
-          })}
+          {navLinks.map((link, index) => renderMenuItem(link, '', index))}
         </ul>
       </nav>
     </div>
