@@ -1,7 +1,7 @@
 // src/app/component/KeyImpact.tsx
-import Image from 'next/image';
+import Image from "next/image";
 
-import { UmbracoPageData, Indicator } from '@/types/home';
+import { UmbracoPageData, Indicator } from "@/types/home";
 
 interface KeyImpactProps {
   pageData: UmbracoPageData;
@@ -17,11 +17,11 @@ const KeyImpact: React.FC<KeyImpactProps> = ({ pageData }) => {
         <div className="flex items-center translate-x-[2.5rem] md:translate-x-[7rem] lg:translate-x-[11.2rem]">
           <div className="relative z-20">
             <h2 className="main-Tipography text-[2rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[6rem] 2xl:text-[8rem] font-pragmatica uppercase text-ColorPrincipal leading-[2rem] md:leading-[4rem] xl:leading-[6rem] 2xl:leading-[8rem]">
-              {keyImpactTitle || 'Key Impact Indicators'}
+              {keyImpactTitle || "Key Impact Indicators"}
             </h2>
           </div>
           <p className="text-[3rem] sm:text-[5.3rem] md:text-[8rem] lg:text-[9rem] xl:text-[14rem] 2xl:text-[20rem] font-PerformanceMark translate-x-[-2.5rem] sm:translate-x-[-2.5rem] md:translate-x-[-7rem] lg:translate-x-[-13rem] xl:translate-x-[-11rem] 2xl:translate-x-[-12rem] text-white relative z-10">
-            {targetYear || '2030'}
+            {targetYear || "2030"}
           </p>
         </div>
 
@@ -37,7 +37,7 @@ const KeyImpact: React.FC<KeyImpactProps> = ({ pageData }) => {
                 width={400}
                 height={400}
                 quality={80}
-                style={{ width: 'auto', height: 'auto' }}
+                style={{ width: "auto", height: "auto" }}
               />
               <p className="text-2xl font-poppins font-semibold capitalize">
                 {indicator.indicatorDescription}

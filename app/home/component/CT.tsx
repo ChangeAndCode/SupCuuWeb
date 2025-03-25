@@ -1,21 +1,21 @@
-import Image from 'next/image';
-import Startup from './Startup';
-import CardEntrepreneur from './CardEntrepreneur';
-import CardStartups from './CardStartups';
-import CardInvestors from './CardInvestors';
-import CardCorporates from './CardCorporates';
-import Carousel from './Carousel';
-import WeAre from './WeAre';
-import Cohete from './cohete';
-import AnImpact from './AnImpact';
-import TimeLine from './TimeLine';
-import KeyImpact from './KeyImpact';
-import Transformative from './Transformative';
-import Partners from './Partners';
-import MeetTeam from './MeetTeam';
-import Backbone from './Backbone';
-import Form from '../../form/page';
-import { UmbracoPageData, MeetTeamTitles } from '@/types/home';
+import Image from "next/image";
+import Startup from "./Startup";
+import CardEntrepreneur from "./CardEntrepreneur";
+import CardStartups from "./CardStartups";
+import CardInvestors from "./CardInvestors";
+import CardCorporates from "./CardCorporates";
+import Carousel from "./Carousel";
+import WeAre from "./WeAre";
+import Cohete from "./cohete";
+import AnImpact from "./AnImpact";
+import TimeLine from "./TimeLine";
+import KeyImpact from "./KeyImpact";
+import Transformative from "./Transformative";
+import Partners from "./Partners";
+import MeetTeam from "./MeetTeam";
+import Backbone from "./Backbone";
+import Form from "../../form/page";
+import { UmbracoPageData, MeetTeamTitles } from "@/types/home";
 
 interface CTProps {
   pageData: UmbracoPageData;
@@ -33,7 +33,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
     teamBackbone,
   } = pageData;
 
-  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL || '';
+  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL || "";
 
   return (
     <div className="pt-24 overflow-hidden">
@@ -78,7 +78,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
               alt="News"
               width={900}
               height={900}
-              style={{ height: 'auto' }}
+              style={{ height: "auto" }}
               quality={80}
               priority
             />
