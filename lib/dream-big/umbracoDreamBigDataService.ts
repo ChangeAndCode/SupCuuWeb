@@ -1,7 +1,7 @@
+//@lib/dream-big/umbracoDreamBigDataService.js
 import { getUmbracoContent } from "../server/umbracoApi";
 import { stripHtml } from "@/utils/umbraco-text";
 import { UmbracoDreamBigData } from "@/types/dream-big";
-
 export async function getDreamBigData(): Promise<UmbracoDreamBigData> {
   const content = await getUmbracoContent("sites/dream-big");
 
@@ -35,8 +35,10 @@ export async function getDreamBigData(): Promise<UmbracoDreamBigData> {
             ),
             buttonOne: item.content.properties.buttonOne,
             colorButtonOne: item.content.properties.colorButtonOne,
+            hrefButtonOne: item.content.properties.hrefButtonOne,
             buttonTwo: item.content.properties.buttonTwo,
             colorButtonTwo: item.content.properties.colorButtonTwo,
+            hrefButtonTwo: item.content.properties.hrefButtonTwo,
             width: item.content.properties.width,
             height: item.content.properties.height,
             description: {

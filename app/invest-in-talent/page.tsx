@@ -5,7 +5,7 @@ import { getInvestPageData } from "@/lib/invest-in-talent";
 import { ProfileCarousel } from "./components/ProfileCarousel";
 import { ContactForm } from "./components/ContactForm";
 import { Header } from "./components/Header";
-import Loading from "./loading";
+import Loading from "@components/Loading";
 import ContacUs from "../form/components/ContacUs";
 import RedesSociales from "../form/components/RedesSociales";
 import { getFooterData } from "@/lib/form/umbracoFooterDataService";
