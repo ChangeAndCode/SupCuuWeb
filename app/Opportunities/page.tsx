@@ -1,4 +1,3 @@
-import FilterBy from "./Components/FilterBy";
 import CardsContainer from "./Components/CardsContainer";
 import WantToStayUpdated from "./Components/WantToStayUpdated";
 import Form from "../form/page";
@@ -29,12 +28,8 @@ const pageEvents = () => {
             Events & Opportunities
           </h2>
         </div>
-
         <div className="max-w-[1500px] mx-auto">
-          <FilterBy />
-        </div>
-        <div className="max-w-[1500px] mx-auto">
-        <CardsContainer />
+          <CardsContainer />
         </div>
         <div className="max-w-[1500px] mx-auto">
           <WantToStayUpdated />

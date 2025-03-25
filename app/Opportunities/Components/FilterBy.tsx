@@ -1,6 +1,13 @@
+"use client";
 import { ChevronDown } from "lucide-react";
 
-const FilterBy = () => {
+interface FilterByProps {
+  onFilterChange: (searchTerm: string) => void;
+  filterType: string;
+  onFilterTypeChange: (type: string) => void;
+}
+
+const FilterBy = ({ onFilterChange, filterType, onFilterTypeChange }: FilterByProps) => {
   return (
     <div
       className="
@@ -22,8 +29,7 @@ const FilterBy = () => {
         bg-ColorPrincipal
         text-white 
         font-semibold 
-        rounded-l-md
-        "
+        rounded-l-md"
       >
         FILTER BY
       </button>
@@ -31,6 +37,7 @@ const FilterBy = () => {
       <input
         type="text"
         placeholder="Search..."
+        onChange={(e) => onFilterChange(e.target.value)}
         className="
         xs:text-xs
         sm:text-sm
@@ -44,12 +51,28 @@ const FilterBy = () => {
       />
 
       <div className="relative">
-        <button
-          aria-label="dropdown"
-          className="px-4 py-2 text-blue-600 flex items-center"
+        <select
+          value={filterType}
+          onChange={(e) => onFilterTypeChange(e.target.value)}
+          className="
+          appearance-none
+          px-4 
+          py-2 
+          pr-8
+          cursor-pointer
+          text-gray-700
+          bg-transparent
+          border-l
+          border-gray-300
+          focus:outline-none"
         >
-          <ChevronDown size={16} />
-        </button>
+          <option value="title">Título</option>
+          <option value="description">Descripción</option>
+          <option value="all">Todos</option>
+        </select>
+        <div className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2">
+          <ChevronDown size={16} className="text-gray-500" />
+        </div>
       </div>
     </div>
   );
