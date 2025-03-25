@@ -30,7 +30,7 @@ const CarouselEvents = ({ eventsData }: CarouselEventsProps) => {
 
   const { properties } = data;
 
-  const eventDataItem: CarouselEventData = {  
+  const eventDataItem: CarouselEventData = {
     title: properties.events.items[0].content.properties.titleEvent,
     description: properties.events.items[0].content.properties.descriptionEvents,
     date: properties.events.items[0].content.properties.dateEvent,
@@ -40,22 +40,16 @@ const CarouselEvents = ({ eventsData }: CarouselEventsProps) => {
 
   // Adjust translateX value to make width dynamic
   const getTranslateValue = () => {
-    if (windowWidth >= 1536) {
-      return `${currentIndex * 30}%`; // 2xl value
-    }
-    if (windowWidth >= 1280) {
-      return `${currentIndex * 25}%`; // xl value
-    }
-    if (windowWidth >= 1024) {
-      return `${currentIndex * 33}%`; // lg value
-    }
-    return `${currentIndex * 100}%`; // md, sm, xs value
-  };
+    const totalItems = properties.events.items.length;
+    const visibleItems = windowWidth >= 1024 ? 2 : 1;
+    const slidePercentage = 100 / visibleItems;
 
+    return `${currentIndex * slidePercentage}%`;
+  };
   const handleNext = () => {
     const totalItems = properties.events.items.length;
     const step = windowWidth >= 1280 ? 2 : 1;
-    setCurrentIndex(prevIndex => 
+    setCurrentIndex((prevIndex) =>
       prevIndex + step >= totalItems ? 0 : prevIndex + step
     );
   };
@@ -63,22 +57,24 @@ const CarouselEvents = ({ eventsData }: CarouselEventsProps) => {
   const handlePrev = () => {
     const totalItems = properties.events.items.length;
     const step = windowWidth >= 1280 ? 2 : 1;
-    setCurrentIndex(prevIndex => 
+    setCurrentIndex((prevIndex) =>
       prevIndex - step < 0 ? totalItems - step : prevIndex - step
     );
   };
-
   return (
-    <div className="
+    <div
+      className="
       flex 
       flex-col 
       items-center 
       w-full
       lg:pb-40 
       z-0
-    ">
+    "
+    >
       {/* Hero Section with Title Overlay */}
-      <div className="
+      <div
+        className="
         relative 
         w-full 
         lg:w-[60%]
@@ -92,7 +88,8 @@ const CarouselEvents = ({ eventsData }: CarouselEventsProps) => {
           className="w-full h-auto object-cover"
           priority
         />
-        <h1 className="
+        <h1
+          className="
           absolute 
           inset-0 
           flex 
@@ -115,16 +112,16 @@ const CarouselEvents = ({ eventsData }: CarouselEventsProps) => {
       </div>
 
       {/* Carousel Wrapper */}
-      <div className="
+      <div
+        className="
         relative 
         w-full
-        lg:w-[80%] 
+        lg:w-[90%] 
         mt-6 
         md:mt-8 
         overflow-hidden
         xs:bottom-14
         md:bottom-[88px]
-        lg:flex lg:justify-start
         z-0
       ">
         {/* Carousel Items */}
@@ -132,37 +129,42 @@ const CarouselEvents = ({ eventsData }: CarouselEventsProps) => {
           className="flex transition-transform duration-500"
           style={{ transform: `translateX(-${getTranslateValue()})` }}
         >
-         {properties.events.items.map((event: any) => {
-  const { titleEvent, descriptionEvents, dateEvent, locationEvents, imagesEvents, linkEvents } = 
-    event.content.properties;
-  
-  return (
-    <div
-      key={event.content.id}
-      className="
-        flex-shrink-0 
-        w-full 
-        px-4 
-        lg:w-[70%] 
-        lg:max-w-[650px]
-        xl:max-w-[480px] 
-        2xl:max-w-[600px]
+          {properties.events.items.map((event: any) => {
+            const {
+              titleEvent,
+              descriptionEvents,
+              dateEvent,
+              locationEvents,
+              imagesEvents,
+              linkEvents,
+            } = event.content.properties;
 
-      "
-    >
-      <EventCard
-        title={titleEvent}
-        description={descriptionEvents}
-        date={dateEvent}
-        location={locationEvents}
-        image={imagesEvents}
-        nextPublicApiUrl={nextPublicApiUrl}
-        onClick={() => linkEvents && window.open(linkEvents, '_blank')}
-      />
-    </div>
-  );
-})}
-
+            return (
+              <div
+                key={event.content.id}
+                className="
+                flex-shrink-0 
+                w-full 
+                px-4 
+                lg:w-1/2 
+                h-auto 
+                min-h-[350px]
+              "
+              >
+                <EventCard
+                  title={titleEvent}
+                  description={descriptionEvents}
+                  date={dateEvent}
+                  location={locationEvents}
+                  image={imagesEvents}
+                  nextPublicApiUrl={nextPublicApiUrl}
+                  onClick={() =>
+                    linkEvents && window.open(linkEvents, "_blank")
+                  }
+                />
+              </div>
+            );
+          })}
         </div>
 
         {/* Navigation Buttons */}

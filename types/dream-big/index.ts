@@ -1,3 +1,4 @@
+// In @/types/dream-big.ts
 export interface UmbracoDreamBigData {
   principalTitle: string;
   principalTitleTwo: string;
@@ -19,8 +20,16 @@ export interface UmbracoDreamBigData {
           }>;
           buttonOne: string;
           colorButtonOne: string;
+          hrefButtonOne: Array<{
+            url: string;
+            target: string | null;
+          }> | null;
           buttonTwo: string;
           colorButtonTwo: string;
+          hrefButtonTwo: Array<{
+            url: string;
+            target: string | null;
+          }> | null;
           width: number;
           height: number;
           description: {

@@ -45,7 +45,7 @@ function NextJumpComponent({
           {/* CTA Button */}
           <a
             href={checkListCtaButtonHref}
-            className="mt-4 flex justify-center lg:justify-end relative" // Add relative and z-20
+            className="mt-4 flex justify-center lg:justify-end relative z-20" // Add relative and z-20
           >
             <button
               className="bg-[#ff4544] text-white 
@@ -72,12 +72,12 @@ function NextJumpComponent({
           bg-no-repeat bg-center 
           bg-cover md:bg-[length:120vw_100%]
           mt-[-8rem] sm:mt-[-12rem] md:mt-[-17rem]
-          relative pb-24 pointer-events-none"
+          relative pb-24"
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32">
+      </div>
           <Accelerators accelerators={accelerators} title={acceleratorsTitle} />
         </div>
-      </div>
       <div className="max-w-[1500px] mx-auto">
         <CarouselEventsContainer />
         </div>

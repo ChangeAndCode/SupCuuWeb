@@ -16,9 +16,18 @@ export interface UmbracoPageData {
   newsSlides: NewsSlide[];
   presidentCardData: presidentCardData;
   teamBackbone: BackboneTeamMember[];
+
   keyImpactTitle: string;
   keyImpactIndicators: Indicator[]; // Changed indicators to keyImpactIndicators
   targetYear: string;
+  weAreContent: {
+    highlightText: string;
+    description: string;
+  };
+  impactContent: {
+    mainText: string;
+  };
+
 }
 
 export interface ProfileCTA {

@@ -9,6 +9,7 @@ import { UmbracoImage } from "@/types/umbraco";
 import { TextElement } from "@/types/common/text-elements";
 import { getImageUrl } from "@/utils/umbracoImageHelper";
 
+
 const defaultSlides: NewsSlide[] = [
   {
     carouselTitle: "Título por defecto",
@@ -87,9 +88,11 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         imageAlt:
           properties.profileUrl.items[0].content.properties.profileImage[0]
             .name,
-        buttonContent: properties.profileUrl.items[0].content.properties.title,
+        buttonContent:
+          properties.profileUrl.items[0].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[0].content.properties.callToAction[0].url,
+          properties.profileUrl.items[0].content.properties.callToAction[0]
+            .url,
         question:
           properties.profileUrl.items[0]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -103,9 +106,11 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         imageAlt:
           properties.profileUrl.items[1].content.properties.profileImage[0]
             .name,
-        buttonContent: properties.profileUrl.items[1].content.properties.title,
+        buttonContent:
+          properties.profileUrl.items[1].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[1].content.properties.callToAction[0].url,
+          properties.profileUrl.items[1].content.properties.callToAction[0]
+            .url,
         question:
           properties.profileUrl.items[1]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -116,12 +121,15 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         imageUrl: getImageUrl(
           properties.profileUrl.items[2].content.properties.profileImage[0].url
         ),
+
         imageAlt:
           properties.profileUrl.items[2].content.properties.profileImage[0]
             .name,
-        buttonContent: properties.profileUrl.items[2].content.properties.title,
+        buttonContent:
+          properties.profileUrl.items[2].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[2].content.properties.callToAction[0].url,
+          properties.profileUrl.items[2].content.properties.callToAction[0]
+            .url,
         question:
           properties.profileUrl.items[2]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -135,9 +143,11 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         imageAlt:
           properties.profileUrl.items[3].content.properties.profileImage[0]
             .name,
-        buttonContent: properties.profileUrl.items[3].content.properties.title,
+        buttonContent:
+          properties.profileUrl.items[3].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[3].content.properties.callToAction[0].url,
+          properties.profileUrl.items[3].content.properties.callToAction[0]
+            .url,
         question:
           properties.profileUrl.items[3]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -145,15 +155,28 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           ) ?? [],
       },
     },
-    teamMembers: properties.partners?.items.map((item: any) => ({
-      id: item.content.properties.pId,
-      image: getImageUrl(item.content.properties.pImage[0].url),
-      name: item.content.properties.pName,
-      position: item.content.properties.pPosition,
-      description: item.content.properties.pDescription?.markup
-        ? stripHtml(item.content.properties.pDescription.markup)
-        : "Sin descripción",
-    })) || [],
+
+    weAreContent: {
+      highlightText: properties.highlightText || "Sin descripción",
+      description: properties.description?.markup 
+      ? stripHtml(properties.description.markup)
+      : "Sin descripción"
+    },
+    impactContent: {
+      mainText: properties.mainText || "Sin descripción"
+    },
+    teamMembers:
+      properties.partners?.items.map((item: any) => ({
+        id: item.content.properties.pId,
+        image: `${nextPublicApiUrl}${
+          item.content.properties.pImage[0].url || "/placeholder.webp"
+        }`,
+        name: item.content.properties.pName,
+        position: item.content.properties.pPosition,
+        description: item.content.properties.pDescription?.markup
+          ? stripHtml(item.content.properties.pDescription.markup)
+          : "Sin descripción",
+      })) || [],
     meetTeamTitles: {
       titleH3: properties.textH3?.markup
         ? stripHtml(properties.textH3.markup)
@@ -169,15 +192,11 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         : "Background por defecto",
     },
     timelineData: {
-      desecText: properties.text
-        ? stripHtml(properties.text)
-        : "Default desecText",
+      desecText: properties.text ? stripHtml(properties.text) : "Default desecText",
       futuraText: properties.text2
         ? stripHtml(properties.text2)
         : "Default futuraText",
-      mitText: properties.text3
-        ? stripHtml(properties.text3)
-        : "Default mitText",
+      mitText: properties.text3 ? stripHtml(properties.text3) : "Default mitText",
     },
     newsSlides: newsSlides.length > 0 ? newsSlides : defaultSlides,
 

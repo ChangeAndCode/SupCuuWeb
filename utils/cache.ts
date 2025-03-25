@@ -5,7 +5,7 @@ import { UmbracoContent } from "@/types/umbraco";
 // Configuración del cache
 const options = {
   max: 100, // Máximo de elementos en el cache
-  ttl: 1000 * 60 * 5, // Tiempo de vida de 5 minutos (en milisegundos)
+  ttl: 1000 * 10, // Tiempo de vida de 10 seconds (en milisegundos) - Adjust as needed
 };
 
 // Crear la instancia del cache
