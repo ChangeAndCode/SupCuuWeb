@@ -1,6 +1,50 @@
-import Image from 'next/image';
+'use client';
+import { useEffect, useState } from "react";
+import Image from "next/image";
+
+
+interface Indicator {(UmbracoPageData)}
 
 const KeyImpact: React.FC = () => {
+  const [indicators, setIndicators] = useState<Indicator[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/umbraco?path=landing-page");
+        const data = await response.json();
+        
+        console.log("Fetched Data:", data); 
+  
+        if (!data.indicators?.items || !Array.isArray(data.indicators.items)) {
+          console.error("No indicators found in API response");
+          return;
+        }
+  
+        const parsedIndicators = data.indicators.items.map((item: any) => {
+          const id = item.content.id;
+          const matchingImage = data.impactImage.find((img: any) => img.id === id);
+          const imageUrl = matchingImage ? matchingImage.url : "";
+  
+          console.log(`Indicator: ${id} -> Image URL: ${imageUrl}`);
+  
+          return {
+            value: item.content.properties.value,
+            unit: item.content.properties.unit,
+            indicatorDescription: item.content.properties.indicatorDescription,
+            imageUrl: data.impactImage[index]?.url ?? ""
+          };
+        });
+  
+        setIndicators(parsedIndicators);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
   return (
     <div>
       <div className="flex flex-col justify-center items-center overflow-hidden">
@@ -14,45 +58,26 @@ const KeyImpact: React.FC = () => {
             2030
           </p>
         </div>
+
         <div className="flex flex-col xl:flex-row items-center xl:items-start xl:justify-around px-10 md:px-12 lg:px-28 gap-8">
-          <div className="flex flex-col w-full md:w-7/12 lg:w-6/12 xl:w-3/12 mb-10 lg:mb-0 gap-8">
-            <Image
-              src="/Indicators/startup.webp"
-              alt="Indicators startup"
-              width={400}
-              height={400}
-              quality={80}
-            />
-            <p className="text-2xl font-poppins font-semibold capitalize">
-              Attract or promote tech-based companies in the region, with a focus on sectors aligned with regional specialization.
-            </p>
-          </div>
-          <div className="flex flex-col w-full md:w-7/12 lg:w-6/12 xl:w-3/12 mb-10 lg:mb-0 gap-8">
-            <Image
-              src="/Indicators/millions.webp"
-              alt="Indicators millions"
-              width={400}
-              height={400}
-              quality={80}
-            />
-            <p className="text-2xl font-poppins font-semibold capitalize">
-              Structure risk capital funds with an emphasis on angel investment, seeking to achieve this total investment.
-            </p>
-          </div>
-          <div className="flex flex-col w-full md:w-7/12 lg:w-6/12 xl:w-3/12 mb-10 lg:mb-0 gap-8">
-            <Image
-              src="/Indicators/chihuahua.webp"
-              alt="indicators chihuahua"
-              width={400}
-              height={400}
-              quality={80}
-            />
-            <p className="text-2xl font-poppins font-semibold capitalize">
-              Encourage regional startups and tech-based companies to contribute to this percentage of the region’s economic output.
-            </p>
-          </div>
+          {indicators.map((indicator, index) => (
+            <div key={index} className="flex flex-col w-full md:w-7/12 lg:w-6/12 xl:w-3/12 mb-10 lg:mb-0 gap-8">
+              <Image
+                src={indicator.imageUrl}
+                alt={indicator.indicatorDescription}
+                width={400}
+                height={400}
+                quality={80}
+                style={{ width: "auto", height: "auto" }}
+              />
+              <p className="text-2xl font-poppins font-semibold capitalize">
+                {indicator.indicatorDescription}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
+
       <div className="px-7 flex justify-end">
         <p className="text-[5rem] md:text-[11rem] lg:text-[15rem] xl:text-[19rem] font-PerformanceMark whitespace-nowrap text-white">
           now
