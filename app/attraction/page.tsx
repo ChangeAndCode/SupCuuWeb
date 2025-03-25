@@ -18,6 +18,12 @@ import BtnFAQ from "@components/btnct/btnFAQ";
 import { getAttractionData } from "@/lib/attraction/attractionDataService";
 import React, { Suspense } from "react";
 
+const Loading = () => (
+  <div className="flex justify-center items-center h-screen">
+    <p className="text-lg font-bold">Cargando...</p>
+  </div>
+);
+
 export default async function page() {
   const attractionData = await getAttractionData();
   return (
@@ -59,7 +65,10 @@ export default async function page() {
         </div>
       </div>
       <div className="relative bg-landing bg-no-repeat bg-center bg-[length:120vw_100%]">
-        <WhoIs />
+        <Suspense fallback={<Loading />}>
+          <WhoIs data={attractionData} />
+        </Suspense>
+        
         <div className="flex justify-center absolute bottom-[-2rem] xl:bottom-0 right-0 left-0">
           <Image
             src="/titelLogo.webp"

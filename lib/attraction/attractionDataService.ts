@@ -22,7 +22,7 @@ export async function getAttractionData(): Promise<AttractionData> {
       heroButton: properties.heroButton,
       videoTitle: properties.videoTitle || "titulo no disponible",
       videoLink: (properties.videoLink || []).map((link: any) => ({
-        url: `${nextPublicApiUrl}${link.url}`,
+        url: link.url,
         title: link.title || "titulo no disponible",
       })),
       nBMTitle: properties.nBMTitle || "titulo no disponible",
