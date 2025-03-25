@@ -49,10 +49,27 @@ export async function getAttractionData(): Promise<AttractionData> {
           },
         })),
       },
+      engineTitle: properties.engineTitle,
       engineImage: (properties.engineImage || []).map((image: any) => ({
         name: image.name,
         url: `${nextPublicApiUrl}${image.url}`,
       })),
+      teamMembers: {
+        items: (properties.teamMembers.items || []).map((member: any) => ({
+          content: {
+            properties: {
+              teamImage: (member.content.properties.teamImage || []).map(
+                (image: any) => ({
+                  name: image.name,
+                  url: `${nextPublicApiUrl}${image.url}`,
+                })
+              ),
+              teamTitle: member.content.properties.teamTitle,
+              teamRole: member.content.properties.teamRole,
+            },
+          },
+        })),
+      },
       alwaysTitle: properties.alwaysTitle,
       alwaysSubtitle: properties.alwaysSubtitle,
       alwaysButton: properties.alwaysButton,

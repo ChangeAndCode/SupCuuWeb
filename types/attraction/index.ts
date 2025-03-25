@@ -27,10 +27,25 @@ export interface AttractionData {
         };
       }>;
     };
+    engineTitle: string;
     engineImage: Array<{
       name: string;
       url: string;
     }>;
+    teamMembers: {
+      items: Array<{
+        content: {
+          properties: {
+            teamImage: Array<{
+              name: string;
+              url: string;
+            }>;
+            teamTitle: string;
+            teamRole: string;
+          };
+        };
+      }>;
+    };
     alwaysTitle: string;
     alwaysSubtitle: string;
     alwaysButton: string;

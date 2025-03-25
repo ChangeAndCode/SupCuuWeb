@@ -5,7 +5,7 @@ import NextBest from "./components/NextBest";
 import FocusIn from "./components/FocusIn";
 import InnovationEngine from "./components/InnovationEngine";
 import Team from "./components/Team";
-import Alwais from "./components/Alwais";
+import Always from "./components/Always";
 import History from "./components/History";
 import Supports from "./components/Supports";
 import Provides from "./components/Provides";
@@ -68,7 +68,7 @@ export default async function page() {
         <Suspense fallback={<Loading />}>
           <WhoIs data={attractionData} />
         </Suspense>
-        
+
         <div className="flex justify-center absolute bottom-[-2rem] xl:bottom-0 right-0 left-0">
           <Image
             src="/titelLogo.webp"
@@ -81,19 +81,27 @@ export default async function page() {
         </div>
       </div>
       <div id="next-best">
-        <NextBest />
+        <Suspense fallback={<Loading />}>
+          <NextBest data={attractionData} />
+        </Suspense>
       </div>
       <div className="bg-[#c4cfd6] pb-[10rem]">
-        <FocusIn />
+        <Suspense fallback={<Loading />}>
+          <FocusIn data={attractionData} />
+        </Suspense>
       </div>
       <div className="pt-[5rem] md:pt-0">
-        <InnovationEngine />
+        <Suspense fallback={<Loading />}>
+          <InnovationEngine data={attractionData} />
+        </Suspense>
       </div>
       <div className="bg-[url('/Bg/bgHoja.webp')] bg-no-repeat bg-center bg-cover pt-[15rem] pb-[16rem] mt-[-6rem] md:mt-[-3rem] xl:mt-0 relative z-10 pointer-events-none">
-        <Team />
+        <Suspense fallback={<Loading />}>
+          <Team data={attractionData} />
+        </Suspense>
       </div>
       <div className="bg-ColorPrincipal mt-[-14rem] md:mt-[-9rem] lg:mt-[-8rem] xl:mt-[-12rem] relative z-[1]">
-        <Alwais />
+        <Always />
       </div>
       <div className="bg-history bg-no-repeat bg-center bg-cover pt-[52rem] sm:pt-[43rem] md:pt-[48rem] lg:pt-[46rem] xl:pt-[28rem] 2xl:pt-[26rem] pb-[55rem] sm:pb-[46rem] md:pb-[50rem] xl:pb-[35rem] mt-[-48rem] sm:mt-[-45rem] lg:mt-[-43rem] xl:mt-[-28rem] relative z-10 pointer-events-none">
         <History />
