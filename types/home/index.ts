@@ -1,3 +1,4 @@
+import { UmbracoImage } from "../umbraco";
 export interface UmbracoPageData {
   profileIcon: {
     url: string;
@@ -14,7 +15,10 @@ export interface UmbracoPageData {
   timelineData: TimelineData;
   newsSlides: NewsSlide[];
   presidentCardData: presidentCardData;
-  teamBackbone: BackboneTeamMember[]
+  teamBackbone: BackboneTeamMember[];
+  keyImpactTitle: string;
+  keyImpactIndicators: Indicator[]; // Changed indicators to keyImpactIndicators
+  targetYear: string;
 }
 
 export interface ProfileCTA {
@@ -71,6 +75,7 @@ export interface BackboneTeamMember {
   emailText: string;
   email: string;
 }
+
 export interface Indicator {
   value: string;
   unit: string;
