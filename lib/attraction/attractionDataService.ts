@@ -211,6 +211,30 @@ export async function getAttractionData(): Promise<AttractionData> {
         })
       ),
       worldSpanBottomContent: properties.worldSpanBottomContent,
+      heroButtonUrl: (properties.heroButtonUrl || []).map((link: any) => ({
+        url: link.url,
+        title: link.title || null,
+      })),
+      nBMButtonUrl: (properties.nBMButtonUrl || []).map((link: any) => ({
+        url: link.url,
+        title: link.title || null,
+      })),
+      alwaysButtonUrl: (properties.alwaysButtonUrl || []).map((link: any) => ({
+        url: link.url,
+        title: link.title || null,
+      })),
+      togetherButtonUrl: (properties.togetherButtonUrl || []).map(
+        (link: any) => ({
+          url: link.url,
+          title: link.title || null,
+        })
+      ),
+      provideSpanDropdown: properties.provideSpanDropdown || "",
+      provideSpanContent: {
+        markup: properties.provideSpanContent?.markup
+          ? stripHtml(properties.provideSpanContent.markup)
+          : "",
+      },
     },
   };
 }

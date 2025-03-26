@@ -10,13 +10,15 @@ import History from "./components/History";
 import Supports from "./components/Supports";
 import Provides from "./components/Provides";
 import Together from "./components/Together";
-import CarruselDoors from "./components/CarouselDoors";
+import CarouselDoors from "./components/CarouselDoors";
 import Possible from "./components/Possible";
 import World from "./components/World";
 import Form from "../form/page";
 import BtnFAQ from "@components/btnct/btnFAQ";
 import { getAttractionData } from "@/lib/attraction/attractionDataService";
 import React, { Suspense } from "react";
+export const dynamic = "force-dynamic";
+export const revalidate = 10;
 
 const Loading = () => (
   <div className="flex justify-center items-center h-screen">
@@ -127,7 +129,7 @@ export default async function page() {
       </div>
       <div className="bg-landing bg-no-repeat bg-center bg-[length:120vw_100%] mt-[-12rem]">
         <Suspense fallback={<Loading />}>
-          <CarruselDoors data={attractionData} />
+          <CarouselDoors data={attractionData} />
         </Suspense>
       </div>
       <div className="pb-[5rem]">

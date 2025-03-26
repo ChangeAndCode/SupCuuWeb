@@ -165,5 +165,25 @@ export interface AttractionData {
       }>;
     };
     worldSpanBottomContent: string;
+    heroButtonUrl: Array<{
+      url: string;
+      title?: string | null;
+    }>;
+    nBMButtonUrl: Array<{
+      url: string;
+      title?: string | null;
+    }>;
+    alwaysButtonUrl: Array<{
+      url: string;
+      title?: string | null;
+    }>;
+    togetherButtonUrl: Array<{
+      url: string;
+      title?: string | null;
+    }>;
+    provideSpanDropdown: string;
+    provideSpanContent: {
+      markup: string;
+    };
   };
 }

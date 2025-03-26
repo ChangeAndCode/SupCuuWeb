@@ -12,18 +12,32 @@ const World: React.FC<UmbracoAttractionData> = ({ data }) => {
       <div>
         <h3
           className="font-pragmatica main-Tipography text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] xl:text-[3.5rem] 2xl:text-[3.8rem] 3xl:text-[5rem]
-                ml-0 md:ml-[-3rem] lg:ml-[-5rem] xl:ml-[-7rem] 2xl:ml-[-7rem]
-                uppercase text-ColorPrincipal leading-tight md:leading-[4rem] lg:leading-[5rem] xl:leading-[6rem]"
+    ml-0 md:ml-[-3rem] lg:ml-[-5rem] xl:ml-[-7rem] 2xl:ml-[-7rem]
+    uppercase text-ColorPrincipal leading-tight md:leading-[4rem] lg:leading-[5rem] xl:leading-[6rem]"
         >
-          The world is
-          <br /> open to those with
-          <br />
+          {data.properties.worldFirstContent?.items?.map(
+            (item: any, index: number) => (
+              <React.Fragment key={`first-${index}`}>
+                {item.content.properties.stringText}
+                <br />
+              </React.Fragment>
+            )
+          )}
+
           <span className="font-PerformanceMark text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[6.5rem] 2xl:text-[7.3rem] 3xl:text-[9.5rem]">
             {data.properties.worldSpanMiddleContent}
           </span>
           <br />
-          and the courage to
-          <br /> pursue them{" "}
+
+          {data.properties.worldSecondContent?.items?.map(
+            (item: any, index: number) => (
+              <React.Fragment key={`second-${index}`}>
+                {item.content.properties.stringText}
+                <br />
+              </React.Fragment>
+            )
+          )}
+
           <span className="font-poppins text-[1.5rem]">
             {data.properties.worldSpanBottomContent}
           </span>
