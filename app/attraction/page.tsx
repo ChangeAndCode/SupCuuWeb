@@ -101,32 +101,52 @@ export default async function page() {
         </Suspense>
       </div>
       <div className="bg-ColorPrincipal mt-[-14rem] md:mt-[-9rem] lg:mt-[-8rem] xl:mt-[-12rem] relative z-[1]">
-        <Always />
+        <Suspense fallback={<Loading />}>
+          <Always data={attractionData} />
+        </Suspense>
       </div>
       <div className="bg-history bg-no-repeat bg-center bg-cover pt-[52rem] sm:pt-[43rem] md:pt-[48rem] lg:pt-[46rem] xl:pt-[28rem] 2xl:pt-[26rem] pb-[55rem] sm:pb-[46rem] md:pb-[50rem] xl:pb-[35rem] mt-[-48rem] sm:mt-[-45rem] lg:mt-[-43rem] xl:mt-[-28rem] relative z-10 pointer-events-none">
-        <History />
+        <Suspense fallback={<Loading />}>
+          <History data={attractionData} />
+        </Suspense>
       </div>
       <div className="pb-[5rem] mt-[-33rem] sm:mt-[-29rem] md:mt-[-25rem] xl:mt-[-8rem] 2xl:mt-[-6rem]">
-        <Supports />
+        <Suspense fallback={<Loading />}>
+          <Supports data={attractionData} />
+        </Suspense>
       </div>
       <div className="pb-[5rem]">
-        <Provides />
+        <Suspense fallback={<Loading />}>
+          <Provides data={attractionData} />
+        </Suspense>
       </div>
       <div className="bg-[#E9EBED] pt-[8rem] pb-[20rem]">
-        <Together />
+        <Suspense fallback={<Loading />}>
+          <Together data={attractionData} />
+        </Suspense>
       </div>
       <div className="bg-landing bg-no-repeat bg-center bg-[length:120vw_100%] mt-[-12rem]">
-        <CarruselDoors />
+        <Suspense fallback={<Loading />}>
+          <CarruselDoors data={attractionData} />
+        </Suspense>
       </div>
       <div className="pb-[5rem]">
-        <Possible />
+        <Suspense fallback={<Loading />}>
+          <Possible data={attractionData} />
+        </Suspense>
       </div>
       <div>
-        <World />
+        <Suspense fallback={<Loading />}>
+          <World data={attractionData} />
+        </Suspense>
       </div>
-      <Form />
+      <Suspense fallback={<Loading />}>
+        <Form />
+      </Suspense>
       <div className="fixed bottom-8 right-8 z-50">
-        <BtnFAQ pdfUrl="/FAQ.pdf" buttonText="FAQ" />
+        <Suspense fallback={<Loading />}>
+          <BtnFAQ pdfUrl="/FAQ.pdf" buttonText="FAQ" />
+        </Suspense>
       </div>
     </div>
   );

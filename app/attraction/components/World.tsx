@@ -1,6 +1,12 @@
 import Image from "next/image"
+import React from "react";
+import { AttractionData } from "@/types/attraction";
 
-const World = () => {
+interface UmbracoAttractionData {
+  data: AttractionData;
+}
+
+const World: React.FC<UmbracoAttractionData> = ({data}) => {
   return (
     <div className='relative flex items-center pb-[5rem] px-[2rem] md:px-[4.6rem] lg:px-[6.5rem] xl:px-[9rem] 2xl:px-[15rem] 3xl:px-[17rem]'>
         <div>

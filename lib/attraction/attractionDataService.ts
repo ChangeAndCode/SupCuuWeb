@@ -81,10 +81,9 @@ export async function getAttractionData(): Promise<AttractionData> {
               richText: {
                 markup: item.content.properties.richText?.markup
                   ? stripHtml(item.content.properties.richText?.markup)
-                  : "contenido no disponible",
+                  : "",
               },
-              stringText:
-                item.content.properties.stringText || "contenido no disponible",
+              stringText: item.content.properties.stringText || "",
             },
           },
         })),
@@ -96,7 +95,7 @@ export async function getAttractionData(): Promise<AttractionData> {
       blockContent: {
         markup: properties.blockContent?.markup
           ? stripHtml(properties.blockContent?.markup)
-          : "contenido no disponible",
+          : "",
       },
       historySubtitle: properties.historySubtitle,
       historySubtitleContent: {
@@ -107,11 +106,9 @@ export async function getAttractionData(): Promise<AttractionData> {
                 richText: {
                   markup: item.content.properties.richText.markup
                     ? stripHtml(item.content.properties.richText.markup)
-                    : "contenido no disponible",
+                    : "",
                 },
-                stringText:
-                  item.content.properties.stringText ||
-                  "contenido no disponible",
+                stringText: item.content.properties.stringText || "",
               },
             },
           })
