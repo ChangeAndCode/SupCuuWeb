@@ -99,6 +99,8 @@ export interface AttractionData {
         };
       }>;
     };
+    provideTitle: string;
+    provideSubtitle: string;
     provideCheckIcon: Array<{
       name: string;
       url: string;
@@ -144,11 +146,23 @@ export interface AttractionData {
       url: string;
     }>;
     worldFirstContent: {
-      markup: string;
+      items: Array<{
+        content: {
+          properties: {
+            stringText: string;
+          };
+        };
+      }>;
     };
     worldSpanMiddleContent: string;
     worldSecondContent: {
-      markup: string;
+      items: Array<{
+        content: {
+          properties: {
+            stringText: string;
+          };
+        };
+      }>;
     };
     worldSpanBottomContent: string;
   };

@@ -123,7 +123,7 @@ export async function getAttractionData(): Promise<AttractionData> {
               supContent: {
                 markup: item.content.properties.supContent?.markup
                   ? stripHtml(item.content.properties.supContent?.markup)
-                  : "Contenido no disponible",
+                  : "",
               },
               supImage: (item.content.properties.supImage || []).map(
                 (image: any) => ({
@@ -135,6 +135,8 @@ export async function getAttractionData(): Promise<AttractionData> {
           },
         })),
       },
+      provideTitle: properties.provideTitle,
+      provideSubtitle: properties.provideSubtitle,
       provideCheckIcon: (properties.provideCheckIcon || []).map(
         (icon: any) => ({
           name: icon.name,
@@ -145,8 +147,7 @@ export async function getAttractionData(): Promise<AttractionData> {
         items: (properties.provideContent.items || []).map((item: any) => ({
           content: {
             properties: {
-              stringText:
-                item.content.properties.stringText || "contenido no disponible",
+              stringText: item.content.properties.stringText || "",
             },
           },
         })),
@@ -190,17 +191,25 @@ export async function getAttractionData(): Promise<AttractionData> {
         name: image.name,
         url: `${nextPublicApiUrl}${image.url}`,
       })),
-      worldFirstContent: {
-        markup: properties.worldFirstContent?.markup
-          ? stripHtml(properties.worldFirstContent?.markup)
-          : "Contenido no disponible",
-      },
+      worldFirstContent: (properties.worldFirstContent.items || []).map(
+        (wFcontent: any) => ({
+          content: {
+            properties: {
+              stringText: wFcontent.content.properties.stringText,
+            },
+          },
+        })
+      ),
       worldSpanMiddleContent: properties.worldSpanMiddleContent,
-      worldSecondContent: {
-        markup: properties.worldSecondContent?.markup
-          ? stripHtml(properties.worldSecondContent?.markup)
-          : "Contenido no disponible",
-      },
+      worldSecondContent: (properties.worldSecondContent.items || []).map(
+        (wScontent: any) => ({
+          content: {
+            properties: {
+              stringText: wScontent.content.properties.stringText,
+            },
+          },
+        })
+      ),
       worldSpanBottomContent: properties.worldSpanBottomContent,
     },
   };

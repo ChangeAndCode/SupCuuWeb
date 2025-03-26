@@ -10,7 +10,7 @@ import History from "./components/History";
 import Supports from "./components/Supports";
 import Provides from "./components/Provides";
 import Together from "./components/Together";
-import CarruselDoors from "./components/CarruselDoors";
+import CarruselDoors from "./components/CarouselDoors";
 import Possible from "./components/Possible";
 import World from "./components/World";
 import Form from "../form/page";
