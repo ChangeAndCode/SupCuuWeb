@@ -1,4 +1,3 @@
-// src/app/component/CT.tsx
 import Image from "next/image";
 import Startup from "./Startup";
 import CardEntrepreneur from "./CardEntrepreneur";
@@ -98,7 +97,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
             alt="Company Logo"
             width={370}
             height={270}
-            style={{ height: "auto" }}
+            style={{ height: 'auto' }}
             quality={80}
           />
         </div>
@@ -120,7 +119,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
         <TimeLine timelineData={timelineData} />
       </div>
       <div className="mb-[-2rem] md:mb-[-4rem] lg:mb-[-6rem] xl:mb-[-7rem]">
-        <KeyImpact />
+        <KeyImpact pageData={pageData} />
       </div>
       <div className="bg-white mb-[-5rem] sm:mb-[-7rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">
         <Transformative />

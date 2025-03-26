@@ -1,8 +1,14 @@
-// lib/home/umbracoDataService.ts
 import { getUmbracoContent } from "../server/umbracoApi";
 import { stripHtml } from "@/utils/umbraco-text";
-import { UmbracoPageData, NewsSlide } from "@/types/home";
+import {
+  UmbracoPageData,
+  NewsSlide,
+  Indicator,
+} from "@/types/home";
+import { UmbracoImage } from "@/types/umbraco";
 import { TextElement } from "@/types/common/text-elements";
+import { getImageUrl } from "@/utils/umbracoImageHelper";
+
 
 const defaultSlides: NewsSlide[] = [
   {
@@ -16,7 +22,7 @@ const defaultSlides: NewsSlide[] = [
 
 export async function getLandingPageData(): Promise<UmbracoPageData> {
   const content = await getUmbracoContent("landing-page");
-  // console.log(content);
+
   if (!content || !content.properties) {
     throw new Error("Failed to fetch landing page data");
   }
@@ -24,30 +30,61 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
   const { properties } = content;
   const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL || "";
 
+  // News Slides
   const newsSlides: NewsSlide[] = properties.newsCarousel?.items
     ? properties.newsCarousel.items
         .map((item: any) => ({
           carouselTitle: item.content.properties.carouselTitle?.markup || "",
           carouselDescription:
             item.content.properties.carouselDescription?.markup || "",
-          carouselImage:
-            item.content.properties.carouselImage?.[0]?.url || "/prueba.webp",
+          carouselImage: getImageUrl(
+            item.content.properties.carouselImage?.[0]?.url
+          ),
           carouselImageName:
             item.content.properties.carouselImage?.[0]?.name || "untitled",
           isActive: item.content.properties.isActive || false,
         }))
         .filter((slide: NewsSlide) => slide.isActive)
     : defaultSlides;
+
+  // Impact Images
+  const impactImage: UmbracoImage[] = properties.impactImage
+    ? properties.impactImage.map((image: any) => ({
+        focalPoint: image.focalPoint,
+        crops: image.crops,
+        id: image.id,
+        name: image.name,
+        mediaType: image.mediaType,
+        url: getImageUrl(image.url),
+        extension: image.extension,
+        width: image.width,
+        height: image.height,
+        bytes: image.bytes,
+        properties: image.properties,
+      }))
+    : [];
+
+  // Key Impact Indicators
+  const keyImpactIndicators: Indicator[] = properties.indicators?.items
+    ? properties.indicators.items.map((item: any, index: number) => ({
+        value: item.content.properties.value || "",
+        unit: item.content.properties.unit || "",
+        indicatorDescription:
+          item.content.properties.indicatorDescription || "",
+        imageUrl: impactImage[index]?.url || "", // Assign imageUrl here
+      }))
+    : [];
+
   return {
     profileIcon: {
-      url: `${nextPublicApiUrl}${properties.profileIcon[0].url}`,
+      url: getImageUrl(properties.profileIcon[0].url),
       name: properties.profileIcon[0].name,
     },
     profiles: {
       entrepreneur: {
-        imageUrl: `${nextPublicApiUrl}${
+        imageUrl: getImageUrl(
           properties.profileUrl.items[0].content.properties.profileImage[0].url
-        }`,
+        ),
         imageAlt:
           properties.profileUrl.items[0].content.properties.profileImage[0]
             .name,
@@ -63,9 +100,9 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           ) ?? [],
       },
       startups: {
-        imageUrl: `${nextPublicApiUrl}${
+        imageUrl: getImageUrl(
           properties.profileUrl.items[1].content.properties.profileImage[0].url
-        }`,
+        ),
         imageAlt:
           properties.profileUrl.items[1].content.properties.profileImage[0]
             .name,
@@ -81,9 +118,10 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           ) ?? [],
       },
       investors: {
-        imageUrl: `${nextPublicApiUrl}${
+        imageUrl: getImageUrl(
           properties.profileUrl.items[2].content.properties.profileImage[0].url
-        }`,
+        ),
+
         imageAlt:
           properties.profileUrl.items[2].content.properties.profileImage[0]
             .name,
@@ -99,9 +137,9 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           ) ?? [],
       },
       corporates: {
-        imageUrl: `${nextPublicApiUrl}${
+        imageUrl: getImageUrl(
           properties.profileUrl.items[3].content.properties.profileImage[0].url
-        }`,
+        ),
         imageAlt:
           properties.profileUrl.items[3].content.properties.profileImage[0]
             .name,
@@ -117,6 +155,7 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           ) ?? [],
       },
     },
+
     weAreContent: {
       highlightText: properties.highlightText || "Sin descripción",
       description: properties.description?.markup 
@@ -170,7 +209,7 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
           return "";
         }
       ),
-      logoImageUrl: properties.logoImage[0].url,
+      logoImageUrl: getImageUrl(properties.logoImage[0].url),
       logoImageName: properties.logoImage[0].name,
       subContent: (properties.subContent.items as TextElement[]).map((item) => {
         if (item.content.contentType === "stringTextElement") {
@@ -178,19 +217,20 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
         }
         return "";
       }),
-      presidentImageUrl: properties.presidentImage[0].url,
+      presidentImageUrl: getImageUrl(properties.presidentImage[0].url),
       presidentImageName: properties.presidentImage[0].name,
     },
     teamBackbone: properties.teamMembers?.items.map((item: any) => ({
       memberName: item.content.properties.memberName,
-      image: `${nextPublicApiUrl}${
-        item.content.properties.image[0].url || "/placeholder.webp"
-      }`,
+      image: getImageUrl(item.content.properties.image[0].url),
       title: item.content.properties.title,
       subtitle: item.content.properties.subtitle,
       description: item.content.properties.description,
       emailText: item.content.properties.emailText,
       email: item.content.properties.email,
     })),
+    keyImpactTitle: properties.keyImpactTitle,
+    keyImpactIndicators: keyImpactIndicators, //  Pass keyImpactIndicators here!
+    targetYear: properties.targetYear,
   };
 }
