@@ -68,7 +68,7 @@ const Provides: React.FC<UmbracoAttractionData> = ({ data }) => {
             onClick={() => toggleSection("startup")}
             className="w-full bg-[#f0f0f0] text-ColorPrincipal font-pragmatica text-[1.5rem] py-2 px-6 flex justify-between items-center rounded-2xl uppercase"
           >
-            <span>Startup Chihuahua:</span>
+            <span>{data.properties.provideSpanDropdown}</span>
             {openSections.startup ? (
               <IoIosArrowUp size={20} />
             ) : (
@@ -77,14 +77,7 @@ const Provides: React.FC<UmbracoAttractionData> = ({ data }) => {
           </button>
           {openSections.startup && (
             <p className="font-poppins mt-2 p-4 text-[1.2rem] px-[2rem] text-justify">
-              Serves as the backbone office for the innovation-driven
-              entrepreneurial ecosystem in the region. Its mission is to support
-              and promote high-tech and scientific business models. Established
-              through the collaboration of municipal and state governments,
-              economic development leaders like DESEC A.C., and expert
-              institutions such as the Orion Technology Park, Startup Chihuahua
-              focuses on fostering innovation through startups created or
-              attracted to the region.
+              {data.properties.provideSpanContent.markup}
             </p>
           )}
         </div>

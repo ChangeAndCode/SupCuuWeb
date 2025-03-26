@@ -15,32 +15,32 @@ const World: React.FC<UmbracoAttractionData> = ({ data }) => {
     ml-0 md:ml-[-3rem] lg:ml-[-5rem] xl:ml-[-7rem] 2xl:ml-[-7rem]
     uppercase text-ColorPrincipal leading-tight md:leading-[4rem] lg:leading-[5rem] xl:leading-[6rem]"
         >
-          {data.properties.worldFirstContent?.items?.map(
-            (item: any, index: number) => (
-              <React.Fragment key={`first-${index}`}>
+          {data.properties.worldFirstContent.map((item, index) => (
+            <p key={`first-${index}`} className="block">
+              {item.content.properties.stringText}
+            </p>
+          ))}
+
+          <p className="block">
+            <span className="font-PerformanceMark text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[6.5rem] 2xl:text-[7.3rem] 3xl:text-[9.5rem]">
+              {data.properties.worldSpanMiddleContent}
+            </span>
+          </p>
+
+          {data.properties.worldSecondContent.map((item, index) => {
+            const isLast =
+              index === data.properties.worldSecondContent.length - 1;
+            return (
+              <p key={`second-${index}`} className="block">
                 {item.content.properties.stringText}
-                <br />
-              </React.Fragment>
-            )
-          )}
-
-          <span className="font-PerformanceMark text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[6.5rem] 2xl:text-[7.3rem] 3xl:text-[9.5rem]">
-            {data.properties.worldSpanMiddleContent}
-          </span>
-          <br />
-
-          {data.properties.worldSecondContent?.items?.map(
-            (item: any, index: number) => (
-              <React.Fragment key={`second-${index}`}>
-                {item.content.properties.stringText}
-                <br />
-              </React.Fragment>
-            )
-          )}
-
-          <span className="font-poppins text-[1.5rem]">
-            {data.properties.worldSpanBottomContent}
-          </span>
+                {isLast && (
+                  <span className="font-poppins text-[1.5rem] ml-2">
+                    {data.properties.worldSpanBottomContent}
+                  </span>
+                )}
+              </p>
+            );
+          })}
         </h3>
       </div>
       <div

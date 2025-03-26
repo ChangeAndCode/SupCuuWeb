@@ -29,7 +29,7 @@ const NextBest: React.FC<UmbracoAttractionData> = ({ data }) => {
         <BtnCT
           Text={data.properties.nBMButton}
           variant="secondary"
-          href="https://zcform.com/btnwb"
+          href={data.properties.nBMButtonUrl?.[0]?.url || "#"}
         />
       </div>
     </div>

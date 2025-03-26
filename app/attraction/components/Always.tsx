@@ -19,7 +19,7 @@ const Always: React.FC<UmbracoAttractionData> = ({ data }) => {
         Text={data.properties.alwaysButton}
         variant="outline"
         className="z-20"
-        href="https://zcform.com/btnwb"
+        href={data.properties.alwaysButtonUrl?.[0]?.url || "#"}
       />
     </div>
   );

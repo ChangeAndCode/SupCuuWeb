@@ -14,21 +14,21 @@ const Possible: React.FC<UmbracoAttractionData> = ({ data }) => {
       </h2>
       <div className="flex flex-wrap justify-center gap-8 mt-8">
         {data.properties.possibleImages.map((image, index) => (
-          <div
-            key={index}
-            className="flex justify-center w-[200px] h-[150px] md:w-[250px] md:h-[180px] xl:w-[250px] xl:h-[170px]"
-          >
-            <div className="relative w-full h-full">
-              <Image
-                src={image.url}
-                alt={image.name || "Logo"}
-                fill
-                className="object-contain"
-                quality={80}
-                loading="lazy"
-              />
+          <React.Fragment key={index}>
+            <div className="flex justify-center w-[200px] h-[150px] md:w-[250px] md:h-[180px] xl:w-[250px] xl:h-[170px]">
+              <div className="relative w-full h-full">
+                <Image
+                  src={image.url}
+                  alt={image.name || "Logo"}
+                  fill
+                  className="object-contain"
+                  quality={80}
+                  loading="lazy"
+                />
+              </div>
             </div>
-          </div>
+            {(index + 1) % 4 === 0 && <div className="w-full h-0" />}
+          </React.Fragment>
         ))}
       </div>
     </>

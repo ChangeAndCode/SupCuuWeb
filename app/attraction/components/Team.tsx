@@ -36,17 +36,20 @@ const Team: React.FC<UmbracoAttractionData> = ({ data }) => {
                 : ""
             }`}
           >
-            {member.content.properties.teamImage.map((image: any) => (
-              <Image
-                src={image.url}
-                alt={image.name}
-                width={300}
-                height={200}
-                quality={80}
-                loading="lazy"
-                className="w-auto h-[320px] object-cover"
-              />
-            ))}
+            {member.content.properties.teamImage.map(
+              (image: any, imageIndex: number) => (
+                <Image
+                  key={`${image.url}-${imageIndex}`}
+                  src={image.url}
+                  alt={image.name}
+                  width={300}
+                  height={200}
+                  quality={80}
+                  loading="lazy"
+                  className="w-auto h-[320px] object-cover"
+                />
+              )
+            )}
 
             <div className="w-[300px]">
               <p className="font-pragmatica main-Tipography uppercase text-[1.4rem]">

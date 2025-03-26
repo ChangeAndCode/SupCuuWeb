@@ -41,7 +41,7 @@ export default async function page() {
           <div className="flex flex-col md:flex-row items-center w-full justify-between md:pr-[2.5rem] mt-[4rem] gap-4">
             <BtnCT
               Text={attractionData.properties.heroButton}
-              href="https://zcform.com/btnwb"
+              href={attractionData.properties.heroButtonUrl?.[0]?.url || "#"}
             />
             <a
               href="#next-best"

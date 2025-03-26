@@ -34,7 +34,7 @@ const Together: React.FC<UmbracoAttractionData> = ({ data }) => {
           <BtnCT
             Text={data.properties.togetherButton}
             variant="secondary"
-            href="https://zcform.com/btnwb"
+            href={data.properties.togetherButtonUrl?.[0]?.url || "#"}
           />
         </div>
       </div>
