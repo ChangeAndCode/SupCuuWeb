@@ -1,99 +1,38 @@
-import Image from 'next/image'
+import Image from "next/image";
+import React from "react";
+import { AttractionData } from "@/types/attraction";
 
-const Possible = () => {
-  return (
-    <>
-      <h2 className='font-PerformanceMark text-ColorPrincipal text-[3rem] md:text-[3.5rem] lg:text-[4.5rem] xl:text-[6rem] 2xl:text-[8rem] text-center'>This is possible thanks to:</h2>
-      <div className='flex flex-col md:flex-row md:flex-wrap xl:flex-nowrap justify-center xl:justify-around items-center gap-8'>
-        <div className='w-full md:w-[45%] xl:w-auto flex justify-center'>
-          <div className='relative w-[200px] h-[150px] md:w-[250px] md:h-[180px] xl:w-[250px] xl:h-[170px]'>
-            <Image
-              src='/carrusel/chihuahua.webp'
-              alt='Company Logo'
-              fill
-              className='object-contain'
-              quality={80}
-              loading='lazy'
-            />
-          </div>
-        </div>
-        <div className='w-full md:w-[45%] xl:w-auto flex justify-center'>
-          <div className='relative w-[200px] h-[150px] md:w-[250px] md:h-[180px] xl:w-[250px] xl:h-[170px]'>
-            <Image
-              src='/carrusel/gobierno.webp'
-              alt='Company Logo'
-              fill
-              className='object-contain'
-              quality={80}
-              loading='lazy'
-            />
-          </div>
-        </div>
-        <div className='w-full md:w-[45%] xl:w-auto flex justify-center'>
-          <div className='relative w-[200px] h-[150px] md:w-[250px] md:h-[180px] xl:w-[250px] xl:h-[170px]'>
-            <Image
-              src='/carrusel/madata.webp'
-              alt='Company Logo'
-              fill
-              className='object-contain'
-              quality={80}
-              loading='lazy'
-            />
-          </div>
-        </div>
-        <div className='w-full md:w-[45%] xl:w-auto flex justify-center'>
-          <div className='relative w-[200px] h-[150px] md:w-[250px] md:h-[180px] xl:w-[250px] xl:h-[170px]'>
-            <Image
-              src='/carrusel/ilum.webp'
-              alt='Company Logo'
-              fill
-              className='object-contain'
-              quality={80}
-              loading='lazy'
-            />
-          </div>
-        </div>
-      </div>
-      <div className='flex flex-col md:flex-row flex-wrap justify-center items-center gap-8 mt-8'>
-        <div className='w-full md:w-[45%] xl:w-auto flex justify-center'>
-          <div className='relative w-[200px] h-[150px] md:w-[250px] md:h-[180px] xl:w-[250px] xl:h-[170px]'>
-            <Image
-              src='/carrusel/orion.webp'
-              alt='Company Logo'
-              fill
-              className='object-contain'
-              quality={80}
-              loading='lazy'
-            />
-          </div>
-        </div>
-        <div className='w-full md:w-full xl:w-auto flex justify-center'>
-          <div className='relative w-[300px] h-[200px] md:w-[500px] md:h-[200px] xl:w-[500px] xl:h-[170px]'>
-            <Image
-              src='/carrusel/tec.webp'
-              alt='Company Logo'
-              fill
-              className='object-contain'
-              quality={80}
-              loading='lazy'
-            />
-          </div>
-        </div>
-        <div className='w-full md:w-[45%] xl:w-auto flex justify-center'>
-          <div className='relative w-[200px] h-[150px] md:w-[250px] md:h-[180px] xl:w-[250px] xl:h-[170px]'>
-            <Image
-              src='/carrusel/alfa.webp'
-              alt='Company Logo'
-              fill
-              className='object-contain'
-              quality={80}
-              loading='lazy'
-            />
-          </div>
-        </div>
-      </div>
-    </>
-  )
+interface UmbracoAttractionData {
+  data: AttractionData;
 }
 
-export default Possible
+const Possible: React.FC<UmbracoAttractionData> = ({ data }) => {
+  return (
+    <>
+      <h2 className="font-PerformanceMark text-ColorPrincipal text-[3rem] md:text-[3.5rem] lg:text-[4.5rem] xl:text-[6rem] 2xl:text-[8rem] text-center">
+        {data.properties.possibleTitle}
+      </h2>
+      <div className="flex flex-wrap justify-center gap-8 mt-8">
+        {data.properties.possibleImages.map((image, index) => (
+          <React.Fragment key={index}>
+            <div className="flex justify-center w-[200px] h-[150px] md:w-[250px] md:h-[180px] xl:w-[250px] xl:h-[170px]">
+              <div className="relative w-full h-full">
+                <Image
+                  src={image.url}
+                  alt={image.name || "Logo"}
+                  fill
+                  className="object-contain"
+                  quality={80}
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            {(index + 1) % 4 === 0 && <div className="w-full h-0" />}
+          </React.Fragment>
+        ))}
+      </div>
+    </>
+  );
+};
+
+export default Possible;

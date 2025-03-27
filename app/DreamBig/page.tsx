@@ -13,6 +13,7 @@ const Loading = () => (
 );
 export const dynamic = "force-dynamic";
 export const revalidate = 10;
+
 export default async function Page() {
   const dreamBigData = await getDreamBigData();
   return (
