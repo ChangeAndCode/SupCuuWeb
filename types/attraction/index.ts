@@ -165,6 +165,10 @@ export interface AttractionData {
       url: string;
       title?: string | null;
     }>;
+    heroButtonExplorer: Array<{
+      url: string;
+      title?: string | null;
+    }>;
     nBMButtonUrl: Array<{
       url: string;
       title?: string | null;
