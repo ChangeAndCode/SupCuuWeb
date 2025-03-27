@@ -45,8 +45,9 @@ const History: React.FC<UmbracoAttractionData> = ({ data }) => {
           />
         </div>
         <div className="relative flex flex-col xl:flex-row items-center xl:justify-end mt-[5rem]">
-          {data.properties.blockImage.map((image: any) => (
+          {data.properties.blockImage.map((image: any, index: any) => (
             <Image
+              key={`blockImage-${index}`}
               src={image.url}
               alt={image.name}
               width={670}
