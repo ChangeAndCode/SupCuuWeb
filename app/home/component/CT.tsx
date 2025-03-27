@@ -35,7 +35,6 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
     impactContent 
   } = pageData;
 
-  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL || "";
 
   return (
     <div className="pt-24 overflow-hidden">
@@ -88,7 +87,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
         </div>
 
         <div className="relative flex justify-center items-center bg-[url('/Bg/bgNews.webp')] bg-no-repeat bg-center bg-cover z-10 py-0 lg:py-[7rem] xl:py-0">
-          <Carousel slides={newsSlides} nextPublicApiUrl={nextPublicApiUrl} />
+          <Carousel slides={newsSlides} />
         </div>
         <div>{/* <CarouselNews/> */}</div>
         <div className="absolute bottom-[-50px] 4xl:bottom-[-180px] right-[.5rem] md:right-[4rem] lg:right-[8rem] xl-sm:right-[18rem] 4xl:right-[25rem] translate-y-[-2.5rem]">

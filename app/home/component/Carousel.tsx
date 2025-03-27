@@ -1,27 +1,22 @@
-// src/app/component/Carousel.tsx
+//app/home/component/Carousel.tsx
 import { Suspense } from 'react';
 import CarouselClient from './CarouselClient';
 import { NewsSlide } from '@/types/home';
+import Loading from 'components/Loading';
 
 interface CarouselProps {
   slides: NewsSlide[];
-  nextPublicApiUrl: string;
+ 
 }
 
-const Carousel = ({ slides, nextPublicApiUrl }: CarouselProps) => {
+const Carousel = ({ slides }: CarouselProps) => {
   if (!slides || slides.length === 0) {
     return null;
   }
-
-  // We ensure that the data is correctly serialized.
-  const serializedSlides = JSON.parse(JSON.stringify(slides));
-
+  
   return (
-    <Suspense fallback={null}>
-      <CarouselClient
-        slides={serializedSlides}
-        nextPublicApiUrl={nextPublicApiUrl || ''}
-      />
+    <Suspense fallback={<Loading />}>
+      <CarouselClient slides={slides} />
     </Suspense>
   );
 };

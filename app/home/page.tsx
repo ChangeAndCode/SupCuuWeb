@@ -6,6 +6,7 @@ import {
   getImageUrl,
   HomeContent,
 } from '@/lib/header';
+import { getLocale } from '@/lib/Localization';
 import {
   getLandingPageData,
 } from '@/lib/home/umbracoDataService';
@@ -80,8 +81,9 @@ const Home: React.FC<HomeProps> = async ({ homeContent, pageData }) => {
 };
 
 export default async function HomePage() {
-  const homeContent = await getHomeContent();
-  const pageData = await getLandingPageData();
+  const locale = await getLocale();
+  const homeContent = await getHomeContent(locale);
+  const pageData = await getLandingPageData(locale);
 
   return <Home homeContent={homeContent} pageData={pageData} />;
 }

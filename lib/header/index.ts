@@ -31,9 +31,9 @@ export interface HomeContent extends UmbracoContent {
   properties: HomeProperties;
 }
 
-export async function getHomeContent(): Promise<HomeContent | null> {
+export async function getHomeContent(culture: string = "en-us"): Promise<HomeContent | null> {
   try {
-    const content = (await getUmbracoContent('header-hero')) as HomeContent;
+    const content = (await getUmbracoContent('header-hero', culture)) as HomeContent;
     return content;
   } catch (error) {
     console.error('Error fetching header content:', error);
@@ -48,3 +48,4 @@ export function getImageUrl(imageUrl: string): string {
   );
   return `${baseUrl}${imageUrl}`;
 }
+

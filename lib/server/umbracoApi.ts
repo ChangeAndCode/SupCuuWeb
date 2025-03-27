@@ -17,7 +17,6 @@ export async function getUmbracoContent(
     )}?fields=${fields}`;
     const cacheTag = `umbraco-content:${path}`;
 
-    console.log(`Fetching from Umbraco: ${apiUrl}`); // Add this log
 
     const response = await fetch(apiUrl, {
       headers: {
@@ -40,7 +39,6 @@ export async function getUmbracoContent(
 
     const content = (await response.json()) as UmbracoContent;
 
-    console.log(`Content fetched from Umbraco: ${path}`); // Add this log
     return content;
   } catch (error) {
     console.error('Failed to fetch content:', error);

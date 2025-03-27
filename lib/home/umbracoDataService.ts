@@ -14,21 +14,19 @@ const defaultSlides: NewsSlide[] = [
   {
     carouselTitle: "Título por defecto",
     carouselDescription: "Descripción por defecto",
-    carouselImage: "/prueba.webp",
+    carouselImage: "/etiqueta.webp",
     carouselImageName: "imagen por defecto",
     isActive: true,
   },
 ];
 
-export async function getLandingPageData(): Promise<UmbracoPageData> {
-  const content = await getUmbracoContent("landing-page");
-
+export async function getLandingPageData(culture: string = "en-us"): Promise<UmbracoPageData> {
+  const content = await getUmbracoContent("/", culture);
   if (!content || !content.properties) {
     throw new Error("Failed to fetch landing page data");
   }
 
   const { properties } = content;
-  const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL || "";
 
   // News Slides
   const newsSlides: NewsSlide[] = properties.newsCarousel?.items
@@ -168,9 +166,9 @@ export async function getLandingPageData(): Promise<UmbracoPageData> {
     teamMembers:
       properties.partners?.items.map((item: any) => ({
         id: item.content.properties.pId,
-        image: `${nextPublicApiUrl}${
+        image: getImageUrl(
           item.content.properties.pImage[0].url || "/placeholder.webp"
-        }`,
+        ),
         name: item.content.properties.pName,
         position: item.content.properties.pPosition,
         description: item.content.properties.pDescription?.markup

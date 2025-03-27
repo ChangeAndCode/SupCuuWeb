@@ -7,15 +7,15 @@ import type { NewsSlide } from "@/types/home";
 
 interface CarouselClientProps {
   slides: NewsSlide[];
-  nextPublicApiUrl: string;
 }
 
-const CarouselClient: React.FC<CarouselClientProps> = ({ slides, nextPublicApiUrl }) => {
-  const [isClient, setIsClient] = useState(false);
+  
+const CarouselClient: React.FC<CarouselClientProps> = ({ slides }) => {
+
   const { currentIndex, getTranslateValue, showPrevious, showNext } = useCarousel(
     slides.length
   );
-
+  const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -62,7 +62,7 @@ const CarouselClient: React.FC<CarouselClientProps> = ({ slides, nextPublicApiUr
                 </div>
                 <div className="w-4/5 flex justify-center items-center">
                   <Image
-                    src={`${nextPublicApiUrl}${card.carouselImage}`}
+                    src={`${card.carouselImage}`}
                     alt={card.carouselImageName}
                     width={490}
                     height={390}
@@ -71,7 +71,7 @@ const CarouselClient: React.FC<CarouselClientProps> = ({ slides, nextPublicApiUr
                     priority
                     loading="eager"
                     placeholder="blur"
-                    blurDataURL={`${nextPublicApiUrl}${card.carouselImage}`}
+                    blurDataURL={`${card.carouselImage}`}
                   />
                 </div>
               </div>
