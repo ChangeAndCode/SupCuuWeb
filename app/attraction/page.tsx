@@ -44,11 +44,13 @@ export default async function page() {
               href={attractionData.properties.heroButtonUrl?.[0]?.url || "#"}
             />
             <a
-              href="#next-best"
+              href={
+                attractionData.properties.heroButtonExplorer?.[0]?.url || "#"
+              }
               rel="noopener noreferrer"
               className="relative main-Tipography text-[.8rem] sm:text-[1.3rem] lg:text-[1.5rem] uppercase font-pragmatica rounded-full flex justify-center items-center bg-ColorPrincipal text-white w-full md:w-auto py-[.7rem] md:px-[3rem]"
             >
-              EXPLORE OPPORTUNITIES
+              {attractionData.properties.heroButtonExplorer?.[0]?.title}
             </a>
           </div>
         </div>

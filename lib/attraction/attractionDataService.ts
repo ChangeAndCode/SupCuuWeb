@@ -215,6 +215,12 @@ export async function getAttractionData(): Promise<AttractionData> {
         url: link.url,
         title: link.title || null,
       })),
+      heroButtonExplorer: (properties.heroButtonExplorer || []).map(
+        (link: any) => ({
+          url: link.url,
+          title: link.title || null,
+        })
+      ),
       nBMButtonUrl: (properties.nBMButtonUrl || []).map((link: any) => ({
         url: link.url,
         title: link.title || null,
