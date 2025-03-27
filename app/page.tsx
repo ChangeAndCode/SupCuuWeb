@@ -2,6 +2,7 @@
 import Home from './home/page';
 import HomeLayout from './home/layout'; // Import the layout
 
+export const dynamic = 'force-dynamic';
 export default async function HomeRoot() {
   return (
     <HomeLayout>
