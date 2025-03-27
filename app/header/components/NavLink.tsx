@@ -17,20 +17,47 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
 
   const toggleMenu = (id: string, event: React.MouseEvent) => {
     event.stopPropagation();
-    
-    setActiveMenus(prevActiveMenus => {
+    setActiveMenus((prevActiveMenus) => {
       const newActiveMenus = new Set(prevActiveMenus);
-      
       if (newActiveMenus.has(id)) {
         // Find and remove this menu and all its children
         const toRemove = Array.from(newActiveMenus).filter(
-          menu => menu === id || menu.startsWith(`${id}-`)
+          (menu) => menu === id || menu.startsWith(`${id}-`),
         );
-        toRemove.forEach(menu => newActiveMenus.delete(menu));
+        toRemove.forEach((menu) => newActiveMenus.delete(menu));
       } else {
-        newActiveMenus.add(id);
+        // Mobile/Tablet: Just toggle the clicked menu, don't close siblings
+        if (isMobile) {
+          newActiveMenus.add(id);
+        } else {
+          // Desktop: Close sibling menus at the same level
+          const parentPrefix = id.includes('-')
+            ? id.substring(0, id.lastIndexOf('-'))
+            : '';
+          // Remove menus that share the same parent but are not this menu or its children
+          Array.from(newActiveMenus).forEach((menu) => {
+            // For top-level menus (no parent)
+            if (!parentPrefix && !menu.includes('-') && menu !== id) {
+              newActiveMenus.delete(menu);
+            }
+            // For nested menus with the same parent
+            else if (
+              parentPrefix &&
+              menu.startsWith(parentPrefix + '-') &&
+              !menu.startsWith(id) && // Don't close children of the menu being opened
+              menu.substring(0, menu.lastIndexOf('-')) === parentPrefix // Ensure it's a direct sibling
+            ) {
+              // Close the sibling and its children
+              const siblingToRemove = Array.from(newActiveMenus).filter(
+                (m) => m === menu || m.startsWith(`${menu}-`),
+              );
+              siblingToRemove.forEach((m) => newActiveMenus.delete(m));
+            }
+          });
+          // Add the current menu
+          newActiveMenus.add(id);
+        }
       }
-      
       return newActiveMenus;
     });
   };
@@ -46,46 +73,119 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.warn(`[handleScrollTo] Element not found: ${elementId}`);
     }
+    handleSubLinkClick();
   };
 
-  // Position submenus based on available screen space
+  // Desktop submenu positioning
   useEffect(() => {
-    subMenuRefs.current.forEach((subMenu, id) => {
-      if (activeMenus.has(id)) {
+    // Only run positioning logic for desktop view
+    if (isMobile || activeMenus.size === 0) return;
+
+    const positionSubmenus = () => {
+      // Process from top level to deepest nested to avoid cascade effects
+      const sortedMenuIds = Array.from(activeMenus).sort((a, b) => 
+        (a.match(/-/g) || []).length - (b.match(/-/g) || []).length
+      );
+      
+      for (const id of sortedMenuIds) {
+        const subMenu = subMenuRefs.current.get(id);
+        if (!subMenu) continue;
+        
+        // First reset all styles to get accurate measurements
+        subMenu.style.visibility = 'hidden'; // Hide during positioning
+        subMenu.style.left = '';
+        subMenu.style.right = '';
+        subMenu.style.top = '';
+        subMenu.style.bottom = '';
+        subMenu.style.maxHeight = '';
+        subMenu.style.overflowY = '';
+        subMenu.style.position = 'absolute'; // Ensure this is set
+        
+        // Apply initial positioning based on menu level
+        const isNested = id.includes('-');
+        if (isNested) {
+          subMenu.style.left = '100%';
+          subMenu.style.top = '1.5rem';
+          subMenu.style.marginLeft = '1px';
+        } else {
+          subMenu.style.left = '0';
+          subMenu.style.top = '100%';
+          subMenu.style.marginTop = '8px';
+        }
+        
+        // Force layout calculation
+        void subMenu.offsetHeight;
+        
+        // Now get accurate measurements
         const rect = subMenu.getBoundingClientRect();
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         
-        // Handle horizontal overflow
-        if (rect.right > viewportWidth) {
-          if (id.includes('-')) {
-            // For nested submenus, position to the left of parent
+        // Handle horizontal overflow with priority direction
+        if (rect.right > viewportWidth - 20) {
+          if (isNested) {
+            // Try left side first
             subMenu.style.left = 'auto';
             subMenu.style.right = '100%';
+            subMenu.style.marginLeft = '0';
+            subMenu.style.marginRight = '1px';
+            
+            // Check if it now overflows to the left
+            void subMenu.offsetHeight;
+            const newRect = subMenu.getBoundingClientRect();
+            if (newRect.left < 20) {
+              // If it overflows left too, choose the side with more space
+              if (rect.right - viewportWidth < newRect.left) {
+                // Reset to right side with scroll if needed
+                subMenu.style.left = '100%';
+                subMenu.style.right = 'auto';
+                subMenu.style.marginLeft = '1px';
+                subMenu.style.marginRight = '0';
+                subMenu.style.maxWidth = `${viewportWidth - rect.left - 40}px`;
+                subMenu.style.overflowX = 'auto';
+              }
+            }
           } else {
-            // For top-level, align to right of parent
+            // For top-level, align right and ensure it stays within viewport
             subMenu.style.left = 'auto';
             subMenu.style.right = '0';
           }
         }
         
         // Handle vertical overflow
-        if (rect.bottom > viewportHeight) {
-          const overflow = rect.bottom - viewportHeight;
-          // Ensure the submenu doesn't go below viewport
-          if (id.includes('-')) {
-            // For nested submenus
-            subMenu.style.top = 'auto';
-            subMenu.style.bottom = '0';
+        void subMenu.offsetHeight;
+        const updatedRect = subMenu.getBoundingClientRect();
+        if (updatedRect.bottom > viewportHeight - 20) {
+          const availableHeight = viewportHeight - updatedRect.top - 20;
+          
+          if (isNested) {
+            if (availableHeight < 100) {
+              // If there's very little space below, position above
+              subMenu.style.top = 'auto';
+              subMenu.style.bottom = '0';
+            } else {
+              // Otherwise, constrain height and add scroll
+              subMenu.style.maxHeight = `${availableHeight}px`;
+              subMenu.style.overflowY = 'auto';
+            }
           } else {
-            // For top-level, scroll if needed
-            subMenu.style.maxHeight = `${rect.height - overflow - 20}px`;
+            // For top level, just constrain height
+            subMenu.style.maxHeight = `${availableHeight}px`;
             subMenu.style.overflowY = 'auto';
           }
         }
+        
+        // Make visible again
+        subMenu.style.visibility = 'visible';
       }
-    });
+    };
+
+    // Position after a slight delay to ensure the DOM has updated
+    const timer = setTimeout(positionSubmenus, 0);
+    return () => clearTimeout(timer);
   }, [activeMenus, isMobile]);
 
   useEffect(() => {
@@ -96,107 +196,194 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
+      // Consider everything below xl breakpoint (1280px) as mobile/tablet for navigation
+      const newIsMobile = window.innerWidth < 1280;
+      // If transitioning between mobile and desktop, reset active menus
+      if (newIsMobile !== isMobile) {
+        setActiveMenus(new Set());
+      }
+      setIsMobile(newIsMobile);
+      if (!newIsMobile) {
+        setIsOpen(false); // Close mobile overlay if resizing to desktop
+      }
     };
 
     window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    handleResize(); // Initial check
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMobile]);
 
   // Recursive function to render menu items
-  const renderMenuItem = (link: NavLink, parentId: string = '', index: number = 0) => {
-    const hasSubLinks = link.subLinks && link.subLinks.length > 0;
+  const renderMenuItem = (
+    link: NavLink,
+    parentId: string = '',
+    index: number = 0,
+  ): React.ReactNode => {
     const id = parentId ? `${parentId}-${index}` : `nav-${index}`;
+    const hasSubLinks = link.subLinks && link.subLinks.length > 0;
     const isActive = activeMenus.has(id);
     const displayLabel = link.label || 'Menu Item';
-    
-    // Check if this is a top-level menu item (no parent) or an item in a dropdown
+
     const isInDropdown = parentId !== '';
+    const textColorClass = isInDropdown
+      ? 'text-black hover:text-blue-500'
+      : 'text-white hover:text-blue-200';
+
+    // Count nesting level for mobile indentation
+    const nestingLevel = parentId ? parentId.split('-').length : 0;
     
-    // Apply styling based on whether item is in a dropdown
-    const textColorClass = isInDropdown 
-      ? "text-black hover:text-blue-500" 
-      : "text-white hover:text-blue-200";
+    let renderedElement: React.ReactNode;
 
-    return (
-      <li 
-        key={id} 
-        className={`relative ${isMobile && isActive && hasSubLinks ? 'mb-16' : ''}`}
-      >
-        {hasSubLinks ? (
-          // It's a dropdown menu
-          <button
-            onClick={(e) => toggleMenu(id, e)}
-            className={`${textColorClass} font-poppins font-semibold uppercase transition-colors`}
-          >
-            {displayLabel}
-          </button>
-        ) : link.external ? (
-          // It's an external link
-          <a
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${textColorClass} font-poppins font-semibold uppercase transition-colors`}
-          >
-            {displayLabel}
-          </a>
-        ) : link.href?.startsWith('#') ? (
-          // It's an anchor link
-          <button
-            onClick={() => handleScrollTo(link.href!.substring(1))}
-            className={`${textColorClass} font-poppins font-semibold uppercase transition-colors`}
-          >
-            {displayLabel}
-          </button>
-        ) : (
-          // It's a normal internal link
-          <Link
-            href={link.href || '#'}
-            className={`${textColorClass} font-poppins font-semibold uppercase transition-colors`}
-          >
-            {displayLabel}
-          </Link>
-        )}
+    if (hasSubLinks) {
+      renderedElement = (
+        <button
+          onClick={(e) => toggleMenu(id, e)}
+          className={`${textColorClass} font-poppins font-semibold uppercase transition-colors flex items-center justify-between w-full`}
+        >
+          <span>{displayLabel}</span>
+          
+          {/* Show chevron only for mobile/tablet - improved alignment */}
+          {isMobile && (
+            <svg 
+              className={`flex-shrink-0 w-5 h-5 mr-4 transition-transform duration-200 ${isActive ? 'transform rotate-180' : ''}`} 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
+             
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth="2" 
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          )}
+        </button>
+      );
+    } else if (link.external) {
+      renderedElement = (
+        <a
+          href={link.href || '#'} // Added fallback just in case
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${textColorClass} font-poppins font-semibold uppercase transition-colors w-full block`}
+          onClick={handleSubLinkClick} // Close menu on click
+        >
+          {displayLabel}
+        </a>
+      );
+      if (!link.href) {
+        console.warn(
+          `[renderMenuItem] Warning: Rendering external link id ${id} with fallback href="#" because link.href is null or undefined.`,
+          link,
+        );
+      }
+    } else if (link.href?.startsWith('#')) {
+      renderedElement = (
+        <button
+          onClick={() => handleScrollTo(link.href!.substring(1))}
+          className={`${textColorClass} font-poppins font-semibold uppercase transition-colors w-full text-left`}
+        >
+          {displayLabel}
+        </button>
+      );
+    } else {
+      if (!link.href) {
+        console.warn(
+          `[renderMenuItem] Warning: Rendering internal link id ${id} with fallback href="#" because link.href is null or undefined.`,
+          link,
+        );
+      }
+      renderedElement = (
+        <Link
+          href={link.href || '#'} // Fallback to '#'
+          className={`${textColorClass} font-poppins font-semibold uppercase transition-colors w-full block`}
+          onClick={handleSubLinkClick} // Close menu on click
+        >
+          {displayLabel}
+        </Link>
+      );
+    }
 
-        {/* Render submenu if it has children and is active */}
-        {hasSubLinks && isActive && (
-          <ul
-            ref={(el) => {
-              if (el) subMenuRefs.current.set(id, el);
-            }}
-            className="absolute bg-white shadow-md text-black p-4 rounded-lg space-y-2 z-20"
-            style={{ 
-              minWidth: '200px',
-              maxWidth: '300px',
-              left: isInDropdown ? '100%' : '0',
-              top: isInDropdown ? '0' : 'auto',
-              marginLeft: isInDropdown ? '1px' : '0',
-              marginTop: isInDropdown ? '0' : '8px',
-              boxSizing: 'border-box' 
-            }}
-          >
-            {link.subLinks!.map((subLink, subIndex) => 
-              renderMenuItem(subLink, id, subIndex)
+    // Prepare submenu rendering logic, different for mobile vs desktop
+    let subMenu = null;
+    if (hasSubLinks && isActive) {
+      if (isMobile) {
+        // Mobile/Tablet: accordion style menu with white background and black text
+        subMenu = (
+          <ul className="mt-2 space-y-2 bg-white rounded-md overflow-hidden text-black">
+            {link.subLinks!.map((subLink, subIndex) =>
+              renderMenuItem(subLink, id, subIndex),
             )}
           </ul>
-        )}
+        );
+      } else {
+        // Desktop: flyout menu
+        subMenu = (
+          <ul
+            ref={(el) => {
+              if (el) {
+                subMenuRefs.current.set(id, el);
+              } else {
+                subMenuRefs.current.delete(id);
+              }
+            }}
+            className="absolute bg-white shadow-md text-black p-4 rounded-lg space-y-2 z-20"
+            style={{
+              minWidth: '200px',
+              maxWidth: '300px',
+              visibility: 'hidden', // Start hidden, will be made visible by useEffect
+              boxSizing: 'border-box',
+            }}
+          >
+            {link.subLinks!.map((subLink, subIndex) =>
+              renderMenuItem(subLink, id, subIndex),
+            )}
+          </ul>
+        );
+      }
+    }
+
+    return (
+      <li
+        key={id}
+        className={`relative ${isMobile ? 'w-full' : ''}`}
+        style={{
+          position: 'relative',
+          isolation: isMobile ? 'auto' : 'isolate',
+          // For mobile/tablet: add padding based on nesting level
+          ...(isMobile && isInDropdown ? { paddingLeft: `${nestingLevel * 12}px` } : {})
+        }}
+      >
+        {/* Improved mobile menu item container for better alignment */}
+        <div className={isMobile ? 'py-2' : ''}>
+          {renderedElement}
+        </div>
+        {subMenu}
       </li>
     );
   };
 
   return (
     <div>
+      {/* Mobile/Tablet hamburger button - visible below xl breakpoint */}
       <button
         type="button"
         className="block xl:hidden text-white"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}
         aria-label="button"
       >
         <svg
@@ -215,10 +402,15 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
         </svg>
       </button>
 
+      {/* Navigation container */}
       <nav
         className={`${
           isOpen ? 'block' : 'hidden'
         } xl:block absolute xl:static top-16 left-0 w-full xl:w-auto bg-ColorPrincipal xl:bg-transparent shadow-md xl:shadow-none z-10`}
+        style={{ 
+          maxHeight: isOpen ? 'calc(100vh - 64px)' : 'none',
+          overflowY: isOpen ? 'auto' : 'visible'
+        }}
       >
         <ul
           ref={menuRef}

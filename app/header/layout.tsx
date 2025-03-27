@@ -14,7 +14,7 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ navLinks, companyLogo }) =>
   const companyLogoUrl = companyLogo?.[0]?.url;
   
   return (
-    <header className="fixed top-0 left-0 w-full flex items-center py-6 px-14 bg-ColorPrincipal z-50">
+    <header className="fixed top-0 left-0 w-full flex items-center py-6 pl-14 pr-6 bg-ColorPrincipal z-50">
       {/* Left section with logo */}
       <div className="flex-shrink-0">
         <Logo logoUrl={companyLogoUrl ?? null} />
