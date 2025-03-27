@@ -48,8 +48,9 @@ const World: React.FC<UmbracoAttractionData> = ({ data }) => {
             xl:bottom-[-8.5rem] 2xl:bottom-[-8rem] w-[500px] h-[600px] md:w-[380px] md:h-[500px] lg:w-[500px] lg:h-[500px] 
             xl:w-[600px] xl:h-[800px] 2xl:w-[700px] 2xl:h-[800px]"
       >
-        {data.properties.worldImage.map((image: any) => (
+        {data.properties.worldImage.map((image: any, index: number) => (
           <Image
+            key={`worldImage-${index}`}
             src={image.url}
             alt={image.name}
             fill
