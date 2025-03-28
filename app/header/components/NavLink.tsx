@@ -104,13 +104,20 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
         subMenu.style.overflowY = '';
         subMenu.style.position = 'absolute'; // Ensure this is set
         
+        // Check if this is a first-level dropdown or a nested submenu
+        // First-level: only has "nav-N" format (starts with "nav-" and has no other hyphens)
+        // Nested: has at least one more hyphen beyond the initial "nav-" prefix
+        const isFirstLevel = id.startsWith('nav-') && !id.substring(4).includes('-');
+        const isNestedSubmenu = !isFirstLevel;
+        
         // Apply initial positioning based on menu level
-        const isNested = id.includes('-');
-        if (isNested) {
+        if (isNestedSubmenu) {
+          // Nested submenus appear to the right
           subMenu.style.left = '100%';
           subMenu.style.top = '1.5rem';
           subMenu.style.marginLeft = '1px';
         } else {
+          // First-level menus appear below the parent
           subMenu.style.left = '0';
           subMenu.style.top = '100%';
           subMenu.style.marginTop = '8px';
@@ -126,8 +133,8 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
         
         // Handle horizontal overflow with priority direction
         if (rect.right > viewportWidth - 20) {
-          if (isNested) {
-            // Try left side first
+          if (isNestedSubmenu) {
+            // Try left side first for nested menus
             subMenu.style.left = 'auto';
             subMenu.style.right = '100%';
             subMenu.style.marginLeft = '0';
@@ -149,7 +156,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
               }
             }
           } else {
-            // For top-level, align right and ensure it stays within viewport
+            // For top-level menus, align right if overflows
             subMenu.style.left = 'auto';
             subMenu.style.right = '0';
           }
@@ -161,7 +168,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ navLinks }) => {
         if (updatedRect.bottom > viewportHeight - 20) {
           const availableHeight = viewportHeight - updatedRect.top - 20;
           
-          if (isNested) {
+          if (isNestedSubmenu) {
             if (availableHeight < 100) {
               // If there's very little space below, position above
               subMenu.style.top = 'auto';
