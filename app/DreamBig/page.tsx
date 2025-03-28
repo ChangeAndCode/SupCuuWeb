@@ -4,6 +4,7 @@ import ProgramShowCase from "./components/ProgramShowCase";
 import CarouselEventsContainer from "@components/CarouselEvents/CarouselEventsContainer";
 import Form from "../form/page";
 import { getDreamBigData } from "@/lib/dream-big/umbracoDreamBigDataService";
+import { getLocale } from "@/lib/Localization";
 
 // Suspense Fallback Component
 const Loading = () => (
@@ -15,7 +16,8 @@ export const dynamic = "force-dynamic";
 export const revalidate = 10;
 
 export default async function Page() {
-  const dreamBigData = await getDreamBigData();
+  const locale = await getLocale();
+  const dreamBigData = await getDreamBigData(locale);
   return (
     <>
       <div

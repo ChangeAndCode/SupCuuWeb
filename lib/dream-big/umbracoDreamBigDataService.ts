@@ -2,8 +2,10 @@
 import { getUmbracoContent } from "../server/umbracoApi";
 import { stripHtml } from "@/utils/umbraco-text";
 import { UmbracoDreamBigData } from "@/types/dream-big";
-export async function getDreamBigData(): Promise<UmbracoDreamBigData> {
-  const content = await getUmbracoContent("sites/dream-big");
+
+export async function getDreamBigData(locale : string): Promise<UmbracoDreamBigData> {
+  const content = await getUmbracoContent("sites/dream-big", locale);
+
 
   if (!content || !content.properties) {
     throw new Error("Failed to fetch landing page data");
