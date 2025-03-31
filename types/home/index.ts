@@ -1,4 +1,5 @@
 import { UmbracoImage } from "../umbraco";
+
 export interface UmbracoPageData {
   profileIcon: {
     url: string;
@@ -27,7 +28,8 @@ export interface UmbracoPageData {
   impactContent: {
     mainText: string;
   };
-
+  transformativeTitle: string;
+  resultCarousels: resultCarousels;
 }
 
 export interface ProfileCTA {
@@ -90,4 +92,24 @@ export interface Indicator {
   unit: string;
   indicatorDescription: string;
   imageUrl: string;
+}
+
+export interface resultCarousels {
+  items: Array<{
+    content: {
+      properties: {
+        resultCarouselTitle: string;
+        resultCarousel: {
+          items: Array<{
+            content: {
+              properties: {
+                resultTitle: string;
+                resultDescription: string;
+              };
+            };
+          }>;
+        };
+      };
+    };
+  }>;
 }
