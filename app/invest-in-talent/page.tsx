@@ -9,12 +9,14 @@ import Loading from "@components/Loading";
 import ContacUs from "../form/components/ContacUs";
 import RedesSociales from "../form/components/RedesSociales";
 import { getFooterData } from "@/lib/form/umbracoFooterDataService";
+import { getLocale } from "@/lib/Localization";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 10; // Revalidate every hour
 export default async function InvestInTalentPage() {
   const footerData = await getFooterData();
-  const pageData = await getInvestPageData();
+  const locale = await getLocale();
+  const pageData = await getInvestPageData(locale);
 
   return (
     <main className="min-h-screen bg-white pt-16">
