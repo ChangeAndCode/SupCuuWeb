@@ -31,10 +31,9 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
     newsSlides,
     presidentCardData,
     teamBackbone,
-    weAreContent,   
-    impactContent 
+    weAreContent,
+    impactContent,
   } = pageData;
-
 
   return (
     <div className="pt-24 overflow-hidden">
@@ -96,23 +95,23 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
             alt="Company Logo"
             width={370}
             height={270}
-            style={{ height: 'auto' }}
+            style={{ height: "auto" }}
             quality={80}
           />
         </div>
       </div>
 
       <div id="weAre" className="py-16 overflow-hidden">
-      <WeAre 
-    highlightText={weAreContent.highlightText}
-    description={weAreContent.description}
-  />
+        <WeAre
+          highlightText={weAreContent.highlightText}
+          description={weAreContent.description}
+        />
       </div>
       <div className="relative hidden xl:block 2xl:-mb-[9rem]">
         <Cohete />
       </div>
       <div id="anImpact">
-      <AnImpact mainText={impactContent.mainText} />
+        <AnImpact mainText={impactContent.mainText} />
       </div>
       <div className="pb-[5rem] sm:pb-[10rem] md:pb-[20rem] lg:pb-[20rem] xl:pb-[6rem]">
         <TimeLine timelineData={timelineData} />
@@ -121,7 +120,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
         <KeyImpact pageData={pageData} />
       </div>
       <div className="bg-white mb-[-5rem] sm:mb-[-7rem] md:mb-[-8rem] lg:mb-[-10rem] xl:mb-[-13rem] 2xl:mb-[-15rem]">
-        <Transformative />
+        <Transformative pageData={pageData} />
       </div>
       <div
         id="partners"

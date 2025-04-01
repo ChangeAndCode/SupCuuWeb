@@ -1,14 +1,9 @@
 import { getUmbracoContent } from "../server/umbracoApi";
 import { stripHtml } from "@/utils/umbraco-text";
-import {
-  UmbracoPageData,
-  NewsSlide,
-  Indicator,
-} from "@/types/home";
+import { UmbracoPageData, NewsSlide, Indicator } from "@/types/home";
 import { UmbracoImage } from "@/types/umbraco";
 import { TextElement } from "@/types/common/text-elements";
 import { getImageUrl } from "@/utils/umbracoImageHelper";
-
 
 const defaultSlides: NewsSlide[] = [
   {
@@ -20,7 +15,9 @@ const defaultSlides: NewsSlide[] = [
   },
 ];
 
-export async function getLandingPageData(culture: string = "en-us"): Promise<UmbracoPageData> {
+export async function getLandingPageData(
+  culture: string = "en-us"
+): Promise<UmbracoPageData> {
   const content = await getUmbracoContent("/", culture);
   if (!content || !content.properties) {
     throw new Error("Failed to fetch landing page data");
@@ -86,11 +83,9 @@ export async function getLandingPageData(culture: string = "en-us"): Promise<Umb
         imageAlt:
           properties.profileUrl.items[0].content.properties.profileImage[0]
             .name,
-        buttonContent:
-          properties.profileUrl.items[0].content.properties.title,
+        buttonContent: properties.profileUrl.items[0].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[0].content.properties.callToAction[0]
-            .url,
+          properties.profileUrl.items[0].content.properties.callToAction[0].url,
         question:
           properties.profileUrl.items[0]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -104,11 +99,9 @@ export async function getLandingPageData(culture: string = "en-us"): Promise<Umb
         imageAlt:
           properties.profileUrl.items[1].content.properties.profileImage[0]
             .name,
-        buttonContent:
-          properties.profileUrl.items[1].content.properties.title,
+        buttonContent: properties.profileUrl.items[1].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[1].content.properties.callToAction[0]
-            .url,
+          properties.profileUrl.items[1].content.properties.callToAction[0].url,
         question:
           properties.profileUrl.items[1]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -123,11 +116,9 @@ export async function getLandingPageData(culture: string = "en-us"): Promise<Umb
         imageAlt:
           properties.profileUrl.items[2].content.properties.profileImage[0]
             .name,
-        buttonContent:
-          properties.profileUrl.items[2].content.properties.title,
+        buttonContent: properties.profileUrl.items[2].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[2].content.properties.callToAction[0]
-            .url,
+          properties.profileUrl.items[2].content.properties.callToAction[0].url,
         question:
           properties.profileUrl.items[2]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -141,11 +132,9 @@ export async function getLandingPageData(culture: string = "en-us"): Promise<Umb
         imageAlt:
           properties.profileUrl.items[3].content.properties.profileImage[0]
             .name,
-        buttonContent:
-          properties.profileUrl.items[3].content.properties.title,
+        buttonContent: properties.profileUrl.items[3].content.properties.title,
         buttonLink:
-          properties.profileUrl.items[3].content.properties.callToAction[0]
-            .url,
+          properties.profileUrl.items[3].content.properties.callToAction[0].url,
         question:
           properties.profileUrl.items[3]?.content?.properties?.question?.items?.map(
             (item: any) =>
@@ -156,12 +145,12 @@ export async function getLandingPageData(culture: string = "en-us"): Promise<Umb
 
     weAreContent: {
       highlightText: properties.highlightText || "Sin descripción",
-      description: properties.description?.markup 
-      ? stripHtml(properties.description.markup)
-      : "Sin descripción"
+      description: properties.description?.markup
+        ? stripHtml(properties.description.markup)
+        : "Sin descripción",
     },
     impactContent: {
-      mainText: properties.mainText || "Sin descripción"
+      mainText: properties.mainText || "Sin descripción",
     },
     teamMembers:
       properties.partners?.items.map((item: any) => ({
@@ -190,11 +179,15 @@ export async function getLandingPageData(culture: string = "en-us"): Promise<Umb
         : "Background por defecto",
     },
     timelineData: {
-      desecText: properties.text ? stripHtml(properties.text) : "Default desecText",
+      desecText: properties.text
+        ? stripHtml(properties.text)
+        : "Default desecText",
       futuraText: properties.text2
         ? stripHtml(properties.text2)
         : "Default futuraText",
-      mitText: properties.text3 ? stripHtml(properties.text3) : "Default mitText",
+      mitText: properties.text3
+        ? stripHtml(properties.text3)
+        : "Default mitText",
     },
     newsSlides: newsSlides.length > 0 ? newsSlides : defaultSlides,
 
@@ -230,5 +223,30 @@ export async function getLandingPageData(culture: string = "en-us"): Promise<Umb
     keyImpactTitle: properties.keyImpactTitle,
     keyImpactIndicators: keyImpactIndicators, //  Pass keyImpactIndicators here!
     targetYear: properties.targetYear,
+    transformativeTitle:
+      properties.transformativeTitle || "contenido no disponible",
+    resultGrids: {
+      items:
+        properties.resultGrids?.items.map((GridItem: any) => ({
+          content: {
+            properties: {
+              resultGridTitle: GridItem.content.properties.resultGridTitle,
+              resultGrid: {
+                items: GridItem.content.properties.resultGrid.items.map(
+                  (element: any) => ({
+                    content: {
+                      properties: {
+                        resultTitle: element.content.properties.resultTitle,
+                        resultDescription:
+                          element.content.properties.resultDescription,
+                      },
+                    },
+                  })
+                ),
+              },
+            },
+          },
+        })) ?? [],
+    },
   };
 }
