@@ -225,28 +225,28 @@ export async function getLandingPageData(
     targetYear: properties.targetYear,
     transformativeTitle:
       properties.transformativeTitle || "contenido no disponible",
-    resultCarousels: {
-      items: properties.resultCarousels?.items.map((carouselItem: any) => ({
-        content: {
-          properties: {
-            resultCarouselTitle:
-              carouselItem.content.properties.resultCarouselTitle,
-            resultCarousel: {
-              items: carouselItem.content.properties.resultCarousel.items.map(
-                (element: any) => ({
-                  content: {
-                    properties: {
-                      resultTitle: element.content.properties.resultTitle,
-                      resultDescription:
-                        element.content.properties.resultDescription,
+    resultGrids: {
+      items:
+        properties.resultGrids?.items.map((GridItem: any) => ({
+          content: {
+            properties: {
+              resultGridTitle: GridItem.content.properties.resultGridTitle,
+              resultGrid: {
+                items: GridItem.content.properties.resultGrid.items.map(
+                  (element: any) => ({
+                    content: {
+                      properties: {
+                        resultTitle: element.content.properties.resultTitle,
+                        resultDescription:
+                          element.content.properties.resultDescription,
+                      },
                     },
-                  },
-                })
-              ),
+                  })
+                ),
+              },
             },
           },
-        },
-      })),
+        })) ?? [],
     },
   };
 }

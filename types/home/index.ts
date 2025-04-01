@@ -29,7 +29,7 @@ export interface UmbracoPageData {
     mainText: string;
   };
   transformativeTitle: string;
-  resultCarousels: resultCarousels;
+  resultGrids: resultGrids;
 }
 
 export interface ProfileCTA {
@@ -94,12 +94,12 @@ export interface Indicator {
   imageUrl: string;
 }
 
-export interface resultCarousels {
+export interface resultGrids {
   items: Array<{
     content: {
       properties: {
-        resultCarouselTitle: string;
-        resultCarousel: {
+        resultGridTitle: string;
+        resultGrid: {
           items: Array<{
             content: {
               properties: {

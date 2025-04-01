@@ -1,5 +1,5 @@
 import { UmbracoPageData } from "@/types/home";
-import TransCarousel from "./TransCarousel";
+import TransGrid from "./TransGrid";
 
 interface HomeProps {
   pageData: UmbracoPageData;
@@ -16,7 +16,7 @@ const Transformative: React.FC<HomeProps> = ({ pageData }) => {
         </div>
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl-md:grid-cols-4 gap-y-8 gap-x-6 md:gap-x-8 lg:gap-x-10 xl:gap-x-12 xl-md:gap-x-14 px-[3rem] sm:px-[4rem] md:px-[5rem] lg:px-[6rem] xl:px-[7rem] xl-md:px-[9rem] 2xl:px-[10rem]">
-        <TransCarousel carousels={pageData.resultCarousels} />
+        <TransGrid grids={pageData.resultGrids} />
       </div>
       <div className="flex justify-end relative z-10 px-[1rem] md:px-[2rem] lg:px-[3rem] xl:px-[4rem] xl-md:px-[5rem] 2xl:px-[6rem]">
         <p className="text-[3rem] md:text-[6rem] lg:text-[8rem] xl:text-[10rem] xl-md:text-[12rem] 2xl:text-[14rem] text-[#EDEFF0] font-PerformanceMark z-20">
