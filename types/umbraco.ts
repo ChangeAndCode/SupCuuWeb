@@ -1,5 +1,8 @@
 // types/umbraco.ts
 
+// --- Existing Types (Keep As Is) ---
+import { RichTextElement } from './common/text-elements'; // Assuming relative path
+
 export interface UmbracoLink {
   url: string;
   queryString: string | null;

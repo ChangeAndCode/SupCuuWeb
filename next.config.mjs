@@ -19,6 +19,7 @@ const nextConfig = {
       process.cwd(),
       "components"
     );
+    config.resolve.alias["@context"] = path.resolve(process.cwd(), "context");
 
     return config;
   },

@@ -1,9 +1,13 @@
-// RootLayout.tsx
+// app/layout.tsx
 import { LocaleProvider } from '@components/Localization/LocaleContext';
+import { CookieConsentProvider } from '@/context/Cookie Consent Context';
+import CookieBannerContainer from '@/components/Cookie Consent/CookieBannerContainer';
 import './globals.css';
 import HeaderLayout from './header/layout';
 import { Metadata } from 'next';
 import { fetchAndProcessNavData } from '@/lib/Navigation/navData';
+import { fetchCookieBannerData } from '@/lib/server/cookieBannerData';
+import { getLocale } from '@/lib/Localization';
 
 export const metadata: Metadata = {
   title: 'StartUp Chihuahua',
@@ -17,18 +21,24 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-// Mark RootLayout as an async Server Component
 export default async function RootLayout({ children }: RootLayoutProps) {
   const { navLinks, companyLogo } = await fetchAndProcessNavData('/nav/');
+  const locale = await getLocale();
+  // Fetch cookie banner with default locale - the visible content will be
+  // correct on initial load, and consent is managed separately from the display content
+  const cookieBannerContent = await fetchCookieBannerData(locale);
 
   return (
     <html lang="en" className="overflow-y-scroll">
       <head></head>
       <body>
-        <LocaleProvider>
-          <HeaderLayout navLinks={navLinks} companyLogo={companyLogo} />
-          <main>{children}</main>
-        </LocaleProvider>
+        <CookieConsentProvider>
+          <LocaleProvider>
+            <HeaderLayout navLinks={navLinks} companyLogo={companyLogo} />
+            <main>{children}</main>
+            <CookieBannerContainer content={cookieBannerContent} />
+          </LocaleProvider>
+        </CookieConsentProvider>
       </body>
     </html>
   );

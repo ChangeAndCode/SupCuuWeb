@@ -1,3 +1,4 @@
+// components/Localization/LocaleSelector.tsx
 'use client';
 
 import { useLocale } from './LocaleContext';
