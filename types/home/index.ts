@@ -56,10 +56,28 @@ export interface MeetTeamTitles {
 }
 
 export interface TimelineData {
-  desecText: string;
-  futuraText: string;
-  mitText: string;
+  timelineText1: {
+    markup: string;
+  };
+  timelineText2: {
+    markup: string;
+  };
+  timelineText3: {
+    markup: string;
+  };
 }
+
+export const defaultTimelineData: TimelineData = {
+  timelineText1: {
+    markup: "<p><b>DESEC</b> launches <b>Chihuahua Futura</b> to drive innovation and technology.</p>",
+  },
+  timelineText2: {
+    markup: "<p><b>DESEC</b> transforming Chihuahua’s economy over the past 50 years.</p>",
+  },
+  timelineText3: {
+    markup: "<p>Chihuahua joins the <b>MIT REAP</b> program. Local leaders gather data, define a strategic plan, and create a collective organization to transform the ecosystem called <b>STARTUP CHIHUAHUA</b>.</p>",
+  },
+};
 
 export interface NewsSlide {
   carouselTitle: string;
