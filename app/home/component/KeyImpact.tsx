@@ -24,27 +24,32 @@ const KeyImpact: React.FC<KeyImpactProps> = ({ pageData }) => {
             {targetYear || "2030"}
           </p>
         </div>
+      </div>
 
-        <div className="flex flex-col xl:flex-row items-center xl:items-start xl:justify-around px-10 md:px-12 lg:px-28 gap-8">
-          {indicators.map((indicator, index) => (
-            <div
-              key={index}
-              className="flex flex-col w-full md:w-7/12 lg:w-6/12 xl:w-3/12 mb-10 lg:mb-0 gap-8"
-            >
-              <Image
-                src={indicator.imageUrl}
-                alt={indicator.indicatorDescription}
-                width={400}
-                height={400}
-                quality={80}
-                style={{ width: "auto", height: "auto" }}
-              />
-              <p className="text-2xl font-poppins font-semibold capitalize">
-                {indicator.indicatorDescription}
-              </p>
+      <div className="flex flex-col xl:flex-row items-center xl:items-start xl:justify-around px-10 md:px-12 lg:px-28 gap-8">
+        {indicators.map((indicator, index) => (
+          <div
+            key={index}
+            className="flex flex-col justify-center w-[400px] h-[400px]"
+          >
+            <div className="flex justify-center w-full">
+              <div className="w-80 h-24 border-ColorPrincipal border-4 border-solid rounded-3xl mb-10">
+                <div className="flex flex-col relative justify-center items-center rounded-3xl w-80 h-24 bg-ColorPrincipal top-6 right-8">
+                  <h1 className="text-white uppercase text-5xl font-pragmatica">
+                    {indicator.value}
+                  </h1>
+                  <h2 className="text-white uppercase text-xl font-pragmatica">
+                    {indicator.unit}
+                  </h2>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
+
+            <p className="p-4 w-full font-poppins text-2xl font-semibold capitalize">
+              {indicator.indicatorDescription}{" "}
+            </p>
+          </div>
+        ))}
       </div>
 
       <div className="px-7 flex justify-end">
