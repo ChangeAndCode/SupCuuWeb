@@ -33,6 +33,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
     teamBackbone,
     weAreContent,
     impactContent,
+    partnersSection,
   } = pageData;
 
   return (
@@ -126,7 +127,7 @@ const CT: React.FC<CTProps> = ({ pageData }) => {
         id="partners"
         className="relative bg-[url('/Bg/bgPartners.webp')] bg-no-repeat bg-center bg-cover z-10 py-[5rem] md:py-[15rem]"
       >
-        <Partners />
+     <Partners data={partnersSection} />
       </div>
       <div id="team">
         <MeetTeam
