@@ -30,6 +30,14 @@ export interface UmbracoPageData {
   };
   transformativeTitle: string;
   resultGrids: resultGrids;
+  partnersSection: {
+    title: string;
+    partnersTableImage: {
+      url: string;
+      alt: string;
+    };
+    thankYouText: string;
+  };
 }
 
 export interface ProfileCTA {

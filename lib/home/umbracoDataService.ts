@@ -152,6 +152,18 @@ export async function getLandingPageData(
     impactContent: {
       mainText: properties.mainText || "Sin descripción",
     },
+    partnersSection: {
+      title: properties.title || "", // Ya viene como string, no necesita markup
+      partnersTableImage: {
+        url: properties.partnersTableImage?.[0]?.url 
+          ? getImageUrl(properties.partnersTableImage[0].url)
+          : "Sin descripción",
+        alt: properties.partnersTableImage?.[0]?.name || "Partners Table"
+      },
+      thankYouText: properties.thankYouText?.markup
+        ? stripHtml(properties.thankYouText.markup)
+        : "Sin descripción"
+    },
     teamMembers:
       properties.partners?.items.map((item: any) => ({
         id: item.content.properties.pId,
@@ -189,6 +201,7 @@ export async function getLandingPageData(
         ? stripHtml(properties.text3)
         : "Default mitText",
     },
+    
     newsSlides: newsSlides.length > 0 ? newsSlides : defaultSlides,
 
     presidentCardData: {
@@ -249,4 +262,5 @@ export async function getLandingPageData(
         })) ?? [],
     },
   };
+  
 }

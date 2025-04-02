@@ -1,6 +1,17 @@
 import Image from 'next/image';
 
-const Partners: React.FC = () => {
+interface PartnersProps {
+  data: {
+    title: string;
+    partnersTableImage: {
+      url: string;
+      alt: string;
+    };
+    thankYouText: string;
+  };
+}
+
+const Partners: React.FC<PartnersProps> = ({ data }) => {
   return (
     <div className="pb-16">
       <div className="flex justify-end">
@@ -15,17 +26,17 @@ const Partners: React.FC = () => {
           />
           <div className="absolute inset-[3.2rem] sm:inset-[4rem] md:inset-[5rem] lg:inset-[7rem] xl:inset-[9rem] 2xl:inset-[11.5rem] right-0 flex justify-end">
             <p className="main-Tipography text-white text-[.8rem] xs:text-[.7rem] sm:text-[1rem] md:text-[1.3rem] lg:text-[1.8rem] xl:text-[2.2rem] 2xl:text-[2.7rem] font-pragmatica uppercase text-nowrap pr-4">
-              Our community&rsquo;s growing daily
+              {data.title}
             </p>
           </div>
         </div>
       </div>
       <div className="flex justify-center items-center">
         <Image
-          src="/tabla.webp"
+          src={data.partnersTableImage.url}
           width={1400}
           height={1400}
-          alt="Tabla"
+          alt={data.partnersTableImage.alt}
           quality={80}
           className="w-auto h-auto xl:w-[1300px] 2xl:w-[1400px] 4xl:w-[2200px] z-10"
           style={{ height: 'auto' }}
@@ -33,7 +44,7 @@ const Partners: React.FC = () => {
       </div>
       <div>
         <p className="main-Tipography capitalize text-[1.8rem] md:text-[2.5rem] lg:text-[2.8rem] xl:text-[2.8rem] 2xl:text-[3.5rem] 4xl:text-[4rem] text-ColorPrincipal font-pragmatica w-full md:w-10/12 lg:w-9/12 xl:w-7/12 2xl:w-8/12 leading-[2rem] lg:leading-[2.5rem] xl:leading-[3rem] 2xl:leading-[3.5rem] pl-[2rem] xl:pl-[7rem] 2xl:pl-[19rem]">
-          Thanks to the collaboration of our partner companies, all our work is possible.
+          {data.thankYouText}
         </p>
       </div>
     </div>
