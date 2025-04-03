@@ -1,7 +1,7 @@
 // src/app/component/TimeLine.tsx
 import Image from 'next/image';
 import { TimelineData } from '@/types/home';
-import { defaultTimelineData } from '@/lib/timeline/data/dataTimeline';
+import { defaultTimelineData } from '@/types/home';
 
 interface TimeLineProps {
   timelineData: TimelineData;
@@ -9,9 +9,9 @@ interface TimeLineProps {
 
 const TimeLine: React.FC<TimeLineProps> = ({ timelineData }) => {
   const content = {
-    desecText: timelineData.desecText || defaultTimelineData.desecText,
-    futuraText: timelineData.futuraText || defaultTimelineData.futuraText,
-    mitText: timelineData.mitText || defaultTimelineData.mitText,
+    desecText: timelineData.timelineText2 || defaultTimelineData.timelineText2,
+    futuraText: timelineData.timelineText1 || defaultTimelineData.timelineText1,
+    mitText: timelineData.timelineText3 || defaultTimelineData.timelineText3,
   };
 
   return (
@@ -68,7 +68,7 @@ const TimeLine: React.FC<TimeLineProps> = ({ timelineData }) => {
                 />
                 <p
                   className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 capitalize w-[18rem] text-left"
-                  dangerouslySetInnerHTML={{ __html: content.desecText }}
+                  dangerouslySetInnerHTML={{ __html: content.desecText?.markup }}
                 />
               </div>
 
@@ -82,7 +82,7 @@ const TimeLine: React.FC<TimeLineProps> = ({ timelineData }) => {
                 />
                 <p
                   className="font-poppins text-[1.3rem] md:text-[1.5rem] mt-4 capitalize w-[15rem] md:w-[13rem] text-left"
-                  dangerouslySetInnerHTML={{ __html: content.futuraText }}
+                  dangerouslySetInnerHTML={{ __html: content.futuraText?.markup }}
                 />
               </div>
 
@@ -105,7 +105,7 @@ const TimeLine: React.FC<TimeLineProps> = ({ timelineData }) => {
                 </div>
                 <p
                   className="font-poppins text-[1.3rem] md:text-[1.5rem] capitalize mt-4 w-10/12 md:w-[32rem] text-left"
-                  dangerouslySetInnerHTML={{ __html: content.mitText }}
+                  dangerouslySetInnerHTML={{ __html: content.mitText?.markup }}
                 />
               </div>
             </div>
