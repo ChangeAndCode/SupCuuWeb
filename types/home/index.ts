@@ -117,7 +117,6 @@ export interface Indicator {
   value: string;
   unit: string;
   indicatorDescription: string;
-  imageUrl: string;
 }
 
 export interface resultGrids {

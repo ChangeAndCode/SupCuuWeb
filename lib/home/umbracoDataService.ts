@@ -1,7 +1,6 @@
 import { getUmbracoContent } from "../server/umbracoApi";
 import { stripHtml } from "@/utils/umbraco-text";
 import { UmbracoPageData, NewsSlide, Indicator, defaultTimelineData } from "@/types/home";
-import { UmbracoImage } from "@/types/umbraco";
 import { TextElement } from "@/types/common/text-elements";
 import { getImageUrl } from "@/utils/umbracoImageHelper";
 
@@ -42,23 +41,6 @@ export async function getLandingPageData(
         .filter((slide: NewsSlide) => slide.isActive)
     : defaultSlides;
 
-  // Impact Images
-  const impactImage: UmbracoImage[] = properties.impactImage
-    ? properties.impactImage.map((image: any) => ({
-        focalPoint: image.focalPoint,
-        crops: image.crops,
-        id: image.id,
-        name: image.name,
-        mediaType: image.mediaType,
-        url: getImageUrl(image.url),
-        extension: image.extension,
-        width: image.width,
-        height: image.height,
-        bytes: image.bytes,
-        properties: image.properties,
-      }))
-    : [];
-
   // Key Impact Indicators
   const keyImpactIndicators: Indicator[] = properties.indicators?.items
     ? properties.indicators.items.map((item: any, index: number) => ({
@@ -66,7 +48,6 @@ export async function getLandingPageData(
         unit: item.content.properties.unit || "",
         indicatorDescription:
           item.content.properties.indicatorDescription || "",
-        imageUrl: impactImage[index]?.url || "", // Assign imageUrl here
       }))
     : [];
 
