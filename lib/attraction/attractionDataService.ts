@@ -2,8 +2,8 @@ import { getUmbracoContent } from "../server/umbracoApi";
 import { AttractionData } from "@/types/attraction";
 import { stripHtml } from "@/utils/umbraco-text";
 
-export async function getAttractionData(): Promise<AttractionData> {
-  const content = await getUmbracoContent("attraction-page");
+export async function getAttractionData(locale: string): Promise<AttractionData> {
+  const content = await getUmbracoContent("attraction-page", locale);
   if (!content || !content.properties) {
     throw new Error("Failed to fetch landing page data");
   }

@@ -1,6 +1,6 @@
 import { getUmbracoContent } from "../server/umbracoApi";
 import { stripHtml } from "@/utils/umbraco-text";
-import { UmbracoPageData, NewsSlide, Indicator } from "@/types/home";
+import { UmbracoPageData, NewsSlide, Indicator, defaultTimelineData } from "@/types/home";
 import { TextElement } from "@/types/common/text-elements";
 import { getImageUrl } from "@/utils/umbracoImageHelper";
 
@@ -28,9 +28,9 @@ export async function getLandingPageData(
   const newsSlides: NewsSlide[] = properties.newsCarousel?.items
     ? properties.newsCarousel.items
         .map((item: any) => ({
-          carouselTitle: item.content.properties.carouselTitle?.markup || "",
+          carouselTitle: item.content.properties.carouselTitle?.markup ? stripHtml(item.content.properties.carouselTitle?.markup) : "",
           carouselDescription:
-            item.content.properties.carouselDescription?.markup || "",
+            item.content.properties.carouselDescription?.markup ? stripHtml(item.content.properties.carouselDescription?.markup) : "",
           carouselImage: getImageUrl(
             item.content.properties.carouselImage?.[0]?.url
           ),
@@ -133,6 +133,18 @@ export async function getLandingPageData(
     impactContent: {
       mainText: properties.mainText || "Sin descripción",
     },
+    partnersSection: {
+      title: properties.title || "", // Ya viene como string, no necesita markup
+      partnersTableImage: {
+        url: properties.partnersTableImage?.[0]?.url 
+          ? getImageUrl(properties.partnersTableImage[0].url)
+          : "Sin descripción",
+        alt: properties.partnersTableImage?.[0]?.name || "Partners Table"
+      },
+      thankYouText: properties.thankYouText?.markup
+        ? stripHtml(properties.thankYouText.markup)
+        : "Sin descripción"
+    },
     teamMembers:
       properties.partners?.items.map((item: any) => ({
         id: item.content.properties.pId,
@@ -160,16 +172,11 @@ export async function getLandingPageData(
         : "Background por defecto",
     },
     timelineData: {
-      desecText: properties.text
-        ? stripHtml(properties.text)
-        : "Default desecText",
-      futuraText: properties.text2
-        ? stripHtml(properties.text2)
-        : "Default futuraText",
-      mitText: properties.text3
-        ? stripHtml(properties.text3)
-        : "Default mitText",
+      timelineText1: { markup: properties.timelineText1?.markup ? stripHtml(properties.timelineText1?.markup) : defaultTimelineData.timelineText1.markup },
+      timelineText2: { markup: properties.timelineText2?.markup ? stripHtml(properties.timelineText2?.markup) : defaultTimelineData.timelineText2.markup },
+      timelineText3: { markup: properties.timelineText3?.markup ? stripHtml(properties.timelineText3?.markup) : defaultTimelineData.timelineText3.markup },
     },
+    
     newsSlides: newsSlides.length > 0 ? newsSlides : defaultSlides,
 
     presidentCardData: {
@@ -230,4 +237,5 @@ export async function getLandingPageData(
         })) ?? [],
     },
   };
+  
 }

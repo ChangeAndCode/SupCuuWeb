@@ -17,6 +17,7 @@ import Form from "../form/page";
 import BtnFAQ from "@components/btnct/btnFAQ";
 import { getAttractionData } from "@/lib/attraction/attractionDataService";
 import React, { Suspense } from "react";
+import { getLocale } from "@/lib/Localization";
 export const dynamic = "force-dynamic";
 export const revalidate = 10;
 
@@ -27,7 +28,8 @@ const Loading = () => (
 );
 
 export default async function page() {
-  const attractionData = await getAttractionData();
+  const locale = await getLocale();
+  const attractionData = await getAttractionData(locale);
   return (
     <div className="overflow-hidden">
       <div className="flex flex-col-reverse xl:flex-row items-center justify-center py-[8rem] md:py-[10rem] xl:py-[8rem] 2xl:py-[6rem] px-[3rem]">
