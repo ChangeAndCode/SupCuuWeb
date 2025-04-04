@@ -38,9 +38,9 @@ const FALLBACK_DATA: InvestPageData = {
   profiles: MOCK_PROFILES,
 };
 
-export async function getInvestPageData(): Promise<InvestPageData> {
+export async function getInvestPageData(locale : string): Promise<InvestPageData> {
   try {
-    const data = await getUmbracoContent('/sites/invest-in-talent/');
+    const data = await getUmbracoContent("sites/invest-in-talent",locale);
 
     if (!isInvestInTalentData(data)) {
       console.warn(
