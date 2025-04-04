@@ -10,13 +10,15 @@ import RedesSociales from "../form/components/RedesSociales";
 import { getFooterData } from "@/lib/form/umbracoFooterDataService";
 import { getTogetherPageData } from "@/lib/together/umbracoTogetherDataService";
 import Loading from "@components/Loading";
+import { getLocale } from "@/lib/Localization";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 10; // Revalidate every 10 seconds
 
 export default async function Together() {
   const footerData = await getFooterData();
-  const pageData = await getTogetherPageData();
+  const locale = await getLocale();
+  const pageData = await getTogetherPageData(locale);
 
   return (
     <>
