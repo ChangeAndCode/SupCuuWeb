@@ -1,3 +1,4 @@
+// ClientForm.tsx
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -12,7 +13,11 @@ const Notification = dynamic(() => import("../components/Notification"), {
   ),
 });
 
-export default function ClientForm() {
+interface ClientFormProps {
+  locale: string;
+}
+
+export default function ClientForm({ locale }: ClientFormProps) {
   const [hydrated, setHydrated] = useState(false);
   const [formConfig, setFormConfig] = useState<FormConfig | null>(null);
 
@@ -25,9 +30,12 @@ export default function ClientForm() {
       try {
         const basePath =
           process.env.NEXT_PUBLIC_CONTACT_FORM_PATH || "/contact-form/1";
-        const response = await fetch(`/api/umbraco?path=${basePath}/`, {
-          cache: "no-cache",
-        });
+        const response = await fetch(
+          `/api/umbraco?path=${basePath}/&culture=${locale}`,
+          {
+            cache: "no-cache",
+          }
+        );
         const data = await response.json();
         setFormConfig(data.properties);
       } catch (error) {
@@ -36,7 +44,7 @@ export default function ClientForm() {
     };
 
     fetchConfig();
-  }, []);
+  }, [locale]);
 
   const initialState = {
     name: "",

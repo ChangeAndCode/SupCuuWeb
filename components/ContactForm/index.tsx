@@ -5,8 +5,10 @@ import { FormStatus } from '@/components/FormStatus';
 import { ContactFormService, useContactForm } from '@/lib/contact-form';
 import { INNOVATION_FORM_CONTENT } from './constants';
 import type { FormErrors, InnovationFormData, FormConfig } from '@/types/contact-form';
-
-export default function InnovationForm() {
+interface FormProps {
+  locale: string;
+}
+export default function InnovationForm( { locale }: FormProps ) {
   const [errors, setErrors] = useState<FormErrors>({});
   const [formConfig, setFormConfig] = useState<FormConfig | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -15,7 +17,7 @@ export default function InnovationForm() {
     const fetchConfig = async () => {
       try {
         const basePath = process.env.NEXT_PUBLIC_CONTACT_FORM_PATH_3 || '/contact-form/3';
-        const response = await fetch(`/api/umbraco?path=${basePath}/`, {
+        const response = await fetch(`/api/umbraco?path=${basePath}/&culture=${locale}`, {
           cache: 'no-cache'
         });
         const data = await response.json();

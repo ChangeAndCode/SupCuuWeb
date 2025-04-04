@@ -1,8 +1,10 @@
+// app/Form.tsx
 import dynamic from "next/dynamic";
 import ClientForm from "./components/ClientForm";
 import { getFooterData } from "@/lib/form/umbracoFooterDataService";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { getLocale } from "@/lib/Localization"; // Import getLocale
 
 // Only keep dynamic imports for non-critical components
 const ContactUs = dynamic(() => import("./components/ContacUs"), {
@@ -19,10 +21,11 @@ const RedesSociales = dynamic(() => import("./components/RedesSociales"), {
 
 export default async function Form() {
   const footerData = await getFooterData();
+  const locale = await getLocale(); 
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <ClientForm />
+        <ClientForm locale={locale} />
       </Suspense>
       <div className="relative bg-ColorPrincipal px-[2rem] xs:pt-10 md:px-[3rem] lg:px-0 pb-[10rem] z-30 ">
         <div className="flex flex-col items-center">
