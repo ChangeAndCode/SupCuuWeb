@@ -30,7 +30,7 @@ const KeyImpact: React.FC<KeyImpactProps> = ({ pageData }) => {
         {indicators.map((indicator, index) => (
           <div
             key={index}
-            className="flex flex-col justify-center w-[400px] h-[400px]"
+            className="flex flex-col justify-start w-[400px] h-[400px]"
           >
             <div className="flex justify-center w-full">
               <div className="w-80 h-24 border-ColorPrincipal border-4 border-solid rounded-3xl mb-10">
