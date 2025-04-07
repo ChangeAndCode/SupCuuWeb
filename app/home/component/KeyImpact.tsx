@@ -35,10 +35,10 @@ const KeyImpact: React.FC<KeyImpactProps> = ({ pageData }) => {
             <div className="flex justify-center w-full">
               <div className="w-80 h-24 border-ColorPrincipal border-4 border-solid rounded-3xl mb-10">
                 <div className="flex flex-col relative justify-center items-center rounded-3xl w-80 h-24 bg-ColorPrincipal top-6 right-8">
-                  <h1 className="text-white uppercase text-5xl font-pragmatica">
+                  <h1 className="text-white uppercase text-4xl font-pragmatica main-Tipography">
                     {indicator.value}
                   </h1>
-                  <h2 className="text-white uppercase text-xl font-pragmatica">
+                  <h2 className="text-white uppercase text-lg font-pragmatica main-Tipography">
                     {indicator.unit}
                   </h2>
                 </div>
