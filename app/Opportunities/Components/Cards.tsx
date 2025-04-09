@@ -7,9 +7,10 @@ import { EventsData,Event } from "types/Opportunities";
 
 interface CardsProps {
   eventsData: EventsData;
+  locale: string;
 }
 
-const Cards = ({ eventsData }: CardsProps) => {
+const Cards = ({ eventsData, locale }: CardsProps) => {
   const [isMounted, setIsMounted] = useState(false);  
 
   useEffect(() => {
@@ -77,6 +78,7 @@ const Cards = ({ eventsData }: CardsProps) => {
         onFilterChange={setSearchTerm}
         filterType={filterType}
         onFilterTypeChange={setFilterType}
+        locale={locale}
       />
 
       {filteredEvents.length === 0 ? (

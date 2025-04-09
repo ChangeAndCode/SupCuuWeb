@@ -1,16 +1,17 @@
 import { getUmbracoContent } from "@/lib/server/umbracoApi";
 import Cards from "./Cards";
-
+import { getLocale } from "@/lib/Localization";
 const CardsContainer = async () => {
   try {
-    const eventsData = await getUmbracoContent("events");
+    const locale = await getLocale();
+    const eventsData = await getUmbracoContent("events", locale);
 
     // Check if the data is valid
     if (!eventsData?.properties?.events?.items) {
       throw new Error("No se pudieron cargar los datos de eventos");
     }
 
-    return <Cards eventsData={eventsData} />;
+    return <Cards eventsData={eventsData} locale={locale} />;
   } catch (error) {
     // User-friendly error message
     return (

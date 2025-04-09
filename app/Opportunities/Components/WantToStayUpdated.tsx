@@ -1,7 +1,17 @@
+// app/sites/opportunities/Components/WantToStayUpdated.tsx
+"use client";
 import React from "react";
 import Image from "next/image";
 
-const WantToStayUpdated: React.FC = () => {
+interface WantToStayUpdatedProps {
+  title: string;
+  text: string;
+}
+
+const WantToStayUpdated: React.FC<WantToStayUpdatedProps> = ({
+  title,
+  text,
+}) => {
   return (
     <div
       className="
@@ -38,12 +48,11 @@ const WantToStayUpdated: React.FC = () => {
           h-[50%] 
           ml-[8%]"
           >
-            WANT TO STAY UPDATED ON WHAT&rsquo;S HAPPENING IN <br />
-            THE ECOSYSTEM DESIGNED JUST FOR YOU?
+            {title}
           </h2>
         </div>
       </div>
-      <p
+      <div
         className="
         relative
         font-PerformanceMark 
@@ -55,11 +64,8 @@ const WantToStayUpdated: React.FC = () => {
         text-left 
         mt-4
         ml-[8%]"
-      >
-        LEAVE US YOUR INFORMATION, AND EVERY TWO WEEKS, <br />
-        YOU&rsquo;LL RECEIVE INFORMATION TAILORED TO YOUR <br />
-        INTERESTS RIGHT IN YOUR INBOX.
-      </p>
+        dangerouslySetInnerHTML={{ __html: text }}
+      />
     </div>
   );
 };

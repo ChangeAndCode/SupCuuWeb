@@ -1,3 +1,5 @@
+import { RichTextElement, StringTextElement } from "../common/text-elements";
+
 export interface Event {
     content: {
       id: string;
@@ -17,5 +19,13 @@ export interface Event {
       events?: {
         items?: Event[];
       };
+    };
+  }
+  export interface OpportunitiesData {
+    opportunitiesTitle: string;
+    wantToStayUpdatedTitle: string;
+    wantToStayUpdatedText: {
+      markup: string;
+      blocks: Array<any>; 
     };
   }

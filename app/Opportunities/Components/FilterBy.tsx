@@ -1,3 +1,4 @@
+// app/sites/opportunities/Components/FilterBy.tsx
 "use client";
 import { ChevronDown } from "lucide-react";
 
@@ -5,9 +6,35 @@ interface FilterByProps {
   onFilterChange: (searchTerm: string) => void;
   filterType: string;
   onFilterTypeChange: (type: string) => void;
+  locale: string;
 }
 
-const FilterBy = ({ onFilterChange, filterType, onFilterTypeChange }: FilterByProps) => {
+const FilterBy = ({
+  onFilterChange,
+  filterType,
+  onFilterTypeChange,
+  locale,
+}: FilterByProps) => {
+  const translations = {
+    "en-us": {
+      filterByButton: "FILTER BY",
+      searchPlaceholder: "Search...",
+      titleOption: "Title",
+      descriptionOption: "Description",
+      allOption: "All",
+    },
+    "es-mx": {
+      filterByButton: "FILTRAR POR",
+      searchPlaceholder: "Buscar...",
+      titleOption: "Título",
+      descriptionOption: "Descripción",
+      allOption: "Todos",
+    },
+    // Add more locales as needed
+  };
+
+  const i18n = translations[locale] || translations["en-us"]; // Default to English if locale is not found
+
   return (
     <div
       className="
@@ -31,12 +58,12 @@ const FilterBy = ({ onFilterChange, filterType, onFilterTypeChange }: FilterByPr
         font-semibold 
         rounded-l-md"
       >
-        FILTER BY
+        {i18n.filterByButton}
       </button>
 
       <input
         type="text"
-        placeholder="Search..."
+        placeholder={i18n.searchPlaceholder}
         onChange={(e) => onFilterChange(e.target.value)}
         className="
         xs:text-xs
@@ -66,9 +93,9 @@ const FilterBy = ({ onFilterChange, filterType, onFilterTypeChange }: FilterByPr
           border-gray-300
           focus:outline-none"
         >
-          <option value="title">Título</option>
-          <option value="description">Descripción</option>
-          <option value="all">Todos</option>
+          <option value="title">{i18n.titleOption}</option>
+          <option value="description">{i18n.descriptionOption}</option>
+          <option value="all">{i18n.allOption}</option>
         </select>
         <div className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2">
           <ChevronDown size={16} className="text-gray-500" />
