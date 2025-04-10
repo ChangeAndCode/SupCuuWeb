@@ -4,7 +4,7 @@ import Image from "next/image";
 import Collabs from "./Components/collabs";
 import Header from "./Components/header";
 import Grid from "./Components/Grid";
-import InnovationForm from "app/NextJump/components/ContactForm";
+import InnovationForm from "@components/ContactForm";
 import ContacUs from "../form/components/ContacUs";
 import RedesSociales from "../form/components/RedesSociales";
 import { getFooterData } from "@/lib/form/umbracoFooterDataService";
@@ -79,7 +79,7 @@ export default async function Together() {
         </div>
       </div>
       <div className="mt-4">
-        <InnovationForm />
+        <InnovationForm locale={locale}/>
       </div>
       <footer className="relative bg-ColorPrincipal rounded-t-7xl px-8 py-16">
         <div className="absolute top-[-4rem] left-16 md:left-40">

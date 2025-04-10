@@ -7,6 +7,9 @@ import { CONTACT_FORM_CONTENT } from './constants';
 import { ContactFormService, useContactForm } from '@/lib/contact-form';
 import { FormConfig, FormErrors, InvestFormData } from '@/types/contact-form';
 
+interface FormProps {
+  locale: string;
+}
 const validateForm = (data: InvestFormData): FormErrors => {
   const errors: FormErrors = {};
   
@@ -23,7 +26,7 @@ const validateForm = (data: InvestFormData): FormErrors => {
   return errors;
 };
 
-export const ContactForm = () => {
+export const ContactForm = ({locale}: FormProps) => {
   const [mounted, setMounted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [formConfig, setFormConfig] = useState<FormConfig | null>(null);
@@ -32,7 +35,7 @@ export const ContactForm = () => {
     const fetchConfig = async () => {
       try {
         const basePath = process.env.NEXT_PUBLIC_CONTACT_FORM_PATH_2 || '/contact-form/2';
-        const response = await fetch(`/api/umbraco?path=${basePath}/`, {
+        const response = await fetch(`/api/umbraco?path=${basePath}/&culture=${locale}`, {
           cache: 'no-cache'
         });
         const data = await response.json();
@@ -44,7 +47,7 @@ export const ContactForm = () => {
 
     fetchConfig();
     setMounted(true);
-  }, []);
+  }, [locale]);
 
   const initialState: InvestFormData = {
     name: '',

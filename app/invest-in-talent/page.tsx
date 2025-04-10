@@ -28,7 +28,7 @@ export default async function InvestInTalentPage() {
         <Suspense fallback={<Loading />}>
           <ProfileCarousel profiles={pageData.profiles} />
         </Suspense>
-        <ContactForm />
+        <ContactForm locale={locale} />
       </div>
 
       <footer className="relative bg-ColorPrincipal rounded-t-7xl px-8 py-16">
