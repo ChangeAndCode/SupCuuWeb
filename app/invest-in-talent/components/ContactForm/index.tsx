@@ -47,7 +47,7 @@ export const ContactForm = ({locale}: FormProps) => {
 
     fetchConfig();
     setMounted(true);
-  }, []);
+  }, [locale]);
 
   const initialState: InvestFormData = {
     name: '',

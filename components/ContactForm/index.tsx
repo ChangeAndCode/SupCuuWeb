@@ -29,7 +29,7 @@ export default function InnovationForm( { locale }: FormProps ) {
 
     fetchConfig();
     setMounted(true);
-  }, []);
+  }, [locale]);
 
   const initialState: InnovationFormData = {
     name: '',
