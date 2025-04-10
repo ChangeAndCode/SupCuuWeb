@@ -1,4 +1,4 @@
-// app/Engine/layout.tsx
+// app/Opportunities/layout.tsx
 import React from "react";
 import { Metadata } from "next";
 import HeaderLayout from "../header/layout"; // Barra de navegación común

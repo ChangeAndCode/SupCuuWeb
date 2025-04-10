@@ -1,8 +1,23 @@
+// app/sites/opportunities/page.tsx
 import CardsContainer from "./Components/CardsContainer";
 import WantToStayUpdated from "./Components/WantToStayUpdated";
 import Form from "../form/page";
+import { getOpportunitiesData } from "@/lib/Opportunities/opportunitiesData";
+import { getLocale } from "@/lib/Localization";
+const PageEvents = async () => {
+  const locale = await getLocale();
+  const opportunitiesData = await getOpportunitiesData(locale);
 
-const pageEvents = () => {
+  if (!opportunitiesData) {
+    return <div>Error loading content from Umbraco</div>;
+  }
+
+  const {
+    opportunitiesTitle,
+    wantToStayUpdatedTitle,
+    wantToStayUpdatedText,
+  } = opportunitiesData;
+
   return (
     <>
       <div
@@ -25,14 +40,17 @@ const pageEvents = () => {
           w-3/5
           "
           >
-            Events & Opportunities
+            {opportunitiesTitle}
           </h2>
         </div>
         <div className="max-w-[1500px] mx-auto">
           <CardsContainer />
         </div>
         <div className="max-w-[1500px] mx-auto">
-          <WantToStayUpdated />
+          <WantToStayUpdated
+            title={wantToStayUpdatedTitle}
+            text={wantToStayUpdatedText}
+          />
         </div>
       </div>
       <Form />
@@ -40,4 +58,4 @@ const pageEvents = () => {
   );
 };
 
-export default pageEvents;
+export default PageEvents;
