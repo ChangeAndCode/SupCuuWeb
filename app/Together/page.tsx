@@ -79,7 +79,7 @@ export default async function Together() {
         </div>
       </div>
       <div className="mt-4">
-        <InnovationForm locale="en-us"/>
+        <InnovationForm locale={locale}/>
       </div>
       <footer className="relative bg-ColorPrincipal rounded-t-7xl px-8 py-16">
         <div className="absolute top-[-4rem] left-16 md:left-40">
