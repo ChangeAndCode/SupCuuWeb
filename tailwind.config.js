@@ -23,7 +23,7 @@ module.exports = {
         "8xl": "6rem",
       },
       screens: {
-        'xs': '360px',
+        'xs': '300px',
         'sm': '480px',
         'sm-md': '525px',
         'md': '768px',

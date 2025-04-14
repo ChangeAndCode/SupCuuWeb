@@ -1,9 +1,10 @@
 "use client";
-import { useState, useMemo, useEffect } from "react"; 
+import { useState, useMemo, useEffect } from "react";
 import EventCard from "@components/CarouselEvents/EventCard";
-import CardsData from "../data/CardsData";
+import CardsData from "../data/CardsData"; 
 import FilterBy from "./FilterBy";
-import { EventsData,Event } from "types/Opportunities";
+import { EventsData, Event } from "types/Opportunities";
+import { cardsTranslations } from "@/lib/Localization/opportunities"; // Import translations for error messages and labels
 
 interface CardsProps {
   eventsData: EventsData;
@@ -11,41 +12,53 @@ interface CardsProps {
 }
 
 const Cards = ({ eventsData, locale }: CardsProps) => {
-  const [isMounted, setIsMounted] = useState(false);  
+  const [isMounted, setIsMounted] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterType, setFilterType] = useState("all");
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filterType, setFilterType] = useState("all");
   const itemsPerPage = 10;
   const nextPublicApiUrl = process.env.NEXT_PUBLIC_API_URL;
- 
-  const events = useMemo(() => 
-    eventsData?.properties?.events?.items || 
-    CardsData.map(item => ({
-      content: {
-        id: item.title,
-        properties: {
-          titleEvent: item.title,
-          descriptionEvents: item.description,
-          dateEvent: item.date || '',
-          locationEvents: item.location || '',
-          imagesEvents: item.image
-        }
-      }
-    }))
-  , [eventsData]) as Event[];
+
+  // Select the correct translation based on locale, defaulting to en-us
+  // Use const for i18n as it's not reassigned
+  const i18n =
+    cardsTranslations[locale as keyof typeof cardsTranslations] ||
+    cardsTranslations["en-us"];
+
+  const events = useMemo(
+    () =>
+      eventsData?.properties?.events?.items ||
+      CardsData.map((item) => ({
+        content: {
+          id: item.title,
+          properties: {
+            titleEvent: item.title,
+            descriptionEvents: item.description,
+            dateEvent: item.date || "",
+            locationEvents: item.location || "",
+            imagesEvents: item.image,
+            linkEvents: "",
+          },
+        },
+      })),
+    [eventsData]
+  ) as Event[];
 
   const filteredEvents = useMemo(() => {
     return events.filter((item: Event) => {
-      const { titleEvent, descriptionEvents } = item.content.properties;
-      const searchLower = searchTerm.toLowerCase();
-      
+      if (!item?.content?.properties) return false;
+
+      const { titleEvent = "", descriptionEvents = "" } =
+        item.content.properties;
+      const searchLower = searchTerm.toLowerCase(); 
+
       if (!searchTerm) return true;
-      
+
       if (filterType === "title") {
         return titleEvent.toLowerCase().includes(searchLower);
       } else if (filterType === "description") {
@@ -65,7 +78,7 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (!isMounted) {
@@ -73,8 +86,8 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
   }
 
   return (
-    <div className="py-5 px-6">
-      <FilterBy 
+    <div className="py-2 px-6">
+      <FilterBy
         onFilterChange={setSearchTerm}
         filterType={filterType}
         onFilterTypeChange={setFilterType}
@@ -83,21 +96,22 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
 
       {filteredEvents.length === 0 ? (
         <div className="text-center py-10">
-          <p className="text-gray-500">No se encontraron eventos que coincidan con tu búsqueda.</p>
+          <p className="text-gray-500">{i18n.noEventsFound}</p>
         </div>
       ) : (
         <>
           <div className="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-6">
             {currentEvents.map((item: Event) => {
-              const { 
-                titleEvent, 
-                descriptionEvents, 
-                dateEvent, 
-                locationEvents, 
-                imagesEvents, 
-                linkEvents 
-              } = item.content.properties;
               
+              const {
+                titleEvent = "No Title",
+                descriptionEvents = "No Description",
+                dateEvent = "",
+                locationEvents = "",
+                imagesEvents = null,
+                linkEvents = "",
+              } = item.content.properties || {};
+
               return (
                 <EventCard
                   key={item.content.id}
@@ -107,7 +121,7 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
                   location={locationEvents}
                   image={imagesEvents}
                   nextPublicApiUrl={nextPublicApiUrl}
-                  onClick={() => linkEvents && window.open(linkEvents, '_blank')}
+                  onClick={() => linkEvents && window.open(linkEvents, "_blank")}
                 />
               );
             })}
@@ -124,7 +138,7 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
                     : "hover:bg-ColorPrincipal hover:text-white"
                 }`}
               >
-                Anterior
+                {i18n.previousButton}
               </button>
               {Array.from({ length: totalPages }, (_, index) => (
                 <button
@@ -133,7 +147,7 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
                   className={`px-3 py-1 rounded ${
                     currentPage === index + 1
                       ? "bg-ColorPrincipal text-white font-pragmatica"
-                      : "bg-gray-300 text-white font-pragmatica hover:bg-gray-400"
+                      : "bg-gray-300 text-black font-pragmatica hover:bg-gray-400"
                   }`}
                 >
                   {index + 1}
@@ -148,7 +162,7 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
                     : "hover:bg-ColorPrincipal hover:text-white"
                 }`}
               >
-                Siguiente
+                {i18n.nextButton}
               </button>
             </div>
           )}
