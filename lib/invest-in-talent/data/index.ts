@@ -1,4 +1,4 @@
-// app/invest-in-talent/data/profiles.ts
+// lib/invest-in-talent/data/index.ts
 import { type Profile } from '@/types/invest-in-talent';
 
 export const MOCK_PROFILES: Profile[] = [

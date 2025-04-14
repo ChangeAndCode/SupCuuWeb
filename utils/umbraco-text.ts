@@ -1,6 +1,5 @@
 // utils/umbraco-text.ts
 
-import { JSDOM } from 'jsdom';
 import type {
   TextElement,
   StringTextElement,

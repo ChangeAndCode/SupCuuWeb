@@ -1,18 +1,21 @@
 // app/invest-in-talent/page.tsx
-import { Suspense } from "react";
-import Image from "next/image";
-import { getInvestPageData } from "@/lib/invest-in-talent";
-import { ProfileCarousel } from "./components/ProfileCarousel";
-import { ContactForm } from "./components/ContactForm";
-import { Header } from "./components/Header";
-import Loading from "@components/Loading";
-import ContacUs from "../form/components/ContacUs";
-import RedesSociales from "../form/components/RedesSociales";
-import { getFooterData } from "@/lib/form/umbracoFooterDataService";
-import { getLocale } from "@/lib/Localization";
+import { Suspense } from 'react';
+import Image from 'next/image';
+// Corrected import path assuming lib/invest-page/index.ts
+import { getInvestPageData } from '@/lib/invest-in-talent';
+import { ProfileCarousel } from './components/ProfileCarousel';
+import { ContactForm } from './components/ContactForm';
+import { Header } from './components/Header';
+// Corrected import path assuming components/Loading.tsx
+import Loading from '@/components/Loading';
+import ContacUs from '../form/components/ContacUs';
+import RedesSociales from '../form/components/RedesSociales';
+import { getFooterData } from '@/lib/form/umbracoFooterDataService';
+import { getLocale } from '@/lib/Localization';
 
 export const dynamic = 'force-dynamic';
-export const revalidate = 10; // Revalidate every hour
+export const revalidate = 10; // Revalidate every 10 seconds
+
 export default async function InvestInTalentPage() {
   const footerData = await getFooterData();
   const locale = await getLocale();
@@ -28,7 +31,7 @@ export default async function InvestInTalentPage() {
         <Suspense fallback={<Loading />}>
           <ProfileCarousel profiles={pageData.profiles} />
         </Suspense>
-        <ContactForm locale={locale} />
+        <ContactForm formHeader={pageData.formHeader} locale={locale} />
       </div>
 
       <footer className="relative bg-ColorPrincipal rounded-t-7xl px-8 py-16">
