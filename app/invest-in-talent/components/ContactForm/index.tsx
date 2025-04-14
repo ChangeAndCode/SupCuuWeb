@@ -1,24 +1,30 @@
+// app/invest-in-talent/components/ContactForm/index.tsx
 'use client';
 import { useState, useEffect } from 'react';
 import { FormField } from '@/components/FormField';
 import { FormStatus } from '@/components/FormStatus';
 import Image from 'next/image';
-import { CONTACT_FORM_CONTENT } from './constants';
+import { CONTACT_FORM_CONTENT } from './constants'; // Keep for field names/button text fallbacks
 import { ContactFormService, useContactForm } from '@/lib/contact-form';
 import { FormConfig, FormErrors, InvestFormData } from '@/types/contact-form';
 
 interface FormProps {
   locale: string;
+  formHeader: {
+    title: string;
+    subtitle: string;
+  };
 }
 const validateForm = (data: InvestFormData): FormErrors => {
   const errors: FormErrors = {};
-  
+
   if (!data.name?.trim()) errors.name = 'Name is required';
   if (!data.email?.trim()) errors.email = 'Email is required';
   if (!data.phone?.trim()) errors.phone = 'Phone is required';
-  if (!data.specialization?.trim()) errors.specialization = 'Specialization is required';
+  if (!data.specialization?.trim())
+    errors.specialization = 'Specialization is required';
   if (!data.topics?.trim()) errors.topics = 'Topics is required';
-  
+
   if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     errors.email = 'Invalid email format';
   }
@@ -26,7 +32,8 @@ const validateForm = (data: InvestFormData): FormErrors => {
   return errors;
 };
 
-export const ContactForm = ({locale}: FormProps) => {
+// Destructure formHeader from props
+export const ContactForm = ({ locale, formHeader }: FormProps) => {
   const [mounted, setMounted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [formConfig, setFormConfig] = useState<FormConfig | null>(null);
@@ -34,10 +41,15 @@ export const ContactForm = ({locale}: FormProps) => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const basePath = process.env.NEXT_PUBLIC_CONTACT_FORM_PATH_2 || '/contact-form/2';
-        const response = await fetch(`/api/umbraco?path=${basePath}/&culture=${locale}`, {
-          cache: 'no-cache'
-        });
+        // This fetch is for generic form settings, not the header text
+        const basePath =
+          process.env.NEXT_PUBLIC_CONTACT_FORM_PATH_2 || '/contact-form/2';
+        const response = await fetch(
+          `/api/umbraco?path=${basePath}/&culture=${locale}`,
+          {
+            cache: 'no-cache',
+          }
+        );
         const data = await response.json();
         setFormConfig(data.properties);
       } catch (error) {
@@ -54,13 +66,13 @@ export const ContactForm = ({locale}: FormProps) => {
     email: '',
     phone: '',
     specialization: '',
-    topics: ''
+    topics: '',
   };
 
   const contactService = new ContactFormService({
-    templateName: formConfig?.emailTemplate || 'contact-form',
+    templateName: formConfig?.emailTemplate || 'contact-form', // Use fetched or default
     recipientEmail: process.env.NEXT_PUBLIC_CONTACT_FORM_EMAIL || '',
-    apiUrl: process.env.NEXT_PUBLIC_API_URL || ''
+    apiUrl: process.env.NEXT_PUBLIC_API_URL || '',
   });
 
   const {
@@ -68,18 +80,19 @@ export const ContactForm = ({locale}: FormProps) => {
     isSubmitting,
     status,
     handleChange,
-    handleSubmit: onSubmit
+    handleSubmit: onSubmit,
   } = useContactForm<InvestFormData>(contactService, initialState);
 
+  // handleSubmit logic remains unchanged
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validateForm(formData);
-    
+
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-    
+
     setErrors({});
     await onSubmit(e);
   };
@@ -92,37 +105,37 @@ export const ContactForm = ({locale}: FormProps) => {
     );
   }
 
+  // Use fetched config for fields/buttons, fall back to constants if needed
   const config = formConfig || {
-    formTitle: CONTACT_FORM_CONTENT.header.title,
-    formSubtitle: CONTACT_FORM_CONTENT.header.subtitle,
+    // Fallbacks for fields/buttons if fetch fails or properties are missing
     nameFieldTag: CONTACT_FORM_CONTENT.fields.name,
     emailFieldTag: CONTACT_FORM_CONTENT.fields.email,
     phoneFieldTag: CONTACT_FORM_CONTENT.fields.phone,
-    emailTemplateName: 'contact-form',
+    emailTemplate: 'contact-form', // Corrected property name based on FormConfig type
     customContactFormFields: {
       items: [
         {
           content: {
             properties: {
               customFormFieldTitle: CONTACT_FORM_CONTENT.fields.specialization,
-              customFormDropdownField: ["AREA 1", "AREA 2", "AREA 3"]
-            }
-          }
+              customFormDropdownField: ['AREA 1', 'AREA 2', 'AREA 3'],
+            },
+          },
         },
         {
           content: {
             properties: {
               customFormFieldTitle: CONTACT_FORM_CONTENT.fields.topics,
-              customFormDropdownField: ["Topic 1", "Topic 2", "Topic 3"]
-            }
-          }
-        }
-      ]
+              customFormDropdownField: ['Topic 1', 'Topic 2', 'Topic 3'],
+            },
+          },
+        },
+      ],
     },
     defaultSendButtonText: CONTACT_FORM_CONTENT.submit,
     sendingSendButtonText: CONTACT_FORM_CONTENT.submitting,
-    successSendButtonText: "Success",
-    errorSendButtonText: "Error"
+    successSendButtonText: 'Success',
+    errorSendButtonText: 'Error',
   };
 
   return (
@@ -132,20 +145,23 @@ export const ContactForm = ({locale}: FormProps) => {
           <div className="container mx-auto my-20 pt-20">
             <div className="w-full md:w-[95%] lg:w-[85%] xl:w-[75%] 2xl:w-[70%]">
               <h2 className="text-[clamp(3rem,7vw,5.5rem)] leading-tight font-PerformanceMark text-white mb-4 whitespace-pre-line">
-                {config.formTitle || CONTACT_FORM_CONTENT.header.title}
+                {/* Use title from the passed formHeader prop */}
+                {formHeader.title}
               </h2>
             </div>
-            
+
             <div className="w-full md:w-[90%] lg:w-[70%] xl:w-[55%] 2xl:w-[45%]">
               <p className="text-xl md:text-2xl font-bold font-poppins text-white/90 leading-relaxed whitespace-pre-line mb-20">
-                {config.formSubtitle || CONTACT_FORM_CONTENT.header.subtitle}
+                {/* Use subtitle from the passed formHeader prop */}
+                {formHeader.subtitle}
               </p>
             </div>
           </div>
 
+          {/* Decorative image remains unchanged */}
           <div className="hidden md:block absolute right-0 bottom-[-60%] w-[65%] max-w-[1080px] h-[140%] z-[2] pointer-events-none overflow-hidden">
             <div className="relative w-full h-full -right-40">
-              <Image 
+              <Image
                 src="/invest-in-talent/JuanH.webp"
                 alt="Decorative horse"
                 fill
@@ -177,12 +193,18 @@ export const ContactForm = ({locale}: FormProps) => {
                     <FormField
                       key={index}
                       label={field.content.properties.customFormFieldTitle}
-                      name={index === 0 ? "specialization" : "topics"}
+                      name={index === 0 ? 'specialization' : 'topics'}
                       type="select"
-                      value={index === 0 ? formData.specialization : formData.topics}
+                      value={
+                        index === 0
+                          ? formData.specialization
+                          : formData.topics
+                      }
                       onChange={handleChange}
                       required
-                      error={index === 0 ? errors.specialization : errors.topics}
+                      error={
+                        index === 0 ? errors.specialization : errors.topics
+                      }
                       disabled={isSubmitting}
                       options={field.content.properties.customFormDropdownField}
                     />
@@ -214,7 +236,11 @@ export const ContactForm = ({locale}: FormProps) => {
 
                   <FormStatus
                     isSubmitting={isSubmitting}
-                    submitError={status?.success === false ? config.errorSendButtonText : null}
+                    submitError={
+                      status?.success === false
+                        ? config.errorSendButtonText
+                        : null
+                    }
                     isSuccess={status?.success}
                     defaultText={config.defaultSendButtonText}
                     submittingText={config.sendingSendButtonText}
@@ -229,3 +255,4 @@ export const ContactForm = ({locale}: FormProps) => {
     </section>
   );
 };
+

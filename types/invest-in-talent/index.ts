@@ -15,6 +15,8 @@ export interface InvestInTalentData extends UmbracoContent {
     profileCarousel: {
       items: ProfileCarouselElement[];
     };
+    formHeaderTitle: string;
+    formHeader: string;
   };
 }
 
@@ -46,6 +48,11 @@ export interface InvestPageData {
     };
   };
   profiles: Profile[];
+  // Add a structure for the form header data
+  formHeader: {
+    title: string;
+    subtitle: string;
+  };
 }
 
 export interface Profile {
@@ -72,6 +79,9 @@ export function isInvestInTalentData(
     content.contentType === 'investInTalent' &&
     'principalText' in content.properties &&
     'subtext' in content.properties &&
-    'profileCarousel' in content.properties
+    'profileCarousel' in content.properties &&
+    // Check for the new properties
+    'formHeaderTitle' in content.properties &&
+    'formHeader' in content.properties
   );
 }
