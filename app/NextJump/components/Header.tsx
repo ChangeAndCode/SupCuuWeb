@@ -1,50 +1,55 @@
+// app/NextJump/components/Header.tsx
 import Image from "next/image";
 import { getImageUrl } from "@/utils/umbracoImageHelper";
 import { HeaderProps } from "@/types/common/header";
+
 function Header({ principalText, subtext, backgroundImage }: HeaderProps) {
   return (
     <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
-      {/* Image container */}
-      <div className="flex-shrink-0 w-full md:w-[500px] lg:w-[600px] xl:w-[650px] 2xl:w-[700px] h-auto relative z-10">
+      <div className="flex-shrink-0 w-full md:w-1/2 lg:w-5/12 xl:w-1/2 relative z-10">
         <Image
           src={getImageUrl(backgroundImage.url, "/CT/segunda.webp")}
           alt="STARTUP & SCALEUPS"
-          width={700}
-          height={600}
+          width={700} // Max render width
+          height={600} // Maintain aspect ratio
           quality={80}
           priority
           loading="eager"
           placeholder="blur"
           blurDataURL={getImageUrl(backgroundImage.url, "/CT/segunda.webp")}
-          className="object-cover w-full h-full animate-slide-left"
+          // Ensure image scales correctly within its container
+          className="object-cover w-full h-auto animate-slide-left"
         />
       </div>
 
-      {/* Text container */}
-      <div className="text-center md:text-left w-full md:w-auto relative z-20">
+      {/* Text container: Takes remaining space */}
+      <div className="text-center md:text-left w-full md:w-1/2 lg:w-7/12 xl:w-1/2 relative z-20 md:pt-4 lg:pt-8">
         <h3
-          className="font-pragmatica main-Tipography text-ColorPrincipal uppercase 
-                  text-[clamp(2rem,5vw,5rem)]  
-                  leading-tight md:leading-[clamp(3rem,12vw,6rem)] 
-                  mt-[clamp(1.5rem,4vw,3rem)] 
-                  transform md:translate-x-[clamp(-200px,-12vw,-180px)]"
+          className="font-pragmatica main-Tipography text-ColorPrincipal uppercase
+                     text-[clamp(2rem,4vw,4rem)] /* Reduced max/vw */
+                     leading-tight md:leading-[clamp(2.5rem,5vw,5rem)] /* Adjusted leading */
+                     mt-0 md:mt-[clamp(1rem,3vw,2rem)] /* Adjusted margin */
+                     " // REMOVED: transform md:translate-x[...]
         >
           {principalText[0]}
         </h3>
         <h2
-          className="text-ColorPrincipal font-PerformanceMark 
-                  text-[clamp(6rem,16vw,13rem)] leading-[.80] 
-                  w-full md:w-4/5 
-                  transform md:translate-x-[clamp(-115px,-10vw,-170px)]"
+          className="text-ColorPrincipal font-PerformanceMark
+                     text-[clamp(4rem,10vw,9rem)] /* Reduced max/vw */
+                     leading-[.85] /* Slightly increased leading */
+                     w-full /* Let text wrap naturally */
+                     " 
+
         >
           {subtext[0]}
         </h2>
         <h2
-          className="text-ColorPrincipal font-PerformanceMark 
-                  text-[clamp(6rem,16vw,13rem)] leading-[clamp(6rem,14vw,10rem)]
-                  w-full md:w-4/5 
-                  transform md:translate-x-[clamp(-50px,-7vw,-100px)]
-                  mb-[clamp(2rem,5vw,2rem)]"
+          className="text-ColorPrincipal font-PerformanceMark
+                     text-[clamp(4rem,10vw,9rem)] /* Reduced max/vw */
+                     leading-[clamp(3.5rem,9vw,8rem)] /* Adjusted leading */
+                     w-full /* Let text wrap naturally */
+                     mb-[clamp(1.5rem,4vw,2rem)] /* Adjusted margin */
+                     " 
         >
           {subtext[1]}
         </h2>

@@ -23,7 +23,7 @@ function NextJumpComponent({
 }: NextJumpProps) {
   return (
     <div className="overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32 py-16 sm:py-24 md:py-32 lg:py-48">
+      <div className="container mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32 py-8 sm:py-16 md:py-24 lg:py-32">
         <div className="max-w-[1400px] mx-auto w-full">
           <Header
             principalText={principalText}
