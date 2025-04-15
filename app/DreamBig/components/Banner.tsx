@@ -6,7 +6,6 @@ import clsx from "clsx";
 interface DreamBigDataProps {
   data: UmbracoDreamBigData;
   locale: string;
-  // No longer need useAlternativeLayout prop
 }
 
 const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
@@ -19,8 +18,8 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
           "flex w-full relative",
           "flex-col",
           "lg:top-32",
-          "xl:flex-row xl:items-start", // Align items to start
-          isSpanish && "xl:gap-4",
+          "xl:flex-row xl:items-start",
+          isSpanish && "xl:gap-4"
         )}
       >
         {/* --- Image Container --- */}
@@ -30,7 +29,7 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
             "sm:justify-center",
             "lg:w-full lg:justify-center",
             isSpanish ? "xl:flex-shrink xl:min-w-[40%]" : "xl:w-auto",
-            isSpanish && "xl:pt-10", // Optional padding for alignment
+            // Removed the conditional padding that was causing the inconsistency
           )}
         >
           <div
@@ -41,7 +40,8 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
               "md:w-[80%] lg:justify-center",
               "lg:w-full",
               "xl:w-full",
-              !isSpanish && "xl:relative xl:bottom-24",
+              // Apply the bottom positioning to both versions for consistency
+              "xl:relative xl:bottom-24"
             )}
           >
             <Image
@@ -69,7 +69,7 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
             "mt-10 md:top-10",
             "sm:w-full",
             "xl:mt-0",
-            isSpanish && "xl:flex-grow",
+            isSpanish && "xl:flex-grow"
           )}
         >
           {/* Top Text Block (Titles) */}
@@ -83,14 +83,13 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
                 "md:text-[9rem] max-md:leading-[6rem] max-md:mb-10",
                 "lg:text-[10rem] max-lg:leading-[8rem] max-lg:mb-12",
                 !isSpanish && "xl:text-[16rem] lg:leading-[8rem] lg:mb-20",
-                isSpanish && "xl:text-[11rem] xl:leading-[1]",
+                isSpanish && "xl:text-[11rem] xl:leading-[1]"
               )}
             >
               {data.principalTitle}
             </h2>
 
             {/* Container for Second Title and Subtitle */}
-            {/* Using items-baseline to align text along their baseline */}
             <div className="flex flex-row text-ColorPrincipal items-baseline">
               {/* Principal Title 2 */}
               <h2
@@ -102,8 +101,7 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
                   "lg:text-[10rem] max-lg:leading-[7rem] max-lg:mb-10",
                   "max-xl:text-[11rem] max-xl:leading-[6rem] max-xl:mb-8",
                   !isSpanish && "xl:text-[16rem] leading-[8rem]",
-                  // Adjusted Spanish styles for potentially better baseline alignment
-                  isSpanish && "xl:text-[11rem] xl:leading-[1]",
+                  isSpanish && "xl:text-[11rem] xl:leading-[1]"
                 )}
               >
                 {data.principalTitleTwo}
@@ -112,22 +110,14 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
               <h2
                 className={clsx(
                   "font-PerformanceMark w-[50%] h-auto text-end",
-                  // Base responsive sizes
                   "max-sm:text-[1.5rem] max-sm:leading-[2rem]",
                   "sm:text-[1.5rem] sm:leading-[2rem]",
                   "md:text-[2.5rem] md:leading-[5rem]",
                   "lg:text-[3rem] lg:leading-[6rem]",
-                  // English XL/2XL sizes
                   !isSpanish &&
                     "xl:text-[3rem] 2xl:text-[3.5rem] leading-[8rem]",
-                  // Spanish XL+ sizes and conditional positioning
                   isSpanish &&
-                    `
-                      xl:text-[2.2rem] xl:leading-[1.1]
-                      relative  /* <-- Add relative positioning */
-                      top-16     /* <-- Add top offset (Adjust this value: e.g., top-4, top-8, top-10) */
-                    `,
-                  // Removed complex responsive mt-* classes for Spanish
+                    "xl:text-[2.2rem] xl:leading-[1.1] relative top-16"
                 )}
               >
                 {data.subtitleOne}
@@ -152,7 +142,7 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
                 "md:text-[3rem] max-md:leading-[3rem]",
                 "lg:text-[5rem] max-lg:leading-[4rem]",
                 "text-7xl",
-                isSpanish && "break-words",
+                isSpanish && "break-words"
               )}
             >
               {data.subtitleTwo}
@@ -166,7 +156,7 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
                 "md:text-[3rem] max-md:leading-[3rem]",
                 "lg:text-[5rem] max-lg:leading-[4rem]",
                 "text-7xl",
-                isSpanish && "break-words",
+                isSpanish && "break-words"
               )}
             >
               {data.subtitleThree}
