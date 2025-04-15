@@ -3,8 +3,8 @@ import CarouselEvents from './CarouselEvents';
 import { getLocale } from '@/lib/Localization';
 
 const CarouselEventsContainer = async () => {
-  const eventsData = await getUmbracoContent("events");
   const locale = await getLocale() || "en-us";
+  const eventsData = await getUmbracoContent("events", locale);
   return <CarouselEvents locale={locale} eventsData={eventsData} />;
 };
 
