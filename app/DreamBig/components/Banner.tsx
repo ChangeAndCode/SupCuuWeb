@@ -78,8 +78,8 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
             <h2
               className={clsx(
                 "text-ColorPrincipal font-PerformanceMark",
-                "max-sm:text-[6.5rem] max-sm:leading-[3.5rem] max-sm:mb-6",
-                "sm:text-[7.5rem]",
+                "max-sm:text-[6rem] max-sm:leading-[3.5rem] max-sm:mb-6",
+                "sm:text-[7rem]",
                 "md:text-[9rem] max-md:leading-[6rem] max-md:mb-10",
                 "lg:text-[10rem] max-lg:leading-[8rem] max-lg:mb-12",
                 !isSpanish && "xl:text-[16rem] lg:leading-[8rem] lg:mb-20",
@@ -100,6 +100,7 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
                   "sm:text-[8rem]",
                   "md:text-[9rem] max-md:leading-[5rem] max-md:mb-8",
                   "lg:text-[10rem] max-lg:leading-[7rem] max-lg:mb-10",
+                  "max-xl:text-[11rem] max-xl:leading-[6rem] max-xl:mb-8",
                   !isSpanish && "xl:text-[16rem] leading-[8rem]",
                   // Adjusted Spanish styles for potentially better baseline alignment
                   isSpanish && "xl:text-[11rem] xl:leading-[1]",
