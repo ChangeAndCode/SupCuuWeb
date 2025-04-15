@@ -79,9 +79,9 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
               className={clsx(
                 "text-ColorPrincipal font-PerformanceMark",
                 "max-sm:text-[6.5rem] max-sm:leading-[3.5rem] max-sm:mb-6",
-                "sm:text-[8rem]",
-                "md:text-[12rem] max-md:leading-[6rem] max-md:mb-10",
-                "lg:text-[18rem] max-lg:leading-[8rem] max-lg:mb-12",
+                "sm:text-[7.5rem]",
+                "md:text-[9rem] max-md:leading-[6rem] max-md:mb-10",
+                "lg:text-[10rem] max-lg:leading-[8rem] max-lg:mb-12",
                 !isSpanish && "xl:text-[16rem] lg:leading-[8rem] lg:mb-20",
                 isSpanish && "xl:text-[11rem] xl:leading-[1]",
               )}
@@ -98,8 +98,8 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
                   "font-PerformanceMark w-[50%] h-auto",
                   "max-sm:text-[6.5rem] max-sm:leading-[3rem] max-sm:mb-5",
                   "sm:text-[8rem]",
-                  "md:text-[12rem] max-md:leading-[5rem] max-md:mb-8",
-                  "lg:text-[18rem] max-lg:leading-[7rem] max-lg:mb-10",
+                  "md:text-[9rem] max-md:leading-[5rem] max-md:mb-8",
+                  "lg:text-[10rem] max-lg:leading-[7rem] max-lg:mb-10",
                   !isSpanish && "xl:text-[16rem] leading-[8rem]",
                   // Adjusted Spanish styles for potentially better baseline alignment
                   isSpanish && "xl:text-[11rem] xl:leading-[1]",
@@ -115,7 +115,7 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
                   "max-sm:text-[1.5rem] max-sm:leading-[2rem]",
                   "sm:text-[1.5rem] sm:leading-[2rem]",
                   "md:text-[2.5rem] md:leading-[5rem]",
-                  "lg:text-[4rem] lg:leading-[6rem]",
+                  "lg:text-[3rem] lg:leading-[6rem]",
                   // English XL/2XL sizes
                   !isSpanish &&
                     "xl:text-[3rem] 2xl:text-[3.5rem] leading-[8rem]",
