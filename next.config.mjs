@@ -4,8 +4,6 @@ import path from "path";
 const nextConfig = {
   reactStrictMode: true,
   devIndicators: {
-    appIsrStatus: false,
-    buildActivity: false,
   },
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {

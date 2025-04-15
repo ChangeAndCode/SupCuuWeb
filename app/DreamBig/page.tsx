@@ -29,7 +29,7 @@ export default async function Page() {
         {/* Main page content */}
         <div className="max-w-[1500px] mx-auto md:mb-20 lg:mb-52 xl:mb-40 2xl:mb-24">
           <Suspense fallback={<Loading />}>
-            <Banner data={dreamBigData} />
+            <Banner locale={locale} data={dreamBigData} />
           </Suspense>
         </div>
         <div className="max-w-[1500px] mx-auto">
