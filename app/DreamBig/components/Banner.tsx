@@ -28,8 +28,7 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
             "flex",
             "sm:justify-center",
             "lg:w-full lg:justify-center",
-            isSpanish ? "xl:flex-shrink xl:min-w-[40%]" : "xl:w-auto",
-            // Removed the conditional padding that was causing the inconsistency
+            isSpanish ? "xl:flex-shrink xl:min-w-[40%]" : "xl:w-auto"
           )}
         >
           <div
@@ -40,7 +39,6 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
               "md:w-[80%] lg:justify-center",
               "lg:w-full",
               "xl:w-full",
-              // Apply the bottom positioning to both versions for consistency
               "xl:relative xl:bottom-24"
             )}
           >
@@ -78,7 +76,9 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
             <h2
               className={clsx(
                 "text-ColorPrincipal font-PerformanceMark",
-                "max-sm:text-[6rem] max-sm:leading-[3.5rem] max-sm:mb-6",
+                isSpanish
+                  ? "max-sm:text-[4.5rem] max-sm:leading-[2.8rem] max-sm:mb-3"
+                  : "max-sm:text-[6rem] max-sm:leading-[3.5rem] max-sm:mb-6",
                 "sm:text-[7rem]",
                 "md:text-[9rem] max-md:leading-[6rem] max-md:mb-10",
                 "lg:text-[10rem] max-lg:leading-[8rem] max-lg:mb-12",
@@ -95,7 +95,9 @@ const Banner: React.FC<DreamBigDataProps> = ({ data, locale }) => {
               <h2
                 className={clsx(
                   "font-PerformanceMark w-[50%] h-auto",
-                  "max-sm:text-[6.5rem] max-sm:leading-[3rem] max-sm:mb-5",
+                  isSpanish
+                    ? "max-sm:text-[5rem] max-sm:leading-[2.6rem] max-sm:mb-3"
+                    : "max-sm:text-[6.5rem] max-sm:leading-[3rem] max-sm:mb-5",
                   "sm:text-[8rem]",
                   "md:text-[9rem] max-md:leading-[5rem] max-md:mb-8",
                   "lg:text-[10rem] max-lg:leading-[7rem] max-lg:mb-10",

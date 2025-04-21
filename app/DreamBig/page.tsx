@@ -23,21 +23,24 @@ export default async function Page() {
       <div
         className="
         max-sm:py-20 sm:py-20 md:py-24 lg:py-10
-        max-sm:px-10 sm:px-10 md:px-20 lg:px-28 
-        bg-[#EDEFF0]"
+        bg-[#EDEFF0]
+        overflow-x-clip
+        "
       >
         {/* Main page content */}
-        <div className="max-w-[1500px] mx-auto md:mb-20 lg:mb-52 xl:mb-40 2xl:mb-24">
+        <div className="max-w-[1500px] mx-auto md:mb-20 lg:mb-52 xl:mb-40 2xl:mb-24 px-10 md:px-20 lg:px-28">
           <Suspense fallback={<Loading />}>
             <Banner locale={locale} data={dreamBigData} />
           </Suspense>
         </div>
-        <div className="max-w-[1500px] mx-auto">
+        {/* Apply overflow clipping to this container */}
+        <div className="w-full">
+          {" "}
           <Suspense fallback={<Loading />}>
             <ProgramShowCase data={dreamBigData} />
           </Suspense>
         </div>
-        <div className="max-w-[1500px] mx-auto">
+        <div className="max-w-[1500px] mx-auto px-10 md:px-20 lg:px-28">
           <Suspense fallback={<Loading />}>
             <CarouselEventsContainer />
           </Suspense>
