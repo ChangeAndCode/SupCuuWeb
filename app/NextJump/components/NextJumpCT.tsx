@@ -23,7 +23,8 @@ function NextJumpComponent({
 }: NextJumpProps) {
   return (
     <div className="overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32 py-8 sm:py-16 md:py-24 lg:py-32">
+      {/* Content above Accelerators */}
+      <div className="mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32 py-8 sm:py-16 md:py-24 lg:py-32">
         <div className="max-w-[1400px] mx-auto w-full">
           <Header
             principalText={principalText}
@@ -45,20 +46,20 @@ function NextJumpComponent({
           {/* CTA Button */}
           <a
             href={checkListCtaButtonHref}
-            className="mt-4 flex justify-center lg:justify-end relative z-20" // Add relative and z-20
+            className="mt-4 flex justify-center lg:justify-end relative z-20" // Keep relative and z-20
           >
             <button
-              className="bg-[#ff4544] text-white 
-                py-[0.75rem] sm:py-[0.875rem] md:py-[1rem] 
-                px-[2rem] sm:px-[3rem] md:px-[4rem] lg:px-[6rem] 
-                rounded-md 
-                main-Tipography 
-                text-[0.75rem] sm:text-[1rem] md:text-[1.3rem] lg:text-[1.5rem] 
-                uppercase 
+              className="bg-[#ff4544] text-white
+                py-[0.75rem] sm:py-[0.875rem] md:py-[1rem]
+                px-[2rem] sm:px-[3rem] md:px-[4rem] lg:px-[6rem]
+                rounded-md
+                main-Tipography
+                text-[0.75rem] sm:text-[1rem] md:text-[1.3rem] lg:text-[1.5rem]
+                uppercase
                 font-pragmatica
                 hover:bg-[#e63e3d] transition-colors duration-200
                 w-auto min-w-[180px] sm:min-w-[220px] md:min-w-[260px]
-                relative" // Add relative positioning
+                relative" // Keep relative positioning
             >
               {checkListCtaButtonText}
             </button>
@@ -68,19 +69,28 @@ function NextJumpComponent({
 
       {/* Accelerators Section */}
       <div
-        className="bg-[url('/Bg/bgPartners.webp')] 
-          bg-no-repeat bg-center 
+        className="bg-[url('/Bg/bgPartners.webp')]
+          bg-no-repeat bg-center
           bg-cover md:bg-[length:120vw_100%]
-          mt-[-8rem] sm:mt-[-12rem] md:mt-[-17rem]
+          // --- RESPONSIVE MARGINS ---
+          mt-8          // Positive margin for smallest screens (mobile)
+          sm:mt-[-8rem] // Start negative margin at sm breakpoint
+          md:mt-[-12rem] // Increase negative margin at md breakpoint
+          lg:mt-[-17rem] // Further increase negative margin at lg breakpoint
+          // --- END RESPONSIVE MARGINS ---
           relative pb-24"
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32">
-      </div>
-          <Accelerators accelerators={accelerators} title={acceleratorsTitle} />
+          {/* Optional: Content inside Accelerators section background */}
         </div>
+        {/* Accelerators component rendered within the background div */}
+        <Accelerators accelerators={accelerators} title={acceleratorsTitle} />
+      </div>
+
+      {/* Carousel Events */}
       <div className="max-w-[1500px] mx-auto">
         <CarouselEventsContainer />
-        </div>
+      </div>
 
       {/* Contact Form */}
       <div className="mt-4">
