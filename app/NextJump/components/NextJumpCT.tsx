@@ -1,5 +1,3 @@
-// app/NextJump/page.tsx or wherever NextJumpComponent is defined
-
 import Accelerators from "./Accelerators";
 import Checklist from "./Checklist";
 import { NextJumpProps } from "@/types/NextJump";
@@ -25,7 +23,7 @@ function NextJumpComponent({
 }: NextJumpProps) {
   return (
     <div className="overflow-hidden">
-      {/* Removed 'container' class. mx-auto and padding classes remain. */}
+      {/* Content above Accelerators */}
       <div className="mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32 py-8 sm:py-16 md:py-24 lg:py-32">
         <div className="max-w-[1400px] mx-auto w-full">
           <Header
@@ -48,7 +46,7 @@ function NextJumpComponent({
           {/* CTA Button */}
           <a
             href={checkListCtaButtonHref}
-            className="mt-4 flex justify-center lg:justify-end relative z-20" // Add relative and z-20
+            className="mt-4 flex justify-center lg:justify-end relative z-20" // Keep relative and z-20
           >
             <button
               className="bg-[#ff4544] text-white
@@ -61,7 +59,7 @@ function NextJumpComponent({
                 font-pragmatica
                 hover:bg-[#e63e3d] transition-colors duration-200
                 w-auto min-w-[180px] sm:min-w-[220px] md:min-w-[260px]
-                relative" // Add relative positioning
+                relative" // Keep relative positioning
             >
               {checkListCtaButtonText}
             </button>
@@ -74,15 +72,22 @@ function NextJumpComponent({
         className="bg-[url('/Bg/bgPartners.webp')]
           bg-no-repeat bg-center
           bg-cover md:bg-[length:120vw_100%]
-          mt-[-8rem] sm:mt-[-12rem] md:mt-[-17rem]
+          // --- RESPONSIVE MARGINS ---
+          mt-8          // Positive margin for smallest screens (mobile)
+          sm:mt-[-8rem] // Start negative margin at sm breakpoint
+          md:mt-[-12rem] // Increase negative margin at md breakpoint
+          lg:mt-[-17rem] // Further increase negative margin at lg breakpoint
+          // --- END RESPONSIVE MARGINS ---
           relative pb-24"
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 lg:px-24 xl:px-32">
-          {/* Content inside Accelerators section background, if any, goes here */}
+          {/* Optional: Content inside Accelerators section background */}
         </div>
-        {/* Ensure Accelerators is outside the inner padded div if it needs full background width */}
+        {/* Accelerators component rendered within the background div */}
         <Accelerators accelerators={accelerators} title={acceleratorsTitle} />
       </div>
+
+      {/* Carousel Events */}
       <div className="max-w-[1500px] mx-auto">
         <CarouselEventsContainer />
       </div>
