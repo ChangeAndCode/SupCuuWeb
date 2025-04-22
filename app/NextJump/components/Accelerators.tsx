@@ -29,10 +29,8 @@ const Accelerators = ({ accelerators, title }: AcceleratorsProps) => {
               >
                 {/* Card Container */}
                 <div className="bg-white shadow-lg rounded-lg p-3 md:p-4 w-full mx-auto hover:shadow-2xl transition-shadow duration-300">
-                  {/* Logo Container - Increased base min-h */}
+                  {/* Logo Container */}
                   <div className="flex justify-center items-center gap-4 mb-2 md:mb-3 min-h-[70px]">
-                    {" "}
-                    {/* Changed min-h-[50px] to min-h-[70px] */}
                     {accelerator?.properties?.logos?.map((logo, index) => (
                       <div
                         key={logo.id}
@@ -43,9 +41,10 @@ const Accelerators = ({ accelerators, title }: AcceleratorsProps) => {
                           alt={logo.name}
                           width={0}
                           height={0}
-                          sizes="(max-width: 768px) 100px, 200px"
-                          // Increased base max-h slightly
-                          className="object-contain w-full h-auto max-w-[100px] md:max-w-[200px] max-h-[60px] md:max-h-[70px]" // Changed max-h-[50px] to max-h-[60px]
+                          // Updated sizes prop for the new max-width
+                          sizes="(max-width: 768px) 140px, 200px" // Changed 100px to 140px
+                          // Increased base max-w
+                          className="object-contain w-full h-auto max-w-[140px] md:max-w-[200px] max-h-[60px] md:max-h-[70px]" // Changed max-w-[100px] to max-w-[140px]
                         />
                       </div>
                     ))}
@@ -58,10 +57,7 @@ const Accelerators = ({ accelerators, title }: AcceleratorsProps) => {
                       accelerator?.properties?.ctaButton1Href?.[0]?.url || "#"
                     }
                   >
-                    {/* Increased base padding and text size */}
                     <button className="bg-blue-500 text-white py-1.5 px-4 md:py-2 md:px-6 rounded-lg hover:bg-blue-600 transition-colors text-sm md:text-base">
-                      {" "}
-                      {/* Changed py-1, px-3, text-xs */}
                       {accelerator?.properties?.ctaButton1Text}
                     </button>
                   </a>
@@ -71,10 +67,7 @@ const Accelerators = ({ accelerators, title }: AcceleratorsProps) => {
                         accelerator?.properties?.ctaButton2Href?.[0]?.url || "#"
                       }
                     >
-                      {/* Increased base padding and text size */}
                       <button className="bg-blue-500 text-white py-1.5 px-4 md:py-2 md:px-6 rounded-lg hover:bg-blue-600 transition-colors text-sm md:text-base">
-                        {" "}
-                        {/* Changed py-1, px-3, text-xs */}
                         {accelerator?.properties?.ctaButton2Text}
                       </button>
                     </a>
