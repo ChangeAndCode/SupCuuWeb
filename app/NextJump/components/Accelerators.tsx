@@ -27,27 +27,37 @@ const Accelerators = ({ accelerators, title }: AcceleratorsProps) => {
                 key={accelerator.id}
                 className="flex flex-col items-center px-2"
               >
+                {/* Card Container */}
                 <div className="bg-white shadow-lg rounded-lg p-3 md:p-4 w-full mx-auto hover:shadow-2xl transition-shadow duration-300">
-                  <div className="flex justify-center items-center gap-4 mb-2 md:mb-3">
+                  {/* Logo Container */}
+                  <div className="flex justify-center items-center gap-4 mb-2 md:mb-3 min-h-[70px]">
                     {accelerator?.properties?.logos?.map((logo, index) => (
-                      <Image
+                      <div
                         key={logo.id}
-                        src={getImageUrl(logo.url, "/logos/manos.webp")}
-                        alt={logo.name}
-                        width={100}
-                        height={100}
-                        className="object-contain md:w-[200px] md:h-[70px]"
-                      />
+                        className="flex-1 flex justify-center"
+                      >
+                        <Image
+                          src={getImageUrl(logo.url, "/logos/manos.webp")}
+                          alt={logo.name}
+                          width={0}
+                          height={0}
+                          // Updated sizes prop for the new max-width
+                          sizes="(max-width: 768px) 140px, 200px" // Changed 100px to 140px
+                          // Increased base max-w
+                          className="object-contain w-full h-auto max-w-[140px] md:max-w-[200px] max-h-[60px] md:max-h-[70px]" // Changed max-w-[100px] to max-w-[140px]
+                        />
+                      </div>
                     ))}
                   </div>
                 </div>
+                {/* Buttons Container */}
                 <div className="flex gap-1 sm:gap-2 -mt-4 sm:-mt-5 items-end w-full px-2 justify-end">
                   <a
                     href={
                       accelerator?.properties?.ctaButton1Href?.[0]?.url || "#"
                     }
                   >
-                    <button className="bg-blue-500 text-white py-1 md:py-2 px-3 md:px-6 rounded-lg hover:bg-blue-600 transition-colors text-xs md:text-base">
+                    <button className="bg-blue-500 text-white py-1.5 px-4 md:py-2 md:px-6 rounded-lg hover:bg-blue-600 transition-colors text-sm md:text-base">
                       {accelerator?.properties?.ctaButton1Text}
                     </button>
                   </a>
@@ -57,12 +67,13 @@ const Accelerators = ({ accelerators, title }: AcceleratorsProps) => {
                         accelerator?.properties?.ctaButton2Href?.[0]?.url || "#"
                       }
                     >
-                      <button className="bg-blue-500 text-white py-1 md:py-2 px-3 md:px-6 rounded-lg hover:bg-blue-600 transition-colors text-xs md:text-base">
+                      <button className="bg-blue-500 text-white py-1.5 px-4 md:py-2 md:px-6 rounded-lg hover:bg-blue-600 transition-colors text-sm md:text-base">
                         {accelerator?.properties?.ctaButton2Text}
                       </button>
                     </a>
                   )}
                 </div>
+                {/* Description Container */}
                 <div className="mt-1 flex flex-col items-end w-full px-2">
                   <p className="font-pragmatica main-Tipography text-[0.9rem] sm:text-[1rem] md:text-[1rem] pt-2 md:pt-4 text-right">
                     {accelerator?.properties?.description}
