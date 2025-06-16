@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo, useEffect } from "react";
 import EventCard from "@components/CarouselEvents/EventCard";
-import CardsData from "../data/CardsData"; 
+// import CardsData from "../data/CardsData"; 
 import FilterBy from "./FilterBy";
 import { EventsData, Event } from "types/Opportunities";
 import { cardsTranslations } from "@/lib/Localization/opportunities"; // Import translations for error messages and labels
@@ -30,24 +30,20 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
     cardsTranslations[locale as keyof typeof cardsTranslations] ||
     cardsTranslations["en-us"];
 
-  const events = useMemo(
-    () =>
-      eventsData?.properties?.events?.items ||
-      CardsData.map((item) => ({
-        content: {
-          id: item.title,
-          properties: {
-            titleEvent: item.title,
-            descriptionEvents: item.description,
-            dateEvent: item.date || "",
-            locationEvents: item.location || "",
-            imagesEvents: item.image,
-            linkEvents: "",
-          },
-        },
-      })),
-    [eventsData]
-  ) as Event[];
+    const events = useMemo(() => {
+      const backendEvents = eventsData?.properties?.events?.items || [];
+
+      // Ordenar por fecha más cercana primero
+      return backendEvents.sort((a, b) => {
+        const dateA = new Date(a.content.properties.dateEvent);
+        const dateB = new Date(b.content.properties.dateEvent);
+
+        if (isNaN(dateA.getTime())) return 1;
+        if (isNaN(dateB.getTime())) return -1;
+
+        return dateA.getTime() - dateB.getTime();
+      });
+    }, [eventsData]) as Event[];
 
   const filteredEvents = useMemo(() => {
     return events.filter((item: Event) => {
