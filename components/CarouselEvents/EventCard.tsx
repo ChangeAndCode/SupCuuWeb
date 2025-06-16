@@ -5,6 +5,8 @@ const EventCard = ({
   title,
   description,
   date,
+  closeDate,
+  category,
   location,
   image,
   nextPublicApiUrl,
@@ -91,7 +93,15 @@ const EventCard = ({
               {description}
             </p>
             <p className="font-semibold text-xs sm:text-sm uppercase text-left">
-              Fecha: {date}
+              Fecha de inicio: {date}
+            </p>
+            {closeDate && (
+              <p className="font-semibold text-xs sm:text-sm uppercase text-left">
+                Fecha de cierre: {closeDate}
+              </p>
+            )}
+            <p className="font-semibold text-xs sm:text-sm uppercase text-left">
+              Categoría: {category}
             </p>
             <p className="font-semibold text-xs sm:text-sm uppercase text-left">
               Lugar: {location}

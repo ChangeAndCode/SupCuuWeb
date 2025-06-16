@@ -107,6 +107,8 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
                 titleEvent = "No Title",
                 descriptionEvents = "No Description",
                 dateEvent = "",
+                closeEvent = "",
+                category = "",
                 locationEvents = "",
                 imagesEvents = null,
                 linkEvents = "",
@@ -118,10 +120,14 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
                   title={titleEvent}
                   description={descriptionEvents}
                   date={dateEvent}
+                  closeDate={closeEvent}
+                  category={category}
                   location={locationEvents}
                   image={imagesEvents}
                   nextPublicApiUrl={nextPublicApiUrl}
-                  onClick={() => linkEvents && window.open(linkEvents, "_blank")}
+                  onClick={() =>
+                    linkEvents && window.open(linkEvents, "_blank")
+                  }
                 />
               );
             })}
