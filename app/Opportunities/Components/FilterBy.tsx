@@ -74,6 +74,7 @@ const FilterBy = ({
       {/* Filter Type Select */}
       <div className="relative w-full sm:w-auto flex-shrink-0 /* Full width when stacked */">
         <select
+          title="filterType"
           value={filterType}
           onChange={(e) => onFilterTypeChange(e.target.value)}
           className="

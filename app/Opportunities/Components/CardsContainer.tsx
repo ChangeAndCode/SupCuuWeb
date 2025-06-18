@@ -1,17 +1,17 @@
 import { getUmbracoContent } from "@/lib/server/umbracoApi";
-import Cards from "./Cards";
+// import Cards from "./Cards";
 import { getLocale } from "@/lib/Localization";
 import { cardsContainerTranslations } from "@/lib/Localization/opportunities"; // Import translations for error messages and labels
 import { adaptBackendEvents } from "@/lib/Opportunities/adapters";
+import { matchesKeywords } from "@/lib/Opportunities/matchesKeywords";
+import CardsClientWrapper from "./CardClientWrapper";
 
 const CardsContainer = async () => {
-  // Determine locale first, handling potential errors to ensure it's defined
   let locale: string;
   try {
     locale = await getLocale();
-  } catch (localeError) {
-    console.error("Failed to get locale, defaulting to en-us:", localeError);
-    locale = "en-us"; // Default locale if fetching fails
+  } catch {
+    locale = "en-us";
   }
 
   const i18n =
@@ -20,36 +20,33 @@ const CardsContainer = async () => {
     ] || cardsContainerTranslations["en-us"];
 
   try {
-    const backendResponse = await fetch("http://localhost:5000/api/extract");
+    const backendResponse = await fetch(
+      "http://localhost:5000/api/custom-events",
+      {
+        cache: "no-store",
+      }
+    );
     const backendJson = await backendResponse.json();
 
-    // Asegúrate de que .events exista y sea un arreglo
     if (!backendJson?.events || !Array.isArray(backendJson.events)) {
-      console.error(
-        "No se encontraron eventos válidos desde el backend:",
-        backendJson
-      );
-      throw new Error("Error al cargar eventos desde el backend");
+      throw new Error("No se encontraron eventos válidos");
     }
 
     const adaptedEvents = adaptBackendEvents(backendJson.events);
+    const relevantEvents = adaptedEvents.filter((event) => {
+      const props = event.content.properties;
+      return (
+        matchesKeywords(props.titleEvent) ||
+        matchesKeywords(props.descriptionEvents) ||
+        matchesKeywords(props.category)
+      );
+    });
 
-    const eventsData = {
-      properties: {
-        events: {
-          items: adaptedEvents,
-        },
-      },
-    };
-
-    if (!eventsData?.properties?.events?.items) {
-      console.error(i18n.loadingErrorLog, eventsData);
-      throw new Error(i18n.loadingErrorLog);
-    }
-
-    return <Cards eventsData={eventsData} locale={locale} />;
+    return (
+      <CardsClientWrapper initialEvents={relevantEvents} locale={locale} />
+    );
   } catch (error) {
-    console.error("Error loading events data:", error);
+    console.error("Error loading events:", error);
 
     return (
       <div className="py-10 px-6">

@@ -33,8 +33,12 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
     const events = useMemo(() => {
       const backendEvents = eventsData?.properties?.events?.items || [];
 
-      // Ordenar por fecha más cercana primero
-      return backendEvents.sort((a, b) => {
+      // Validar antes de ordenar
+      const validEvents = backendEvents.filter(
+        (e) => e?.content?.properties?.dateEvent
+      );
+
+      return validEvents.sort((a, b) => {
         const dateA = new Date(a.content.properties.dateEvent);
         const dateB = new Date(b.content.properties.dateEvent);
 
