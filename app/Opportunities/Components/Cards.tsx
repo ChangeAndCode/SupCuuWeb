@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo, useEffect } from "react";
 import EventCard from "@components/CarouselEvents/EventCard";
-// import CardsData from "../data/CardsData"; 
+// import CardsData from "../data/CardsData";
 import FilterBy from "./FilterBy";
 import { EventsData, Event } from "types/Opportunities";
 import { cardsTranslations } from "@/lib/Localization/opportunities"; // Import translations for error messages and labels
@@ -9,9 +9,10 @@ import { cardsTranslations } from "@/lib/Localization/opportunities"; // Import 
 interface CardsProps {
   eventsData: EventsData;
   locale: string;
+  onOpenForm: () => void;
 }
 
-const Cards = ({ eventsData, locale }: CardsProps) => {
+const Cards = ({ eventsData, locale, onOpenForm }: CardsProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,24 +31,23 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
     cardsTranslations[locale as keyof typeof cardsTranslations] ||
     cardsTranslations["en-us"];
 
-    const events = useMemo(() => {
-      const backendEvents = eventsData?.properties?.events?.items || [];
+  const events = useMemo(() => {
+    const backendEvents = eventsData?.properties?.events?.items || [];
 
-      // Validar antes de ordenar
-      const validEvents = backendEvents.filter(
-        (e) => e?.content?.properties?.dateEvent
-      );
+    const validEvents = backendEvents.filter(
+      (e) => e?.content?.properties?.dateEvent
+    );
 
-      return validEvents.sort((a, b) => {
-        const dateA = new Date(a.content.properties.dateEvent);
-        const dateB = new Date(b.content.properties.dateEvent);
+    return validEvents.sort((a, b) => {
+      const dateA = new Date(a.content.properties.dateEvent);
+      const dateB = new Date(b.content.properties.dateEvent);
 
-        if (isNaN(dateA.getTime())) return 1;
-        if (isNaN(dateB.getTime())) return -1;
+      if (isNaN(dateA.getTime())) return 1;
+      if (isNaN(dateB.getTime())) return -1;
 
-        return dateA.getTime() - dateB.getTime();
-      });
-    }, [eventsData]) as Event[];
+      return dateA.getTime() - dateB.getTime();
+    });
+  }, [eventsData]) as Event[];
 
   const filteredEvents = useMemo(() => {
     return events.filter((item: Event) => {
@@ -55,7 +55,7 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
 
       const { titleEvent = "", descriptionEvents = "" } =
         item.content.properties;
-      const searchLower = searchTerm.toLowerCase(); 
+      const searchLower = searchTerm.toLowerCase();
 
       if (!searchTerm) return true;
 
@@ -87,12 +87,22 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
 
   return (
     <div className="py-2 px-6">
-      <FilterBy
-        onFilterChange={setSearchTerm}
-        filterType={filterType}
-        onFilterTypeChange={setFilterType}
-        locale={locale}
-      />
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-5 gap-4">
+        <div className="w-full sm:flex-grow">
+          <FilterBy
+            onFilterChange={setSearchTerm}
+            filterType={filterType}
+            onFilterTypeChange={setFilterType}
+            locale={locale}
+          />
+        </div>
+        <button
+          onClick={onOpenForm}
+          className="bg-green-600 text-white px-4 py-2 rounded shadow w-full sm:w-auto"
+        >
+          New Event
+        </button>
+      </div>
 
       {filteredEvents.length === 0 ? (
         <div className="text-center py-10">
@@ -102,7 +112,6 @@ const Cards = ({ eventsData, locale }: CardsProps) => {
         <>
           <div className="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-6">
             {currentEvents.map((item: Event) => {
-              
               const {
                 titleEvent = "No Title",
                 descriptionEvents = "No Description",

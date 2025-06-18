@@ -9,20 +9,11 @@ export default function CardsClientWrapper({ initialEvents, locale }: any) {
 
   const handleNewEvent = (newEvent: any) => {
     setEvents([newEvent, ...events]);
-    setShowForm(false); // Cerrar el modal al guardar
+    setShowForm(false);
   };
 
   return (
     <div className="space-y-6 relative">
-      <div className="flex justify-end">
-        <button
-          onClick={() => setShowForm(true)}
-          className="bg-green-600 text-white px-4 py-2 rounded shadow"
-        >
-          Crear formulario
-        </button>
-      </div>
-
       {showForm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-lg p-6 shadow-lg w-full max-w-md relative">
@@ -41,6 +32,7 @@ export default function CardsClientWrapper({ initialEvents, locale }: any) {
       <Cards
         eventsData={{ properties: { events: { items: events } } }}
         locale={locale}
+        onOpenForm={() => setShowForm(true)}
       />
     </div>
   );
