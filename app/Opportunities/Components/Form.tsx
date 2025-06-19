@@ -16,6 +16,7 @@ export default function Form({
     url_site: "",
     url_image: "",
   });
+  const [successMessage, setSuccessMessage] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -28,7 +29,7 @@ export default function Form({
 
     const res = await fetch("http://localhost:5000/api/custom-events/create", {
       method: "POST",
-      body: JSON.stringify(form),
+      body: JSON.stringify({ ...form, status: "inactive" }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -36,7 +37,7 @@ export default function Form({
 
     const data = await res.json();
     if (res.ok) {
-      onEventCreated(data); // <- data ya es el evento
+      onEventCreated(data);
       setForm({
         name: "",
         description: "",
@@ -47,6 +48,12 @@ export default function Form({
         url_site: "",
         url_image: "",
       });
+      setSuccessMessage(true); // <- mostrar mensaje
+      setTimeout(() => {
+        setSuccessMessage(false);
+        onEventCreated(data); // ¡esto ya lo tienes!
+      }, 5000);
+      
     } else {
       alert("Error: " + data.error);
     }
@@ -129,6 +136,11 @@ export default function Form({
       >
         Guardar
       </button>
+      {successMessage && (
+        <p className="text-yellow-600 mt-4 text-sm">
+          Este evento será visible tras ser aprobado por un administrador.
+        </p>
+      )}
     </form>
   );
 }

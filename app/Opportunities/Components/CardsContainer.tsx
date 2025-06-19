@@ -31,8 +31,11 @@ const CardsContainer = async () => {
     if (!backendJson?.events || !Array.isArray(backendJson.events)) {
       throw new Error("No se encontraron eventos válidos");
     }
+    const activeEvents = backendJson.events.filter(
+      (e) => !e.status || e.status === "active"
+    );
 
-    const adaptedEvents = adaptBackendEvents(backendJson.events);
+    const adaptedEvents = adaptBackendEvents(activeEvents);
     const relevantEvents = adaptedEvents.filter((event) => {
       const props = event.content.properties;
       return (
