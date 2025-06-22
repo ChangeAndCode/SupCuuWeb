@@ -16,7 +16,7 @@ export default function CardsClientWrapper({ initialEvents, locale }: any) {
     <div className="space-y-6 relative">
       {showForm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg p-6 shadow-lg w-full max-w-md relative">
+          <div className="bg-white rounded-lg p-6 shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto relative">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold">Nuevo Evento</h2>
               <button

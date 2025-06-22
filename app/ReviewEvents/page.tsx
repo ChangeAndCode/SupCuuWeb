@@ -28,17 +28,18 @@ export default function ReviewEventsPage() {
   const toggleStatus = async (id: string, currentStatus: string) => {
     const newStatus = currentStatus === "active" ? "inactive" : "active";
 
-    await fetch("http://localhost:5000/api/custom-events/events/status/${id}", {
+    await fetch(`http://localhost:5000/api/custom-events/events/status/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: newStatus }),
     });
 
-    setEvents((prev) =>
-      prev.map((e) =>
-        e._id === id ? { ...e, status: newStatus as "active" | "inactive" } : e
-      )
+    // 🔄 Vuelve a obtener los eventos pendientes desde el backend
+    const updated = await fetch(
+      "http://localhost:5000/api/custom-events/events/pending"
     );
+    const data = await updated.json();
+    setEvents(data.events); // <- actualiza solo con los inactivos
   };
 
   return (
@@ -83,9 +84,13 @@ export default function ReviewEventsPage() {
                 <div className="flex justify-center items-center">
                   {event.url_image ? (
                     <img
-                      src={event.url_image}
+                      src={
+                        event.url_image?.startsWith("http")
+                          ? event.url_image
+                          : `http://localhost:5000${event.url_image}`
+                      }
                       alt="img"
-                      className="w-20 h-auto"
+                      className="w-20 h-auto rounded"
                     />
                   ) : (
                     "N/A"

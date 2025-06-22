@@ -98,7 +98,15 @@ const Cards = ({ eventsData, locale, onOpenForm }: CardsProps) => {
         </div>
         <button
           onClick={onOpenForm}
-          className="bg-green-600 text-white px-4 py-2 rounded shadow w-full sm:w-auto"
+          className="text-sm md:text-base lg:text-lg
+            px-3 py-2
+            font-pragmatica
+            bg-green-600 hover:bg-green-700 transition-colors
+            text-white font-semibold
+            rounded-md
+            w-full sm:w-auto
+            h-[42px] flex items-center justify-center
+            whitespace-nowrap"
         >
           New Event
         </button>
