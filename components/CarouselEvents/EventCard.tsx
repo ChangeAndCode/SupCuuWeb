@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CarouselEventData } from "@/types/CarouselEvent";
 
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL;
 const EventCard = ({
   title,
   description,
@@ -66,7 +67,11 @@ const EventCard = ({
             <div
               className="w-52 h-52 bg-gray-500"
               style={{
-                backgroundImage: `url(${image})`,
+                backgroundImage: `url(${
+                  image.startsWith("http")
+                    ? image
+                    : `${backend_url}${image}`
+                })`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}

@@ -53,7 +53,7 @@ const Cards = ({ eventsData, locale, onOpenForm }: CardsProps) => {
     return events.filter((item: Event) => {
       if (!item?.content?.properties) return false;
 
-      const { titleEvent = "", descriptionEvents = "" } =
+      const { titleEvent = "", descriptionEvents = "", category = ""} =
         item.content.properties;
       const searchLower = searchTerm.toLowerCase();
 
@@ -63,6 +63,8 @@ const Cards = ({ eventsData, locale, onOpenForm }: CardsProps) => {
         return titleEvent.toLowerCase().includes(searchLower);
       } else if (filterType === "description") {
         return descriptionEvents.toLowerCase().includes(searchLower);
+      } else if (filterType === "category") {
+        return category?.toLowerCase().includes(searchLower);
       }
       return (
         titleEvent.toLowerCase().includes(searchLower) ||

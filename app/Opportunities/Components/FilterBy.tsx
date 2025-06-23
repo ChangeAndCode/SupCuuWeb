@@ -96,6 +96,7 @@ const FilterBy = ({
           {/* Use values directly from i18n */}
           <option value="title">{i18n.titleOption}</option>
           <option value="description">{i18n.descriptionOption}</option>
+          <option value="category">Categoría</option>
           <option value="all">{i18n.allOption}</option>
         </select>
         <div className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2">
