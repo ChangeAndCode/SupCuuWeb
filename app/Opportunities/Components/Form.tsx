@@ -47,13 +47,12 @@ export default function Form({
     });
 
     try {
-      const res = await fetch(
-        "http://localhost:5000/api/custom-events/create",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const backendUrl =
+        process.env.NEXT_PUBLIC_BACKEND_URL;
+      const res = await fetch(`${backendUrl}/api/custom-events/create`, {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await res.json();
       if (res.ok) {

@@ -24,12 +24,11 @@ const CardsContainer = async ({
     ] || cardsContainerTranslations["en-us"];
 
   try {
-    const backendResponse = await fetch(
-      "http://localhost:5000/api/custom-events",
-      {
-        cache: "no-store",
-      }
-    );
+    const backendUrl =
+      process.env.NEXT_PUBLIC_BACKEND_URL;
+    const backendResponse = await fetch(`${backendUrl}/api/custom-events`, {
+      cache: "no-store",
+    });
     const backendJson = await backendResponse.json();
 
     if (!backendJson?.events || !Array.isArray(backendJson.events)) {

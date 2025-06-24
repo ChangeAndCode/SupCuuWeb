@@ -18,9 +18,10 @@ interface Event {
 
 export default function ReviewEventsPage() {
   const [events, setEvents] = useState<Event[]>([]);
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/custom-events/events/pending")
+    fetch(`${backendUrl}/api/custom-events/events/pending`)
       .then((res) => res.json())
       .then((data) => setEvents(data.events || []));
   }, []);
@@ -28,7 +29,7 @@ export default function ReviewEventsPage() {
   const toggleStatus = async (id: string, currentStatus: string) => {
     const newStatus = currentStatus === "active" ? "inactive" : "active";
 
-    await fetch(`http://localhost:5000/api/custom-events/events/status/${id}`, {
+    await fetch(`${backendUrl}/api/custom-events/events/status/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: newStatus }),
@@ -36,7 +37,7 @@ export default function ReviewEventsPage() {
 
     // 🔄 Vuelve a obtener los eventos pendientes desde el backend
     const updated = await fetch(
-      "http://localhost:5000/api/custom-events/events/pending"
+      `${backendUrl}/api/custom-events/events/pending`
     );
     const data = await updated.json();
     setEvents(data.events); // <- actualiza solo con los inactivos
@@ -87,7 +88,7 @@ export default function ReviewEventsPage() {
                       src={
                         event.url_image?.startsWith("http")
                           ? event.url_image
-                          : `http://localhost:5000${event.url_image}`
+                          : `${backendUrl}${event.url_image}`
                       }
                       alt="img"
                       className="w-20 h-auto rounded"
