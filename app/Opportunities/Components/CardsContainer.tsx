@@ -6,7 +6,11 @@ import { adaptBackendEvents } from "@/lib/Opportunities/adapters";
 import { matchesKeywords } from "@/lib/Opportunities/matchesKeywords";
 import CardsClientWrapper from "./CardClientWrapper";
 
-const CardsContainer = async () => {
+const CardsContainer = async ({
+  defaultImage,
+}: {
+  defaultImage?: { name: string; url: string };
+}) => {
   let locale: string;
   try {
     locale = await getLocale();
@@ -46,7 +50,11 @@ const CardsContainer = async () => {
     });
 
     return (
-      <CardsClientWrapper initialEvents={relevantEvents} locale={locale} />
+      <CardsClientWrapper
+        initialEvents={relevantEvents}
+        locale={locale}
+        defaultImage={defaultImage}
+      />
     );
   } catch (error) {
     console.error("Error loading events:", error);

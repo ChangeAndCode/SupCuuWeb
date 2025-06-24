@@ -28,6 +28,10 @@ export interface Event {
     wantToStayUpdatedTitle: string;
     wantToStayUpdatedText: {
       markup: string;
-      blocks: Array<any>; 
+      blocks: Array<any>;
+    };
+    defaultImage?: {
+      name: string;
+      url: string;
     };
   }

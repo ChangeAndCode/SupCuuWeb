@@ -10,9 +10,18 @@ interface CardsProps {
   eventsData: EventsData;
   locale: string;
   onOpenForm: () => void;
+  defaultImage?: {
+    name: string;
+    url: string;
+  };
 }
 
-const Cards = ({ eventsData, locale, onOpenForm }: CardsProps) => {
+const Cards = ({
+  eventsData,
+  locale,
+  onOpenForm,
+  defaultImage,
+}: CardsProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
@@ -53,8 +62,11 @@ const Cards = ({ eventsData, locale, onOpenForm }: CardsProps) => {
     return events.filter((item: Event) => {
       if (!item?.content?.properties) return false;
 
-      const { titleEvent = "", descriptionEvents = "", category = ""} =
-        item.content.properties;
+      const {
+        titleEvent = "",
+        descriptionEvents = "",
+        category = "",
+      } = item.content.properties;
       const searchLower = searchTerm.toLowerCase();
 
       if (!searchTerm) return true;
@@ -144,6 +156,7 @@ const Cards = ({ eventsData, locale, onOpenForm }: CardsProps) => {
                   location={locationEvents}
                   image={imagesEvents}
                   nextPublicApiUrl={nextPublicApiUrl}
+                  defaultImage={defaultImage}
                   onClick={() =>
                     linkEvents && window.open(linkEvents, "_blank")
                   }

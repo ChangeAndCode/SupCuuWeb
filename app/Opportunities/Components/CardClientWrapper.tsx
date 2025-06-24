@@ -3,7 +3,17 @@ import { useState } from "react";
 import Form from "./Form";
 import Cards from "./Cards";
 
-export default function CardsClientWrapper({ initialEvents, locale }: any) {
+interface CardsClientWrapperProps {
+  initialEvents: any[];
+  locale: string;
+  defaultImage?: { name: string; url: string };
+}
+
+export default function CardsClientWrapper({
+  initialEvents,
+  locale,
+  defaultImage,
+}: CardsClientWrapperProps) {
   const [events, setEvents] = useState(initialEvents);
   const [showForm, setShowForm] = useState(false);
 
@@ -38,6 +48,7 @@ export default function CardsClientWrapper({ initialEvents, locale }: any) {
         eventsData={{ properties: { events: { items: events } } }}
         locale={locale}
         onOpenForm={() => setShowForm(true)}
+        defaultImage={defaultImage}
       />
     </div>
   );
