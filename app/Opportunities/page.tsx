@@ -13,11 +13,8 @@ const PageEvents = async () => {
     return <div>Error loading content from Umbraco</div>;
   }
 
-  const {
-    opportunitiesTitle,
-    wantToStayUpdatedTitle,
-    wantToStayUpdatedText,
-  } = opportunitiesData;
+  const { opportunitiesTitle, wantToStayUpdatedTitle, wantToStayUpdatedText } =
+    opportunitiesData;
 
   return (
     <>
@@ -49,7 +46,8 @@ const PageEvents = async () => {
 
         {/* Added top margin for spacing below title */}
         <div className="max-w-[1500px] mx-auto mt-8 sm:mt-12 md:mt-16 lg:mt-20">
-          <CardsContainer /> {/* FilterBy is likely inside this */}
+          <CardsContainer defaultImage={opportunitiesData.defaultImage} />{" "}
+          {/* FilterBy is likely inside this */}
         </div>
 
         {/* Added top margin for spacing */}

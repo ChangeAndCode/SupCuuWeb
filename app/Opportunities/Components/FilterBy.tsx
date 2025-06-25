@@ -74,6 +74,7 @@ const FilterBy = ({
       {/* Filter Type Select */}
       <div className="relative w-full sm:w-auto flex-shrink-0 /* Full width when stacked */">
         <select
+          title="filterType"
           value={filterType}
           onChange={(e) => onFilterTypeChange(e.target.value)}
           className="
@@ -95,6 +96,7 @@ const FilterBy = ({
           {/* Use values directly from i18n */}
           <option value="title">{i18n.titleOption}</option>
           <option value="description">{i18n.descriptionOption}</option>
+          <option value="category">Categoría</option>
           <option value="all">{i18n.allOption}</option>
         </select>
         <div className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2">

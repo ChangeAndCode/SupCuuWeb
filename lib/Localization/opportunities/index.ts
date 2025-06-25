@@ -1,22 +1,24 @@
 // lib/Localization/opportunities/index.ts
 
 export const filterByTranslations = {
-    "en-us": {
-      filterByButton: "FILTER BY",
-      searchPlaceholder: "Search...",
-      titleOption: "Title",
-      descriptionOption: "Description",
-      allOption: "All",
-    },
-    "es-mx": {
-      filterByButton: "FILTRAR POR",
-      searchPlaceholder: "Buscar...",
-      titleOption: "Título",
-      descriptionOption: "Descripción",
-      allOption: "Todos",
-    },
-    // Add more locales as needed
-  };
+  "en-us": {
+    filterByButton: "FILTER BY",
+    searchPlaceholder: "Search...",
+    titleOption: "Title",
+    descriptionOption: "Description",
+    categoryOption: "Category",
+    allOption: "All",
+  },
+  "es-mx": {
+    filterByButton: "FILTRAR POR",
+    searchPlaceholder: "Buscar...",
+    titleOption: "Título",
+    descriptionOption: "Descripción",
+    categoryOption: "Categoría",
+    allOption: "Todos",
+  },
+  // Add more locales as needed
+};
   
   export const cardsTranslations = {
     "en-us": {

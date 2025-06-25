@@ -1,10 +1,17 @@
 import { getUmbracoContent } from "@/lib/server/umbracoApi";
-import Cards from "./Cards";
+// import Cards from "./Cards";
 import { getLocale } from "@/lib/Localization";
 import { cardsContainerTranslations } from "@/lib/Localization/opportunities"; // Import translations for error messages and labels
+import { adaptBackendEvents } from "@/lib/Opportunities/adapters";
+import { matchesKeywords } from "@/lib/Opportunities/matchesKeywords";
+import CardsClientWrapper from "./CardClientWrapper";
 
-const CardsContainer = async () => {
+const CardsContainer = async ({
   // Determine locale first, handling potential errors to ensure it's defined
+  defaultImage,
+}: {
+  defaultImage?: { name: string; url: string };
+}) => {
   let locale: string;
   try {
     locale = await getLocale();
@@ -19,16 +26,39 @@ const CardsContainer = async () => {
     ] || cardsContainerTranslations["en-us"];
 
   try {
-    const eventsData = await getUmbracoContent("events", locale);
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const backendResponse = await fetch(`${backendUrl}/api/custom-events`, {
+      cache: "no-store",
+    });
+    const backendJson = await backendResponse.json();
 
-    if (!eventsData?.properties?.events?.items) {
-      console.error(i18n.loadingErrorLog, eventsData);
-      throw new Error(i18n.loadingErrorLog);
+    if (!backendJson?.events || !Array.isArray(backendJson.events)) {
+      console.error(i18n.loadingErrorLog, backendJson.events);
+      throw new Error("No se encontraron eventos válidos");
     }
+    const activeEvents = backendJson.events.filter(
+      (e) => !e.status || e.status === "active"
+    );
 
-    return <Cards eventsData={eventsData} locale={locale} />;
+    const adaptedEvents = adaptBackendEvents(activeEvents);
+    const relevantEvents = adaptedEvents.filter((event) => {
+      const props = event.content.properties;
+      return (
+        matchesKeywords(props.titleEvent) ||
+        matchesKeywords(props.descriptionEvents) ||
+        matchesKeywords(props.category)
+      );
+    });
+
+    return (
+      <CardsClientWrapper
+        initialEvents={relevantEvents}
+        locale={locale}
+        defaultImage={defaultImage}
+      />
+    );
   } catch (error) {
-    console.error("Error loading events data:", error);
+    console.error("Error loading events:", error);
 
     return (
       <div className="py-10 px-6">
