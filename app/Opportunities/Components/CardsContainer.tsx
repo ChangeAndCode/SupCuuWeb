@@ -7,6 +7,7 @@ import { matchesKeywords } from "@/lib/Opportunities/matchesKeywords";
 import CardsClientWrapper from "./CardClientWrapper";
 
 const CardsContainer = async ({
+  // Determine locale first, handling potential errors to ensure it's defined
   defaultImage,
 }: {
   defaultImage?: { name: string; url: string };
@@ -14,8 +15,9 @@ const CardsContainer = async ({
   let locale: string;
   try {
     locale = await getLocale();
-  } catch {
-    locale = "en-us";
+  } catch (localeError) {
+    console.error("Failed to get locale, defaulting to en-us:", localeError);
+    locale = "en-us"; // Default locale if fetching fails
   }
 
   const i18n =
@@ -24,14 +26,14 @@ const CardsContainer = async ({
     ] || cardsContainerTranslations["en-us"];
 
   try {
-    const backendUrl =
-      process.env.NEXT_PUBLIC_BACKEND_URL;
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
     const backendResponse = await fetch(`${backendUrl}/api/custom-events`, {
       cache: "no-store",
     });
     const backendJson = await backendResponse.json();
 
     if (!backendJson?.events || !Array.isArray(backendJson.events)) {
+      console.error(i18n.loadingErrorLog, backendJson.events);
       throw new Error("No se encontraron eventos válidos");
     }
     const activeEvents = backendJson.events.filter(
