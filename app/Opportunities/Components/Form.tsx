@@ -26,6 +26,15 @@ export default function Form({
 
   const [successMessage, setSuccessMessage] = useState(false);
 
+  const isValidUrl = (str: string) => {
+    try {
+      new URL(str);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -36,8 +45,20 @@ export default function Form({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const formData = new FormData();
+    if (
+      !form.name.trim() ||
+      !form.description.trim() ||
+      !form.category.trim() ||
+      !form.start_date ||
+      !form.location.trim() ||
+      (!form.file && (!form.url_image.trim() || !isValidUrl(form.url_image)))
+    ) {
+      setFormError("Por favor completa todos los campos obligatorios.");
+      return;
+    }
+    setFormError(""); // Reset error message
 
+    const formData = new FormData();
     Object.entries(form).forEach(([key, value]) => {
       if (key === "file" && value) {
         formData.append("image", value);
@@ -47,8 +68,7 @@ export default function Form({
     });
 
     try {
-      const backendUrl =
-        process.env.NEXT_PUBLIC_BACKEND_URL;
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
       const res = await fetch(`${backendUrl}/api/custom-events/create`, {
         method: "POST",
         body: formData,
@@ -265,6 +285,9 @@ export default function Form({
       >
         Guardar evento
       </button>
+      
+      {formError && <p className="text-red-600 text-sm mt-2">{formError}</p>}
+
       {successMessage && (
         <p className="text-green-600">
           🎉 Este evento será visible tras ser aprobado por un administrador.
