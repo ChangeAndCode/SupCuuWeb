@@ -1,5 +1,4 @@
 import { getUmbracoContent } from "@/lib/server/umbracoApi";
-// import Cards from "./Cards";
 import { getLocale } from "@/lib/Localization";
 import { cardsContainerTranslations } from "@/lib/Localization/opportunities"; // Import translations for error messages and labels
 import { adaptBackendEvents } from "@/lib/Opportunities/adapters";
