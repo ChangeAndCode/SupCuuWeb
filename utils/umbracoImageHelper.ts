@@ -11,7 +11,7 @@ export function getImageUrl(
 ): string {
   if (!path) return fallback;
   const BACKEND_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:3177";
+    process.env.NEXT_PUBLIC_API_URL || "https://startupqab.duckdns.org";
   if (
     path.startsWith("http") ||
     (path.startsWith("/") && !path.startsWith("/media"))
