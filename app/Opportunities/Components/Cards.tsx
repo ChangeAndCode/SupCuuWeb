@@ -1,7 +1,6 @@
 "use client";
 import { useState, useMemo, useEffect } from "react";
 import EventCard from "@components/CarouselEvents/EventCard";
-// import CardsData from "../data/CardsData";
 import FilterBy from "./FilterBy";
 import { EventsData, Event } from "types/Opportunities";
 import { cardsTranslations } from "@/lib/Localization/opportunities"; // Import translations for error messages and labels
