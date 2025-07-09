@@ -6,6 +6,11 @@ const keywordList =
     a.localeCompare(b)
   ) || [];
 
+const getToday = () => {
+  const today = new Date();
+  return today.toISOString().split("T")[0];
+};
+
 export default function Form({
   onEventCreated,
 }: {
@@ -47,7 +52,11 @@ export default function Form({
     e.preventDefault();
 
     const errors: Record<string, string> = {};
+    const start = new Date(form.start_date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
+    
     if (!form.name.trim()) errors.name = "El nombre es obligatorio.";
     if (!form.description.trim())
       errors.description = "La descripción es obligatoria.";
@@ -55,12 +64,21 @@ export default function Form({
     if (!form.start_date)
       errors.start_date = "La fecha de inicio es obligatoria.";
     if (!form.location.trim()) errors.location = "La ubicación es obligatoria.";
-
     const noImageProvided =
       !form.file && (!form.url_image.trim() || !isValidUrl(form.url_image));
     if (noImageProvided)
       errors.image = "Debes subir una imagen o ingresar una URL válida.";
-
+    if (form.end_date && form.start_date) {
+      const start = new Date(form.start_date);
+      const end = new Date(form.end_date);
+      if (end <= start) {
+        errors.end_date =
+          "La fecha de cierre debe ser posterior a la de inicio.";
+      }
+    }
+    if (start < today) {
+      errors.start_date = "La fecha de inicio no puede estar en el pasado.";
+    }
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       setFormError("Por favor completa todos los campos obligatorios.");
@@ -202,6 +220,7 @@ export default function Form({
             type="date"
             name="start_date"
             value={form.start_date}
+            min={getToday()}
             onChange={handleChange}
             className="border p-2 w-full rounded"
           />
@@ -224,9 +243,13 @@ export default function Form({
             type="date"
             name="end_date"
             value={form.end_date}
+            min={form.start_date}
             onChange={handleChange}
             className="border p-2 w-full rounded"
           />
+          {fieldErrors.end_date && (
+            <p className="text-red-600 text-sm mt-1">{fieldErrors.end_date}</p>
+          )}
         </div>
 
         <div>
