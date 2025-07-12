@@ -302,7 +302,7 @@ export default function Form({
           />
         </div>
 
-        {/* Imagen desde URL */}
+        {/* URL image */}
         <div className="mb-4">
           <label
             htmlFor="url_image"
@@ -321,7 +321,7 @@ export default function Form({
           />
         </div>
 
-        {/* subir imagen */}
+        {/* upload image */}
         <div className="mb-4">
           <label
             htmlFor="file"
