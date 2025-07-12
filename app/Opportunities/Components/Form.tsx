@@ -1,10 +1,5 @@
 "use client";
-import { useState } from "react";
-
-const keywordList =
-  process.env.NEXT_PUBLIC_KEYWORDS_EVENTS?.split(",").sort((a, b) =>
-    a.localeCompare(b)
-  ) || [];
+import { useEffect, useState } from "react";
 
 const getToday = () => {
   const today = new Date();
@@ -30,6 +25,22 @@ export default function Form({
   const [formError, setFormError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [successMessage, setSuccessMessage] = useState(false);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const res = await fetch("/api/categories");
+        const json = await res.json();
+        setCategories(json.categories || []);
+      } catch (err) {
+        console.error("Error loading categories", err);
+      }
+    };
+    loadCategories();
+  }, []);
 
   const isValidUrl = (str: string) => {
     try {
@@ -50,13 +61,14 @@ export default function Form({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
 
     const errors: Record<string, string> = {};
     const start = new Date(form.start_date);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    
     if (!form.name.trim()) errors.name = "El nombre es obligatorio.";
     if (!form.description.trim())
       errors.description = "La descripción es obligatoria.";
@@ -82,6 +94,7 @@ export default function Form({
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       setFormError("Por favor completa todos los campos obligatorios.");
+      setIsSubmitting(false); 
       return;
     }
 
@@ -130,6 +143,8 @@ export default function Form({
     } catch (error) {
       console.error("Error al enviar evento:", error);
       setFormError("Ocurrió un error al enviar el evento.");
+    } finally{
+      setIsSubmitting(false);
     }
   };
 
@@ -197,7 +212,7 @@ export default function Form({
             }`}
           >
             <option value="">Selecciona una categoría</option>
-            {keywordList.map((word) => (
+            {categories.map((word) => (
               <option key={word} value={word}>
                 {word}
               </option>
@@ -336,10 +351,11 @@ export default function Form({
         </div>
 
         <button
+          disabled={isSubmitting}
           type="submit"
           className="w-full mt-4 bg-blue-600 hover:bg-blue-700 transition-colors text-white px-4 py-2 rounded shadow-sm font-semibold"
         >
-          Guardar evento
+          {isSubmitting ? "Guardando..." : "Guardar evento"}
         </button>
         {successMessage && (
           <div className="mt-4 p-3 bg-green-100 text-green-800 rounded shadow-sm">

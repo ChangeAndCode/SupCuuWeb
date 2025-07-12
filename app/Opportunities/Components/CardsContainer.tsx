@@ -2,7 +2,7 @@ import { getUmbracoContent } from "@/lib/server/umbracoApi";
 import { getLocale } from "@/lib/Localization";
 import { cardsContainerTranslations } from "@/lib/Localization/opportunities"; // Import translations for error messages and labels
 import { adaptBackendEvents } from "@/lib/Opportunities/adapters";
-import { matchesKeywords } from "@/lib/Opportunities/matchesKeywords";
+import { getKeywords, hasKeyword } from "@/lib/Opportunities/matchesKeywords";
 import CardsClientWrapper from "./CardClientWrapper";
 
 const CardsContainer = async ({
@@ -38,14 +38,16 @@ const CardsContainer = async ({
     const activeEvents = backendJson.events.filter(
       (e) => !e.status || e.status === "active"
     );
-
     const adaptedEvents = adaptBackendEvents(activeEvents);
+
+    const keywordsArray = await getKeywords();
+    const keywordMatcher = hasKeyword(keywordsArray);
     const relevantEvents = adaptedEvents.filter((event) => {
-      const props = event.content.properties;
+      const p = event.content.properties;
       return (
-        matchesKeywords(props.titleEvent) ||
-        matchesKeywords(props.descriptionEvents) ||
-        matchesKeywords(props.category)
+        keywordMatcher(p.titleEvent) ||
+        keywordMatcher(p.descriptionEvents) ||
+        keywordMatcher(p.category)
       );
     });
 
