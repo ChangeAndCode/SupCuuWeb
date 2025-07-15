@@ -61,7 +61,7 @@ const EventCard = ({
       {/* principal content */}
       <div className="flex flex-col flex-grow md:flex-row mx-auto w-full justify-between">
         {/* image */}
-        <div className="md:flex md:justify-center md:w-[45%] h-[208px] relative">
+        <div className="flex justify-center md:w-[45%] h-[208px] relative">
           {!imageUrl || imageError ? (
             finalFallbackUrl ? (
               <div
