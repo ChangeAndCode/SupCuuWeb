@@ -2,10 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, BookOpen } from "lucide-react";
 import { getBlogArticle, getRelatedArticles } from "@/lib/blog/blogService";
-import { getLocale } from "@/lib/Localization";
 import React, { Suspense } from "react";
-import ArticleContent from "../components/ArticleContent";
-import RelatedArticles from "../components/RelatedArticles";
+import ArticleContent from "@/app/blog/components/ArticleContent";
+import RelatedArticles from "@/app/blog/components/RelatedArticles";
 import BlogLayout from "@/components/layout/BlogLayout";
 import { notFound } from "next/navigation";
 
@@ -14,7 +13,7 @@ export const revalidate = 10;
 
 const Loading = () => (
   <div className="flex justify-center items-center h-screen">
-    <p className="text-lg font-bold">Cargando artículo...</p>
+    <p className="text-lg font-bold">Loading article...</p>
   </div>
 );
 
@@ -26,13 +25,12 @@ interface BlogArticlePageProps {
 
 export async function generateMetadata({ params }: BlogArticlePageProps) {
   const { slug } = await params;
-  const locale = await getLocale();
-  const article = await getBlogArticle(slug, locale);
+  const article = await getBlogArticle(slug, 'en');
 
   if (!article) {
     return {
-      title: 'Artículo no encontrado',
-      description: 'El artículo que buscas no existe.'
+      title: 'Article not found',
+      description: 'The article you are looking for does not exist.'
     };
   }
 
@@ -59,18 +57,17 @@ export async function generateMetadata({ params }: BlogArticlePageProps) {
 
 export default async function BlogArticlePage({ params }: BlogArticlePageProps) {
   const { slug } = await params;
-  const locale = await getLocale();
-  
-  const article = await getBlogArticle(slug, locale);
+
+  const article = await getBlogArticle(slug, 'en');
 
   if (!article) {
     notFound();
   }
 
-  const relatedArticles = await getRelatedArticles(article.id, locale, 3);
+  const relatedArticles = await getRelatedArticles(article.id, 'en', 3);
 
   // Format the publish date
-  const formattedDate = new Date(article.publishDate).toLocaleDateString('es-MX', {
+  const formattedDate = new Date(article.publishDate).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
@@ -85,12 +82,12 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
       <Suspense fallback={<Loading />}>
         <article className="max-w-4xl mx-auto px-4 py-8">
           {/* Back to Blog Link */}
-          <Link 
+          <Link
             href="/blog"
             className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Volver al blog
+            Back to blog
           </Link>
 
           {/* Article Header */}
@@ -116,12 +113,12 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
               {article.readTime && (
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
-                  <span>{article.readTime} min lectura</span>
+                  <span>{article.readTime} min read</span>
                 </div>
               )}
               <div className="flex items-center gap-2">
                 <BookOpen className="w-4 h-4" />
-                <span>{article.content.markup ? article.content.markup.split(' ').length : 0} palabras</span>
+                <span>{article.content.markup ? article.content.markup.split(' ').length : 0} words</span>
               </div>
             </div>
           </header>

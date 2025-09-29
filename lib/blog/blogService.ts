@@ -1,7 +1,48 @@
 import { BlogArticle, BlogListData, UmbracoBlogPost, BlogContent, BlogImage } from '@/types/blog';
+import { getImageUrl } from '@/utils/umbracoImageHelper';
 
 const UMBRACO_BASE_URL = 'http://localhost:3177';
 const API_KEY = process.env.UMBRACO_API_KEY || 'LoremIpsumDolorSitAmet';
+const UMBRACO_MEDIA_URL = 'https://localhost:44323';
+
+// Helper function to fetch media details from Umbraco
+async function fetchMediaDetails(mediaKey: string): Promise<any> {
+  try {
+    // Try different possible endpoints for media
+    const endpoints = [
+      `${UMBRACO_BASE_URL}/umbraco/delivery/api/v2/media/item/${mediaKey}`,
+      `${UMBRACO_BASE_URL}/api/media/${mediaKey}`,
+      `${UMBRACO_MEDIA_URL}/umbraco/delivery/api/v2/media/item/${mediaKey}`,
+    ];
+
+    for (const endpoint of endpoints) {
+      try {
+        const response = await fetch(endpoint, {
+          headers: {
+            'Api-Key': API_KEY,
+            'Accept': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log('🖼️ Media fetched successfully from:', endpoint);
+          return data;
+        }
+      } catch (e) {
+        console.log('Failed to fetch from:', endpoint);
+      }
+    }
+
+    // If none of the endpoints work, try constructing the URL directly
+    // Based on Umbraco's typical media URL pattern
+    console.log('⚠️ Could not fetch media details, constructing URL for:', mediaKey);
+    return null;
+  } catch (error) {
+    console.error('Error fetching media details:', error);
+    return null;
+  }
+}
 
 // Helper function for API calls
 async function fetchFromUmbraco(endpoint: string, options?: RequestInit) {
@@ -46,7 +87,7 @@ async function fetchFromUmbraco(endpoint: string, options?: RequestInit) {
 }
 
 // Helper function to parse and normalize Umbraco blog post
-function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx', requestedSlug?: string): BlogArticle {
+async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx', requestedSlug?: string): Promise<BlogArticle> {
   // Parse content JSON
   let content: BlogContent = { markup: '' };
   try {
@@ -67,6 +108,50 @@ function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx', requ
     } else if (Array.isArray(post.featuredImage)) {
       featuredImage = post.featuredImage;
     }
+
+    // Process featured images to have proper URLs
+    featuredImage = await Promise.all(
+      featuredImage.map(async (img) => {
+        // If we already have a URL, use getImageUrl to ensure it's complete
+        if (img.url) {
+          return {
+            ...img,
+            url: getImageUrl(img.url),
+            alt: img.alt || post.title
+          };
+        }
+
+        // If we only have a mediaKey, fetch the media details
+        if (img.mediaKey) {
+          const mediaData = await fetchMediaDetails(img.mediaKey);
+
+          if (mediaData && mediaData.url) {
+            return {
+              ...img,
+              url: getImageUrl(mediaData.url),
+              alt: mediaData.name || img.alt || post.title
+            };
+          }
+
+          // If we couldn't fetch media details, try constructing a direct URL
+          // Some Umbraco setups use a pattern like /media/{short-code}/filename.ext
+          // We'll use a placeholder for now
+          console.log('⚠️ Could not resolve media URL for key:', img.mediaKey);
+          return {
+            ...img,
+            url: '/images/blog-placeholder.jpg',
+            alt: img.alt || post.title
+          };
+        }
+
+        // Fallback to placeholder if no URL or mediaKey
+        return {
+          ...img,
+          url: '/images/blog-placeholder.jpg',
+          alt: img.alt || post.title
+        };
+      })
+    );
   } catch (e) {
     console.error('Error parsing featured image:', e);
   }
@@ -152,7 +237,9 @@ export async function getBlogList(
     );
 
     // Normalize all blog posts
-    let articles = (blogData || []).map(post => normalizeBlogPost(post, locale));
+    let articles = await Promise.all(
+      (blogData || []).map(post => normalizeBlogPost(post, locale))
+    );
     
     // Apply filters if provided
     if (category) {
@@ -277,7 +364,7 @@ export async function getBlogArticle(slug: string, locale: string = 'es-mx'): Pr
     console.log('🔍 Found post:', foundPost ? { id: foundPost.id, title: foundPost.title } : 'None');
 
     if (foundPost) {
-      const normalized = normalizeBlogPost(foundPost, locale, slug);
+      const normalized = await normalizeBlogPost(foundPost, locale, slug);
       console.log('🔍 Normalized post:', { id: normalized.id, title: normalized.title, slug: normalized.slug });
       return normalized;
     }
@@ -306,16 +393,16 @@ export async function getFeaturedBlog(locale: string = 'es-mx'): Promise<BlogArt
     const featuredPost = blogData?.find(post => post.isFeatured === true);
     
     if (featuredPost) {
-      return normalizeBlogPost(featuredPost, locale);
+      return await normalizeBlogPost(featuredPost, locale);
     }
 
     // Fallback: return the most recent post
     if (blogData && blogData.length > 0) {
       // Sort by publish date and get the most recent
-      const sortedPosts = [...blogData].sort((a, b) => 
+      const sortedPosts = [...blogData].sort((a, b) =>
         new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
       );
-      return normalizeBlogPost(sortedPosts[0], locale);
+      return await normalizeBlogPost(sortedPosts[0], locale);
     }
 
     return null;

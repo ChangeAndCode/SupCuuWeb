@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { BlogArticle } from '@/types/blog';
-import { Button } from '@/components/ui/button';
 
 interface FeaturedArticlesProps {
   articles: BlogArticle[];
@@ -49,7 +48,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
 
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Main Featured Article */}
-        <article className="group">
+        <article className="group flex flex-col">
           <Link href={getArticleUrl(mainArticle)} className="block">
             <div className="relative h-96 mb-6 rounded-lg overflow-hidden bg-gray-200">
               <Image
@@ -68,47 +67,51 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
             </div>
           </Link>
 
-          <div>
-            {mainArticle.category && (
-              <Link 
-                href={`/blog?category=${mainArticle.category.toLowerCase().replace(/\s+/g, '-')}`}
-                className="inline-block text-blue-600 text-sm font-semibold mb-3 hover:text-blue-800"
-              >
-                {mainArticle.category}
-              </Link>
-            )}
-
-            <Link href={getArticleUrl(mainArticle)}>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                {mainArticle.title}
-              </h3>
-            </Link>
-
-            {mainArticle.excerpt && (
-              <p className="text-gray-600 mb-4 line-clamp-3">
-                {mainArticle.excerpt}
-              </p>
-            )}
-
-            <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-              <div className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
-                <span>{formatDate(mainArticle.publishDate)}</span>
-              </div>
-              {mainArticle.readTime && (
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  <span>{mainArticle.readTime} min lectura</span>
-                </div>
+          <div className="flex flex-col flex-1">
+            <div className="flex-1">
+              {mainArticle.category && (
+                <Link
+                  href={`/blog?category=${mainArticle.category.toLowerCase().replace(/\s+/g, '-')}`}
+                  className="inline-block text-blue-600 text-sm font-semibold mb-3 hover:text-blue-800"
+                >
+                  {mainArticle.category}
+                </Link>
               )}
+
+              <Link href={getArticleUrl(mainArticle)}>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                  {mainArticle.title}
+                </h3>
+              </Link>
+
+              {mainArticle.excerpt && (
+                <p className="text-gray-600 mb-4 line-clamp-3">
+                  {mainArticle.excerpt}
+                </p>
+              )}
+
+              <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                <div className="flex items-center gap-1">
+                  <Calendar className="w-4 h-4" />
+                  <span>{formatDate(mainArticle.publishDate)}</span>
+                </div>
+                {mainArticle.readTime && (
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    <span>{mainArticle.readTime} min lectura</span>
+                  </div>
+                )}
+              </div>
             </div>
 
-            <Link href={getArticleUrl(mainArticle)}>
-              <Button className="group/btn">
-                Leer artículo completo
-                <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+            <div className="flex justify-start">
+              <Link
+                href={getArticleUrl(mainArticle)}
+                className="relative main-Tipography bg-ColorPrincipal text-white h-[3.9rem] w-[18rem] uppercase font-pragmatica rounded-full flex flex-col justify-center items-center z-[20] pointer-events-auto"
+              >
+                <span>Leer artículo completo</span>
+              </Link>
+            </div>
           </div>
         </article>
 
