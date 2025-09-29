@@ -46,62 +46,60 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
-        {/* Main Featured Article */}
-        <article className="group flex flex-col">
-          <Link href={getArticleUrl(mainArticle)} className="block">
-            <div className="relative h-96 mb-6 rounded-lg overflow-hidden bg-gray-200">
-              <Image
-                src={getImageUrl(mainArticle)}
-                alt={mainArticle.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
-              {mainArticle.isFeatured && (
-                <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                  Destacado
-                </div>
-              )}
-            </div>
-          </Link>
-
-          <div className="flex flex-col flex-1">
-            <div className="flex-1">
-              {mainArticle.category && (
-                <Link
-                  href={`/blog?category=${mainArticle.category.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="inline-block text-blue-600 text-sm font-semibold mb-3 hover:text-blue-800"
-                >
-                  {mainArticle.category}
-                </Link>
-              )}
-
-              <Link href={getArticleUrl(mainArticle)}>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                  {mainArticle.title}
-                </h3>
-              </Link>
-
-              {mainArticle.excerpt && (
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                  {mainArticle.excerpt}
-                </p>
-              )}
-
-              <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  <span>{formatDate(mainArticle.publishDate)}</span>
-                </div>
-                {mainArticle.readTime && (
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{mainArticle.readTime} min lectura</span>
-                  </div>
-                )}
+      {/* Main Featured Article - Full Width */}
+      <article className="group flex flex-col mb-8">
+        <Link href={getArticleUrl(mainArticle)} className="block">
+          <div className="relative h-96 lg:h-[500px] mb-6 rounded-lg overflow-hidden bg-gray-200">
+            <Image
+              src={getImageUrl(mainArticle)}
+              alt={mainArticle.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="100vw"
+              priority
+            />
+            {mainArticle.isFeatured && (
+              <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                Destacado
               </div>
+            )}
+          </div>
+        </Link>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+          <div className="flex flex-col flex-1">
+            {mainArticle.category && (
+              <Link
+                href={`/blog?category=${mainArticle.category.toLowerCase().replace(/\s+/g, '-')}`}
+                className="inline-block text-blue-600 text-sm font-semibold mb-3 hover:text-blue-800"
+              >
+                {mainArticle.category}
+              </Link>
+            )}
+
+            <Link href={getArticleUrl(mainArticle)}>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                {mainArticle.title}
+              </h3>
+            </Link>
+
+            {mainArticle.excerpt && (
+              <p className="text-gray-600 mb-4 line-clamp-3">
+                {mainArticle.excerpt}
+              </p>
+            )}
+
+            <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+              <div className="flex items-center gap-1">
+                <Calendar className="w-4 h-4" />
+                <span>{formatDate(mainArticle.publishDate)}</span>
+              </div>
+              {mainArticle.readTime && (
+                <div className="flex items-center gap-1">
+                  <Clock className="w-4 h-4" />
+                  <span>{mainArticle.readTime} min lectura</span>
+                </div>
+              )}
             </div>
 
             <div className="flex justify-start">
@@ -113,11 +111,10 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
               </Link>
             </div>
           </div>
-        </article>
 
-        {/* Side Featured Articles */}
-        {sideArticles.length > 0 && (
-          <div className="space-y-6">
+          {/* Side Featured Articles */}
+          {sideArticles.length > 0 && (
+            <div className="space-y-6">
             {sideArticles.map((article) => (
               <article key={article.id} className="group flex gap-4">
                 <Link href={getArticleUrl(article)} className="flex-shrink-0">
@@ -170,19 +167,20 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
               </article>
             ))}
 
-            {/* View All Articles Link */}
-            <div className="pt-4 border-t">
-              <Link 
-                href="/blog#articles"
-                className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors"
-              >
-                Ver todos los artículos
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
+              {/* View All Articles Link */}
+              <div className="pt-4 border-t">
+                <Link
+                  href="/blog#articles"
+                  className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors"
+                >
+                  Ver todos los artículos
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </article>
     </section>
   );
 };

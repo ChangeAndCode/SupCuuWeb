@@ -83,9 +83,9 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
   return (
     <BlogLayout>
       <Suspense fallback={<Loading />}>
-        <article className="max-w-4xl mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto px-4 py-8">
           {/* Back to Blog Link */}
-          <Link 
+          <Link
             href="/blog"
             className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
@@ -125,26 +125,27 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
               </div>
             </div>
           </header>
+        </div>
 
-          {/* Featured Image */}
-          {imageUrl && (
-            <div className="relative w-full h-96 lg:h-[500px] mb-8 rounded-lg overflow-hidden bg-gray-200">
-              <Image
-                src={imageUrl}
-                alt={imageAlt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1280px) 100vw, 1280px"
-                priority
-              />
-            </div>
-          )}
+        {/* Featured Image - Full width */}
+        {imageUrl && (
+          <div className="relative w-full h-96 lg:h-[500px] mb-8 overflow-hidden bg-gray-200">
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+            />
+          </div>
+        )}
 
+        <article className="max-w-4xl mx-auto px-4">
           {/* Article Content */}
           <div className="prose prose-lg max-w-none mb-8">
             <ArticleContent content={article.content} />
           </div>
-
 
           {/* Related Articles */}
           {relatedArticles.length > 0 && (
