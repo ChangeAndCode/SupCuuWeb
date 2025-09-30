@@ -3,15 +3,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { BlogArticle } from '@/types/blog';
+import { getBlogTranslations } from '@/lib/blog/translations';
+import { getLocale } from '@/lib/Localization';
 
 interface FeaturedArticlesProps {
   articles: BlogArticle[];
+  locale?: string;
 }
 
-const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
+const FeaturedArticles: React.FC<FeaturedArticlesProps> = async ({ articles, locale: propLocale }) => {
   if (!articles || articles.length === 0) {
     return null;
   }
+
+  const locale = propLocale || await getLocale();
+  const t = getBlogTranslations(locale);
 
   const mainArticle = articles[0];
   const sideArticles = articles.slice(1, 3);
@@ -25,9 +31,11 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
     });
   };
 
-  // Get article URL
+  // Get article URL based on locale
+  const isSpanish = locale.toLowerCase().includes('es');
   const getArticleUrl = (article: BlogArticle) => {
-    return article.urls?.spanish || article.urls?.english || `/blog/${article.slug}`;
+    const slug = isSpanish ? article.slugEs : article.slugEn;
+    return `/blog/${slug}`;
   };
 
   // Get image URL
@@ -39,10 +47,10 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
     <section className="mb-16">
       <div className="mb-8">
         <h2 className="text-3xl font-bold text-slate-900 mb-2">
-          Artículos Destacados
+          {t.featuredTitle}
         </h2>
         <p className="text-gray-600">
-          Descubre las últimas novedades y tendencias del ecosistema emprendedor
+          {t.featuredDescription}
         </p>
       </div>
 
@@ -60,7 +68,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
             />
             {mainArticle.isFeatured && (
               <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                Destacado
+                {t.featured}
               </div>
             )}
           </div>
@@ -107,7 +115,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
                 href={getArticleUrl(mainArticle)}
                 className="relative main-Tipography bg-ColorPrincipal text-white h-[3.9rem] w-[18rem] uppercase font-pragmatica rounded-full flex flex-col justify-center items-center z-[20] pointer-events-auto"
               >
-                <span>Leer artículo completo</span>
+                <span>{t.readFullArticle}</span>
               </Link>
             </div>
           </div>
@@ -173,7 +181,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = ({ articles }) => {
                   href="/blog#articles"
                   className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors"
                 >
-                  Ver todos los artículos
+                  {t.viewAllArticles}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </div>

@@ -6,9 +6,10 @@ import { BlogArticle } from '@/types/blog';
 
 interface BlogCardProps {
   article: BlogArticle;
+  locale?: string;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ article }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ article, locale = 'es-mx' }) => {
   // Format the publish date
   const formattedDate = new Date(article.publishDate).toLocaleDateString('es-MX', {
     year: 'numeric',
@@ -16,8 +17,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ article }) => {
     day: 'numeric'
   });
 
-  // Get the correct URL based on locale (defaulting to Spanish)
-  const articleUrl = article.urls?.spanish || article.urls?.english || `/blog/${article.slug}`;
+  // Get the correct slug based on locale
+  const isSpanish = locale.toLowerCase().includes('es');
+  const slug = isSpanish ? article.slugEs : article.slugEn;
+  const articleUrl = `/blog/${slug}`;
 
   // Get the first image from featuredImage array
   const imageUrl = article.featuredImage?.[0]?.url || '/images/blog-placeholder.jpg';

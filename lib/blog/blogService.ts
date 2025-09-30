@@ -88,13 +88,32 @@ async function fetchFromUmbraco(endpoint: string, options?: RequestInit) {
 
 // Helper function to parse and normalize Umbraco blog post
 async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx', requestedSlug?: string): Promise<BlogArticle> {
+  // Determine if we're using Spanish or English
+  const isSpanish = locale.toLowerCase().includes('es');
+
+  console.log('🌍 Blog normalization - Locale:', locale);
+  console.log('🌍 Is Spanish?', isSpanish);
+  console.log('🌍 Post ID:', post.id);
+  console.log('🌍 Has contentEn?', !!post.contentEn);
+  console.log('🌍 Has contentEs?', !!post.contentEs);
+
+  // Select the appropriate content based on locale with opposite language as fallback
+  const contentField = isSpanish
+    ? (post.contentEs || post.contentEn)
+    : (post.contentEn || post.contentEs);
+  const titleField = isSpanish
+    ? (post.titleEs || post.titleEn)
+    : (post.titleEn || post.titleEs);
+
+  console.log('🌍 Selected content field:', isSpanish ? 'contentEs' : 'contentEn');
+  console.log('🌍 Content field has value?', !!contentField);
+  console.log('🌍 Using title:', titleField);
+
   // Parse content JSON
   let content: BlogContent = { markup: '' };
   try {
-    if (typeof post.content === 'string') {
-      content = JSON.parse(post.content);
-    } else {
-      content = post.content;
+    if (contentField && typeof contentField === 'string') {
+      content = JSON.parse(contentField);
     }
   } catch (e) {
     console.error('Error parsing content:', e);
@@ -117,7 +136,7 @@ async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx'
           return {
             ...img,
             url: getImageUrl(img.url),
-            alt: img.alt || post.title
+            alt: img.alt || titleField || 'Blog image'
           };
         }
 
@@ -129,7 +148,7 @@ async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx'
             return {
               ...img,
               url: getImageUrl(mediaData.url),
-              alt: mediaData.name || img.alt || post.title
+              alt: mediaData.name || img.alt || titleField || 'Blog image'
             };
           }
 
@@ -140,7 +159,7 @@ async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx'
           return {
             ...img,
             url: '/images/blog-placeholder.jpg',
-            alt: img.alt || post.title
+            alt: img.alt || titleField || 'Blog image'
           };
         }
 
@@ -148,7 +167,7 @@ async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx'
         return {
           ...img,
           url: '/images/blog-placeholder.jpg',
-          alt: img.alt || post.title
+          alt: img.alt || titleField || 'Blog image'
         };
       })
     );
@@ -195,7 +214,7 @@ async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx'
 
   return {
     id: post.id.toString(),
-    title: post.title,
+    title: titleField,
     content,
     featuredImage,
     publishDate: post.publishDate,
@@ -348,7 +367,8 @@ export async function getBlogArticle(slug: string, locale: string = 'es-mx'): Pr
     console.log('🔍 Searching for slug:', slug);
     console.log('🔍 Available posts:', blogData?.map(post => ({
       id: post.id,
-      title: post.title,
+      titleEn: post.titleEn,
+      titleEs: post.titleEs,
       slugEn: post.slugEn,
       slugEs: post.slugEs
     })));
@@ -361,7 +381,7 @@ export async function getBlogArticle(slug: string, locale: string = 'es-mx'): Pr
       }
     );
 
-    console.log('🔍 Found post:', foundPost ? { id: foundPost.id, title: foundPost.title } : 'None');
+    console.log('🔍 Found post:', foundPost ? { id: foundPost.id, titleEn: foundPost.titleEn, titleEs: foundPost.titleEs } : 'None');
 
     if (foundPost) {
       const normalized = await normalizeBlogPost(foundPost, locale, slug);

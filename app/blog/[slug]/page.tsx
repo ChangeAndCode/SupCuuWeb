@@ -150,7 +150,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
           {/* Related Articles */}
           {relatedArticles.length > 0 && (
             <section className="mt-16">
-              <RelatedArticles articles={relatedArticles} />
+              <RelatedArticles articles={relatedArticles} locale={locale} />
             </section>
           )}
         </article>

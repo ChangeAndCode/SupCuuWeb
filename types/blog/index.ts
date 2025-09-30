@@ -1,8 +1,10 @@
 // Umbraco Blog API Response Types - Based on actual API structure
 export interface UmbracoBlogPost {
   id: number;
-  title: string;
-  content: string; // JSON string containing markup and blocks
+  titleEn: string;
+  titleEs: string;
+  contentEn: string; // JSON string containing English markup and blocks
+  contentEs: string; // JSON string containing Spanish markup and blocks
   featuredImage: string; // JSON string array of image objects
   publishDate: string;
   slugEn: string;
@@ -12,6 +14,13 @@ export interface UmbracoBlogPost {
     english: string;
     spanish: string;
   };
+  // Legacy fields (kept for backward compatibility, may be removed later)
+  title?: string;
+  content?: string;
+  slug?: string;
+  url?: string;
+  currentLocale?: string;
+  availableLanguages?: string[];
 }
 
 // Parsed content structure

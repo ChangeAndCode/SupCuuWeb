@@ -6,9 +6,10 @@ import { BlogArticle } from '@/types/blog';
 
 interface RelatedArticlesProps {
   articles: BlogArticle[];
+  locale?: string;
 }
 
-const RelatedArticles: React.FC<RelatedArticlesProps> = ({ articles }) => {
+const RelatedArticles: React.FC<RelatedArticlesProps> = ({ articles, locale = 'es-mx' }) => {
   if (!articles || articles.length === 0) {
     return null;
   }
@@ -22,9 +23,11 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({ articles }) => {
     });
   };
 
-  // Get article URL
+  // Get article URL based on locale
+  const isSpanish = locale.toLowerCase().includes('es');
   const getArticleUrl = (article: BlogArticle) => {
-    return article.urls?.spanish || article.urls?.english || `/blog/${article.slug}`;
+    const slug = isSpanish ? article.slugEs : article.slugEn;
+    return `/blog/${slug}`;
   };
 
   // Get image URL
