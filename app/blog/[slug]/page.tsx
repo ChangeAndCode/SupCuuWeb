@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, BookOpen } from "lucide-react";
 import { getBlogArticle, getRelatedArticles } from "@/lib/blog/blogService";
 import { getLocale } from "@/lib/Localization";
+import { getBlogTranslations } from "@/lib/blog/translations";
 import React, { Suspense } from "react";
 import ArticleContent from "../components/ArticleContent";
 import RelatedArticles from "../components/RelatedArticles";
@@ -11,12 +12,6 @@ import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 10;
-
-const Loading = () => (
-  <div className="flex justify-center items-center h-screen">
-    <p className="text-lg font-bold">Cargando artículo...</p>
-  </div>
-);
 
 interface BlogArticlePageProps {
   params: Promise<{
@@ -60,7 +55,8 @@ export async function generateMetadata({ params }: BlogArticlePageProps) {
 export default async function BlogArticlePage({ params }: BlogArticlePageProps) {
   const { slug } = await params;
   const locale = await getLocale();
-  
+  const t = getBlogTranslations(locale);
+
   const article = await getBlogArticle(slug, locale);
 
   if (!article) {
@@ -69,8 +65,14 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
 
   const relatedArticles = await getRelatedArticles(article.id, locale, 3);
 
+  const Loading = () => (
+    <div className="flex justify-center items-center h-screen">
+      <p className="text-lg font-bold">{t.loadingArticle}</p>
+    </div>
+  );
+
   // Format the publish date
-  const formattedDate = new Date(article.publishDate).toLocaleDateString('es-MX', {
+  const formattedDate = new Date(article.publishDate).toLocaleDateString(t.dateLocale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
@@ -90,7 +92,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
             className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Volver al blog
+            {t.backToBlog}
           </Link>
 
           {/* Article Header */}
@@ -116,12 +118,12 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
               {article.readTime && (
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
-                  <span>{article.readTime} min lectura</span>
+                  <span>{article.readTime} {t.readTime}</span>
                 </div>
               )}
               <div className="flex items-center gap-2">
                 <BookOpen className="w-4 h-4" />
-                <span>{article.content.markup ? article.content.markup.split(' ').length : 0} palabras</span>
+                <span>{article.content.markup ? article.content.markup.split(' ').length : 0} {t.words}</span>
               </div>
             </div>
           </header>

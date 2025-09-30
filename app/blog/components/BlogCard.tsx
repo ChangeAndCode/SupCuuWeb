@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, Clock, User, Tag } from 'lucide-react';
 import { BlogArticle } from '@/types/blog';
+import { getBlogTranslations } from '@/lib/blog/translations';
 
 interface BlogCardProps {
   article: BlogArticle;
@@ -10,8 +11,10 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ article, locale = 'es-mx' }) => {
+  const t = getBlogTranslations(locale);
+
   // Format the publish date
-  const formattedDate = new Date(article.publishDate).toLocaleDateString('es-MX', {
+  const formattedDate = new Date(article.publishDate).toLocaleDateString(t.dateLocale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
@@ -72,7 +75,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ article, locale = 'es-mx' }) => {
             {article.readTime && (
               <div className="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
-                <span>{article.readTime} min lectura</span>
+                <span>{article.readTime} {t.readTime}</span>
               </div>
             )}
           </div>
@@ -81,7 +84,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ article, locale = 'es-mx' }) => {
           {article.author && (
             <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
               <User className="w-4 h-4" />
-              <span>Startup Chihuahua</span>
+              <span>{t.author}</span>
             </div>
           )}
 

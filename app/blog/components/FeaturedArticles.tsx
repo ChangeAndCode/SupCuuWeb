@@ -24,7 +24,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = async ({ articles, loc
 
   // Format date helper
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('es-MX', {
+    return new Date(dateString).toLocaleDateString(t.dateLocale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -105,7 +105,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = async ({ articles, loc
               {mainArticle.readTime && (
                 <div className="flex items-center gap-1">
                   <Clock className="w-4 h-4" />
-                  <span>{mainArticle.readTime} min lectura</span>
+                  <span>{mainArticle.readTime} {t.readTime}</span>
                 </div>
               )}
             </div>
@@ -167,7 +167,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = async ({ articles, loc
                     {article.readTime && (
                       <div className="flex items-center gap-1">
                         <Clock className="w-3 h-3" />
-                        <span>{article.readTime} min</span>
+                        <span>{article.readTime} {t.minRead}</span>
                       </div>
                     )}
                   </div>

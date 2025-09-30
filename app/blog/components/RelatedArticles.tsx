@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Clock, Calendar, ArrowRight } from 'lucide-react';
 import { BlogArticle } from '@/types/blog';
+import { getBlogTranslations } from '@/lib/blog/translations';
 
 interface RelatedArticlesProps {
   articles: BlogArticle[];
@@ -14,9 +15,11 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({ articles, locale = 'e
     return null;
   }
 
+  const t = getBlogTranslations(locale);
+
   // Format date helper
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('es-MX', {
+    return new Date(dateString).toLocaleDateString(t.dateLocale, {
       year: 'numeric',
       month: 'short',
       day: 'numeric'
@@ -38,7 +41,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({ articles, locale = 'e
   return (
     <div>
       <h2 className="text-2xl font-bold text-gray-900 mb-6">
-        Artículos Relacionados
+        {t.relatedArticles}
       </h2>
       
       <div className="grid md:grid-cols-3 gap-6">
@@ -55,7 +58,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({ articles, locale = 'e
                 />
                 {article.isFeatured && (
                   <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
-                    Destacado
+                    {t.featured}
                   </div>
                 )}
               </div>
@@ -91,16 +94,16 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({ articles, locale = 'e
                 {article.readTime && (
                   <div className="flex items-center gap-1">
                     <Clock className="w-3 h-3" />
-                    <span>{article.readTime} min</span>
+                    <span>{article.readTime} {t.minRead}</span>
                   </div>
                 )}
               </div>
 
-              <Link 
+              <Link
                 href={getArticleUrl(article)}
                 className="inline-flex items-center mt-3 text-sm text-blue-600 font-semibold hover:text-blue-800 transition-colors group/link"
               >
-                Leer más
+                {t.readFullArticle}
                 <ArrowRight className="w-3 h-3 ml-1 group-hover/link:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -110,11 +113,11 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({ articles, locale = 'e
 
       {/* View All Articles Link */}
       <div className="text-center mt-8">
-        <Link 
+        <Link
           href="/blog"
           className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors"
         >
-          Ver todos los artículos
+          {t.viewAllArticles}
           <ArrowRight className="w-4 h-4 ml-2" />
         </Link>
       </div>

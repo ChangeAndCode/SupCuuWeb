@@ -30,6 +30,7 @@ export const blogTranslations = {
     words: 'words',
     loadingArticle: 'Loading article...',
     loadingBlog: 'Loading blog...',
+    minRead: 'min',
 
     // Related articles
     relatedArticles: 'Related Articles',
@@ -43,6 +44,9 @@ export const blogTranslations = {
 
     // General
     featured: 'Featured',
+
+    // Date locale
+    dateLocale: 'en-US',
   },
   'es-mx': {
     // Hero section
@@ -73,6 +77,7 @@ export const blogTranslations = {
     words: 'palabras',
     loadingArticle: 'Cargando artículo...',
     loadingBlog: 'Cargando blog...',
+    minRead: 'min',
 
     // Related articles
     relatedArticles: 'Artículos Relacionados',
@@ -86,6 +91,9 @@ export const blogTranslations = {
 
     // General
     featured: 'Destacado',
+
+    // Date locale
+    dateLocale: 'es-MX',
   }
 };
 
