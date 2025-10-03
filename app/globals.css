@@ -123,4 +123,28 @@ html {
   opacity: 0;
 }
 
+/* Blog article content spacing adjustments */
+.article-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.article-content li {
+  margin-bottom: 0.25rem;
+}
+
+.article-content li p {
+  margin-bottom: 0.25rem;
+}
+
 
