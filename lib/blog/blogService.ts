@@ -1,9 +1,10 @@
 import { BlogArticle, BlogListData, UmbracoBlogPost, BlogContent, BlogImage } from '@/types/blog';
 import { getImageUrl } from '@/utils/umbracoImageHelper';
 
-const UMBRACO_BASE_URL = 'http://localhost:3177';
-const API_KEY = process.env.UMBRACO_API_KEY || 'LoremIpsumDolorSitAmet';
-const UMBRACO_MEDIA_URL = 'https://localhost:44323';
+const UMBRACO_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL || 'http://localhost:3177';
+const UMBRACO_API_BLOG_URL = process.env.UMBRACO_API_BLOG_URL!;
+const API_KEY = process.env.UMBRACO_API_KEY!;
+const UMBRACO_MEDIA_URL = process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL || 'https://localhost:44323';
 
 // Helper function to fetch media details from Umbraco
 async function fetchMediaDetails(mediaKey: string): Promise<any> {
@@ -26,20 +27,16 @@ async function fetchMediaDetails(mediaKey: string): Promise<any> {
 
         if (response.ok) {
           const data = await response.json();
-          console.log('🖼️ Media fetched successfully from:', endpoint);
           return data;
         }
       } catch (e) {
-        console.log('Failed to fetch from:', endpoint);
+        // Failed to fetch from this endpoint, try next
       }
     }
 
-    // If none of the endpoints work, try constructing the URL directly
-    // Based on Umbraco's typical media URL pattern
-    console.log('⚠️ Could not fetch media details, constructing URL for:', mediaKey);
+    // If none of the endpoints work, return null
     return null;
   } catch (error) {
-    console.error('Error fetching media details:', error);
     return null;
   }
 }
@@ -47,12 +44,7 @@ async function fetchMediaDetails(mediaKey: string): Promise<any> {
 // Helper function for API calls
 async function fetchFromUmbraco(endpoint: string, options?: RequestInit) {
   const url = endpoint.startsWith('http') ? endpoint : `${UMBRACO_BASE_URL}${endpoint}`;
-  
-  console.log('🔥 BLOG SERVICE - Fetching from URL:', url);
-  console.log('🔥 BLOG SERVICE - Using API Key:', API_KEY);
-  console.log('🔥 BLOG SERVICE - Endpoint:', endpoint);
-  console.log('🔥 BLOG SERVICE - Base URL:', UMBRACO_BASE_URL);
-  
+
   const response = await fetch(url, {
     ...options,
     headers: {
@@ -66,12 +58,7 @@ async function fetchFromUmbraco(endpoint: string, options?: RequestInit) {
     }
   });
 
-  console.log('🔥 BLOG SERVICE - Response status:', response.status);
-  console.log('🔥 BLOG SERVICE - Response ok:', response.ok);
-
   if (!response.ok) {
-    console.error(`❌ API Error: ${response.status} - ${response.statusText}`);
-    console.error(`❌ Failed URL: ${url}`);
     if (response.status === 404) {
       return null;
     }
@@ -79,10 +66,6 @@ async function fetchFromUmbraco(endpoint: string, options?: RequestInit) {
   }
 
   const data = await response.json();
-  console.log('🔥 BLOG SERVICE - Response data:', data);
-  console.log('🔥 BLOG SERVICE - Data type:', typeof data);
-  console.log('🔥 BLOG SERVICE - Data length:', Array.isArray(data) ? data.length : 'Not array');
-  
   return data;
 }
 
@@ -90,12 +73,6 @@ async function fetchFromUmbraco(endpoint: string, options?: RequestInit) {
 async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx', requestedSlug?: string): Promise<BlogArticle> {
   // Determine if we're using Spanish or English
   const isSpanish = locale.toLowerCase().includes('es');
-
-  console.log('🌍 Blog normalization - Locale:', locale);
-  console.log('🌍 Is Spanish?', isSpanish);
-  console.log('🌍 Post ID:', post.id);
-  console.log('🌍 Has contentEn?', !!post.contentEn);
-  console.log('🌍 Has contentEs?', !!post.contentEs);
 
   // Select the appropriate content based on locale with opposite language as fallback
   const contentField = isSpanish
@@ -105,10 +82,6 @@ async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx'
     ? (post.titleEs || post.titleEn)
     : (post.titleEn || post.titleEs);
 
-  console.log('🌍 Selected content field:', isSpanish ? 'contentEs' : 'contentEn');
-  console.log('🌍 Content field has value?', !!contentField);
-  console.log('🌍 Using title:', titleField);
-
   // Parse content JSON
   let content: BlogContent = { markup: '' };
   try {
@@ -116,7 +89,7 @@ async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx'
       content = JSON.parse(contentField);
     }
   } catch (e) {
-    console.error('Error parsing content:', e);
+    // Error parsing content, use default empty content
   }
 
   // Parse featured image JSON
@@ -155,7 +128,6 @@ async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx'
           // If we couldn't fetch media details, try constructing a direct URL
           // Some Umbraco setups use a pattern like /media/{short-code}/filename.ext
           // We'll use a placeholder for now
-          console.log('⚠️ Could not resolve media URL for key:', img.mediaKey);
           return {
             ...img,
             url: '/images/blog-placeholder.jpg',
@@ -172,7 +144,7 @@ async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx'
       })
     );
   } catch (e) {
-    console.error('Error parsing featured image:', e);
+    // Error parsing featured image, use default empty array
   }
 
   // Determine the correct slug based on which one was actually requested
@@ -193,11 +165,6 @@ async function normalizeBlogPost(post: UmbracoBlogPost, locale: string = 'es-mx'
     const isSpanish = locale.toLowerCase().includes('es');
     slug = isSpanish ? post.slugEs : post.slugEn;
   }
-  
-  console.log('🔧 normalizeBlogPost - requestedSlug:', requestedSlug);
-  console.log('🔧 normalizeBlogPost - locale:', locale);
-  console.log('🔧 normalizeBlogPost - selected slug:', slug);
-  console.log('🔧 normalizeBlogPost - available slugs:', { slugEs: post.slugEs, slugEn: post.slugEn });
 
   // Extract excerpt from content if available
   let excerpt = '';
@@ -243,11 +210,10 @@ export async function getBlogList(
   tag?: string,
   search?: string
 ): Promise<BlogListData> {
-  console.log('🚀 getBlogList called with:', { locale, page, pageSize, category, tag, search });
   try {
     // Fetch blog data from Umbraco API
     const blogData: UmbracoBlogPost[] = await fetchFromUmbraco(
-      '/api/blog',
+      UMBRACO_API_BLOG_URL,
       {
         headers: {
           'Accept-Language': locale
@@ -333,7 +299,6 @@ export async function getBlogList(
       tags
     };
   } catch (error) {
-    console.error('Error fetching blog list:', error);
     // Return empty data structure on error
     return {
       articles: [],
@@ -351,11 +316,10 @@ export async function getBlogList(
 
 // Get a single blog article by slug
 export async function getBlogArticle(slug: string, locale: string = 'es-mx'): Promise<BlogArticle | null> {
-  console.log('🚀 getBlogArticle called with:', { slug, locale });
   try {
     // Get all blogs and find by slug
     const blogData: UmbracoBlogPost[] = await fetchFromUmbraco(
-      '/api/blog',
+      UMBRACO_API_BLOG_URL,
       {
         headers: {
           'Accept-Language': locale
@@ -364,34 +328,17 @@ export async function getBlogArticle(slug: string, locale: string = 'es-mx'): Pr
     );
 
     // Find the article by slug (checking both language slugs)
-    console.log('🔍 Searching for slug:', slug);
-    console.log('🔍 Available posts:', blogData?.map(post => ({
-      id: post.id,
-      titleEn: post.titleEn,
-      titleEs: post.titleEs,
-      slugEn: post.slugEn,
-      slugEs: post.slugEs
-    })));
-    
     const foundPost = blogData?.find(
-      post => {
-        console.log(`🔍 Checking post ${post.id}: slugEn="${post.slugEn}" vs "${slug}" = ${post.slugEn === slug}`);
-        console.log(`🔍 Checking post ${post.id}: slugEs="${post.slugEs}" vs "${slug}" = ${post.slugEs === slug}`);
-        return post.slugEn === slug || post.slugEs === slug;
-      }
+      post => post.slugEn === slug || post.slugEs === slug
     );
-
-    console.log('🔍 Found post:', foundPost ? { id: foundPost.id, titleEn: foundPost.titleEn, titleEs: foundPost.titleEs } : 'None');
 
     if (foundPost) {
       const normalized = await normalizeBlogPost(foundPost, locale, slug);
-      console.log('🔍 Normalized post:', { id: normalized.id, title: normalized.title, slug: normalized.slug });
       return normalized;
     }
 
     return null;
   } catch (error) {
-    console.error(`Error fetching blog article ${slug}:`, error);
     return null;
   }
 }
@@ -401,7 +348,7 @@ export async function getFeaturedBlog(locale: string = 'es-mx'): Promise<BlogArt
   try {
     // Get all blogs and find the featured one
     const blogData: UmbracoBlogPost[] = await fetchFromUmbraco(
-      '/api/blog',
+      UMBRACO_API_BLOG_URL,
       {
         headers: {
           'Accept-Language': locale
@@ -427,7 +374,6 @@ export async function getFeaturedBlog(locale: string = 'es-mx'): Promise<BlogArt
 
     return null;
   } catch (error) {
-    console.error('Error fetching featured blog:', error);
     return null;
   }
 }
@@ -489,7 +435,6 @@ export async function getRelatedArticles(
 
     return scoredArticles;
   } catch (error) {
-    console.error('Error fetching related articles:', error);
     return [];
   }
 }
@@ -503,7 +448,6 @@ export async function searchBlogPosts(
     const blogData = await getBlogList(locale, 1, 100, undefined, undefined, query);
     return blogData.articles;
   } catch (error) {
-    console.error('Error searching blog posts:', error);
     return [];
   }
 }
